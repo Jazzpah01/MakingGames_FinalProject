@@ -63,3 +63,7 @@ Thumbs.db.meta
 
 # Gradle cache directory
 .gradle/
+
+# Additional new stuff
+UserSettings/
+Logs/
