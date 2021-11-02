@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IActor
 {
     public float maxVelocityChange = 10.0f;
     public LayerMask movementMask;
@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 velocity;
     private float directionX,directionY;
 
+    public ActorType type => ActorType.Player;
 
     void Start()
     {
