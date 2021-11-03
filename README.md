@@ -21,13 +21,18 @@ DON'T CHANGE THE MAIN SCENE. Everyone can create a personal folder called Person
 scenes that only you will be able to access. Only tech lead will be changing the main scene.
 
 -------------------------
-HOW to get a remote branch to your computer.
+How to get a remote branch NAME to your computer.
 
 git fetch origin
-git checkout -b test origin/test
+
+git checkout -b NAME origin/NAME
 
 ---
+How to upload a branch NAME that is only local.
 
+git push -u origin NAME
+
+---
 To list remove branches: git branch -v -a
 
 https://stackoverflow.com/questions/1783405/how-do-i-check-out-a-remote-git-branch
