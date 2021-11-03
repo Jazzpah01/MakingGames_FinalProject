@@ -2,7 +2,7 @@
 using UnityEngine.AI;
 
 
-public class EnemyController: MonoBehaviour
+public class EnemyController: MonoBehaviour, IActor
 {
 
     public float speed = 1;
@@ -12,6 +12,8 @@ public class EnemyController: MonoBehaviour
     private NavMeshAgent agent;
 
     private float time1 = 0, time2 = 0;
+
+    public ActorType type => ActorType.Enemy;
 
     void Start()
     {
@@ -61,16 +63,21 @@ public class EnemyController: MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.name == "Player")
+        IActor actor = other.GetComponent<IActor>();
+        if (actor == null)
+            return;
+
+        switch (actor.type)
         {
-            secondaryTarget = other.transform;
-        }
-        if (other.name.Contains("Barricade"))
-        {
-            if (secondaryTarget == null)
-            {
+            case ActorType.Player:
                 secondaryTarget = other.transform;
-            }
+                break;
+            case ActorType.Obstacle:
+                if (secondaryTarget == null)
+                {
+                    secondaryTarget = other.transform;
+                }
+                break;
         }
     }
 

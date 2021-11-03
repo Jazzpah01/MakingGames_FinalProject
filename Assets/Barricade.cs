@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Barricade : MonoBehaviour
+public class Barricade : MonoBehaviour, IActor
 {
     public float maxHealth = 100;
     public Image healthbar;
 
     private float currentHealth;
 
+    public ActorType type => ActorType.Obstacle;
 
     private void Start()
     {
