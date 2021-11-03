@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IActor
+public interface IActor: IDamageable
 {
     ActorType type { get; }
     GameObject gameObject { get; }

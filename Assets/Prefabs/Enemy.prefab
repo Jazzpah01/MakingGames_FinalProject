@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6669751714318334945}
   - component: {fileID: 9187301958987836828}
   - component: {fileID: 3217886276440440003}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 5980018141852729463}
   - component: {fileID: 5980018141852729462}
   - component: {fileID: 5980018141852729456}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,6 +219,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5980018141852729460}
     m_Modifications:
+    - target: {fileID: 359936499342771769, guid: 6547b7794ac741e4d884918d5e16c1b4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 420756184247553001, guid: 6547b7794ac741e4d884918d5e16c1b4,
         type: 3}
       propertyPath: m_TranslationOffset.y
@@ -229,10 +234,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: HealthBarCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 453667417665990411, guid: 6547b7794ac741e4d884918d5e16c1b4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 2867334920193679764, guid: 6547b7794ac741e4d884918d5e16c1b4,
         type: 3}
       propertyPath: target
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5131697913709948232, guid: 6547b7794ac741e4d884918d5e16c1b4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6412512043429981398, guid: 6547b7794ac741e4d884918d5e16c1b4,
         type: 3}
