@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
 
-
 public class EnemyController: MonoBehaviour, IActor
 {
-
     public float speed = 1;
     public Transform primaryTarget;
+
+    public CollisionObserver detectionCollision;
+    public CollisionObserver damagerCollision;
+
     private Transform secondaryTarget;
     private NavMeshAgent agent;
 
@@ -29,6 +31,8 @@ public class EnemyController: MonoBehaviour, IActor
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        detectionCollision.Subscribe(Detection_Enter, CollisionObserver.CollisionType.Enter);
+        detectionCollision.Subscribe(Detection_Exit, CollisionObserver.CollisionType.Exit);
     }
 
     private void Update()
@@ -39,9 +43,11 @@ public class EnemyController: MonoBehaviour, IActor
             FaceTarget(secondaryTarget);
             FollowTarget(secondaryTarget);
 
+            Collider col = secondaryTarget.GetComponent<Collider>();
+
             IActor target = secondaryTarget.GetComponent<IActor>();
 
-            if (target.type == ActorType.Obstacle && Vector3.Distance(transform.position, secondaryTarget.position) < 2 && time1 >= time2)
+            if (target.type == ActorType.Obstacle && damagerCollision.Stay.Contains(col) && time1 >= time2)
             {
                 target.Health -= 10;
                 time2 = time1 + 1;
@@ -74,7 +80,7 @@ public class EnemyController: MonoBehaviour, IActor
         agent.updateRotation = true;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void Detection_Enter(Collider other)
     {
         IActor actor = other.GetComponent<IActor>();
         if (actor == null)
@@ -94,7 +100,7 @@ public class EnemyController: MonoBehaviour, IActor
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void Detection_Exit(Collider other)
     {
         IActor actor = other.GetComponent<IActor>();
         if (actor == null)

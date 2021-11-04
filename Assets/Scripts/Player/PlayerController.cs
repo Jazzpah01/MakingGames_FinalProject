@@ -5,6 +5,8 @@ using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour, IActor
 {
+    // proper attack things
+
     public float maxVelocityChange = 10.0f;
     public LayerMask movementMask;
     public LayerMask actorMask;
@@ -24,6 +26,7 @@ public class PlayerController : MonoBehaviour, IActor
     public float attackCooldown;
     public float attackRange;
     public GameObject attackEffect;
+    public CollisionObserver attackObserver;
     private float attackTime;
 
     public float AOEAttackDamage;
@@ -89,7 +92,7 @@ public class PlayerController : MonoBehaviour, IActor
             }
 
             //normal attack
-            if (hasHit && attackTime < attackCooldown && (hit.transform.position - transform.position).magnitude <= attackRange)
+            if (hasHit && attackTime < attackCooldown && attackObserver.Stay.Contains(hit.collider))//(hit.transform.position - transform.position).magnitude <= attackRange)
             {
                 IActor actor = hit.transform.GetComponent<IActor>();
 
