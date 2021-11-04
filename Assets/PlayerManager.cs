@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
+    public enum GameState
+    {
+        Combat,
+        Strategy
+    }
+
     public static PlayerManager instance;
 
     public bool keyboardControl = false;
@@ -21,7 +27,4 @@ public class PlayerManager : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
     }
-
-
-
 }

@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour, IActor
     public float AOEAttackCooldown;
     public float AOEAttackRange;
     public GameObject AOEAttackEffect;
+    public CollisionObserver AOEObserver;
     private float AOEAttackTime;
 
     public ActorType type => ActorType.Player;
@@ -142,19 +143,24 @@ public class PlayerController : MonoBehaviour, IActor
         AOEAttackTime -= Time.deltaTime;
         if (Input.GetKeyDown(KeyCode.Space) && AOEAttackTime < 0)
         {
-            Collider[] collisions = Physics.OverlapSphere(transform.position, AOEAttackRange);
+            Collider[] collisions = AOEObserver.Stay.ToArray();
             AOEAttackTime = AOEAttackCooldown;
 
             Instantiate(AOEAttackEffect).transform.position = transform.position;
 
-            foreach (Collider collider in collisions)
+            for (int i = 0; i < collisions.Length; i++)
             {
-                IActor actor = collider.GetComponent<IActor>();
+                IActor actor = collisions[i].GetComponent<IActor>();
 
                 if (actor == null || actor.type != ActorType.Enemy)
                     continue;
 
                 actor.Health -= AOEAttackDamage;
+
+                if (actor.gameObject == null)
+                {
+                    i--;
+                }
             }
         }
         

@@ -13,9 +13,12 @@ public class CollisionObserver : MonoBehaviour
     private List<Collider> exit;
     private List<Collider> stay;
 
+    private Collider collider;
+
     public List<Collider> Enter => enter;
     public List<Collider> Exit => exit;
     public List<Collider> Stay => stay;
+    public Collider Collider => collider;
 
     public enum CollisionType
     {
@@ -29,6 +32,7 @@ public class CollisionObserver : MonoBehaviour
         enter = new List<Collider>();
         exit = new List<Collider>();
         stay = new List<Collider>();
+        collider = GetComponent<Collider>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -63,6 +67,15 @@ public class CollisionObserver : MonoBehaviour
     {
         enter.Clear();
         exit.Clear();
+
+        for (int i = 0; i < stay.Count; i++)
+        {
+            if (stay[i] == null || stay[i].gameObject == null)
+            {
+                stay.RemoveAt(i);
+                i--;
+            }
+        }
     }
 
     public void Subscribe(CollisionObservation observerMethod, CollisionType type)

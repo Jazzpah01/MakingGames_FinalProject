@@ -14,11 +14,17 @@ public class Base : MonoBehaviour, IActor
         set
         {
             health = value;
+            print(health);
 
             if (health <= 0)
             {
                 SceneManager.LoadScene(1); //hard coded bad
             }
         }
+    }
+
+    private void Start()
+    {
+        health = maxHealth;
     }
 }
