@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
 
-public class PlayerController : MonoBehaviour, IActor
+public class PlayerController : MonoBehaviour, IActor, IState
 {
     // proper attack things
 
@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour, IActor
     public LayerMask actorMask;
     public Interactable focus;
 
-    Camera cam;
+    public Camera cam;
     PlayerMotor motor;
     PlayerManager playerManager;
     NavMeshAgent navMeshAgent;
@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour, IActor
 
     private float health;
 
+    // These attack moves are hard-coded and should be refactored.
     public float attackDamage;
     public float attackCooldown;
     public float attackRange;
@@ -42,13 +43,13 @@ public class PlayerController : MonoBehaviour, IActor
 
     void Start()
     {
-        cam = Camera.main;
+        //cam = Camera.main;
         motor = GetComponent<PlayerMotor>();
         playerManager = PlayerManager.instance;
         navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
-    void Update()
+    public void UpdateState()
     {
         if (EventSystem.current.IsPointerOverGameObject())
         {
@@ -93,7 +94,7 @@ public class PlayerController : MonoBehaviour, IActor
             }
 
             //normal attack
-            if (hasHit && attackTime < attackCooldown && attackObserver.Stay.Contains(hit.collider))//(hit.transform.position - transform.position).magnitude <= attackRange)
+            if (hasHit && attackTime <= 0 && attackObserver.Stay.Contains(hit.collider))//(hit.transform.position - transform.position).magnitude <= attackRange)
             {
                 IActor actor = hit.transform.GetComponent<IActor>();
 
@@ -192,4 +193,18 @@ public class PlayerController : MonoBehaviour, IActor
         motor.StopFollowingTarget();
     }
 
+    public void EnterState()
+    {
+        cam.gameObject.SetActive(true);
+    }
+
+    public void ExitState()
+    {
+        cam.gameObject.SetActive(true);
+    }
+
+    public void LateUpdateState()
+    {
+
+    }
 }
