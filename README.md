@@ -1,6 +1,19 @@
 # MakingGames_FinalProject
 The final project for making games.
 
+Features:
+-Combat state: waves of enemies come to attack and player can defend.
+-Strategy state: player can rotate and place structures.
+
+Controls:
+-Strategy:
+--B: Enter combat mode.
+--I: Select wall to place.
+
+-Combat:
+--RMB: Single attack.
+--Space: AOE attack.
+
 -------------------------
 Unity version used: Unity 2020.3.21
 Can be downloaded here: https://unity3d.com/get-unity/download/archive
