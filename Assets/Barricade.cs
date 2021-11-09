@@ -4,27 +4,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Barricade : MonoBehaviour
+public class Barricade : MonoBehaviour, IActor
 {
     public float maxHealth = 100;
     public Image healthbar;
 
     private float currentHealth;
 
+    public ActorType type => ActorType.Obstacle;
+
+    public float Health { get => currentHealth; 
+        set
+        {
+            currentHealth = value;
+            StartCoroutine(SmoothSliderDecrease(currentHealth / maxHealth, healthbar));
+            if (currentHealth <= 0f)
+            {
+                Die();
+            }
+        }
+    }
 
     private void Start()
     {
         currentHealth = maxHealth;
-    }
-
-    public void Damage(float damage)
-    {
-        currentHealth -= damage;
-        StartCoroutine(SmoothSliderDecrease(currentHealth / maxHealth, healthbar));
-        if (currentHealth <= 0f)
-        {
-            Die();
-        }
     }
 
     private void Die()
