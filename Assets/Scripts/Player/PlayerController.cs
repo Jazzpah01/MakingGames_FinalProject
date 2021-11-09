@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour, IActor, IState
 
     public Camera cam;
     PlayerMotor motor;
-    PlayerManager playerManager;
+    GameController playerManager;
     NavMeshAgent navMeshAgent;
 
     private Vector3 velocity;
@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour, IActor, IState
     {
         //cam = Camera.main;
         motor = GetComponent<PlayerMotor>();
-        playerManager = PlayerManager.instance;
+        playerManager = GameController.instance;
         navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
