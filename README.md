@@ -2,16 +2,24 @@
 The final project for making games.
 
 Features:
+
 -Combat state: waves of enemies come to attack and player can defend.
+
 -Strategy state: player can rotate and place structures.
 
+
 Controls:
+
 -Strategy:
+
 --B: Enter combat mode.
+
 --I: Select wall to place.
 
 -Combat:
+
 --RMB: Single attack.
+
 --Space: AOE attack.
 
 -------------------------
