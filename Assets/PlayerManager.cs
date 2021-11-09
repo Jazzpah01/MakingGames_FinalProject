@@ -26,17 +26,21 @@ public class PlayerManager : MBStateMachine
 
     void Awake()
     {
-        if (instance != null && instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        else
-        {
-            buildTime = buildTimer;
-            instance = this;
-        }
-        DontDestroyOnLoad(gameObject);
+        // TODO: make this global - make scene state into another class
+        //if (instance != null && instance != this)
+        //{
+        //    Destroy(gameObject);
+        //    return;
+        //}
+        //else
+        //{
+        //    buildTime = buildTimer;
+        //    instance = this;
+        //}
+        //DontDestroyOnLoad(gameObject);
+
+        buildTime = buildTimer;
+        instance = this;
 
         ChangeState(state);
     }
@@ -52,13 +56,16 @@ public class PlayerManager : MBStateMachine
                 base.ChangeState(strategyController);
                 break;
         }
+        state = newState;
     }
 
     private void Update()
     {
         if (state == GameState.Combat)
         {
-            if (enemyParent.GetComponentsInChildren<EnemyController>().Length < 1)
+            if (enemyParent == null ||
+                enemyParent.GetComponentsInChildren<EnemyController>() == null || 
+                enemyParent.GetComponentsInChildren<EnemyController>().Length < 1)
             {
                 buildTime = buildTimer;
                 ChangeState(GameState.Strategy);
