@@ -14,18 +14,19 @@ public class GameController : MBStateMachine
 
     public bool keyboardControl = false;
     public GameState state = GameState.Combat;
-
-    public PlayerController playerController;
     public StrategyController strategyController;
-
+    public GameObject player;
     public GameObject enemyParent;
     public float buildTimer = 9001;
-    private float buildTime;
 
-    public SpawnController spawner;
+    private float buildTime;
+    private PlayerController playerController;
+
+    public SpawnController spawnController;
 
     void Awake()
     {
+        playerController = player.GetComponent<PlayerController>();
         buildTime = buildTimer;
         instance = this;
 
@@ -37,9 +38,11 @@ public class GameController : MBStateMachine
         switch (newState)
         {
             case GameState.Combat:
+                player.SetActive(true);
                 base.ChangeState(playerController);
                 break;
             case GameState.Strategy:
+                player.SetActive(false);
                 base.ChangeState(strategyController);
                 break;
         }
@@ -50,9 +53,7 @@ public class GameController : MBStateMachine
     {
         if (state == GameState.Combat)
         {
-            if (enemyParent == null ||
-                enemyParent.GetComponentsInChildren<EnemyController>() == null ||
-                enemyParent.GetComponentsInChildren<EnemyController>().Length < 1)
+            if (!(enemyParent.transform.childCount > 0))
             {
                 buildTime = buildTimer;
                 ChangeState(GameState.Strategy);
@@ -63,12 +64,12 @@ public class GameController : MBStateMachine
             buildTime -= Time.deltaTime;
             if (buildTime <= 0)
             {
-                spawner.SpawnEnemies();
+                spawnController.SpawnEnemies();
                 ChangeState(GameState.Combat);
             }
             if (Input.GetKeyDown(KeyCode.B))
             {
-                spawner.SpawnEnemies();
+                spawnController.SpawnEnemies();
                 ChangeState(GameState.Combat);
             }
         }
