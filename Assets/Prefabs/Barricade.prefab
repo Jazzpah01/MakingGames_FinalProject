@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 15905a5f5aaaa774386b488479f2113e, type: 2}
+  - {fileID: 2100000, guid: 188755f182b7b304080ffc0f54664105, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb13aa8b04daf69499b4ce0602e97ca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 250
   healthbar: {fileID: 239386929461881788}
 --- !u!1001 &2782804532912156859
 PrefabInstance:

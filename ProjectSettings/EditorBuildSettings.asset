@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Prototype_strategi.unity
+    guid: da5ef0a1451f81e42b34adb61b77191b
+  - enabled: 1
+    path: Assets/Scenes/Fail.unity
+    guid: a7982f5b57f09d64eaebec8bba8a76bd
   m_configObjects: {}

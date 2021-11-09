@@ -13,19 +13,21 @@ public class Barricade : MonoBehaviour, IActor
 
     public ActorType type => ActorType.Obstacle;
 
+    public float Health { get => currentHealth; 
+        set
+        {
+            currentHealth = value;
+            StartCoroutine(SmoothSliderDecrease(currentHealth / maxHealth, healthbar));
+            if (currentHealth <= 0f)
+            {
+                Die();
+            }
+        }
+    }
+
     private void Start()
     {
         currentHealth = maxHealth;
-    }
-
-    public void Damage(float damage)
-    {
-        currentHealth -= damage;
-        StartCoroutine(SmoothSliderDecrease(currentHealth / maxHealth, healthbar));
-        if (currentHealth <= 0f)
-        {
-            Die();
-        }
     }
 
     private void Die()

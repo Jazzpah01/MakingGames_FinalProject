@@ -1,23 +1,38 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
 
-
 public class EnemyController: MonoBehaviour, IActor
 {
-
     public float speed = 1;
     public Transform primaryTarget;
+
+    public CollisionObserver detectionCollision;
+    public CollisionObserver damagerCollision;
 
     private Transform secondaryTarget;
     private NavMeshAgent agent;
 
     private float time1 = 0, time2 = 0;
 
+    private float maxHealth = 100, health = 100;
+
     public ActorType type => ActorType.Enemy;
+
+    public float Health { get => health; 
+        set {
+            health = value;
+            if (health <= 0)
+            {
+                Destroy(this.gameObject);
+            }
+        } 
+    }
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        detectionCollision.Subscribe(Detection_Enter, CollisionObserver.CollisionType.Enter);
+        detectionCollision.Subscribe(Detection_Exit, CollisionObserver.CollisionType.Exit);
     }
 
     private void Update()
@@ -28,9 +43,13 @@ public class EnemyController: MonoBehaviour, IActor
             FaceTarget(secondaryTarget);
             FollowTarget(secondaryTarget);
 
-            if (secondaryTarget.name.Contains("Barricade") && Vector3.Distance(transform.position, secondaryTarget.position) < 2 && time1 >= time2)
+            Collider col = secondaryTarget.GetComponent<Collider>();
+
+            IActor target = secondaryTarget.GetComponent<IActor>();
+
+            if (target.type == ActorType.Obstacle && damagerCollision.Stay.Contains(col) && time1 >= time2)
             {
-                secondaryTarget.GetComponent<Barricade>().Damage(10);
+                target.Health -= 10;
                 time2 = time1 + 1;
             }
 
@@ -61,7 +80,7 @@ public class EnemyController: MonoBehaviour, IActor
         agent.updateRotation = true;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void Detection_Enter(Collider other)
     {
         IActor actor = other.GetComponent<IActor>();
         if (actor == null)
@@ -81,15 +100,20 @@ public class EnemyController: MonoBehaviour, IActor
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void Detection_Exit(Collider other)
     {
-        if (other.name == "Player")
+        IActor actor = other.GetComponent<IActor>();
+        if (actor == null)
+            return;
+
+        switch (actor.type)
         {
-            secondaryTarget = null;
-        }
-        if (other.name.Contains("Barricade"))
-        {
-            secondaryTarget = null;
+            case ActorType.Player:
+                secondaryTarget = null;
+                break;
+            case ActorType.Obstacle:
+                secondaryTarget = null;
+                break;
         }
     }
 
