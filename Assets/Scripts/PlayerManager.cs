@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager instance;
-    public bool keyboardControl;
+    [HideInInspector]public bool keyboardControl = true;
+    public bool buildWhileCombat = false;
     public GameObject player;
     public Camera camera;
 

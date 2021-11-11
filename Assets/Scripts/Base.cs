@@ -5,10 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class Base : MonoBehaviour, IActor
 {
-    public float maxHealth;
+    public float maxHealth = 500;
     private float health;
 
     public ActorType type => ActorType.Obstacle;
+
+    public float MaxHealth => maxHealth;
 
     public float Health { get => health; 
         set
