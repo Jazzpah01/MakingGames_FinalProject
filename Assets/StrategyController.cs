@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class StrategyController : MonoBehaviour, IState
 {
-    public Camera cam;
+    public Camera camera;
     public LayerMask layerMask;
     public int roundResource = 2;
     public GameObject prefab;
@@ -56,7 +56,7 @@ public class StrategyController : MonoBehaviour, IState
                 rotation -= rotationAngle;
             }
 
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+            Ray ray = camera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit, 100, layerMask))
@@ -108,11 +108,15 @@ public class StrategyController : MonoBehaviour, IState
     public void EnterState()
     {
         resource = roundResource;
-        //cam.gameObject.SetActive(true);
     }
 
     public void ExitState()
     {
-        //cam.gameObject.SetActive(false);
+        building = false;
+        if (GO != null)
+        {
+            Destroy(GO);
+            GO = null;
+        }
     }
 }

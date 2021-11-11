@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour, IActor, IState
     public Camera cam;
 
     PlayerMotor motor;
-    GameController playerManager;
+    PlayerManager playerManager;
     NavMeshAgent navMeshAgent;
 
 
@@ -43,12 +43,8 @@ public class PlayerController : MonoBehaviour, IActor, IState
 
     public float Health { get => health; set => health = value; }
 
-    void Start()
+    private void Awake()
     {
-        //cam = Camera.main;
-        motor = GetComponent<PlayerMotor>();
-        playerManager = GameController.instance;
-        navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
     public void UpdateState()
@@ -200,6 +196,9 @@ public class PlayerController : MonoBehaviour, IActor, IState
 
     public void EnterState()
     {
+        motor = GetComponent<PlayerMotor>();
+        playerManager = PlayerManager.instance;
+        navMeshAgent = GetComponent<NavMeshAgent>();
         cam.gameObject.SetActive(true);
     }
 

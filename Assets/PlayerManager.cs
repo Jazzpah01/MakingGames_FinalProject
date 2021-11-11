@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager instance;
+    public bool keyboardControl;
 
     void Awake()
     {
@@ -18,4 +19,6 @@ public class PlayerManager : MonoBehaviour
 
         instance = this;
     }
+
+
 }
