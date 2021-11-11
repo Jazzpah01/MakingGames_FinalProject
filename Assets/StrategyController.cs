@@ -11,7 +11,7 @@ public class StrategyController : MonoBehaviour, IState
     public GameObject prefab;
     public Transform buildablesParent;
     public float startRotation = 0;
-    public float rotationSpeed = 10;
+    public float rotationAngle = 45;
 
     private int resource;
     private GameObject GO = null;
@@ -47,13 +47,13 @@ public class StrategyController : MonoBehaviour, IState
         if (building)
         {
 
-            if (Input.GetAxis("Mouse ScrollWheel") > 0)
+            if (Input.GetKeyDown(KeyCode.Q))
             {
-                rotation += rotationSpeed;
+                rotation += rotationAngle;
             }
-            if (Input.GetAxis("Mouse ScrollWheel") < 0)
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                rotation -= rotationSpeed;
+                rotation -= rotationAngle;
             }
 
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
@@ -108,11 +108,11 @@ public class StrategyController : MonoBehaviour, IState
     public void EnterState()
     {
         resource = roundResource;
-        cam.gameObject.SetActive(true);
+        //cam.gameObject.SetActive(true);
     }
 
     public void ExitState()
     {
-        cam.gameObject.SetActive(false);
+        //cam.gameObject.SetActive(false);
     }
 }
