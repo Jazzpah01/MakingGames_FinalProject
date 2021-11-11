@@ -55,11 +55,6 @@ public class SlowGas : MonoBehaviour
         }
     }
 
-        private void Die()
-    {
-        Destroy(gameObject);
-    }
-
     IEnumerator SmoothSliderDecrease(float amount, Image image)
     {
         if (image != null)
