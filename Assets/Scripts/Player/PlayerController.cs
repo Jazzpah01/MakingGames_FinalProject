@@ -11,18 +11,20 @@ public class PlayerController : MonoBehaviour, IActor, IState
     public LayerMask movementMask;
     public LayerMask actorMask;
     public Interactable focus;
+    public float isoAngle = -45;
+    private float directionX,directionZ;
 
     public Camera cam;
+
     PlayerMotor motor;
     PlayerManager playerManager;
     NavMeshAgent navMeshAgent;
 
-    private Vector3 velocity;
-    private float directionX,directionZ;
 
     private float health;
 
     // These attack moves are hard-coded and should be refactored.
+    [Header("Combat Stuff that should have it's own class:")]
     public float attackDamage;
     public float attackCooldown;
     public float attackRange;
@@ -128,13 +130,16 @@ public class PlayerController : MonoBehaviour, IActor, IState
             //targetVelocity = transform.TransformDirection(targetVelocity);
             targetVelocity *= navMeshAgent.speed;
 
-            velocity = navMeshAgent.velocity;
+
             Vector3 velocityChange = targetVelocity;//(targetVelocity - velocity);
             velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
             velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
             velocityChange.y = 0;
 
-            navMeshAgent.velocity = velocityChange;
+            Quaternion rotation = Quaternion.Euler(0, isoAngle, 0);
+            Matrix4x4 rotaMatrix = Matrix4x4.Rotate(rotation);
+
+            navMeshAgent.velocity = rotaMatrix.MultiplyPoint3x4(velocityChange);
         }
         //area attack
         AOEAttackTime -= Time.deltaTime;
