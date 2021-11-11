@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour, IActor, IState
 {
@@ -22,7 +23,7 @@ public class PlayerController : MonoBehaviour, IActor, IState
     NavMeshAgent navMeshAgent;
 
 
-    public float maxHealth;
+    public float maxHealth = 100;
     private float health;
 
     // These attack moves are hard-coded and should be refactored.
@@ -44,12 +45,62 @@ public class PlayerController : MonoBehaviour, IActor, IState
     public ActorType type => ActorType.Player;
 
     public float MaxHealth => maxHealth;
-    public float Health { get => health; set => health = value; }
+    public float Health { get => health; set
+        {
+            health = value;
+            if (health <= 0)
+            {
+                SceneManager.LoadScene(1); //hard coded bad
+            }
+        }
+    }
 
     private void Start()
     {
         playerManager = PlayerManager.instance;
         cam = playerManager.camera;
+        health = maxHealth;
+    }
+
+    private void Update()
+    {
+        //keyboard movement
+        if (playerManager.keyboardControl)
+        {
+            directionX = 0;
+            directionZ = 0;
+            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+            {
+                directionZ = -1;
+            }
+            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+            {
+                directionZ = 1;
+            }
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+            {
+                directionX = -1;
+            }
+            if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+            {
+                directionX = 1;
+            }
+
+            Vector3 targetVelocity = new Vector3(directionX, 0, directionZ);
+            //targetVelocity = transform.TransformDirection(targetVelocity);
+            targetVelocity *= navMeshAgent.speed;
+
+
+            Vector3 velocityChange = targetVelocity;//(targetVelocity - velocity);
+            velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
+            velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
+            velocityChange.y = 0;
+
+            Quaternion rotation = Quaternion.Euler(0, isoAngle, 0);
+            Matrix4x4 rotaMatrix = Matrix4x4.Rotate(rotation);
+
+            navMeshAgent.velocity = rotaMatrix.MultiplyPoint3x4(velocityChange);
+        }
     }
 
     public void UpdateState()
@@ -109,43 +160,43 @@ public class PlayerController : MonoBehaviour, IActor, IState
                 }
             }
         }
-        //keyboard movement
-        if (playerManager.keyboardControl)
-        {
-            directionX = 0;
-            directionZ = 0;
-            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-            {
-                directionZ = -1;
-            }
-            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-            {
-                directionZ = 1;
-            }
-            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
-            {
-                directionX = -1;
-            }
-            if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
-            {
-                directionX = 1;
-            }
-
-            Vector3 targetVelocity = new Vector3(directionX, 0, directionZ);
-            //targetVelocity = transform.TransformDirection(targetVelocity);
-            targetVelocity *= navMeshAgent.speed;
-
-
-            Vector3 velocityChange = targetVelocity;//(targetVelocity - velocity);
-            velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
-            velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
-            velocityChange.y = 0;
-
-            Quaternion rotation = Quaternion.Euler(0, isoAngle, 0);
-            Matrix4x4 rotaMatrix = Matrix4x4.Rotate(rotation);
-
-            navMeshAgent.velocity = rotaMatrix.MultiplyPoint3x4(velocityChange);
-        }
+        ////keyboard movement
+        //if (playerManager.keyboardControl)
+        //{
+        //    directionX = 0;
+        //    directionZ = 0;
+        //    if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        //    {
+        //        directionZ = -1;
+        //    }
+        //    if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        //    {
+        //        directionZ = 1;
+        //    }
+        //    if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+        //    {
+        //        directionX = -1;
+        //    }
+        //    if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+        //    {
+        //        directionX = 1;
+        //    }
+        //
+        //    Vector3 targetVelocity = new Vector3(directionX, 0, directionZ);
+        //    //targetVelocity = transform.TransformDirection(targetVelocity);
+        //    targetVelocity *= navMeshAgent.speed;
+        //
+        //
+        //    Vector3 velocityChange = targetVelocity;//(targetVelocity - velocity);
+        //    velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
+        //    velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
+        //    velocityChange.y = 0;
+        //
+        //    Quaternion rotation = Quaternion.Euler(0, isoAngle, 0);
+        //    Matrix4x4 rotaMatrix = Matrix4x4.Rotate(rotation);
+        //
+        //    navMeshAgent.velocity = rotaMatrix.MultiplyPoint3x4(velocityChange);
+        //}
         //area attack
         AOEAttackTime -= Time.deltaTime;
         if (Input.GetKeyDown(KeyCode.Space) && AOEAttackTime < 0)

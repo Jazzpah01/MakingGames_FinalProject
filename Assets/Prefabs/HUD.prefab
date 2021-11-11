@@ -171,7 +171,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 64.213, y: -22.100006}
+  m_AnchoredPosition: {x: 64.213, y: -22.099976}
   m_SizeDelta: {x: 106.1964, y: 17.971405}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1261007442685145959
@@ -600,7 +600,7 @@ GameObject:
   - component: {fileID: 1261007442928222652}
   - component: {fileID: 1261007442928222627}
   m_Layer: 5
-  m_Name: HealthBarPlayer
+  m_Name: HealthBarBuilding
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -622,7 +622,7 @@ RectTransform:
   - {fileID: 1261007442768369750}
   - {fileID: 1261007443589785279}
   m_Father: {fileID: 1261007444597868329}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -777,14 +777,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.41568628}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 005a826d7e15f3b458d1cd92429a56af, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -803,8 +803,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1261007443042626572}
+  - component: {fileID: 3276225977112473605}
   - component: {fileID: 1261007443042626574}
-  - component: {fileID: 1261007443042626573}
   m_Layer: 5
   m_Name: HUD
   m_TagString: Untagged
@@ -833,15 +833,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &1261007443042626574
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1261007443042626611}
-  m_CullTransparentMesh: 1
---- !u!114 &1261007443042626573
+--- !u!114 &3276225977112473605
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -850,27 +842,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1261007443042626611}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Script: {fileID: 11500000, guid: d945058fc05162c49aa0bdd841e9b35c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  playerHUD: {fileID: 1261007444597868324}
+  strategyHUD: {fileID: 1261007444283488332}
+--- !u!222 &1261007443042626574
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1261007443042626611}
+  m_CullTransparentMesh: 1
 --- !u!1 &1261007443078072167
 GameObject:
   m_ObjectHideFlags: 0
@@ -1809,19 +1793,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1261007444077787169}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1261007444283488332}
-        m_TargetAssemblyTypeName: StrategyHUD, Assembly-CSharp
-        m_MethodName: SelectPrefab
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &1261007444145674385
 GameObject:
   m_ObjectHideFlags: 0
@@ -1908,7 +1880,6 @@ GameObject:
   - component: {fileID: 1261007444283488369}
   - component: {fileID: 1261007444283488332}
   - component: {fileID: 1261007444283488371}
-  - component: {fileID: 1261007444283488370}
   m_Layer: 5
   m_Name: StrategyHUD
   m_TagString: Untagged
@@ -1959,36 +1930,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1261007444283488368}
   m_CullTransparentMesh: 1
---- !u!114 &1261007444283488370
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1261007444283488368}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &1261007444377231115
 GameObject:
   m_ObjectHideFlags: 0
@@ -2002,7 +1943,7 @@ GameObject:
   - component: {fileID: 1261007444377231110}
   - component: {fileID: 1261007444377231109}
   m_Layer: 5
-  m_Name: HealthBarBuilding
+  m_Name: HealthBarPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2024,7 +1965,7 @@ RectTransform:
   - {fileID: 1261007443472754162}
   - {fileID: 1261007443921087620}
   m_Father: {fileID: 1261007444597868329}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2131,7 +2072,6 @@ GameObject:
   - component: {fileID: 1261007444597868329}
   - component: {fileID: 1261007444597868324}
   - component: {fileID: 1261007444597868331}
-  - component: {fileID: 1261007444597868330}
   m_Layer: 5
   m_Name: PlayerHUD
   m_TagString: Untagged
@@ -2150,8 +2090,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1261007442928222626}
   - {fileID: 1261007444377231108}
+  - {fileID: 1261007442928222626}
   - {fileID: 1261007443514707958}
   m_Father: {fileID: 1261007443042626572}
   m_RootOrder: 0
@@ -2176,8 +2116,8 @@ MonoBehaviour:
   playerController: {fileID: 0}
   strategyController: {fileID: 0}
   baseS: {fileID: 0}
-  playerHealthBar: {fileID: 1261007442928222627}
-  baseHealthBar: {fileID: 1261007444377231109}
+  playerHealthBar: {fileID: 1261007444377231109}
+  baseHealthBar: {fileID: 1261007442928222627}
   resourceCounter: {fileID: 1261007444608041506}
 --- !u!222 &1261007444597868331
 CanvasRenderer:
@@ -2187,36 +2127,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1261007444597868328}
   m_CullTransparentMesh: 1
---- !u!114 &1261007444597868330
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1261007444597868328}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &1261007444608041504
 GameObject:
   m_ObjectHideFlags: 0

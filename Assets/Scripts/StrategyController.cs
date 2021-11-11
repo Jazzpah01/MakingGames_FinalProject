@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+using UnityEngine.EventSystems;
 
 public class StrategyController : MonoBehaviour, IState
 {
@@ -30,7 +32,18 @@ public class StrategyController : MonoBehaviour, IState
 
     public void UpdateState()
     {
-        print("hej");
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            Destroy(GO);
+            GO = null;
+            return;
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            building = false;
+            Destroy(GO);
+            GO = null;
+        }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             building = false;
@@ -71,19 +84,28 @@ public class StrategyController : MonoBehaviour, IState
                 {
                     GO = Instantiate(prefab, spawnpoint, Quaternion.identity, buildablesParent);
                     ChangeGOAlfa(0.5f);
+                    GO.GetComponent<NavMeshObstacle>().enabled = false;
                 }
                 else
                 {
                     if (Input.GetMouseButtonDown(0) && resource >= currentCost)
                     {
+                        GO.GetComponent<NavMeshObstacle>().enabled = true;
                         resource -= currentCost;
                         ChangeGOAlfa(1);
                         building = false;
                         GO = null;
+
+                        if (resource >= currentCost)
+                        {
+                            // Make it so the player can place multiple buildings
+                            building = true;
+                        }
+
                         return;
                     }
                 }
-                GO.transform.position = hit.point;
+                GO.transform.position = spawnpoint;
                 GO.transform.rotation = Quaternion.Euler(0, rotation, 0);
             }
             else
@@ -97,9 +119,16 @@ public class StrategyController : MonoBehaviour, IState
         }
     }
 
+    /// <summary>
+    /// Set the building that the player builds.
+    /// </summary>
+    /// <param name="type">Type of building.</param>
     public void SelectPrefab(BuildingType type)
     {
-        print("Change prefab");
+        if (resource < type.cost) {
+            // Code for when you don't have enough resources
+            return;
+        }
         this.prefab = type.prefab;
         this.currentCost = (int)type.cost;
         building = true;
@@ -120,7 +149,7 @@ public class StrategyController : MonoBehaviour, IState
 
     public void EnterState()
     {
-        resource = roundResource;
+
     }
 
     public void ExitState()

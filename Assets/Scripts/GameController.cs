@@ -6,6 +6,7 @@ public class GameController : MBStateMachine
 {
     public enum GameState
     {
+        None,
         Combat,
         Strategy
     }
@@ -16,7 +17,8 @@ public class GameController : MBStateMachine
     public GameObject player;
 
     public bool keyboardControl = false;
-    public GameState state = GameState.Combat;
+    public GameState state = GameState.Strategy;
+    private bool inWave = false;
     public StrategyController strategyController;
     public GameObject enemyParent;
     public float buildTimer = 9001;
@@ -25,6 +27,8 @@ public class GameController : MBStateMachine
     private PlayerController playerController;
 
     public SpawnController spawnController;
+
+    public Base baseController;
 
     void Awake()
     {
@@ -41,41 +45,54 @@ public class GameController : MBStateMachine
         switch (newState)
         {
             case GameState.Combat:
-                player.SetActive(true);
+                if (!PlayerManager.instance.buildWhileCombat)
+                    player.SetActive(true);
                 base.ChangeState(playerController);
                 break;
             case GameState.Strategy:
-                player.SetActive(false);
+                if (!PlayerManager.instance.buildWhileCombat)
+                    player.SetActive(false);
                 base.ChangeState(strategyController);
                 break;
+            default:
+                throw new System.Exception("Cannot have None state!");
         }
         state = newState;
     }
 
     private void Update()
     {
+        if (!(enemyParent.transform.childCount > 0) && inWave == true)
+        {
+            inWave = false;
+            strategyController.resource += strategyController.roundResource;
+        }
         if (state == GameState.Combat)
         {
-            if (!(enemyParent.transform.childCount > 0))
+            if (inWave == false)
             {
-                buildTime = buildTimer;
+                ChangeState(GameState.Strategy);
+            } else if (Input.GetKeyDown(KeyCode.B) && PlayerManager.instance.buildWhileCombat)
+            {
                 ChangeState(GameState.Strategy);
             }
         }
         else if (state == GameState.Strategy)
         {
-            buildTime -= Time.deltaTime;
-            if (buildTime <= 0)
-            {
-                spawnController.SpawnEnemies();
-                ChangeState(GameState.Combat);
-            }
             if (Input.GetKeyDown(KeyCode.B))
             {
-                spawnController.SpawnEnemies();
+                if (inWave == false)
+                {
+                    // Start wave
+                    spawnController.SpawnEnemies();
+                    inWave = true;
+                }
                 ChangeState(GameState.Combat);
             }
         }
+
+        
+
         base.Update();
     }
 }

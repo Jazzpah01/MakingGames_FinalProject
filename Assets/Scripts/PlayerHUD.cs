@@ -6,16 +6,24 @@ using TMPro;
 
 public class PlayerHUD : MonoBehaviour
 {
-    public PlayerController playerController;
-    public StrategyController strategyController;
-    public Base baseS;
+    [HideInInspector] public PlayerController playerController;
+    [HideInInspector] public StrategyController strategyController;
+    [HideInInspector] public Base baseS;
 
     public Slider playerHealthBar;
     public Slider baseHealthBar;
     public TextMeshProUGUI resourceCounter;
 
+    private void Start()
+    {
+        strategyController = GameController.instance.strategyController;
+        playerController = GameController.instance.player.GetComponent<PlayerController>();
+        baseS = GameController.instance.baseController;
+    }
+
     private void Update()
     {
+        // Update player values on the hud
         playerHealthBar.value = playerController.Health / playerController.MaxHealth;
         baseHealthBar.value = baseS.Health / baseS.MaxHealth;
 
