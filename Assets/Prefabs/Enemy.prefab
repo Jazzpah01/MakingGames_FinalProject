@@ -68,7 +68,6 @@ GameObject:
   - component: {fileID: 5220258315394469146}
   - component: {fileID: 6669751714318334945}
   - component: {fileID: 9187301958987836828}
-  - component: {fileID: 3217886276440440003}
   m_Layer: 9
   m_Name: Model
   m_TagString: Untagged
@@ -139,20 +138,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &3217886276440440003
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4598152827916659876}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5267422084871180842
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,6 +250,8 @@ MonoBehaviour:
   primaryTarget: {fileID: 0}
   detectionCollision: {fileID: 5487138768297406203}
   damagerCollision: {fileID: 6140874914621642849}
+  attackEffect: {fileID: 192757836124602699, guid: f4dddb6fda5ba164eae37c20d9e8e544,
+    type: 3}
 --- !u!136 &5980018141852729467
 CapsuleCollider:
   m_ObjectHideFlags: 0
