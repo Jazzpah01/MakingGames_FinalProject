@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyController: MonoBehaviour, IActor
@@ -8,9 +10,11 @@ public class EnemyController: MonoBehaviour, IActor
 
     public CollisionObserver detectionCollision;
     public CollisionObserver damagerCollision;
+    public GameObject deathEffect;
 
     private Transform secondaryTarget;
     private NavMeshAgent agent;
+    private Material material;
 
     private float time1 = 0, time2 = 0;
 
@@ -22,18 +26,23 @@ public class EnemyController: MonoBehaviour, IActor
     public float Health { get => health; 
         set {
             health = value;
+            //TODO: implement hiteffects
+                //PlayHitEffects();
             if (health <= 0)
             {
                 Destroy(this.gameObject);
+                Instantiate(deathEffect).transform.position = transform.position;
             }
         } 
     }
+
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         detectionCollision.Subscribe(Detection_Enter, CollisionObserver.CollisionType.Enter);
         detectionCollision.Subscribe(Detection_Exit, CollisionObserver.CollisionType.Exit);
+        material = GetComponent<Material>();
     }
 
     private void Update()
@@ -64,6 +73,13 @@ public class EnemyController: MonoBehaviour, IActor
             StopFollowingTarget();
         }
     }
+        IEnumerator PlayHitEffects()
+    {
+        Material oldMaterial = material;
+        material.color = Color.white;
+        yield return null;
+    }
+
 
     public void FollowTarget(Transform target)
     {
