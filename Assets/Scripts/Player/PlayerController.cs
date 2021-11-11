@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour, IActor, IState
     private Vector3 velocity;
     private float directionX,directionZ;
 
+    public float maxHealth;
     private float health;
 
     // These attack moves are hard-coded and should be refactored.
@@ -39,6 +40,7 @@ public class PlayerController : MonoBehaviour, IActor, IState
 
     public ActorType type => ActorType.Player;
 
+    public float MaxHealth => maxHealth;
     public float Health { get => health; set => health = value; }
 
     void Start()

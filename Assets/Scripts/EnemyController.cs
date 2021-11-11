@@ -18,6 +18,7 @@ public class EnemyController: MonoBehaviour, IActor
 
     public ActorType type => ActorType.Enemy;
 
+    public float MaxHealth => maxHealth;
     public float Health { get => health; 
         set {
             health = value;

@@ -13,10 +13,12 @@ public class StrategyController : MonoBehaviour, IState
     public float startRotation = 0;
     public float rotationSpeed = 10;
 
-    private int resource;
+    [HideInInspector] public int resource;
     private GameObject GO = null;
     private float rotation;
     private bool building = false;
+
+    private int currentCost = 0;
 
     private void Start()
     {
@@ -26,6 +28,7 @@ public class StrategyController : MonoBehaviour, IState
 
     public void UpdateState()
     {
+        print("hej");
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             building = false;
@@ -69,16 +72,16 @@ public class StrategyController : MonoBehaviour, IState
                 }
                 else
                 {
-                    if (Input.GetMouseButtonDown(0) && resource > 0)
+                    if (Input.GetMouseButtonDown(0) && resource >= currentCost)
                     {
-                        resource--;
+                        resource -= currentCost;
                         ChangeGOAlfa(1);
                         building = false;
                         GO = null;
                         return;
                     }
                 }
-                GO.transform.position = spawnpoint;
+                GO.transform.position = hit.point;
                 GO.transform.rotation = Quaternion.Euler(0, rotation, 0);
             }
             else
@@ -90,6 +93,14 @@ public class StrategyController : MonoBehaviour, IState
                 }
             }
         }
+    }
+
+    public void SelectPrefab(BuildingType type)
+    {
+        print("Change prefab");
+        this.prefab = type.prefab;
+        this.currentCost = (int)type.cost;
+        building = true;
     }
 
     private void ChangeGOAlfa(float alpha)

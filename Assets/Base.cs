@@ -10,6 +10,8 @@ public class Base : MonoBehaviour, IActor
 
     public ActorType type => ActorType.Obstacle;
 
+    public float MaxHealth => maxHealth;
+
     public float Health { get => health; 
         set
         {

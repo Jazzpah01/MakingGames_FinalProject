@@ -4,5 +4,6 @@ using UnityEngine;
 
 public interface IDamageable
 {
+    float MaxHealth { get; }
     float Health { get; set; }
 }
