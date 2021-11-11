@@ -39,10 +39,11 @@ public class StaticTower : MonoBehaviour, IActor
         
         detectionCollision.Subscribe(Detection_Enter, CollisionObserver.CollisionType.Enter);
         detectionCollision.Subscribe(Detection_Stay, CollisionObserver.CollisionType.Stay);
+        detectionCollision.Subscribe(Detection_Exit, CollisionObserver.CollisionType.Exit);
 
         distanceToClosestEnemy = -1;
 
-        damage = 100;
+        damage = 25;
     }
 
     // Update is called once per frame
@@ -87,6 +88,20 @@ public class StaticTower : MonoBehaviour, IActor
         }
     }
 
+    private void Detection_Exit(Collider other)
+    {
+        IActor actor = other.GetComponent<IActor>();
+        if (actor == null)
+            return;
+
+        switch (actor.type)
+        {
+            case ActorType.Enemy:
+                enemies.Remove(actor.gameObject);
+                break;
+        }
+    }
+
     private void checkNearByEnemeis()
     {
         distanceToClosestEnemy = -1;
@@ -97,7 +112,6 @@ public class StaticTower : MonoBehaviour, IActor
             closestEnemy = enemies[0];
             distanceToClosestEnemy = Vector3.Distance(enemies[0].transform.position, this.transform.position);
         } else {
-
             foreach(GameObject enemy in enemies)
             {
                 if(enemy == null)
