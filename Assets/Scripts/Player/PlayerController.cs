@@ -40,6 +40,12 @@ public class PlayerController : MonoBehaviour, IActor, IState
     public ActorType type => ActorType.Player;
 
     public float Health { get => health; set => health = value; }
+    
+
+    //this was made to satisfy implementation of IActor, may need some refactoring
+    private float speed;
+
+    public float Speed { get => speed; set { speed = value;}}
 
     void Start()
     {

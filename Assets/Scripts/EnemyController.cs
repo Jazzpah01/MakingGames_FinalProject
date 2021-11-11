@@ -18,6 +18,11 @@ public class EnemyController: MonoBehaviour, IActor
 
     public ActorType type => ActorType.Enemy;
 
+    public float Speed { get => speed;
+        set {
+            speed = value;
+        }}
+
     public float Health { get => health; 
         set {
             health = value;

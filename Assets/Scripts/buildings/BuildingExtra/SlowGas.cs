@@ -3,52 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BuildingWalkingInCircles : MonoBehaviour, IActor
+public class SlowGas : MonoBehaviour
 {
     double StartPos;
-    public float speed;
-    private float rotation = 0.1f;
-    public float damage;
     public CollisionObserver detectionCollision;
-    public CollisionObserver damagerCollision;
-    public Image healthbar;
-    public float maxHealth = 100;
-    private float currentHealth;
+    public CollisionObserver slowCollision;
 
-    public ActorType type => ActorType.Obstacle;
-    public float Health { get => currentHealth; 
-            set
-            {
-                currentHealth = value;
-                StartCoroutine(SmoothSliderDecrease(currentHealth / maxHealth, healthbar));
-                if (currentHealth <= 0f)
-                {
-                    Die();
-                }
-            }
-        }
-
-    public float Speed { get => speed;
-        set {
-            speed = value;
-        }}
+    public float lifeTime;
 
     // Start is called before the first frame update
     void Start()
     {
         StartPos = transform.position.x;
-        detectionCollision.Subscribe(Detection_Stay, CollisionObserver.CollisionType.Stay);
+        detectionCollision.Subscribe(Detection_Enter, CollisionObserver.CollisionType.Enter);
         detectionCollision.Subscribe(Detection_Exit, CollisionObserver.CollisionType.Exit);
+
+        Destroy(this.gameObject, lifeTime);
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.forward * (Time.deltaTime * speed));
-        transform.Rotate(0.0f, rotation, 0.0f, Space.Self);
     }
 
-    private void Detection_Stay(Collider other)
+    private void Detection_Enter(Collider other)
     {
         IActor actor = other.GetComponent<IActor>();
         if (actor == null)
@@ -57,7 +35,7 @@ public class BuildingWalkingInCircles : MonoBehaviour, IActor
         switch (actor.type)
         {
             case ActorType.Enemy:
-                actor.Health -= damage;
+                actor.Speed = actor.Speed/2;
                 break;
         }
     }
@@ -67,9 +45,17 @@ public class BuildingWalkingInCircles : MonoBehaviour, IActor
         IActor actor = other.GetComponent<IActor>();
         if (actor == null)
             return;
+
+
+        switch (actor.type)
+        {
+            case ActorType.Enemy:
+                actor.Speed = actor.Speed*2;
+                break;
+        }
     }
 
-    private void Die()
+        private void Die()
     {
         Destroy(gameObject);
     }

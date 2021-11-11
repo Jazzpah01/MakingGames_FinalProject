@@ -10,6 +10,10 @@ public class Base : MonoBehaviour, IActor
 
     public ActorType type => ActorType.Obstacle;
 
+    private float speed = 0;
+    
+    public float Speed { get => speed; set { speed = value;}}
+
     public float Health { get => health; 
         set
         {
