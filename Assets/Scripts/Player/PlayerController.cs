@@ -14,7 +14,8 @@ public class PlayerController : MonoBehaviour, IActor, IState
     public float isoAngle = -45;
     private float directionX,directionZ;
 
-    public Camera cam;
+    [HideInInspector]
+    private Camera cam;
 
     PlayerMotor motor;
     PlayerManager playerManager;
@@ -43,8 +44,10 @@ public class PlayerController : MonoBehaviour, IActor, IState
 
     public float Health { get => health; set => health = value; }
 
-    private void Awake()
+    private void Start()
     {
+        playerManager = PlayerManager.instance;
+        cam = playerManager.camera;
     }
 
     public void UpdateState()
@@ -100,7 +103,7 @@ public class PlayerController : MonoBehaviour, IActor, IState
                 {
                     attackTime = attackCooldown;
                     actor.Health -= attackDamage;
-                    Instantiate(attackEffect).transform.position = hit.transform.position;
+                    Instantiate(attackEffect).transform.position = hit.point;
                 }
             }
         }
@@ -199,12 +202,11 @@ public class PlayerController : MonoBehaviour, IActor, IState
         motor = GetComponent<PlayerMotor>();
         playerManager = PlayerManager.instance;
         navMeshAgent = GetComponent<NavMeshAgent>();
-        cam.gameObject.SetActive(true);
     }
 
     public void ExitState()
     {
-        cam.gameObject.SetActive(true);
+
     }
 
     public void LateUpdateState()

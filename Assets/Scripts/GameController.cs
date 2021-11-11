@@ -12,10 +12,12 @@ public class GameController : MBStateMachine
 
     public static GameController instance;
 
+    [HideInInspector]
+    public GameObject player;
+
     public bool keyboardControl = false;
     public GameState state = GameState.Combat;
     public StrategyController strategyController;
-    public GameObject player;
     public GameObject enemyParent;
     public float buildTimer = 9001;
 
@@ -26,6 +28,7 @@ public class GameController : MBStateMachine
 
     void Awake()
     {
+        player = PlayerManager.instance.player;
         playerController = player.GetComponent<PlayerController>();
         buildTime = buildTimer;
         instance = this;
