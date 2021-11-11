@@ -7,7 +7,7 @@ public class EnemyController: MonoBehaviour, IActor
 {
     public float speed = 1;
     public Transform primaryTarget;
-
+    public HealthBar healthBar;
     public CollisionObserver detectionCollision;
     public CollisionObserver damagerCollision;
     public GameObject deathEffect;
@@ -18,7 +18,8 @@ public class EnemyController: MonoBehaviour, IActor
 
     private float time1 = 0, time2 = 0;
 
-    private float maxHealth = 100, health = 100;
+    public float maxHealth;
+    private float health = 100;
 
     public ActorType type => ActorType.Enemy;
 
@@ -26,7 +27,8 @@ public class EnemyController: MonoBehaviour, IActor
         set {
             health = value;
             //TODO: implement hiteffects
-                //PlayHitEffects();
+            //PlayHitEffects();
+            healthBar.SetHealthbar(health/maxHealth);
             if (health <= 0)
             {
                 Destroy(this.gameObject);

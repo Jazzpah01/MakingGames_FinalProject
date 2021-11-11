@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 250
-  healthbar: {fileID: 239386929461881788}
+  healthbar: {fileID: 95789528268460335}
 --- !u!1001 &2782804532912156859
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -179,6 +179,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: HealthBarCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 2723825508392442631, guid: 6547b7794ac741e4d884918d5e16c1b4,
+        type: 3}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2723825508392442631, guid: 6547b7794ac741e4d884918d5e16c1b4,
+        type: 3}
+      propertyPath: m_FillOrigin
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2723825508392442631, guid: 6547b7794ac741e4d884918d5e16c1b4,
+        type: 3}
+      propertyPath: m_PreserveAspect
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6412512043429981398, guid: 6547b7794ac741e4d884918d5e16c1b4,
         type: 3}
@@ -285,6 +300,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7034168388502369853, guid: 6547b7794ac741e4d884918d5e16c1b4,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6547b7794ac741e4d884918d5e16c1b4, type: 3}
 --- !u!224 &9107211107501448301 stripped
@@ -293,15 +313,15 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 2782804532912156859}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &239386929461881788 stripped
+--- !u!114 &95789528268460335 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2723825508392442631, guid: 6547b7794ac741e4d884918d5e16c1b4,
+  m_CorrespondingSourceObject: {fileID: 2867334920193679764, guid: 6547b7794ac741e4d884918d5e16c1b4,
     type: 3}
   m_PrefabInstance: {fileID: 2782804532912156859}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Script: {fileID: 11500000, guid: 4dac349888b7e8b49991417b443a98bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -248,10 +248,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 4
   primaryTarget: {fileID: 0}
+  healthBar: {fileID: 8446390301348867029}
   detectionCollision: {fileID: 5487138768297406203}
   damagerCollision: {fileID: 6140874914621642849}
   deathEffect: {fileID: 192757836124602699, guid: f4dddb6fda5ba164eae37c20d9e8e544,
     type: 3}
+  maxHealth: 100
 --- !u!136 &5980018141852729467
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -502,3 +504,15 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 5980018143337351745}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8446390301348867029 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2867334920193679764, guid: 6547b7794ac741e4d884918d5e16c1b4,
+    type: 3}
+  m_PrefabInstance: {fileID: 5980018143337351745}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dac349888b7e8b49991417b443a98bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
