@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6080577759172602923}
   - component: {fileID: 6170247513275674118}
   m_Layer: 0
-  m_Name: HitParticle
+  m_Name: PoofEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

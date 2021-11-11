@@ -250,7 +250,7 @@ MonoBehaviour:
   primaryTarget: {fileID: 0}
   detectionCollision: {fileID: 5487138768297406203}
   damagerCollision: {fileID: 6140874914621642849}
-  attackEffect: {fileID: 192757836124602699, guid: f4dddb6fda5ba164eae37c20d9e8e544,
+  deathEffect: {fileID: 192757836124602699, guid: f4dddb6fda5ba164eae37c20d9e8e544,
     type: 3}
 --- !u!136 &5980018141852729467
 CapsuleCollider:
@@ -488,6 +488,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7034168388502369853, guid: 6547b7794ac741e4d884918d5e16c1b4,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6547b7794ac741e4d884918d5e16c1b4, type: 3}

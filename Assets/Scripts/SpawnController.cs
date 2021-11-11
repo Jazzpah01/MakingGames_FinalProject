@@ -10,15 +10,9 @@ public class SpawnController : MonoBehaviour
     public Transform inititalTarget;
     public Transform enemyParent;
     public Transform[] spawnPoints;
-    // Start is called before the first frame update
     void Start()
     {
-        //SpawnEnemies();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        player = PlayerManager.instance.player.transform;
     }
 
     public void SpawnEnemies() {

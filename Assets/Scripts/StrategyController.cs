@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class StrategyController : MonoBehaviour, IState
 {
+    [HideInInspector]
     public Camera camera;
     public LayerMask layerMask;
     public int roundResource = 2;
@@ -20,6 +21,7 @@ public class StrategyController : MonoBehaviour, IState
 
     private void Start()
     {
+        camera = PlayerManager.instance.camera;
         resource = roundResource;
         rotation = startRotation;
     }

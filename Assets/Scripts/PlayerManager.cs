@@ -6,19 +6,16 @@ public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager instance;
     public bool keyboardControl;
+    public GameObject player;
+    public Camera camera;
 
     void Awake()
     {
-        // TODO: make this global - make scene state into another class
         if (instance != null && instance != this)
         {
             Destroy(gameObject);
             return;
         }
-        DontDestroyOnLoad(gameObject);
-
         instance = this;
     }
-
-
 }

@@ -10,7 +10,7 @@ public class EnemyController: MonoBehaviour, IActor
 
     public CollisionObserver detectionCollision;
     public CollisionObserver damagerCollision;
-    public GameObject attackEffect;
+    public GameObject deathEffect;
 
     private Transform secondaryTarget;
     private NavMeshAgent agent;
@@ -30,7 +30,7 @@ public class EnemyController: MonoBehaviour, IActor
             if (health <= 0)
             {
                 Destroy(this.gameObject);
-                Instantiate(attackEffect).transform.position = transform.position;
+                Instantiate(deathEffect).transform.position = transform.position;
             }
         } 
     }
