@@ -1,7 +1,7 @@
 # MakingGames_FinalProject
 The final project for making games.
 
-TODO: merge the buildings and setup a proper prototype scene.
+----
 
 Features:
 
@@ -19,9 +19,10 @@ Controls:
 
 --B: Enter combat mode (and build mode).
 
+--LMB: Select a building in the panel + placing the building.
+
 --RMB: Deselect building.
 
---LMB: Select a building in the panel + placing the building.
 
 -Combat:
 
@@ -31,7 +32,7 @@ Controls:
 
 --WASD: Movement.
 
---B: Enter building mode (if )
+--B: Enter building mode (if BuildWhileCombat is enabled)
 
 -------------------------
 Unity version used: Unity 2020.3.21
