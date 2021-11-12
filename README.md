@@ -30,6 +30,8 @@ Controls:
 
 --RMB: Deselect building.
 
+--Q and E: Rotate a selected building.
+
 
 -Combat:
 
