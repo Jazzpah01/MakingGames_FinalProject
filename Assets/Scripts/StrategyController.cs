@@ -84,7 +84,10 @@ public class StrategyController : MonoBehaviour, IState
                 {
                     GO = Instantiate(prefab, spawnpoint, Quaternion.identity, buildablesParent);
                     ChangeGOAlfa(0.5f);
-                    GO.GetComponent<NavMeshObstacle>().enabled = false;
+
+                    NavMeshObstacle ob = GO.GetComponent<NavMeshObstacle>();
+                    if (ob != null)
+                        ob.enabled = false;
                 }
                 else
                 {

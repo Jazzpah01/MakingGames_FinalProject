@@ -6,6 +6,8 @@ public interface IActor: IDamageable
 {
     ActorType type { get; }
     GameObject gameObject { get; }
+
+    float Speed {get; set;}
 }
 
 public enum ActorType

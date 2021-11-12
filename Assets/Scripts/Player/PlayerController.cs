@@ -43,7 +43,10 @@ public class PlayerController : MonoBehaviour, IActor, IState
     private float AOEAttackTime;
 
     public ActorType type => ActorType.Player;
+    //this was made to satisfy implementation of IActor, may need some refactoring
+    private float speed;
 
+    public float Speed { get => speed; set { speed = value;}}
     public float MaxHealth => maxHealth;
     public float Health { get => health; set
         {
