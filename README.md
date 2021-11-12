@@ -1,6 +1,9 @@
 # MakingGames_FinalProject
 The final project for making games.
 
+---
+PROTOTYPE: Use the scene called prototype_12_11_2021 :)
+
 ----
 
 Features:
