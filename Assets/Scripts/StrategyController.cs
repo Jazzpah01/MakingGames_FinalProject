@@ -19,7 +19,7 @@ public class StrategyController : MonoBehaviour, IState
     [HideInInspector] public int resource;
     private GameObject GO = null;
     private float rotation;
-    private bool building = false;
+    private bool isBuilding = false;
 
     private int currentCost = 0;
 
@@ -32,39 +32,24 @@ public class StrategyController : MonoBehaviour, IState
 
     public void UpdateState()
     {
+        // Stop update while hovering the HUD.
         if (EventSystem.current.IsPointerOverGameObject())
         {
-            Destroy(GO);
-            GO = null;
+            RemoveDummy();
             return;
         }
-        if (Input.GetMouseButtonDown(1))
+        // Cancel placement of building
+        if (Input.GetKeyDown(KeyCode.Escape) ||
+            Input.GetMouseButtonDown(1))
         {
-            building = false;
-            Destroy(GO);
-            GO = null;
-        }
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            building = false;
-            if (GO != null)
-            {
-                Destroy(GO);
-                GO = null;
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            building = !building;
-            if (GO != null)
-            {
-                Destroy(GO);
-                GO = null;
-            }
-        }
-        if (building)
-        {
+            isBuilding = false;
 
+            RemoveDummy();
+        }
+
+        if (isBuilding)
+        {
+            // Change rotation with Q and E
             if (Input.GetKeyDown(KeyCode.Q))
             {
                 rotation += rotationAngle;
@@ -77,32 +62,33 @@ public class StrategyController : MonoBehaviour, IState
             Ray ray = camera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
+            // See if there is a raycast hit on Ground layer
             if (Physics.Raycast(ray, out hit, 100, layerMask))
             {
                 Vector3 spawnpoint = new Vector3(hit.point.x, hit.point.y + (prefab.transform.localScale.y/2), hit.point.z);
                 if (GO == null)
                 {
+                    // Create transparent dummy-gameobject
                     GO = Instantiate(prefab, spawnpoint, Quaternion.identity, buildablesParent);
                     ChangeGOAlfa(0.5f);
 
                     NavMeshObstacle ob = GO.GetComponent<NavMeshObstacle>();
                     if (ob != null)
                         ob.enabled = false;
+
+                    GO.GetComponent<IActor>().enabled = false;
                 }
                 else
                 {
+                    // Transform dummy-gameobject to an actual building
                     if (Input.GetMouseButtonDown(0) && resource >= currentCost)
                     {
-                        GO.GetComponent<NavMeshObstacle>().enabled = true;
-                        resource -= currentCost;
-                        ChangeGOAlfa(1);
-                        building = false;
-                        GO = null;
+                        SpawnPrefab();
 
-                        if (resource >= currentCost)
+                        // Make it so the player can place multiple buildings
+                        if (resource < currentCost)
                         {
-                            // Make it so the player can place multiple buildings
-                            building = true;
+                            isBuilding = false;
                         }
 
                         return;
@@ -113,11 +99,8 @@ public class StrategyController : MonoBehaviour, IState
             }
             else
             {
-                if (GO != null)
-                {
-                    Destroy(GO);
-                    GO = null;
-                }
+                // If not isBuilding, remove dummy-gameobject
+                RemoveDummy();
             }
         }
     }
@@ -134,7 +117,7 @@ public class StrategyController : MonoBehaviour, IState
         }
         this.prefab = type.prefab;
         this.currentCost = (int)type.cost;
-        building = true;
+        isBuilding = true;
     }
 
     private void ChangeGOAlfa(float alpha)
@@ -143,6 +126,24 @@ public class StrategyController : MonoBehaviour, IState
         Color tempColor = GORenderer.material.color;
         tempColor.a = alpha;
         GORenderer.material.color = tempColor;
+    }
+
+    private void SpawnPrefab()
+    {
+        GO.GetComponent<NavMeshObstacle>().enabled = true;
+        GO.GetComponent<IActor>().enabled = true;
+        resource -= currentCost;
+        ChangeGOAlfa(1);
+        GO = null;
+    }
+
+    private void RemoveDummy()
+    {
+        if (GO != null)
+        {
+            Destroy(GO);
+            GO = null;
+        }
     }
 
     public void LateUpdateState()
@@ -157,11 +158,7 @@ public class StrategyController : MonoBehaviour, IState
 
     public void ExitState()
     {
-        building = false;
-        if (GO != null)
-        {
-            Destroy(GO);
-            GO = null;
-        }
+        isBuilding = false;
+        RemoveDummy();
     }
 }
