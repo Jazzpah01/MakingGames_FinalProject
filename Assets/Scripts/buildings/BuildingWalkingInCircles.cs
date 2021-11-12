@@ -16,6 +16,7 @@ public class BuildingWalkingInCircles : MonoBehaviour, IActor
     private float currentHealth;
 
     public ActorType type => ActorType.Obstacle;
+    public float MaxHealth => maxHealth;
     public float Health { get => currentHealth; 
             set
             {
@@ -32,6 +33,7 @@ public class BuildingWalkingInCircles : MonoBehaviour, IActor
         set {
             speed = value;
         }}
+
 
     // Start is called before the first frame update
     void Start()

@@ -17,6 +17,7 @@ public class StaticTower : MonoBehaviour, IActor
     private float damage;
     public float maxHealth = 100;
     private float currentHealth;
+    public float MaxHealth => maxHealth;
     public float Health { get => currentHealth; 
             set
             {
