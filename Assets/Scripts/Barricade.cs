@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class Barricade : MonoBehaviour, IActor
 {
-    public float maxHealth = 100;
-    public Image healthbar;
+    public float maxHealth;
+    public HealthBar healthbar;
 
     private float currentHealth;
 
@@ -20,7 +20,7 @@ public class Barricade : MonoBehaviour, IActor
         set
         {
             currentHealth = value;
-            StartCoroutine(SmoothSliderDecrease(currentHealth / maxHealth, healthbar));
+            healthbar.SetHealthbar(currentHealth/maxHealth);
             if (currentHealth <= 0f)
             {
                 Die();
@@ -36,17 +36,5 @@ public class Barricade : MonoBehaviour, IActor
     private void Die()
     {
         Destroy(gameObject);
-    }
-
-    IEnumerator SmoothSliderDecrease(float amount, Image image)
-    {
-        if (image != null)
-            while (image.fillAmount > amount)
-        {
-            if(image != null)
-            image.fillAmount -= 0.01f;
-
-            yield return new WaitForSeconds(0.000001f);
-        }
     }
 }

@@ -18,7 +18,7 @@ public class Base : MonoBehaviour, IActor
         set
         {
             health = value;
-            print(health);
+            //print(health);
 
             if (health <= 0)
             {
