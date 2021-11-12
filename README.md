@@ -1,6 +1,8 @@
 # MakingGames_FinalProject
 The final project for making games.
 
+TODO: merge the buildings and setup a proper prototype scene.
+
 Features:
 
 -Combat state: waves of enemies come to attack and player can defend.
@@ -8,19 +10,28 @@ Features:
 -Strategy state: player can rotate and place structures.
 
 
+You can now build during an incoming wave, if you turn it on inside ScriptObject>PlayerManager>BuildWhileCombat in the scene.
+
+
 Controls:
 
 -Strategy:
 
---B: Enter combat mode.
+--B: Enter combat mode (and build mode).
 
---I: Select wall to place.
+--RMB: Deselect building.
+
+--LMB: Select a building in the panel + placing the building.
 
 -Combat:
 
 --RMB: Single attack.
 
 --Space: AOE attack.
+
+--WASD: Movement.
+
+--B: Enter building mode (if )
 
 -------------------------
 Unity version used: Unity 2020.3.21

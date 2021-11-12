@@ -23,6 +23,12 @@ public class EnemyController: MonoBehaviour, IActor
 
     public ActorType type => ActorType.Enemy;
 
+    public float Speed { get => speed;
+        set {
+            speed = value;
+        }}
+
+    public float MaxHealth => maxHealth;
     public float Health { get => health; 
         set {
             health = value;
@@ -58,7 +64,7 @@ public class EnemyController: MonoBehaviour, IActor
 
             IActor target = secondaryTarget.GetComponent<IActor>();
 
-            if (target.type == ActorType.Obstacle && damagerCollision.Stay.Contains(col) && time1 >= time2)
+            if ((target.type == ActorType.Obstacle || target.type == ActorType.Player) && damagerCollision.Stay.Contains(col) && time1 >= time2)
             {
                 target.Health -= 10;
                 time2 = time1 + 1;

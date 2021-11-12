@@ -13,6 +13,9 @@ public class Barricade : MonoBehaviour, IActor
 
     public ActorType type => ActorType.Obstacle;
 
+    private float speed = 0;
+    public float Speed { get => speed; set { speed = value;}}
+    public float MaxHealth => maxHealth;
     public float Health { get => currentHealth; 
         set
         {
