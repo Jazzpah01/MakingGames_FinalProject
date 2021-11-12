@@ -2,7 +2,11 @@
 The final project for making games.
 
 ---
-PROTOTYPE: Use the scene called prototype_12_11_2021 :)
+PROTOTYPE: 
+
+Use the scene called prototype_12_11_2021 :)
+
+When you lose the game, please restart it, instead of pressing space.
 
 ----
 
