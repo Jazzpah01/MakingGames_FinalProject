@@ -16,10 +16,16 @@ Features:
 
 -Strategy state: player can rotate and place structures.
 
+----
+Game modifications:
 
 You can now build during an incoming wave, if you turn it on inside ScriptObject>PlayerManager>BuildWhileCombat in the scene.
 
+You can change resources for the round inside ScriptObject>StrategyController>roundResource in the scene.
 
+You can change cost of each building inside Assets/Data/BuildingList
+
+---
 Controls:
 
 -Strategy:
