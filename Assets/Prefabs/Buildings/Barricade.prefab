@@ -112,7 +112,7 @@ Transform:
   m_LocalPosition: {x: -16.1, y: 0.5, z: 3.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 9107211107501448301}
+  - {fileID: 5173236933491311745}
   - {fileID: 9179876793394118541}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -167,8 +167,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 250
-  healthbar: {fileID: 95789528268460335}
---- !u!1001 &2782804532912156859
+  healthbar: {fileID: 4106165504943000003}
+--- !u!1001 &2249220559074273367
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -178,22 +178,7 @@ PrefabInstance:
     - target: {fileID: 453667417665990411, guid: 6547b7794ac741e4d884918d5e16c1b4,
         type: 3}
       propertyPath: m_Name
-      value: HealthBarCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 2723825508392442631, guid: 6547b7794ac741e4d884918d5e16c1b4,
-        type: 3}
-      propertyPath: m_FillAmount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2723825508392442631, guid: 6547b7794ac741e4d884918d5e16c1b4,
-        type: 3}
-      propertyPath: m_FillOrigin
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2723825508392442631, guid: 6547b7794ac741e4d884918d5e16c1b4,
-        type: 3}
-      propertyPath: m_PreserveAspect
-      value: 0
+      value: HealthBar
       objectReference: {fileID: 0}
     - target: {fileID: 6412512043429981398, guid: 6547b7794ac741e4d884918d5e16c1b4,
         type: 3}
@@ -233,12 +218,12 @@ PrefabInstance:
     - target: {fileID: 6412512043429981398, guid: 6547b7794ac741e4d884918d5e16c1b4,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6412512043429981398, guid: 6547b7794ac741e4d884918d5e16c1b4,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6412512043429981398, guid: 6547b7794ac741e4d884918d5e16c1b4,
         type: 3}
@@ -258,7 +243,7 @@ PrefabInstance:
     - target: {fileID: 6412512043429981398, guid: 6547b7794ac741e4d884918d5e16c1b4,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.00069826824
+      value: 0.92387956
       objectReference: {fileID: 0}
     - target: {fileID: 6412512043429981398, guid: 6547b7794ac741e4d884918d5e16c1b4,
         type: 3}
@@ -268,7 +253,7 @@ PrefabInstance:
     - target: {fileID: 6412512043429981398, guid: 6547b7794ac741e4d884918d5e16c1b4,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.9999998
+      value: 0.38268343
       objectReference: {fileID: 0}
     - target: {fileID: 6412512043429981398, guid: 6547b7794ac741e4d884918d5e16c1b4,
         type: 3}
@@ -293,7 +278,7 @@ PrefabInstance:
     - target: {fileID: 6412512043429981398, guid: 6547b7794ac741e4d884918d5e16c1b4,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 179.92
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 6412512043429981398, guid: 6547b7794ac741e4d884918d5e16c1b4,
         type: 3}
@@ -307,17 +292,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6547b7794ac741e4d884918d5e16c1b4, type: 3}
---- !u!224 &9107211107501448301 stripped
+--- !u!224 &5173236933491311745 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6412512043429981398, guid: 6547b7794ac741e4d884918d5e16c1b4,
     type: 3}
-  m_PrefabInstance: {fileID: 2782804532912156859}
+  m_PrefabInstance: {fileID: 2249220559074273367}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &95789528268460335 stripped
+--- !u!114 &4106165504943000003 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2867334920193679764, guid: 6547b7794ac741e4d884918d5e16c1b4,
     type: 3}
-  m_PrefabInstance: {fileID: 2782804532912156859}
+  m_PrefabInstance: {fileID: 2249220559074273367}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
