@@ -208,6 +208,7 @@ GameObject:
   - component: {fileID: 6103852897724635754}
   - component: {fileID: 6103852897724635753}
   - component: {fileID: 6103852897724635748}
+  - component: {fileID: 1784768863079845807}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -251,8 +252,8 @@ MonoBehaviour:
   actorMask:
     serializedVersion: 2
     m_Bits: 512
-  focus: {fileID: 0}
-  cam: {fileID: 0}
+  isoAngle: -45
+  maxHealth: 100
   attackDamage: 50
   attackCooldown: 0.3
   attackRange: 2
@@ -313,3 +314,15 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &1784768863079845807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6103852897724635751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 635187f5009b93d4faa53044cae25568, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

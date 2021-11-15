@@ -6,21 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour, IActor, IState
 {
-    // proper attack things
-
-    public float maxVelocityChange = 10.0f;
     public LayerMask movementMask;
     public LayerMask actorMask;
-    public float isoAngle = -45;
-    private float directionX, directionZ;
 
     [HideInInspector]
     private Camera cam;
 
     PlayerMotor motor;
     PlayerManager playerManager;
-    NavMeshAgent navMeshAgent;
-
 
     public float maxHealth = 100;
     private float health;
@@ -66,46 +59,6 @@ public class PlayerController : MonoBehaviour, IActor, IState
         health = maxHealth;
     }
 
-    private void Update()
-    {
-        //keyboard movement
-        if (playerManager.keyboardControl)
-        {
-            directionX = 0;
-            directionZ = 0;
-            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-            {
-                directionZ = -1;
-            }
-            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-            {
-                directionZ = 1;
-            }
-            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
-            {
-                directionX = -1;
-            }
-            if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
-            {
-                directionX = 1;
-            }
-
-            Vector3 targetVelocity = new Vector3(directionX, 0, directionZ).normalized;
-            targetVelocity *= navMeshAgent.speed;
-
-
-            Vector3 velocityChange = targetVelocity;
-            velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
-            velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
-            velocityChange.y = 0;
-
-            Quaternion rotation = Quaternion.Euler(0, isoAngle, 0);
-            Matrix4x4 rotaMatrix = Matrix4x4.Rotate(rotation);
-
-            navMeshAgent.velocity = rotaMatrix.MultiplyPoint3x4(velocityChange);
-        }
-    }
-
     public void UpdateState()
     {
         //update cooldowns
@@ -131,7 +84,6 @@ public class PlayerController : MonoBehaviour, IActor, IState
             //if we left click on the actor mask
             if (Physics.Raycast(ray, out hit, 1000, actorMask))
             {
-                Debug.Log("here");
                 NormalAttack(hit);
             }
         }
@@ -200,7 +152,6 @@ public class PlayerController : MonoBehaviour, IActor, IState
     {
         motor = GetComponent<PlayerMotor>();
         playerManager = PlayerManager.instance;
-        navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
     public void ExitState()
