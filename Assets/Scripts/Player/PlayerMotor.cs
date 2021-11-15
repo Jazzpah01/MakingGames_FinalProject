@@ -8,6 +8,10 @@ public class PlayerMotor : MonoBehaviour
     NavMeshAgent agent;
     PlayerManager playerManager;
 
+    [HideInInspector]
+    Camera cam;
+    LayerMask movementMask;
+
     public float isoAngle = -45;
     public float maxVelocityChange = 10.0f;
 
@@ -16,8 +20,9 @@ public class PlayerMotor : MonoBehaviour
 
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
         playerManager = PlayerManager.instance;
+        agent = GetComponent<NavMeshAgent>();
+        cam = playerManager.camera;
     }
 
     private void FixedUpdate()
@@ -49,10 +54,8 @@ public class PlayerMotor : MonoBehaviour
             {
                 directionX = 1;
             }
-
             Vector3 targetVelocity = new Vector3(directionX, 0, directionZ).normalized;
             targetVelocity *= agent.speed;
-
 
             Vector3 velocityChange = targetVelocity;
             velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
@@ -64,11 +67,18 @@ public class PlayerMotor : MonoBehaviour
 
             agent.velocity = rotaMatrix.MultiplyPoint3x4(velocityChange);
         }
-    }
-
-    public void MoveToPoint(Vector3 point)
-    {
-        agent.SetDestination(point);
+        else
+        {
+            if (Input.GetMouseButton(0))
+            {
+                Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit, 1000, movementMask))
+                {
+                    agent.SetDestination(hit.transform.position);
+                }
+            }
+        }
     }
 
     public void StopFollowingTarget()
