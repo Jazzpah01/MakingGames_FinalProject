@@ -15,9 +15,21 @@ public class CollisionObserver : MonoBehaviour
 
     private Collider collider;
 
+    /// <summary>
+    /// Get all collisions that entered this frame.
+    /// </summary>
     public List<Collider> Enter => enter;
+    /// <summary>
+    /// Get all collisions that exited this frame.
+    /// </summary>
     public List<Collider> Exit => exit;
+    /// <summary>
+    /// Get all collisions currently colliding this frame.
+    /// </summary>
     public List<Collider> Stay => stay;
+    /// <summary>
+    /// Get the collider that this script is observing.
+    /// </summary>
     public Collider Collider => collider;
 
     public enum CollisionType
@@ -65,6 +77,7 @@ public class CollisionObserver : MonoBehaviour
 
     private void LateUpdate()
     {
+        // Clean up the lists containing information on collisions.
         enter.Clear();
         exit.Clear();
 
@@ -78,6 +91,11 @@ public class CollisionObserver : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Subscribe a function to the observer. When this script observes a collision, it will called the subscribed function.
+    /// </summary>
+    /// <param name="observerMethod"></param>
+    /// <param name="type"></param>
     public void Subscribe(CollisionObservation observerMethod, CollisionType type)
     {
         switch (type)
