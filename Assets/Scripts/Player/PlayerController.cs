@@ -89,12 +89,11 @@ public class PlayerController : MonoBehaviour, IActor, IState
                 directionX = 1;
             }
 
-            Vector3 targetVelocity = new Vector3(directionX, 0, directionZ);
-            //targetVelocity = transform.TransformDirection(targetVelocity);
+            Vector3 targetVelocity = new Vector3(directionX, 0, directionZ).normalized;
             targetVelocity *= navMeshAgent.speed;
 
 
-            Vector3 velocityChange = targetVelocity;//(targetVelocity - velocity);
+            Vector3 velocityChange = targetVelocity;
             velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
             velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
             velocityChange.y = 0;
@@ -228,7 +227,6 @@ public class PlayerController : MonoBehaviour, IActor, IState
     }
 
     //TODO: damage player, normal attack, enemy health ui, player health ui
-
     private void SetFocus(Interactable newFocus)
     {
         if (newFocus != focus)

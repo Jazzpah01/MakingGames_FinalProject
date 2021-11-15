@@ -14,7 +14,7 @@ public class StaticTower : MonoBehaviour, IActor
     public GameObject closestEnemy;
     public CollisionObserver detectionCollision;
     public float shootCooldown;
-    private float damage;
+    public float damage = 25;
     public float maxHealth = 100;
     private float currentHealth;
     public float MaxHealth => maxHealth;
@@ -43,8 +43,6 @@ public class StaticTower : MonoBehaviour, IActor
         detectionCollision.Subscribe(Detection_Exit, CollisionObserver.CollisionType.Exit);
 
         distanceToClosestEnemy = -1;
-
-        damage = 25;
     }
 
     // Update is called once per frame
@@ -118,6 +116,7 @@ public class StaticTower : MonoBehaviour, IActor
                 if(enemy == null)
                 {
                     enemies.Remove(enemy);
+                    break;
                 }
 
                 float distance = Vector3.Distance(enemy.transform.position, this.transform.position);
