@@ -27,18 +27,10 @@ public class PlayerMotor : MonoBehaviour
         agent.SetDestination(point);
     }
 
-    public void FollowTarget(Interactable newTarget)
-    {
-        agent.stoppingDistance = newTarget.radius * 0.8f;
-        agent.updateRotation = false;
-        target = newTarget.interactionTransform;
-    }
-
     public void StopFollowingTarget()
     {
         agent.stoppingDistance = 0f;
         agent.updateRotation = true;
-
         target = null;
     }
 
