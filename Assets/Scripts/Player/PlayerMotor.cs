@@ -6,39 +6,85 @@ public class PlayerMotor : MonoBehaviour
 {
     Transform target;
     NavMeshAgent agent;
+    PlayerManager playerManager;
+
+    [HideInInspector]
+    Camera cam;
+    LayerMask movementMask;
+
+    public float isoAngle = -45;
+    public float maxVelocityChange = 10.0f;
+
+    private float directionX, directionZ;
+
 
     void Start()
     {
+        playerManager = PlayerManager.instance;
         agent = GetComponent<NavMeshAgent>();
+        cam = playerManager.camera;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
+        //click to move
         if (target != null)
         {
             agent.SetDestination(target.position);
             FaceTarget();
         }
-    }
+        //keyboard movement
+        if (playerManager.keyboardControl)
+        {
+            directionX = 0;
+            directionZ = 0;
+            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+            {
+                directionZ = -1;
+            }
+            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+            {
+                directionZ = 1;
+            }
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+            {
+                directionX = -1;
+            }
+            if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+            {
+                directionX = 1;
+            }
+            Vector3 targetVelocity = new Vector3(directionX, 0, directionZ).normalized;
+            targetVelocity *= agent.speed;
 
+            Vector3 velocityChange = targetVelocity;
+            velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
+            velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
+            velocityChange.y = 0;
 
-    public void MoveToPoint(Vector3 point)
-    {
-        agent.SetDestination(point);
-    }
+            Quaternion rotation = Quaternion.Euler(0, isoAngle, 0);
+            Matrix4x4 rotaMatrix = Matrix4x4.Rotate(rotation);
 
-    public void FollowTarget(Interactable newTarget)
-    {
-        agent.stoppingDistance = newTarget.radius * 0.8f;
-        agent.updateRotation = false;
-        target = newTarget.interactionTransform;
+            agent.velocity = rotaMatrix.MultiplyPoint3x4(velocityChange);
+        }
+        else
+        {
+            if (Input.GetMouseButton(0))
+            {
+                Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit, 1000, movementMask))
+                {
+                    agent.SetDestination(hit.transform.position);
+                }
+            }
+        }
     }
 
     public void StopFollowingTarget()
     {
         agent.stoppingDistance = 0f;
         agent.updateRotation = true;
-
         target = null;
     }
 

@@ -5,7 +5,6 @@ using UnityEngine.AI;
 
 public class EnemyController: MonoBehaviour, IActor
 {
-    public float speed = 1;
     public Transform primaryTarget;
     public HealthBar healthBar;
     public CollisionObserver detectionCollision;
@@ -23,9 +22,9 @@ public class EnemyController: MonoBehaviour, IActor
 
     public ActorType type => ActorType.Enemy;
 
-    public float Speed { get => speed;
+    public float Speed { get => agent.speed;
         set {
-            speed = value;
+            agent.speed = value;
         }}
 
     public float MaxHealth => maxHealth;
@@ -91,7 +90,6 @@ public class EnemyController: MonoBehaviour, IActor
     public void FollowTarget(Transform target)
     {
         agent.SetDestination(target.position);
-        agent.speed = speed;
         agent.stoppingDistance = 0.8f;
         agent.updateRotation = false;
         agent.isStopped = false;
