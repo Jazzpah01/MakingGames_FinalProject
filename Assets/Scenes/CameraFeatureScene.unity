@@ -761,12 +761,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyboardControl: 1
-  state: 1
-  playerController: {fileID: 1281200618}
-  strategyController: {fileID: 1248753686}
-  enemyParent: {fileID: 732824239}
-  buildTimer: 9001
-  spawner: {fileID: 1483026526}
+  buildWhileCombat: 0
+  player: {fileID: 0}
+  camera: {fileID: 0}
 --- !u!4 &580524543
 Transform:
   m_ObjectHideFlags: 0
@@ -1578,6 +1575,7 @@ MonoBehaviour:
   zoomSpeed: 4
   minZoom: 5
   maxZoom: 9
+  startZoom: 0
 --- !u!1 &982575158
 GameObject:
   m_ObjectHideFlags: 0
@@ -1861,10 +1859,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   roundResource: 5
-  prefab: {fileID: 2782804534701062994, guid: 03892feb8bb90f248bbc0aed8527ac48, type: 3}
   buildablesParent: {fileID: 0}
   startRotation: 0
-  rotationSpeed: 10
+  rotationAngle: 45
+  resource: 0
 --- !u!4 &1248753687
 Transform:
   m_ObjectHideFlags: 0
@@ -1965,27 +1963,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce060c687d584c54ebca64c06351c6aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxVelocityChange: 10
   movementMask:
     serializedVersion: 2
     m_Bits: 256
   actorMask:
     serializedVersion: 2
     m_Bits: 512
-  focus: {fileID: 0}
-  cam: {fileID: 963194227}
-  attackDamage: 50
-  attackCooldown: 0.3
-  attackRange: 2
-  attackEffect: {fileID: 192757836124602699, guid: f4dddb6fda5ba164eae37c20d9e8e544,
-    type: 3}
-  attackObserver: {fileID: 412263306}
-  AOEAttackDamage: 20
-  AOEAttackCooldown: 1
-  AOEAttackRange: 0.1
-  AOEAttackEffect: {fileID: 3591749835656939338, guid: bf76977061c6182428b2e5c9bf107d79,
-    type: 3}
-  AOEObserver: {fileID: 262405868}
+  maxHealth: 100
 --- !u!114 &1281200619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1998,6 +1982,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44bdfae43cd4c6240baded1e61296baf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isoAngle: -45
+  maxVelocityChange: 10
 --- !u!1 &1362584511
 GameObject:
   m_ObjectHideFlags: 0
@@ -2281,8 +2267,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyAmount: 25
-  enemyPrefab: {fileID: 5980018141852729465, guid: 2dec638b8949bd940a384c9cad405dea,
-    type: 3}
+  enemyPrefab:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  player: {fileID: 0}
   inititalTarget: {fileID: 1109293858}
   enemyParent: {fileID: 732824240}
   spawnPoints:
