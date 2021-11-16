@@ -32,10 +32,14 @@ public class GameController : MBStateMachine
 
     void Awake()
     {
+        instance = this;
+        buildTime = buildTimer;
+    }
+
+    private void Start()
+    {
         player = PlayerManager.instance.player;
         playerController = player.GetComponent<PlayerController>();
-        buildTime = buildTimer;
-        instance = this;
 
         ChangeState(state);
     }
