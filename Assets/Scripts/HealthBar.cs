@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class HealthBar : MonoBehaviour
 {
     public Image healthbarWhite, healthbarRed;
     public float smoothDelay = 0.01f;
     public float smoothAmount = 0.02f;
+    public TextMeshProUGUI textBox;
+    public Image heathImage;
 
     Coroutine routineIncrease, routineDecrease;
 
@@ -35,10 +38,13 @@ public class HealthBar : MonoBehaviour
         //handles increase or decrease in health
         if (amount >= healthbarWhite.fillAmount)
         {
+            smoothAmount *= Mathf.Pow(1 + (healthbarRed.fillAmount - healthbarWhite.fillAmount), 8);
             routineIncrease = StartCoroutine(SmoothSliderIncrease(amount));
         }
         else
         {
+            //remove the white image faster if more health is removed at once
+            smoothAmount *= Mathf.Pow(1+(healthbarWhite.fillAmount - healthbarRed.fillAmount),8);
             routineDecrease = StartCoroutine(SmoothSliderDecrease(amount));
         }
     }
@@ -76,5 +82,8 @@ public class HealthBar : MonoBehaviour
             StopCoroutine(routineDecrease);
         }
     }
-
+    public void SetHealthImageColour(Color colour)
+    {
+        heathImage.color = colour;
+    }
 }

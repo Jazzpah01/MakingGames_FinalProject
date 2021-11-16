@@ -6,40 +6,40 @@ using UnityEngine.UI;
 public class SlowingBuilding : MonoBehaviour, IActor
 {
 
-    public ActorType type => ActorType.Obstacle;
-    public GameObject slowGas;
-    public Image healthbar;
     float walktimer = 5;
     float gastimer = 0.2f;
+    float yRotation;
     Vector3 gasPosition;
+
+    public string buildingName;
+    public GameObject slowGas;
+    public HealthBar healthbar;
     public float maxHealth = 100;
+
+    private float speed = 3.0f;
     private float currentHealth;
+    public ActorType type => ActorType.Obstacle;
     public float MaxHealth => maxHealth;
     public float Health { get => currentHealth; 
             set
             {
                 currentHealth = value;
-                StartCoroutine(SmoothSliderDecrease(currentHealth / maxHealth, healthbar));
+                healthbar.SetHealthbar(currentHealth / maxHealth);
                 if (currentHealth <= 0f)
                 {
                     Die();
                 }
             }
         }
-    private float speed = 3.0f;
     public float Speed { get => speed; set { speed = value;}}
 
-    float yRotation;
-
-
-
-    // Start is called before the first frame update
     void Start()
     {
         yRotation = transform.rotation.y;
+        healthbar.textBox.text = buildingName;
+        healthbar.SetHealthImageColour(Color.green);
     }
 
-    // Update is called once per frame
     void Update()
     {
         gasPosition = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);

@@ -6,14 +6,17 @@ using UnityEngine.UI;
 public class BuildingWalkingInCircles : MonoBehaviour, IActor
 {
     double StartPos;
+
+    public string buildingName;
     public float speed;
-    private float rotation = 0.1f;
     public float damage;
     public CollisionObserver detectionCollision;
     public CollisionObserver damagerCollision;
-    public Image healthbar;
     public float maxHealth = 100;
+    public HealthBar healthbar;
+
     private float currentHealth;
+    private float rotation = 0.1f;
 
     public ActorType type => ActorType.Obstacle;
     public float MaxHealth => maxHealth;
@@ -21,7 +24,7 @@ public class BuildingWalkingInCircles : MonoBehaviour, IActor
             set
             {
                 currentHealth = value;
-                StartCoroutine(SmoothSliderDecrease(currentHealth / maxHealth, healthbar));
+                healthbar.SetHealthbar(currentHealth / maxHealth);
                 if (currentHealth <= 0f)
                 {
                     Die();
@@ -41,6 +44,8 @@ public class BuildingWalkingInCircles : MonoBehaviour, IActor
         StartPos = transform.position.x;
         detectionCollision.Subscribe(Detection_Stay, CollisionObserver.CollisionType.Stay);
         detectionCollision.Subscribe(Detection_Exit, CollisionObserver.CollisionType.Exit);
+        healthbar.textBox.text = name;
+        healthbar.SetHealthImageColour(Color.green);
     }
 
     // Update is called once per frame

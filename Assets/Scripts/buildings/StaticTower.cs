@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class StaticTower : MonoBehaviour, IActor
 {
-
+    public string buildingName;
     public GameObject peak;
     public GameObject projectile;
-    public Image healthbar;
+    public HealthBar healthbar;
     public List<GameObject> enemies;
     public float distanceToClosestEnemy;
     public GameObject closestEnemy;
@@ -16,13 +16,14 @@ public class StaticTower : MonoBehaviour, IActor
     public float shootCooldown;
     public float damage = 25;
     public float maxHealth = 100;
+
     private float currentHealth;
     public float MaxHealth => maxHealth;
     public float Health { get => currentHealth; 
             set
             {
                 currentHealth = value;
-                StartCoroutine(SmoothSliderDecrease(currentHealth / maxHealth, healthbar));
+                healthbar.SetHealthbar(currentHealth / maxHealth);
                 if (currentHealth <= 0f)
                 {
                     Die();
@@ -43,6 +44,8 @@ public class StaticTower : MonoBehaviour, IActor
         detectionCollision.Subscribe(Detection_Exit, CollisionObserver.CollisionType.Exit);
 
         distanceToClosestEnemy = -1;
+        healthbar.textBox.text = buildingName;
+        healthbar.SetHealthImageColour(Color.green);
     }
 
     // Update is called once per frame
