@@ -3,9 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+struct Ability
+{
+    public float attackDamage;
+    public float attackCooldown;
+    public float attackRange;
+    public GameObject attackEffect;
+    public CollisionObserver attackObserver;
+    private float attackTime;
+}
 public class PlayerCombat : MonoBehaviour
 {
-
     // These attack moves are hard-coded and should be refactored.
     [Header("Combat Stuff that should have it's own class:")]
     public float attackDamage;

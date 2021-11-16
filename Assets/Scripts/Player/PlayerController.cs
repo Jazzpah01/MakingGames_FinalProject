@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour, IActor, IState
 {
     PlayerManager playerManager;
-    PlayerMotor motor;
     PlayerCombat combat;
 
     public LayerMask movementMask;
@@ -17,10 +16,6 @@ public class PlayerController : MonoBehaviour, IActor, IState
     [HideInInspector]
     private Camera cam;
     private float health;
-
-
-
-
 
     public ActorType type => ActorType.Player;
     //this was made to satisfy implementation of IActor, may need some refactoring
@@ -44,7 +39,6 @@ public class PlayerController : MonoBehaviour, IActor, IState
     {
         playerManager = PlayerManager.instance;
         combat = GetComponent<PlayerCombat>();
-        motor = GetComponent<PlayerMotor>();
         cam = playerManager.camera;
         health = maxHealth;
     }
