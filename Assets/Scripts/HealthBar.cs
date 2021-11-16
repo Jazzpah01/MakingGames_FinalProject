@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class HealthBar : MonoBehaviour
 {
     public Image healthbarWhite, healthbarRed;
     public float smoothDelay = 0.01f;
     public float smoothAmount = 0.02f;
+    public TextMeshProUGUI textBox;
 
     Coroutine routineIncrease, routineDecrease;
 

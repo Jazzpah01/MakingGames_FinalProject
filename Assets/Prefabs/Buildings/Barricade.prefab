@@ -166,6 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb13aa8b04daf69499b4ce0602e97ca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buildingName: Barricade
   maxHealth: 250
   healthbar: {fileID: 4106165504943000003}
 --- !u!1001 &2249220559074273367
