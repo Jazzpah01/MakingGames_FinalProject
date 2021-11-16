@@ -33,6 +33,7 @@ public class Barricade : MonoBehaviour, IActor
     {
         currentHealth = maxHealth;
         healthbar.textBox.text = buildingName;
+        healthbar.SetHealthImageColour(Color.green);
     }
 
     private void Die()

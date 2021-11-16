@@ -161,7 +161,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &7963770581701426622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,8 +194,9 @@ MonoBehaviour:
   healthbarWhite: {fileID: 2145726838508346206}
   healthbarRed: {fileID: 2723825508392442631}
   smoothDelay: 0.00000001
-  smoothAmount: 0.01
+  smoothAmount: 0.0001
   textBox: {fileID: 6113590676959326265}
+  heathImage: {fileID: 2723825508392442631}
 --- !u!1818360608 &420756184247553001
 PositionConstraint:
   m_ObjectHideFlags: 0
@@ -227,7 +228,7 @@ GameObject:
   - component: {fileID: 4761273607715592540}
   - component: {fileID: 2723825508392442631}
   m_Layer: 0
-  m_Name: HealthBarRed
+  m_Name: HealthBarFront
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -273,7 +274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6886792, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -302,7 +303,7 @@ GameObject:
   - component: {fileID: 5532465704992944693}
   - component: {fileID: 2145726838508346206}
   m_Layer: 0
-  m_Name: HealthBarWhite
+  m_Name: HealthBarMiddle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

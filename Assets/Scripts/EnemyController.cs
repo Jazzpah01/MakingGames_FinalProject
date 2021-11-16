@@ -49,6 +49,7 @@ public class EnemyController: MonoBehaviour, IActor
         detectionCollision.Subscribe(Detection_Enter, CollisionObserver.CollisionType.Enter);
         detectionCollision.Subscribe(Detection_Exit, CollisionObserver.CollisionType.Exit);
         material = GetComponent<Material>();
+        healthBar.SetHealthImageColour(Color.red);
     }
 
     private void Update()

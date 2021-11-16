@@ -45,6 +45,7 @@ public class BuildingWalkingInCircles : MonoBehaviour, IActor
         detectionCollision.Subscribe(Detection_Stay, CollisionObserver.CollisionType.Stay);
         detectionCollision.Subscribe(Detection_Exit, CollisionObserver.CollisionType.Exit);
         healthbar.textBox.text = name;
+        healthbar.SetHealthImageColour(Color.green);
     }
 
     // Update is called once per frame

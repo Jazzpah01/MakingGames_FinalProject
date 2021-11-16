@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Base : MonoBehaviour, IActor
 {
+    GameController gameController;
     public float maxHealth = 500;
     private float health;
 
@@ -22,7 +23,7 @@ public class Base : MonoBehaviour, IActor
 
             if (health <= 0)
             {
-                SceneManager.LoadScene(1); //hard coded bad
+                gameController.GameOver();
             }
         }
     }
@@ -30,5 +31,6 @@ public class Base : MonoBehaviour, IActor
     private void Start()
     {
         health = maxHealth;
+        gameController = GameController.instance;
     }
 }

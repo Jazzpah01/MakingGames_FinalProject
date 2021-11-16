@@ -45,6 +45,7 @@ public class StaticTower : MonoBehaviour, IActor
 
         distanceToClosestEnemy = -1;
         healthbar.textBox.text = buildingName;
+        healthbar.SetHealthImageColour(Color.green);
     }
 
     // Update is called once per frame

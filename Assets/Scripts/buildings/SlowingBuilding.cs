@@ -37,6 +37,7 @@ public class SlowingBuilding : MonoBehaviour, IActor
     {
         yRotation = transform.rotation.y;
         healthbar.textBox.text = buildingName;
+        healthbar.SetHealthImageColour(Color.green);
     }
 
     void Update()
