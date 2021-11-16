@@ -7,4 +7,5 @@ public class BuildingType
 {
     public float cost;
     public GameObject prefab;
+    public LayerMask layermask;
 }

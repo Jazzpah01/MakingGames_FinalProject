@@ -8,26 +8,28 @@ using UnityEngine.EventSystems;
 public class StrategyController : MonoBehaviour, IState
 {
     [HideInInspector]
-    public Camera camera;
+    public Camera cam;
     public LayerMask layerMask;
     public int roundResource = 2;
-    public GameObject prefab;
     public Transform buildablesParent;
     public float startRotation = 0;
     public float rotationAngle = 45;
 
-    [HideInInspector] public int resource;
+    [HideInInspector] 
+    public int resource;
     private GameObject GO = null;
     private float rotation;
     private bool isBuilding = false;
+    private GameObject prefab;
 
     private int currentCost = 0;
 
     private void Start()
     {
-        camera = PlayerManager.instance.camera;
+        cam = PlayerManager.instance.camera;
         resource = roundResource;
         rotation = startRotation;
+        prefab = null;
     }
 
     public void UpdateState()
@@ -59,7 +61,7 @@ public class StrategyController : MonoBehaviour, IState
                 rotation -= rotationAngle;
             }
 
-            Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
             // See if there is a raycast hit on Ground layer
@@ -116,6 +118,7 @@ public class StrategyController : MonoBehaviour, IState
             return;
         }
         this.prefab = type.prefab;
+        this.layerMask = type.layermask;
         this.currentCost = (int)type.cost;
         isBuilding = true;
     }
