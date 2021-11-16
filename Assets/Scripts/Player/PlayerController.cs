@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour, IActor, IState
 {
     PlayerManager playerManager;
+    GameController gameController;
     PlayerCombat combat;
 
     public LayerMask movementMask;
@@ -30,7 +31,7 @@ public class PlayerController : MonoBehaviour, IActor, IState
             health = value;
             if (health <= 0)
             {
-                SceneManager.LoadScene(1); //hard coded bad
+                gameController.GameOver();
             }
         }
     }
@@ -38,6 +39,7 @@ public class PlayerController : MonoBehaviour, IActor, IState
     private void Start()
     {
         playerManager = PlayerManager.instance;
+        gameController = GameController.instance;
         combat = GetComponent<PlayerCombat>();
         cam = playerManager.camera;
         health = maxHealth;

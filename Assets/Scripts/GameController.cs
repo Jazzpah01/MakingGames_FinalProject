@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,6 +23,7 @@ public class GameController : MBStateMachine
     public StrategyController strategyController;
     public GameObject enemyParent;
     public float buildTimer = 9001;
+    public GameObject gameOverScreen;
 
     private float buildTime;
     private PlayerController playerController;
@@ -42,6 +44,14 @@ public class GameController : MBStateMachine
         playerController = player.GetComponent<PlayerController>();
 
         ChangeState(state);
+    }
+
+    internal void GameOver()
+    {
+        //TODO: something else than just showing a game over screen
+        gameOverScreen.SetActive(true);
+        //pause the time;
+        Time.timeScale = 0;
     }
 
     public void ChangeState(GameState newState)
