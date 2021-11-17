@@ -16,7 +16,7 @@ public class BuildingWalkingInCircles : MonoBehaviour, IActor
     public HealthBar healthbar;
 
     private float currentHealth;
-    private float rotation = 0.1f;
+    private float rotation = 0.7f;
 
     public ActorType type => ActorType.Obstacle;
     public float MaxHealth => maxHealth;
@@ -49,7 +49,7 @@ public class BuildingWalkingInCircles : MonoBehaviour, IActor
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         transform.Translate(Vector3.forward * (Time.deltaTime * speed));
         transform.Rotate(0.0f, rotation, 0.0f, Space.Self);
