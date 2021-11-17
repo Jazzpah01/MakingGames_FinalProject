@@ -44,7 +44,7 @@ public class BuildingWalkingInCircles : MonoBehaviour, IActor
         StartPos = transform.position.x;
         detectionCollision.Subscribe(Detection_Stay, CollisionObserver.CollisionType.Stay);
         detectionCollision.Subscribe(Detection_Exit, CollisionObserver.CollisionType.Exit);
-        healthbar.textBox.text = name;
+        healthbar.textBox.text = buildingName;
         healthbar.SetHealthImageColour(Color.green);
     }
 
