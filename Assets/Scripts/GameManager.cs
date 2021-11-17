@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    public bool buildMode = false;
+    public bool inBattle = false;
 
     void Awake()
     {

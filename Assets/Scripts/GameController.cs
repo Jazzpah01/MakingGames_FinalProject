@@ -58,7 +58,7 @@ public class GameController : MBStateMachine
     {
         switch (newState)
         {
-            case GameState.Combat:
+            case GameState.Combat: 
                 if (!PlayerManager.instance.buildWhileCombat)
                     player.SetActive(true);
                 base.ChangeState(playerController);
@@ -86,6 +86,7 @@ public class GameController : MBStateMachine
             if (inWave == false)
             {
                 ChangeState(GameState.Strategy);
+                GameManager.instance.inBattle = false;
             } else if (Input.GetKeyDown(KeyCode.B) && PlayerManager.instance.buildWhileCombat)
             {
                 ChangeState(GameState.Strategy);
@@ -98,6 +99,7 @@ public class GameController : MBStateMachine
                 if (inWave == false)
                 {
                     // Start wave
+                    GameManager.instance.inBattle = true;
                     spawnController.SpawnEnemies();
                     inWave = true;
                 }
