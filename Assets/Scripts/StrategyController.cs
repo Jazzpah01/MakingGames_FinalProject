@@ -136,7 +136,6 @@ public class StrategyController : MonoBehaviour, IState
 
     private void ChangeGOAlfa(float alpha)
     {
-        Debug.Log("changing all alfa");
         Renderer[] GORenderer = GO.GetComponentsInChildren<Renderer>(true);
         foreach (Renderer rend in GORenderer)
         {
