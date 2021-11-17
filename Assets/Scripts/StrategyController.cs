@@ -136,10 +136,13 @@ public class StrategyController : MonoBehaviour, IState
 
     private void ChangeGOAlfa(float alpha)
     {
-        Renderer GORenderer = GO.GetComponentInChildren<Renderer>();
-        Color tempColor = GORenderer.material.color;
-        tempColor.a = alpha;
-        GORenderer.material.color = tempColor;
+        Renderer[] GORenderer = GO.GetComponentsInChildren<Renderer>();
+        foreach (Renderer rend in GORenderer)
+        {
+            Color tempColor = rend.material.color;
+            tempColor.a = alpha;
+            rend.material.color = tempColor;
+        }
     }
 
     private void SpawnPrefab()

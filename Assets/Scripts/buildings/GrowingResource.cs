@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class GrowingResource : MonoBehaviour, IActor
 {
+    public string buildingName;
+    public float health;
+    public float growthTime = 2.0f;
+    public float harvestTimer = 5.0f;
+    public HealthBar healthbar;
+
     private float timer;
     private int growthStage;
     private int maxResourcesGained = 5;
     private int currentResourcesGained;
-    public float health;
     private Vector3 growth = new Vector3(0.1f,0.1f,0.1f);
-    public float growthTime = 2.0f;
-    public float harvestTimer = 5.0f;
     public ActorType type => ActorType.Obstacle;
     public float Speed { get => Speed; set => Speed = 0; }
     public float MaxHealth => 100;
@@ -22,6 +25,8 @@ public class GrowingResource : MonoBehaviour, IActor
     void Start()
     {
         health = MaxHealth;
+        healthbar.textBox.text = buildingName;
+        healthbar.SetHealthImageColour(Color.green);
     }
 
     // Update is called once per frame
