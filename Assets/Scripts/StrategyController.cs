@@ -136,7 +136,8 @@ public class StrategyController : MonoBehaviour, IState
 
     private void ChangeGOAlfa(float alpha)
     {
-        Renderer[] GORenderer = GO.GetComponentsInChildren<Renderer>();
+        Debug.Log("changing all alfa");
+        Renderer[] GORenderer = GO.GetComponentsInChildren<Renderer>(true);
         foreach (Renderer rend in GORenderer)
         {
             Color tempColor = rend.material.color;
