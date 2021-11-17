@@ -5,14 +5,13 @@ using UnityEngine;
 public class GrowingResource : MonoBehaviour, IActor
 {
     private float timer;
-    private float growthTime = 2.0f;
-    private float harvestTimer = 5.0f;
     private int growthStage;
     private int maxResourcesGained = 5;
     private int currentResourcesGained;
     public float health;
-
-    Vector3 growth = new Vector3(0.1f,0.1f,0.1f);
+    private Vector3 growth = new Vector3(0.1f,0.1f,0.1f);
+    public float growthTime = 2.0f;
+    public float harvestTimer = 5.0f;
     public ActorType type => ActorType.Obstacle;
     public float Speed { get => Speed; set => Speed = 0; }
     public float MaxHealth => 100;
