@@ -18,21 +18,21 @@ MonoBehaviour:
       type: 3}
     containmentLayermask:
       serializedVersion: 2
-      m_Bits: 128
+      m_Bits: 64
   - cost: 2
     prefab: {fileID: 641325662967931237, guid: 8f13fa425de3cf9478dd05d29c5ba94c, type: 3}
     containmentLayermask:
       serializedVersion: 2
-      m_Bits: 0
+      m_Bits: 64
   - cost: 2
     prefab: {fileID: 5355251333915570780, guid: 45757f1371f45fb4b9970af133564347,
       type: 3}
     containmentLayermask:
       serializedVersion: 2
-      m_Bits: 0
+      m_Bits: 64
   - cost: 3
     prefab: {fileID: 9202268415749759745, guid: be7dd906ca4f9c347aa3479e652d84e6,
       type: 3}
     containmentLayermask:
       serializedVersion: 2
-      m_Bits: 0
+      m_Bits: 64
