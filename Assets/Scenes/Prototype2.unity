@@ -200,6 +200,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7646069172183660512, guid: 13bb7fe5814de22468f1668fcbcd9aef,
+        type: 3}
+      propertyPath: groundLayerMask.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
     - target: {fileID: 7646069172765447336, guid: 13bb7fe5814de22468f1668fcbcd9aef,
         type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag

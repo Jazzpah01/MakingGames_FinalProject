@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
-  layerMask:
+  groundLayerMask:
     serializedVersion: 2
     m_Bits: 256
   roundResource: 10
