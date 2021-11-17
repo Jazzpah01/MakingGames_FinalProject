@@ -1303,21 +1303,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8178444715510152749}
     m_Modifications:
-    - target: {fileID: 1261007442768369749, guid: c44bdcca185bfcb4eb80c3ea306dc86c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1261007442794440543, guid: c44bdcca185bfcb4eb80c3ea306dc86c,
-        type: 3}
-      propertyPath: m_Name
-      value: Border
-      objectReference: {fileID: 0}
-    - target: {fileID: 1261007442794440543, guid: c44bdcca185bfcb4eb80c3ea306dc86c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1261007442865627081, guid: c44bdcca185bfcb4eb80c3ea306dc86c,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -1437,32 +1422,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: HUD
-      objectReference: {fileID: 0}
-    - target: {fileID: 1261007443472754161, guid: c44bdcca185bfcb4eb80c3ea306dc86c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1261007443472754163, guid: c44bdcca185bfcb4eb80c3ea306dc86c,
-        type: 3}
-      propertyPath: m_Type
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1261007443472754163, guid: c44bdcca185bfcb4eb80c3ea306dc86c,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 3053ca0130dd02b4183a0d4fedcfaea3,
-        type: 3}
-    - target: {fileID: 1261007443611718271, guid: c44bdcca185bfcb4eb80c3ea306dc86c,
-        type: 3}
-      propertyPath: m_Name
-      value: Border
-      objectReference: {fileID: 0}
-    - target: {fileID: 1261007443611718271, guid: c44bdcca185bfcb4eb80c3ea306dc86c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1261007444145674386, guid: c44bdcca185bfcb4eb80c3ea306dc86c,
         type: 3}
