@@ -9,18 +9,19 @@ public class StrategyController : MonoBehaviour, IState
 {
     [HideInInspector]
     public Camera cam;
-    public LayerMask layerMask;
+    public LayerMask groundLayerMask;
     public int roundResource = 2;
     public Transform buildablesParent;
     public float startRotation = 0;
     public float rotationAngle = 45;
 
-    [HideInInspector] 
+    [HideInInspector]
     public int resource;
     private GameObject GO = null;
     private float rotation;
     private bool isBuilding = false;
     private GameObject prefab;
+    private LayerMask containmentLayerMask;
 
     private int currentCost = 0;
 
@@ -65,9 +66,9 @@ public class StrategyController : MonoBehaviour, IState
             RaycastHit hit;
 
             // See if there is a raycast hit on Ground layer
-            if (Physics.Raycast(ray, out hit, 100, layerMask))
+            if (Physics.Raycast(ray, out hit, 1000, groundLayerMask))
             {
-                Vector3 spawnpoint = new Vector3(hit.point.x, hit.point.y + (prefab.transform.localScale.y/2), hit.point.z);
+                Vector3 spawnpoint = new Vector3(hit.point.x, hit.point.y + (prefab.transform.localScale.y / 2), hit.point.z);
                 if (GO == null)
                 {
                     // Create transparent dummy-gameobject
@@ -82,18 +83,29 @@ public class StrategyController : MonoBehaviour, IState
                 }
                 else
                 {
-                    // Transform dummy-gameobject to an actual building
-                    if (Input.GetMouseButtonDown(0) && resource >= currentCost)
+                    //if the dummy-gameobject is within the containmentLayerMask
+                    if (Physics.Raycast(ray, out hit, 1000, containmentLayerMask))
                     {
-                        SpawnPrefab();
+                        //hacky fix until red models are made
+                        GO.transform.GetChild(0).gameObject.SetActive(false);
 
-                        // Make it so the player can place multiple buildings
-                        if (resource < currentCost)
+                        // Transform dummy-gameobject to an actual building
+                        if (Input.GetMouseButtonDown(0) && resource >= currentCost)
                         {
-                            isBuilding = false;
+                            SpawnPrefab();
+                            // Make it so the player can place multiple buildings
+                            if (resource < currentCost)
+                            {
+                                isBuilding = false;
+                            }
+                            return;
                         }
-
-                        return;
+                    }
+                    else
+                    {
+                        //indication that GO cannot be placed here
+                        //hacky fix until red models are made
+                        GO.transform.GetChild(0).gameObject.SetActive(true);
                     }
                 }
                 GO.transform.position = spawnpoint;
@@ -101,7 +113,6 @@ public class StrategyController : MonoBehaviour, IState
             }
             else
             {
-                // If not isBuilding, remove dummy-gameobject
                 RemoveDummy();
             }
         }
@@ -113,12 +124,13 @@ public class StrategyController : MonoBehaviour, IState
     /// <param name="type">Type of building.</param>
     public void SelectPrefab(BuildingType type)
     {
-        if (resource < type.cost) {
+        if (resource < type.cost)
+        {
             // Code for when you don't have enough resources
             return;
         }
         this.prefab = type.prefab;
-        this.layerMask = type.layermask;
+        this.containmentLayerMask = type.containmentLayermask;
         this.currentCost = (int)type.cost;
         isBuilding = true;
     }
