@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyController: MonoBehaviour, IActor
+public class EnemyController: MonoBehaviour, IEnemy
 {
     public Transform primaryTarget;
     public HealthBar healthBar;
@@ -42,6 +42,7 @@ public class EnemyController: MonoBehaviour, IActor
         } 
     }
 
+    public int typeIdentifyer { set; get; }
 
     void Start()
     {

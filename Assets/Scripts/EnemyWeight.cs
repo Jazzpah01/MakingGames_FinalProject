@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class EnemyType
+public class EnemyWeight
 {
     public GameObject prefab;
-    public float value;
-    [HideInInspector] public int identifyer;
+    [Range(0f, 1f)]
+    public float weight;
 }
