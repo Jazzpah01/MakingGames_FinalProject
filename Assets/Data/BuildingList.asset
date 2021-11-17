@@ -36,3 +36,9 @@ MonoBehaviour:
     containmentLayermask:
       serializedVersion: 2
       m_Bits: 64
+  - cost: 3
+    prefab: {fileID: 8063388511463166607, guid: df1ab6f0658de7a458a76a80eef4f5f0,
+      type: 3}
+    containmentLayermask:
+      serializedVersion: 2
+      m_Bits: 64
