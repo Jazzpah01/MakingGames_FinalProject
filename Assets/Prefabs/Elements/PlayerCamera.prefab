@@ -101,4 +101,4 @@ MonoBehaviour:
   zoomSpeed: 20
   minZoom: 10
   maxZoom: 50
-  startZoom: 30
+  startZoom: 50

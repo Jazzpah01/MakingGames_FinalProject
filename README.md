@@ -1,3 +1,13 @@
+Feature branch changes:
+IEnemy: IActor
+EnemyController.cs
+EnemyList.cs
+EnemyType.cs
+EnemyWeight.cs
+SpawnController.cs
+WaveData.cs
+
+----
 # MakingGames_FinalProject
 The final project for making games.
 

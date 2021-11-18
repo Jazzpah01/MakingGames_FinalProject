@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ProjectorController : MonoBehaviour
 {
-    private float size;
+    public float size;
     private LayerMask ignoreLayer;
     private Projector proj;
     private Material mat;

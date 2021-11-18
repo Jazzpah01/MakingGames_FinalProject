@@ -16,7 +16,6 @@ public class StrategyController : MonoBehaviour, IState
     public float rotationAngle = 45;
 
     [HideInInspector]
-    public int resource;
     private GameObject GO = null;
     private float rotation;
     private bool isBuilding = false;
@@ -28,7 +27,7 @@ public class StrategyController : MonoBehaviour, IState
     private void Start()
     {
         cam = PlayerManager.instance.camera;
-        resource = roundResource;
+        GameManager.instance.resource = roundResource;
         rotation = startRotation;
         prefab = null;
     }
@@ -90,11 +89,11 @@ public class StrategyController : MonoBehaviour, IState
                         GO.transform.GetChild(0).gameObject.SetActive(false);
 
                         // Transform dummy-gameobject to an actual building
-                        if (Input.GetMouseButtonDown(0) && resource >= currentCost)
+                        if (Input.GetMouseButtonDown(0) && GameManager.instance.resource >= currentCost)
                         {
                             SpawnPrefab();
                             // Make it so the player can place multiple buildings
-                            if (resource < currentCost)
+                            if (GameManager.instance.resource < currentCost)
                             {
                                 isBuilding = false;
                             }
@@ -124,8 +123,7 @@ public class StrategyController : MonoBehaviour, IState
     /// <param name="type">Type of building.</param>
     public void SelectPrefab(BuildingType type)
     {
-        Debug.Log("We are actually spawning");
-        if (resource < type.cost)
+        if (GameManager.instance.resource < type.cost)
         {
             // Code for when you don't have enough resources
             return;
@@ -138,17 +136,22 @@ public class StrategyController : MonoBehaviour, IState
 
     private void ChangeGOAlfa(float alpha)
     {
-        Renderer GORenderer = GO.GetComponentInChildren<Renderer>();
-        Color tempColor = GORenderer.material.color;
-        tempColor.a = alpha;
-        GORenderer.material.color = tempColor;
+        Renderer[] GORenderer = GO.GetComponentsInChildren<Renderer>(true);
+        foreach (Renderer rend in GORenderer)
+        {
+            Color tempColor = rend.material.color;
+            tempColor.a = alpha;
+            rend.material.color = tempColor;
+        }
     }
 
     private void SpawnPrefab()
     {
         GO.GetComponent<NavMeshObstacle>().enabled = true;
         GO.GetComponent<IActor>().enabled = true;
-        resource -= currentCost;
+        //TODO hacky enable healthbar
+        GO.transform.GetChild(2).gameObject.SetActive(true);
+        GameManager.instance.resource -= currentCost;
         ChangeGOAlfa(1);
         GO = null;
     }
