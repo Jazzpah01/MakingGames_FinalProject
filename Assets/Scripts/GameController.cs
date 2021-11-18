@@ -96,15 +96,15 @@ public class GameController : MBStateMachine
         }
         else if (state == GameState.Strategy)
         {
-            if (Input.GetKeyDown(KeyCode.B))
-            {
-                if (!InWave)
-                {
-                    // Start wave
-                    GoToBattle();
-                }
-                ChangeState(GameState.Combat);
-            }
+            //if (Input.GetKeyDown(KeyCode.B))
+            //{
+            //    if (!InWave)
+            //    {
+            //        // Start wave
+            //        GoToBattle();
+            //    }
+            //    ChangeState(GameState.Combat);
+            //}
         }
 
 

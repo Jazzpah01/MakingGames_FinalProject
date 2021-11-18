@@ -6,8 +6,8 @@ public class GrowingResource : MonoBehaviour, IActor
 {
     public string buildingName;
     public float health;
-    public float growthTime = 2.0f;
-    public float harvestTimer = 5.0f;
+    public float growthTime = 0.5f;
+    public float harvestTimer = 0.5f;
     public HealthBar healthbar;
 
     private float timer;

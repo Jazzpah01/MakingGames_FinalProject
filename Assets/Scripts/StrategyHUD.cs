@@ -22,7 +22,7 @@ public class StrategyHUD : MonoBehaviour
         strategyController = GameController.instance.strategyController;
 
         // Setup menu for selecting buildings
-        initialItem.GetComponentsInChildren<TextMeshProUGUI>()[0].text = buildings[0].cost.ToString();
+        initialItem.GetComponentsInChildren<TextMeshProUGUI>()[0].text = "Cost: " + buildings[0].cost.ToString();
         initialItem.GetComponentsInChildren<TextMeshProUGUI>()[1].text = buildings[0].prefab.name;
 
         initialItem.GetComponentInChildren<Button>().onClick.AddListener(delegate { SelectPrefab(0); });
@@ -44,7 +44,7 @@ public class StrategyHUD : MonoBehaviour
                 offset * i * new Vector2(0,1));
 
             // Change values
-            newItem.GetComponentsInChildren<TextMeshProUGUI>()[0].text = buildings[i].cost.ToString();
+            newItem.GetComponentsInChildren<TextMeshProUGUI>()[0].text = "Cost: " + buildings[i].cost.ToString();
             newItem.GetComponentsInChildren<TextMeshProUGUI>()[1].text = buildings[i].prefab.name;
 
             int index = i;

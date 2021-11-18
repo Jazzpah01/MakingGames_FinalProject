@@ -596,8 +596,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingName: Plant Resource
   health: 0
-  growthTime: 2
-  harvestTimer: 5
+  growthTime: 0.5
+  harvestTimer: 0.5
   healthbar: {fileID: 8520103144020020281}
 --- !u!208 &-3724557957165586548
 NavMeshObstacle:

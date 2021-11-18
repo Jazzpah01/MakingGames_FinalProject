@@ -47,6 +47,16 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 863.485
       objectReference: {fileID: 0}
+    - target: {fileID: 2723149444006585304, guid: 331d54d02b9dbea4db316c70afd23fbb,
+        type: 3}
+      propertyPath: maxHealth
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 2723149444006585306, guid: 331d54d02b9dbea4db316c70afd23fbb,
+        type: 3}
+      propertyPath: m_Speed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2952568507763849965, guid: 331d54d02b9dbea4db316c70afd23fbb,
         type: 3}
       propertyPath: m_Size
@@ -75,12 +85,17 @@ PrefabInstance:
     - target: {fileID: 3756459245402022232, guid: 331d54d02b9dbea4db316c70afd23fbb,
         type: 3}
       propertyPath: waves.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3756459245402022232, guid: 331d54d02b9dbea4db316c70afd23fbb,
         type: 3}
       propertyPath: waves.Array.data[0].totalValue
-      value: 10
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3756459245402022232, guid: 331d54d02b9dbea4db316c70afd23fbb,
+        type: 3}
+      propertyPath: waves.Array.data[1].totalValue
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3756459245402022232, guid: 331d54d02b9dbea4db316c70afd23fbb,
         type: 3}
@@ -89,8 +104,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3756459245402022232, guid: 331d54d02b9dbea4db316c70afd23fbb,
         type: 3}
+      propertyPath: waves.Array.data[1].combatValue
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3756459245402022232, guid: 331d54d02b9dbea4db316c70afd23fbb,
+        type: 3}
       propertyPath: waves.Array.data[0].enemyWeights.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3756459245402022232, guid: 331d54d02b9dbea4db316c70afd23fbb,
+        type: 3}
+      propertyPath: waves.Array.data[1].enemyWeights.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3756459245402022232, guid: 331d54d02b9dbea4db316c70afd23fbb,
         type: 3}
@@ -102,6 +127,28 @@ PrefabInstance:
         type: 3}
       propertyPath: waves.Array.data[0].enemyWeights.Array.data[0].weight
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3756459245402022232, guid: 331d54d02b9dbea4db316c70afd23fbb,
+        type: 3}
+      propertyPath: waves.Array.data[1].enemyWeights.Array.data[0].prefab
+      value: 
+      objectReference: {fileID: 5980018141852729465, guid: 2dec638b8949bd940a384c9cad405dea,
+        type: 3}
+    - target: {fileID: 3756459245402022232, guid: 331d54d02b9dbea4db316c70afd23fbb,
+        type: 3}
+      propertyPath: waves.Array.data[1].enemyWeights.Array.data[0].weight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3756459245402022232, guid: 331d54d02b9dbea4db316c70afd23fbb,
+        type: 3}
+      propertyPath: waves.Array.data[1].enemyWeights.Array.data[1].prefab
+      value: 
+      objectReference: {fileID: 3690775772985590633, guid: 94f665dbf55e7ae48a3401c4dfa56924,
+        type: 3}
+    - target: {fileID: 3756459245402022232, guid: 331d54d02b9dbea4db316c70afd23fbb,
+        type: 3}
+      propertyPath: waves.Array.data[1].enemyWeights.Array.data[1].weight
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 3834856853100341220, guid: 331d54d02b9dbea4db316c70afd23fbb,
         type: 3}
@@ -197,6 +244,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -0.000030517578
+      objectReference: {fileID: 0}
+    - target: {fileID: 8178444715087797846, guid: 331d54d02b9dbea4db316c70afd23fbb,
+        type: 3}
+      propertyPath: maxHealth
+      value: 700
       objectReference: {fileID: 0}
     - target: {fileID: 8178444715990651465, guid: 331d54d02b9dbea4db316c70afd23fbb,
         type: 3}

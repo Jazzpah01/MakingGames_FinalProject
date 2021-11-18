@@ -9,11 +9,13 @@ public class HUD : MonoBehaviour
 
     [HideInInspector] PlayerController playerController;
     [HideInInspector] StrategyController strategyController;
+    GameController gameController;
 
     private void Start()
     {
         strategyController = GameController.instance.strategyController;
         playerController = GameController.instance.player.GetComponent<PlayerController>();
+        gameController = GameController.instance;
     }
 
     private void Update()
@@ -22,9 +24,13 @@ public class HUD : MonoBehaviour
         if (GameController.instance.state == GameController.GameState.Strategy)
         {
             strategyHUD.gameObject.SetActive(true);
-        } else
+            playerHUD.gameObject.SetActive(false);
+            
+        }
+        else
         {
             strategyHUD.gameObject.SetActive(false);
+            playerHUD.gameObject.SetActive(true);
         }
     }
 }
