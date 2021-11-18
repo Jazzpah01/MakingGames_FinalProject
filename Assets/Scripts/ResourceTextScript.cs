@@ -15,6 +15,6 @@ public class ResourceTextScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //TMP.SetText("Nectar Essence: " + GameManager.instance.resource);
+        TMP.SetText("Nectar Essence: " + GameManager.instance.resource);
     }
 }

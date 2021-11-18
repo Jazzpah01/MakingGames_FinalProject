@@ -1315,6 +1315,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8178444715510152749}
     m_Modifications:
+    - target: {fileID: 207612738376063399, guid: c44bdcca185bfcb4eb80c3ea306dc86c,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 207612738376063399, guid: c44bdcca185bfcb4eb80c3ea306dc86c,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 207612738376063399, guid: c44bdcca185bfcb4eb80c3ea306dc86c,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1261007443042626572, guid: c44bdcca185bfcb4eb80c3ea306dc86c,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1425,11 +1440,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: HUD
       objectReference: {fileID: 0}
+    - target: {fileID: 1261007444283488332, guid: c44bdcca185bfcb4eb80c3ea306dc86c,
+        type: 3}
+      propertyPath: offset
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8271960507015302390, guid: c44bdcca185bfcb4eb80c3ea306dc86c,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 8178444716690308236}
+    - target: {fileID: 8643571084277755237, guid: c44bdcca185bfcb4eb80c3ea306dc86c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9091920824693321213, guid: c44bdcca185bfcb4eb80c3ea306dc86c,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9091920824693321213, guid: c44bdcca185bfcb4eb80c3ea306dc86c,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c44bdcca185bfcb4eb80c3ea306dc86c, type: 3}
 --- !u!224 &6917621066840158006 stripped
