@@ -1315,16 +1315,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8178444715510152749}
     m_Modifications:
-    - target: {fileID: 1261007442865627081, guid: c44bdcca185bfcb4eb80c3ea306dc86c,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1261007442865627081, guid: c44bdcca185bfcb4eb80c3ea306dc86c,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1261007443042626572, guid: c44bdcca185bfcb4eb80c3ea306dc86c,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1434,21 +1424,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: HUD
-      objectReference: {fileID: 0}
-    - target: {fileID: 1261007444145674386, guid: c44bdcca185bfcb4eb80c3ea306dc86c,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1261007444145674386, guid: c44bdcca185bfcb4eb80c3ea306dc86c,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1261007444597868328, guid: c44bdcca185bfcb4eb80c3ea306dc86c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8271960507015302390, guid: c44bdcca185bfcb4eb80c3ea306dc86c,
         type: 3}
