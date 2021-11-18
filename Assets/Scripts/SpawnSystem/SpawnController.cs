@@ -35,7 +35,7 @@ public class SpawnController : MonoBehaviour
                 float retval = 0;
                 foreach(IEnemy a in actors)
                 {
-                    retval += enemyList.enemyList[a.typeIdentifyer].value;
+                    retval += a.enemyType.value;
                 }
                 return retval;
             }
@@ -78,16 +78,30 @@ public class SpawnController : MonoBehaviour
             IEnemy enemy = go.GetComponent<IEnemy>();
             EnemyController enemyController = go.GetComponent<EnemyController>();
             enemyController.primaryTarget = GameController.instance.player.transform;
-            enemy.typeIdentifyer = toSpawn[0].identifyer;
+            enemy.enemyType = toSpawn[0];
 
             go.transform.position = spawnPoints[Random.Range(0, spawnPoints.Length - 1)].transform.position;
             go.transform.parent = enemyParent.transform;
 
             toSpawn.RemoveAt(0);
         }
+        //else if (toSpawn.Count == 0 && CurrentCombatValue == 0)
+        //{
+        //    if (CurrentWave >= waves.Count - 1)
+        //    {
+        //        // End level
+        //    } else
+        //    {
+        //        // Next wave
+        //        CurrentWave++;
+        //        Spawn();
+        //    }
+        //}
     }
 
-    public void SpawnEnemies() {
+    public void SpawnEnemies(int waveIndex) {
+        CurrentWave = waveIndex;
+
         WaveData waveData = waves[CurrentWave];
 
         float remainingValue = waveData.totalValue;

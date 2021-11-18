@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IEnemy: IActor
 {
-    int typeIdentifyer { set; get; }
+    EnemyType enemyType { get; set; }
 }

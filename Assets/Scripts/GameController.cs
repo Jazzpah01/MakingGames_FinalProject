@@ -19,11 +19,14 @@ public class GameController : MBStateMachine
 
     public bool keyboardControl = false;
     public GameState state = GameState.Strategy;
-    private bool inWave = false;
     public StrategyController strategyController;
     public GameObject enemyParent;
     public float buildTimer = 9001;
     public GameObject gameOverScreen;
+
+    public bool InWave => spawnController.InWave;
+    private bool oldInWave = false;
+    private int nextWave = 0;
 
     private float buildTime;
     private PlayerController playerController;
@@ -76,14 +79,13 @@ public class GameController : MBStateMachine
 
     private void Update()
     {
-        if (!(enemyParent.transform.childCount > 0) && inWave == true)
+        if (!InWave && oldInWave)
         {
-            inWave = false;
             GameManager.instance.resource += strategyController.roundResource;
         }
         if (state == GameState.Combat)
         {
-            if (inWave == false)
+            if (InWave == false)
             {
                 ChangeState(GameState.Strategy);
                 GameManager.instance.inBattle = false;
@@ -96,19 +98,19 @@ public class GameController : MBStateMachine
         {
             if (Input.GetKeyDown(KeyCode.B))
             {
-                if (inWave == false)
+                if (!InWave)
                 {
                     // Start wave
                     GameManager.instance.inBattle = true;
-                    spawnController.SpawnEnemies();
-                    inWave = true;
+                    spawnController.SpawnEnemies(nextWave);
+                    nextWave++;
                 }
                 ChangeState(GameState.Combat);
             }
         }
 
-        
 
+        oldInWave = InWave;
         base.Update();
     }
 }
