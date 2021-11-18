@@ -27,6 +27,6 @@ public class PlayerHUD : MonoBehaviour
         playerHealthBar.value = playerController.Health / playerController.MaxHealth;
         baseHealthBar.value = baseS.Health / baseS.MaxHealth;
 
-        resourceCounter.text = "Nectar Essence: " + strategyController.resource.ToString();
+        //resourceCounter.text = "Nectar Essence: " + strategyController.resource.ToString();
     }
 }
