@@ -149,6 +149,8 @@ public class StrategyController : MonoBehaviour, IState
     {
         GO.GetComponent<NavMeshObstacle>().enabled = true;
         GO.GetComponent<IActor>().enabled = true;
+        //TODO hacky enable healthbar
+        GO.transform.GetChild(2).gameObject.SetActive(true);
         GameManager.instance.resource -= currentCost;
         ChangeGOAlfa(1);
         GO = null;
