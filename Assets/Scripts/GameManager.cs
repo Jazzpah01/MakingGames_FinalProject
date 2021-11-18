@@ -5,9 +5,9 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-
     public bool inBattle = false;
 
+    public int resource;
     void Awake()
     {
         if (instance != null && instance != this)

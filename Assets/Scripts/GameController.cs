@@ -79,7 +79,7 @@ public class GameController : MBStateMachine
         if (!(enemyParent.transform.childCount > 0) && inWave == true)
         {
             inWave = false;
-            strategyController.resource += strategyController.roundResource;
+            GameManager.instance.resource += strategyController.roundResource;
         }
         if (state == GameState.Combat)
         {
