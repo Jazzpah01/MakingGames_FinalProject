@@ -5,9 +5,13 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public bool inBattle = false;
+    [HideInInspector] public bool inBattle = false;
 
     public int resource;
+
+    [Header("References")]
+    public SpawnController spawnController;
+
     void Awake()
     {
         if (instance != null && instance != this)

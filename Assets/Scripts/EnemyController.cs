@@ -43,6 +43,8 @@ public class EnemyController: MonoBehaviour, IEnemy
     }
 
     public int typeIdentifyer { set; get; }
+    public float value { get; set; }
+    public EnemyType enemyType { get; set; }
 
     void Start()
     {
