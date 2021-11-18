@@ -124,6 +124,7 @@ public class StrategyController : MonoBehaviour, IState
     /// <param name="type">Type of building.</param>
     public void SelectPrefab(BuildingType type)
     {
+        Debug.Log("We are actually spawning");
         if (resource < type.cost)
         {
             // Code for when you don't have enough resources

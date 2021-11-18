@@ -96,19 +96,23 @@ public class GameController : MBStateMachine
         {
             if (Input.GetKeyDown(KeyCode.B))
             {
-                if (inWave == false)
-                {
-                    // Start wave
-                    GameManager.instance.inBattle = true;
-                    spawnController.SpawnEnemies();
-                    inWave = true;
-                }
-                ChangeState(GameState.Combat);
+                GoToBattle();
             }
         }
 
         
 
         base.Update();
+    }
+    public void GoToBattle()
+    {
+        if (inWave == false)
+        {
+            // Start wave
+            GameManager.instance.inBattle = true;
+            spawnController.SpawnEnemies();
+            inWave = true;
+        }
+        ChangeState(GameState.Combat);
     }
 }
