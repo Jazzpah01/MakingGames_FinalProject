@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ProjectorMaterial
+  m_Name: ProjectorPlayer
   m_Shader: {fileID: 4800000, guid: ee7f8a5cfe4359c4cb76cd823b1ba6fc, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
