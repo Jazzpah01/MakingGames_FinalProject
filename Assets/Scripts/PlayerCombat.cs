@@ -14,8 +14,6 @@ struct Ability
 }
 public class PlayerCombat : MonoBehaviour
 {
-    // These attack moves are hard-coded and should be refactored.
-    [Header("Combat Stuff that should have it's own class:")]
     public float attackDamage;
     public float attackCooldown;
     public float attackRange;

@@ -16,6 +16,8 @@ public class SpawnController : MonoBehaviour
     [Header("References")]
     public GameObject enemyParent;
 
+    private ProjectorController projectorController;
+
     public int CurrentWave
     {
         get;
@@ -58,6 +60,7 @@ public class SpawnController : MonoBehaviour
     {
         CurrentWave = 0;
         toSpawn = new List<EnemyType>();
+        projectorController = GetComponentInChildren<ProjectorController>();
     }
 
     private void Update()
