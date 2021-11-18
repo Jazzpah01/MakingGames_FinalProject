@@ -816,7 +816,7 @@ MonoBehaviour:
   distanceToClosestEnemy: 0
   closestEnemy: {fileID: 0}
   detectionCollision: {fileID: 2834692135045452658}
-  shootCooldown: 0
+  shootCooldown: 0.5
   damage: 25
   maxHealth: 100
 --- !u!208 &8443509432160686943

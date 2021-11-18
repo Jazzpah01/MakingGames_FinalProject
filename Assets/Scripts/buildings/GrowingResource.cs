@@ -8,18 +8,18 @@ public class GrowingResource : MonoBehaviour, IActor
     public float health;
     public float growthTime = 0.5f;
     public float harvestTimer = 0.5f;
+    public int maxResourcesGained = 5;
     public HealthBar healthbar;
-
-    private float timer;
-    private int growthStage;
-    private int maxResourcesGained = 5;
-    private int currentResourcesGained;
     private Vector3 growth = new Vector3(0.1f,0.1f,0.1f);
     public ActorType type => ActorType.Obstacle;
     public float Speed { get => Speed; set => Speed = 0; }
     public float MaxHealth => 100;
     public float Health { get => health; set => health = value; }
     
+    private float timer;
+    private int growthStage;
+    private int currentResourcesGained;
+    private GameObject model;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +27,14 @@ public class GrowingResource : MonoBehaviour, IActor
         health = MaxHealth;
         healthbar.textBox.text = buildingName;
         healthbar.SetHealthImageColour(Color.green);
+        foreach(Transform child in transform)
+        {
+            if(child.name == "Model")
+            {
+                model = child.gameObject;
+            }
+        }
+        
     }
 
     // Update is called once per frame
@@ -46,7 +54,7 @@ public class GrowingResource : MonoBehaviour, IActor
         if(timer > growthTime && growthStage < 10)
         {
             growthStage++;
-            this.gameObject.transform.GetChild(1).transform.localScale += growth;
+            model.transform.localScale += growth;
             timer = 0;
         }
     }
