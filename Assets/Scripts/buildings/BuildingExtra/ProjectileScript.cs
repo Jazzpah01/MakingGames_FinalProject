@@ -9,6 +9,8 @@ public class ProjectileScript : MonoBehaviour
     public CollisionObserver damagerCollision;
     private float damage;
 
+    public float speed = 10;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,13 +19,13 @@ public class ProjectileScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if(Target.gameObject == null)
         {
             Destroy(this.gameObject);
         } else {
-            transform.position = Vector3.MoveTowards(transform.position, Target.transform.position, 0.05f);
+            transform.position = Vector3.MoveTowards(transform.position, Target.transform.position, speed * Time.fixedDeltaTime);
         }
     }
 

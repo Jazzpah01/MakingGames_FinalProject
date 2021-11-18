@@ -33,10 +33,13 @@ public class StaticTower : MonoBehaviour, IActor
     private float speed = 3.0f;
     public float Speed { get => speed; set { speed = value;}}
     public ActorType type => ActorType.Obstacle;
+    private float timer;
 
     // Start is called before the first frame update
     void Start()
     {
+        timer = 0;
+
         enemies = new List<GameObject>();
         
         detectionCollision.Subscribe(Detection_Enter, CollisionObserver.CollisionType.Enter);
@@ -51,12 +54,12 @@ public class StaticTower : MonoBehaviour, IActor
     // Update is called once per frame
     void Update()
     {
-        shootCooldown -= Time.deltaTime;
+        timer += Time.deltaTime;
     }
 
     void shoot()
     {
-        shootCooldown = 1.0f;
+        timer = 0.0f;
         GameObject newProjectile = Instantiate(projectile) as GameObject;
         newProjectile.transform.position = peak.transform.position;
         newProjectile.GetComponent<ProjectileScript>().setDamage(damage);
@@ -84,7 +87,7 @@ public class StaticTower : MonoBehaviour, IActor
     {
         checkNearByEnemeis();
 
-        if(shootCooldown < 0 && distanceToClosestEnemy > 0 && closestEnemy != null)
+        if(timer > shootCooldown && distanceToClosestEnemy > 0 && closestEnemy != null)
         {
             shoot();
         }
@@ -127,6 +130,7 @@ public class StaticTower : MonoBehaviour, IActor
                 if(distanceToClosestEnemy == -1)
                 {
                     distanceToClosestEnemy = distance;
+                    closestEnemy = enemy;
                 } else {
                     if(distanceToClosestEnemy >= distance)
                     {

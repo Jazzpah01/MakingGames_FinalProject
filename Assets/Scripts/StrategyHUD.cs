@@ -15,7 +15,7 @@ public class StrategyHUD : MonoBehaviour
 
     public GameObject scrollPanel;
 
-    public int offset = -10;
+    public float offset = -10;
 
     private void Start()
     {
@@ -40,8 +40,8 @@ public class StrategyHUD : MonoBehaviour
             RectTransform oldRectT = initialItem.GetComponent<RectTransform>();
             rectT.localScale = oldRectT.localScale;
             rectT.position = oldRectT.position - 
-                (Vector3)(rectT.rect.height * i * new Vector2(0,1) + 
-                offset * i * new Vector2(0,1));
+                (Vector3)(rectT.rect.height * i * new Vector2(0,1) +
+                (int)(rectT.rect.height * offset) * i * new Vector2(0,1));
 
             // Change values
             newItem.GetComponentsInChildren<TextMeshProUGUI>()[0].text = "Cost: " + buildings[i].cost.ToString();
