@@ -45,7 +45,6 @@ public class GrowingResource : MonoBehaviour, IActor
     {
         if(timer > growthTime && growthStage < 10)
         {
-            Debug.Log("It grew");
             growthStage++;
             this.gameObject.transform.GetChild(1).transform.localScale += growth;
             timer = 0;
