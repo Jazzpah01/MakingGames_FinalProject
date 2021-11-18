@@ -101,6 +101,7 @@ public class GameController : MBStateMachine
                 if (!InWave)
                 {
                     // Start wave
+                    GoToBattle();
                     GameManager.instance.inBattle = true;
                     spawnController.SpawnEnemies(nextWave);
                     nextWave++;
@@ -112,5 +113,16 @@ public class GameController : MBStateMachine
 
         oldInWave = InWave;
         base.Update();
+    }
+    public void GoToBattle()
+    {
+        if (inWave == false)
+        {
+            // Start wave
+            GameManager.instance.inBattle = true;
+            spawnController.SpawnEnemies();
+            inWave = true;
+        }
+        ChangeState(GameState.Combat);
     }
 }

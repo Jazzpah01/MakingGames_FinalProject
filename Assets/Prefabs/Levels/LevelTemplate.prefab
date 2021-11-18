@@ -1123,6 +1123,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d50e3f4c29644b449dcbd6a22c66e9e, type: 3}
+--- !u!114 &8178444716690308236 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6447169285356651048, guid: 2d50e3f4c29644b449dcbd6a22c66e9e,
+    type: 3}
+  m_PrefabInstance: {fileID: 2884377908816707236}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ef28325d5e73b84d8b27b66ff328f87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &8178444716690308237 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6447169285356651049, guid: 2d50e3f4c29644b449dcbd6a22c66e9e,
@@ -1303,21 +1315,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8178444715510152749}
     m_Modifications:
-    - target: {fileID: 1261007442768369749, guid: c44bdcca185bfcb4eb80c3ea306dc86c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1261007442794440543, guid: c44bdcca185bfcb4eb80c3ea306dc86c,
-        type: 3}
-      propertyPath: m_Name
-      value: Border
-      objectReference: {fileID: 0}
-    - target: {fileID: 1261007442794440543, guid: c44bdcca185bfcb4eb80c3ea306dc86c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1261007442865627081, guid: c44bdcca185bfcb4eb80c3ea306dc86c,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -1438,32 +1435,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: HUD
       objectReference: {fileID: 0}
-    - target: {fileID: 1261007443472754161, guid: c44bdcca185bfcb4eb80c3ea306dc86c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1261007443472754163, guid: c44bdcca185bfcb4eb80c3ea306dc86c,
-        type: 3}
-      propertyPath: m_Type
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1261007443472754163, guid: c44bdcca185bfcb4eb80c3ea306dc86c,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 3053ca0130dd02b4183a0d4fedcfaea3,
-        type: 3}
-    - target: {fileID: 1261007443611718271, guid: c44bdcca185bfcb4eb80c3ea306dc86c,
-        type: 3}
-      propertyPath: m_Name
-      value: Border
-      objectReference: {fileID: 0}
-    - target: {fileID: 1261007443611718271, guid: c44bdcca185bfcb4eb80c3ea306dc86c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1261007444145674386, guid: c44bdcca185bfcb4eb80c3ea306dc86c,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -1474,6 +1445,16 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1261007444597868328, guid: c44bdcca185bfcb4eb80c3ea306dc86c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8271960507015302390, guid: c44bdcca185bfcb4eb80c3ea306dc86c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8178444716690308236}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c44bdcca185bfcb4eb80c3ea306dc86c, type: 3}
 --- !u!224 &6917621066840158006 stripped
@@ -1716,6 +1697,11 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 2723149444006585307}
+    - target: {fileID: 1600892162125248001, guid: dc5c8e213e831e348b875add942c96f9,
+        type: 3}
+      propertyPath: startZoom
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 1600892162125248005, guid: dc5c8e213e831e348b875add942c96f9,
         type: 3}
       propertyPath: m_Name
