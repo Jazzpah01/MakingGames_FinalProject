@@ -100,5 +100,5 @@ MonoBehaviour:
   offset: {x: -1, y: -1, z: -1}
   zoomSpeed: 20
   minZoom: 10
-  maxZoom: 50
+  maxZoom: 100
   startZoom: 50
