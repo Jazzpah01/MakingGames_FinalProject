@@ -14,6 +14,7 @@ public class StrategyController : MonoBehaviour, IState
     public Transform buildablesParent;
     public float startRotation = 0;
     public float rotationAngle = 45;
+    public StrategyHUD strategyHUD;
 
     [HideInInspector]
     private GameObject GO = null;
@@ -152,6 +153,7 @@ public class StrategyController : MonoBehaviour, IState
         //TODO hacky enable healthbar
         GO.transform.GetChild(2).gameObject.SetActive(true);
         GameManager.instance.resource -= currentCost;
+        strategyHUD.UpdateAlfa();
         ChangeGOAlfa(1);
         GO = null;
     }

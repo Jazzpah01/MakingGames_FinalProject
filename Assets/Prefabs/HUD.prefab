@@ -794,7 +794,7 @@ MonoBehaviour:
   buildings: {fileID: 11400000, guid: 1dd769dc9010f6f4790795d5fc1a5459, type: 2}
   itemScrollView: {fileID: 0}
   scrollPanel: {fileID: 9018589617286599497}
-  offset: -100
+  offset: 0
 --- !u!222 &1261007444283488371
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2729,17 +2729,27 @@ PrefabInstance:
     - target: {fileID: 5983312711003158567, guid: 7749de6b6d4f75f45bcac18fea06e86b,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6543766538217388223, guid: 7749de6b6d4f75f45bcac18fea06e86b,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6543766538217388223, guid: 7749de6b6d4f75f45bcac18fea06e86b,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6970258240692436938, guid: 7749de6b6d4f75f45bcac18fea06e86b,
+        type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6970258240692436939, guid: 7749de6b6d4f75f45bcac18fea06e86b,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6970258241573351836, guid: 7749de6b6d4f75f45bcac18fea06e86b,
         type: 3}
