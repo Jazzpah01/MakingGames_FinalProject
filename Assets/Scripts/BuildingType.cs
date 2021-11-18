@@ -8,4 +8,6 @@ public class BuildingType
     public float cost;
     public GameObject prefab;
     public LayerMask containmentLayermask;
+    public string description = "";
+    public Sprite icon;
 }

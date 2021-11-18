@@ -7,6 +7,7 @@ public class BuildingDescription : MonoBehaviour
 {
     private string newDescriptionTitle;
     private TextMeshProUGUI title;
+    public TextMeshProUGUI description;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,5 +28,10 @@ public class BuildingDescription : MonoBehaviour
     public void UpdateTitle(TextMeshProUGUI descriptionTitle)
     {
         descriptionTitle.text = newDescriptionTitle;
+    }
+
+    public void UpdateItemDescription(BuildingType type)
+    {
+        description.text = type.description;
     }
 }

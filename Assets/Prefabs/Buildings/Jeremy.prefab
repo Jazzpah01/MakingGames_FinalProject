@@ -528,7 +528,7 @@ MonoBehaviour:
   damage: 5
   detectionCollision: {fileID: 641325662270382576}
   damagerCollision: {fileID: 641325663243885521}
-  maxHealth: 100
+  maxHealth: 300
   healthbar: {fileID: 1948593179552404295}
 --- !u!208 &641325662967931259
 NavMeshObstacle:
