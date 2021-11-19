@@ -279,6 +279,11 @@ PrefabInstance:
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1454863578449527875, guid: 13bb7fe5814de22468f1668fcbcd9aef,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.034000397
+      objectReference: {fileID: 0}
     - target: {fileID: 1790078768816334152, guid: 13bb7fe5814de22468f1668fcbcd9aef,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -614,7 +619,7 @@ PrefabInstance:
     - target: {fileID: 4256920089544053218, guid: 13bb7fe5814de22468f1668fcbcd9aef,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 863.4849
+      value: 863.4848
       objectReference: {fileID: 0}
     - target: {fileID: 6034423970739303463, guid: 13bb7fe5814de22468f1668fcbcd9aef,
         type: 3}
@@ -719,7 +724,7 @@ PrefabInstance:
     - target: {fileID: 8891149032921158130, guid: 13bb7fe5814de22468f1668fcbcd9aef,
         type: 3}
       propertyPath: offset
-      value: 0
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8891149034226476616, guid: 13bb7fe5814de22468f1668fcbcd9aef,
         type: 3}

@@ -5,7 +5,8 @@ using UnityEngine;
 [System.Serializable]
 public class BuildingType
 {
-    public float cost;
+    public string name = "";
+    public float cost = 0;
     public GameObject prefab;
     public LayerMask containmentLayermask;
     public string description = "";

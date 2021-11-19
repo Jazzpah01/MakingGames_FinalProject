@@ -7,19 +7,18 @@ using TMPro;
 public class StrategyHUD : MonoBehaviour
 {
     [HideInInspector] public StrategyController strategyController;
-    public GameObject initialItem;
 
     public BuildingList buildings;
-
-    public GameObject itemScrollView;
-
-    public GameObject scrollPanel;
-
     public float offset = -10;
 
     private List<GameObject> itemList = new List<GameObject>();
 
     GameManager gameManager;
+
+    [Header("References")]
+    public GameObject initialItem;
+    public GameObject scrollPanel;
+
 
     private void Start()
     {
@@ -27,8 +26,10 @@ public class StrategyHUD : MonoBehaviour
         strategyController = GameController.instance.strategyController;
 
         // Setup menu for selecting buildings
-        initialItem.GetComponentsInChildren<TextMeshProUGUI>()[0].text = "Cost: " + buildings[0].cost.ToString();
-        initialItem.GetComponentsInChildren<TextMeshProUGUI>()[1].text = buildings[0].prefab.name;
+        print(initialItem);
+        print(buildings[0]);
+
+        SetElementValues(initialItem, buildings[0]);
 
         initialItem.GetComponentInChildren<Button>().onClick.AddListener(delegate { SelectPrefab(0); });
         itemList.Add(initialItem);
@@ -41,23 +42,8 @@ public class StrategyHUD : MonoBehaviour
             newItem.transform.parent = initialItem.transform.parent;
             items++;
 
-            // Change prosition
-            RectTransform rectT = newItem.GetComponent<RectTransform>();
-            RectTransform oldRectT = initialItem.GetComponent<RectTransform>();
-            rectT.localScale = oldRectT.localScale;
-//<<<<<<< HEAD
-            rectT.position = oldRectT.position - 
-                (Vector3)(rectT.rect.height * i * new Vector2(0,1) +
-                (int)(rectT.rect.height * offset) * i * new Vector2(0,1));
-//=======
-//            rectT.position = oldRectT.position -
-//                (Vector3)(rectT.rect.height * i * new Vector2(0, 1) +
-//                offset * i * new Vector2(0, 1));
-//>>>>>>> 944b7e7847ccee2d8cf8747b73e79f1a05c7fe25
-
-            // Change values
-            newItem.GetComponentsInChildren<TextMeshProUGUI>()[0].text = "Cost: " + buildings[i].cost.ToString();
-            newItem.GetComponentsInChildren<TextMeshProUGUI>()[1].text = buildings[i].prefab.name;
+            SetElementPosition(newItem, i);
+            SetElementValues(newItem, buildings[i]);
 
             int index = i;
 
@@ -66,9 +52,6 @@ public class StrategyHUD : MonoBehaviour
 
         RectTransform panelRect = scrollPanel.GetComponent<RectTransform>();
         panelRect.position = panelRect.position * new Vector2(1, 0);
-        //RectTransform itemRect = initialItem.GetComponent<RectTransform>();
-        //RectTransform panelRect = scrollPanel.GetComponent<RectTransform>();
-        //panelRect.localScale = new Vector3(panelRect.localScale.x, itemRect.localScale.y * items + offset * items, panelRect.localScale.z);
     }
     public void UpdateAlfa()
     {
@@ -99,6 +82,24 @@ public class StrategyHUD : MonoBehaviour
             i++;
         }
     }
+
+    private void SetElementPosition(GameObject item, int indexOfItem)
+    {
+        RectTransform rectT = item.GetComponent<RectTransform>();
+        RectTransform oldRectT = initialItem.GetComponent<RectTransform>();
+        rectT.localScale = oldRectT.localScale;
+        rectT.position = oldRectT.position -
+            rectT.rect.height * rectT.lossyScale.y * indexOfItem * new Vector3(0, 1, 0) -
+            rectT.rect.height * rectT.lossyScale.y * indexOfItem * offset * new Vector3(0, 1, 0);
+    }
+
+    private void SetElementValues(GameObject item, BuildingType type)
+    {
+        UIBuildingItem UIItem = item.GetComponent<UIBuildingItem>();
+
+        UIItem.Type = type;
+    }
+
     /// <summary>
     /// Will set strategy controller's prefab
     /// </summary>
