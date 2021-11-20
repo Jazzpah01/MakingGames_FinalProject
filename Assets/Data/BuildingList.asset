@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcbd5e9c16d021d41ac1a62f67e18d59, type: 3}
+  m_Name: BuildingList
+  m_EditorClassIdentifier: 
+  buildings:
+  - name: Wall
+    cost: 1
+    prefab: {fileID: 2782804534701062994, guid: 03892feb8bb90f248bbc0aed8527ac48,
+      type: 3}
+    containmentLayermask:
+      serializedVersion: 2
+      m_Bits: 64
+    description: Good for defence yo.
+    icon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  - name: Jeremy
+    cost: 2
+    prefab: {fileID: 641325662967931237, guid: 8f13fa425de3cf9478dd05d29c5ba94c, type: 3}
+    containmentLayermask:
+      serializedVersion: 2
+      m_Bits: 64
+    description: Jeremy is happy boy.
+    icon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  - name: Mr. Stanky Legs
+    cost: 2
+    prefab: {fileID: 5355251333915570780, guid: 45757f1371f45fb4b9970af133564347,
+      type: 3}
+    containmentLayermask:
+      serializedVersion: 2
+      m_Bits: 64
+    description: Slow them down with stanky legs.
+    icon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  - name: Static Tower
+    cost: 3
+    prefab: {fileID: 9202268415749759745, guid: be7dd906ca4f9c347aa3479e652d84e6,
+      type: 3}
+    containmentLayermask:
+      serializedVersion: 2
+      m_Bits: 64
+    description: Two go brrr
+    icon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  - name: Plant Resource
+    cost: 3
+    prefab: {fileID: 8063388511463166607, guid: df1ab6f0658de7a458a76a80eef4f5f0,
+      type: 3}
+    containmentLayermask:
+      serializedVersion: 2
+      m_Bits: 128
+    description: Place at fertilized ground to gain resources.
+    icon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}

@@ -3,14 +3,13 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyController: MonoBehaviour, IActor
+public class EnemyController: MonoBehaviour, IEnemy
 {
-    public float speed = 1;
     public Transform primaryTarget;
-
+    public HealthBar healthBar;
     public CollisionObserver detectionCollision;
     public CollisionObserver damagerCollision;
-    public GameObject attackEffect;
+    public GameObject deathEffect;
 
     private Transform secondaryTarget;
     private NavMeshAgent agent;
@@ -18,23 +17,34 @@ public class EnemyController: MonoBehaviour, IActor
 
     private float time1 = 0, time2 = 0;
 
-    private float maxHealth = 100, health = 100;
+    public float maxHealth;
+    private float health = 100;
 
     public ActorType type => ActorType.Enemy;
 
+    public float Speed { get => agent.speed;
+        set {
+            agent.speed = value;
+        }}
+
+    public float MaxHealth => maxHealth;
     public float Health { get => health; 
         set {
             health = value;
             //TODO: implement hiteffects
-                //PlayHitEffects();
+            //PlayHitEffects();
+            healthBar.SetHealthbar(health/maxHealth);
             if (health <= 0)
             {
                 Destroy(this.gameObject);
-                Instantiate(attackEffect).transform.position = transform.position;
+                Instantiate(deathEffect).transform.position = transform.position;
             }
         } 
     }
 
+    public int typeIdentifyer { set; get; }
+    public float value { get; set; }
+    public EnemyType enemyType { get; set; }
 
     void Start()
     {
@@ -42,6 +52,7 @@ public class EnemyController: MonoBehaviour, IActor
         detectionCollision.Subscribe(Detection_Enter, CollisionObserver.CollisionType.Enter);
         detectionCollision.Subscribe(Detection_Exit, CollisionObserver.CollisionType.Exit);
         material = GetComponent<Material>();
+        healthBar.SetHealthImageColour(Color.red);
     }
 
     private void Update()
@@ -56,7 +67,7 @@ public class EnemyController: MonoBehaviour, IActor
 
             IActor target = secondaryTarget.GetComponent<IActor>();
 
-            if (target.type == ActorType.Obstacle && damagerCollision.Stay.Contains(col) && time1 >= time2)
+            if ((target.type == ActorType.Obstacle || target.type == ActorType.Player) && damagerCollision.Stay.Contains(col) && time1 >= time2)
             {
                 target.Health -= 10;
                 time2 = time1 + 1;
@@ -83,7 +94,6 @@ public class EnemyController: MonoBehaviour, IActor
     public void FollowTarget(Transform target)
     {
         agent.SetDestination(target.position);
-        agent.speed = speed;
         agent.stoppingDistance = 0.8f;
         agent.updateRotation = false;
         agent.isStopped = false;
