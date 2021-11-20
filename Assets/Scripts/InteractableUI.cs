@@ -16,6 +16,15 @@ public class InteractableUI : MonoBehaviour, IPointerClickHandler, IPointerEnter
         MiddleMouseButton = 4
     }
 
+    [Flags]
+    public enum InteractableUIOptions
+    {
+        None = 0,
+        ReplaceImageWithHighlight = 1,
+        ReplaceImageWithToggle = 2,
+        DisableHighlightOnToggle = 4
+    }
+
     // Events that other classes can subscribe to
     public delegate void MouseEvent(GameObject interactedUI, PointerEventData eventData);
     public MouseEvent OnEnter;
@@ -23,12 +32,13 @@ public class InteractableUI : MonoBehaviour, IPointerClickHandler, IPointerEnter
     public MouseEvent OnClicked;
 
     [Header("Options")]
-    [Tooltip("If enabled, then the highligh image will replace the default image.")]
-    public bool replaceWithHighlight;
-    [Tooltip("If enabled, then the toggle image will replace the default image and highlight image.")]
-    public bool replaceWithToggledImage;
+    //[Tooltip("If enabled, then the highligh image will replace the default image.")]
+    //public bool replaceWithHighlight;
+    //[Tooltip("If enabled, then the toggle image will replace the default image and highlight image.")]
+    //public bool replaceWithToggledImage;
+    public InteractableUIOptions options = InteractableUIOptions.None;
     [Tooltip("If this is a button, specify the mouse buttons to use.")]
-    public MouseClickEvent mouseButton;
+    public MouseClickEvent mouseButton = MouseClickEvent.None;
 
     [Header("References")]
     [Tooltip("The main/parent GameObject of a UI element.")]
@@ -41,7 +51,12 @@ public class InteractableUI : MonoBehaviour, IPointerClickHandler, IPointerEnter
     private bool inside = false;
 
     // Use this for player controllers.
-    public static bool UIInteraction = false;
+    public static bool OnUI { 
+        get {
+            return (onUICount > 0);
+        } 
+    }
+    private static int onUICount = 0;
 
     private bool interactable = true;
     private bool toggled = false;
@@ -75,9 +90,25 @@ public class InteractableUI : MonoBehaviour, IPointerClickHandler, IPointerEnter
             if (toggledImage == null)
                 throw new Exception("There is no toggled image to toggle.");
 
-            // TODO: finish this
+            toggledImage.gameObject.SetActive(value);
+
+            if (value)
+            {
+                if (options.HasFlag(InteractableUIOptions.DisableHighlightOnToggle) && Highlighted)
+                {
+                    highlightImage.gameObject.SetActive(false);
+                }
+            } else
+            {
+                if (inside && !Highlighted)
+                {
+                    highlightImage.gameObject.SetActive(true);
+                }
+            }
         }
     }
+
+    private bool Highlighted => (highlightImage != null && highlightImage.gameObject.activeSelf);
 
     private void Start()
     {
@@ -99,6 +130,9 @@ public class InteractableUI : MonoBehaviour, IPointerClickHandler, IPointerEnter
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if (!inside)
+            onUICount++;
+
         inside = true;
         if (Interactable)
         {
@@ -111,6 +145,9 @@ public class InteractableUI : MonoBehaviour, IPointerClickHandler, IPointerEnter
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        if (inside)
+            onUICount--;
+
         inside = false;
         if (Interactable)
         {
@@ -129,7 +166,7 @@ public class InteractableUI : MonoBehaviour, IPointerClickHandler, IPointerEnter
 
         highlightImage.gameObject.SetActive(highlight);
 
-        if (replaceWithHighlight)
+        if (options.HasFlag(InteractableUIOptions.ReplaceImageWithHighlight))
             image.gameObject.SetActive(!highlight);
     }
 }

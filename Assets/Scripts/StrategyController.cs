@@ -17,7 +17,7 @@ public class StrategyController : MonoBehaviour, IState
     public StrategyHUD strategyHUD;
 
     [HideInInspector]
-    private GameObject GO = null;
+    public GameObject GO = null;
     private float rotation;
     private bool isBuilding = false;
     private GameObject prefab;

@@ -12,12 +12,14 @@ public class StrategyHUD : MonoBehaviour
     public float offset = -10;
 
     private List<GameObject> itemList = new List<GameObject>();
+    private InteractableUI toggled;
 
     GameManager gameManager;
 
     [Header("References")]
     public GameObject initialItem;
     public GameObject scrollPanel;
+    public BuildingDescription description;
 
 
     private void Start()
@@ -31,7 +33,10 @@ public class StrategyHUD : MonoBehaviour
 
         SetElementValues(initialItem, buildings[0]);
 
-        initialItem.GetComponentInChildren<Button>().onClick.AddListener(delegate { SelectPrefab(0); });
+        initialItem.GetComponentInChildren<InteractableUI>().OnClicked += delegate { ButtonPressed(0); };
+        initialItem.GetComponentInChildren<InteractableUI>().OnEnter += delegate { HighlightButton(0); };
+        initialItem.GetComponentInChildren<InteractableUI>().OnExit += delegate { UnHighlightButton(); };
+
         itemList.Add(initialItem);
         int items = 1;
 
@@ -47,7 +52,9 @@ public class StrategyHUD : MonoBehaviour
 
             int index = i;
 
-            newItem.GetComponentInChildren<Button>().onClick.AddListener(delegate { SelectPrefab(index); });
+            newItem.GetComponentInChildren<InteractableUI>().OnClicked += delegate { ButtonPressed(index); };
+            newItem.GetComponentInChildren<InteractableUI>().OnEnter += delegate { HighlightButton(index); };
+            newItem.GetComponentInChildren<InteractableUI>().OnExit += delegate { UnHighlightButton(); };
         }
 
         RectTransform panelRect = scrollPanel.GetComponent<RectTransform>();
@@ -55,32 +62,46 @@ public class StrategyHUD : MonoBehaviour
     }
     public void UpdateAlfa()
     {
-        float alfa = 1;
-        int i = 0;
-        foreach (GameObject GO in itemList)
-        {
-            Image[] images = new Image[0];
-            images = GO.GetComponentsInChildren<Image>();
+        //float alfa = 1;
+        //int i = 0;
+        //foreach (GameObject GO in itemList)
+        //{
+        //    Image[] images = new Image[0];
+        //    images = GO.GetComponentsInChildren<Image>();
+        //
+        //    if (gameManager.resource < buildings[i].cost)
+        //    {
+        //        alfa = 0.2f;
+        //    }
+        //    else
+        //    {
+        //        alfa = 1;
+        //    }
+        //    foreach (Image image in images)
+        //    {
+        //        if (!image.name.Equals("Button"))
+        //        {
+        //            Color tempColor = image.color;
+        //            tempColor.a = alfa;
+        //            image.color = tempColor;
+        //        }
+        //    }
+        //    i++;
+        //}
+    }
 
-            if (gameManager.resource < buildings[i].cost)
-            {
-                alfa = 0.2f;
-            }
-            else
-            {
-                alfa = 1;
-            }
-            foreach (Image image in images)
-            {
-                if (!image.name.Equals("Button"))
-                {
-                    Color tempColor = image.color;
-                    tempColor.a = alfa;
-                    image.color = tempColor;
-                }
-            }
-            i++;
+    private void Update()
+    {
+        if (GameController.instance.strategyController.GO == null && toggled != null)
+        {
+            toggled.Toggled = false;
+            toggled = null;
         }
+
+        //foreach (GameObject go in itemList)
+        //{
+        //
+        //}
     }
 
     private void SetElementPosition(GameObject item, int indexOfItem)
@@ -104,8 +125,22 @@ public class StrategyHUD : MonoBehaviour
     /// Will set strategy controller's prefab
     /// </summary>
     /// <param name="index"></param>
-    public void SelectPrefab(int index)
+    public void ButtonPressed(int index)
     {
         strategyController.SelectPrefab(buildings[index]);
+
+        toggled = itemList[index].GetComponentInChildren<InteractableUI>();
+        toggled.Toggled = true;
+    }
+
+    public void HighlightButton(int index)
+    {
+        description.UpdateItemDescription(buildings[index]);
+        description.gameObject.SetActive(true);
+    }
+
+    public void UnHighlightButton()
+    {
+        description.gameObject.SetActive(false);
     }
 }
