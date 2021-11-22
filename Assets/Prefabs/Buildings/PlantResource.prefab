@@ -600,6 +600,7 @@ MonoBehaviour:
   harvestTimer: 0.5
   maxResourcesGained: 5
   healthbar: {fileID: 8520103144020020281}
+  additionalWavesBeforeHarvest: 1
 --- !u!208 &-3724557957165586548
 NavMeshObstacle:
   m_ObjectHideFlags: 0

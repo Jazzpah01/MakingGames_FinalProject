@@ -128,4 +128,9 @@ public class GameController : MBStateMachine
         }
         ChangeState(GameState.Combat);
     }
+
+    public int getNextWave()
+    {
+        return nextWave;
+    }
 }

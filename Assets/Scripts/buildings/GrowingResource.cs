@@ -15,10 +15,13 @@ public class GrowingResource : MonoBehaviour, IActor
     public float Speed { get => Speed; set => Speed = 0; }
     public float MaxHealth => 100;
     public float Health { get => health; set => health = value; }
+    public int additionalWavesBeforeHarvest;
     
     private float timer;
     private int growthStage;
     private int currentResourcesGained;
+    private int plantedWave;
+    private GameManager GM;
     private GameObject model;
 
     // Start is called before the first frame update
@@ -27,6 +30,8 @@ public class GrowingResource : MonoBehaviour, IActor
         health = MaxHealth;
         healthbar.textBox.text = buildingName;
         healthbar.SetHealthImageColour(Color.green);
+        GM = GameManager.instance;
+        plantedWave = GM.gameController.getNextWave();
         foreach(Transform child in transform)
         {
             if(child.name == "Model")
@@ -40,15 +45,29 @@ public class GrowingResource : MonoBehaviour, IActor
     // Update is called once per frame
     void Update()
     {
+        checkHealth();
+
+        if(GameManager.instance.inBattle == false && plantedWave + additionalWavesBeforeHarvest < GM.gameController.getNextWave())
+        {
+            harvest();
+        }
+        /*
         if(GameManager.instance.inBattle == true)
         {
             timer += Time.deltaTime;
             checkHealth();
             checkGrowth();
             checkFullyGrown();
-        }
+        }*/
     }
 
+    void harvest()
+    {
+            calculateResourcesGained();
+            GameManager.instance.resource += currentResourcesGained;
+            Destroy(this.gameObject);
+    }
+/*
     void checkGrowth()
     {
         if(timer > growthTime && growthStage < 10)
@@ -67,12 +86,7 @@ public class GrowingResource : MonoBehaviour, IActor
             GameManager.instance.resource += currentResourcesGained;
             Destroy(this.gameObject);
         }
-    }
-
-    void harvestManual()
-    {
-        if(growthStage == 1);
-    }
+    }*/
 
     void calculateResourcesGained()
     {
