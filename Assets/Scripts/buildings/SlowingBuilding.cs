@@ -32,12 +32,14 @@ public class SlowingBuilding : MonoBehaviour, IActor
             }
         }
     public float Speed { get => speed; set { speed = value;}}
+    private GameManager gm;
 
     void Start()
     {
         yRotation = transform.rotation.y;
         healthbar.textBox.text = buildingName;
         healthbar.SetHealthImageColour(Color.green);
+        gm = GameManager.instance;
     }
 
     void Update()
@@ -45,7 +47,7 @@ public class SlowingBuilding : MonoBehaviour, IActor
         gasPosition = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
 
         gastimer -= Time.deltaTime;
-        if (walktimer > 0)
+        if (walktimer > 0 && gm.inBattle == true)
         {
             walktimer -= Time.deltaTime;
             transform.Translate(Vector3.forward * (Time.deltaTime * speed));
@@ -53,7 +55,7 @@ public class SlowingBuilding : MonoBehaviour, IActor
             TurnAround();
         }
 
-        if(gastimer < 0)
+        if(gastimer < 0 && gm.inBattle == true)
         {
             Instantiate(slowGas, gasPosition, Quaternion.identity);
             gastimer = 0.2f;
