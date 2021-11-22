@@ -5,6 +5,8 @@ using UnityEngine;
 public class ProjectorController : MonoBehaviour
 {
     public float size;
+    public bool lockPosition;
+
     private LayerMask ignoreLayer;
     private Projector proj;
     private Material mat;
@@ -16,10 +18,4 @@ public class ProjectorController : MonoBehaviour
         size = proj.orthographicSize;
         ignoreLayer = proj.ignoreLayers;
     }
-
-    private void Update()
-    {
-        
-    }
-
 }
