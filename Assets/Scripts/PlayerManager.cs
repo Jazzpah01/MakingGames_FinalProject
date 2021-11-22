@@ -8,7 +8,8 @@ public class PlayerManager : MonoBehaviour
     [HideInInspector]public bool keyboardControl = true;
     public bool buildWhileCombat = false;
     public GameObject player;
-    public Camera camera;
+    public Camera cam;
+    public PlayerController playerController;
 
     void Awake()
     {

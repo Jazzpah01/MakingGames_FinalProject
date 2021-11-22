@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5532250810814421687}
   - component: {fileID: 5532250810814421686}
   m_Layer: 0
-  m_Name: StrategyController
+  m_Name: BuildingController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,4 +51,4 @@ MonoBehaviour:
   buildablesParent: {fileID: 0}
   startRotation: 0
   rotationAngle: 45
-  strategyHUD: {fileID: 0}
+  hud: {fileID: 0}
