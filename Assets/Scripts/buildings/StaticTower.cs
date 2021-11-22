@@ -112,7 +112,7 @@ public class StaticTower : MonoBehaviour, IActor
         distanceToClosestEnemy = -1;
         closestEnemy = null;
 
-        if(enemies.Count == 1)
+        if(enemies.Count == 1 && enemies[0] != null)
         {
             closestEnemy = enemies[0];
             distanceToClosestEnemy = Vector3.Distance(enemies[0].transform.position, this.transform.position);
