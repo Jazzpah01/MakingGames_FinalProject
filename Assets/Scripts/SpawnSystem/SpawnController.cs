@@ -15,6 +15,7 @@ public class SpawnController : MonoBehaviour
 
     [Header("References")]
     public GameObject enemyParent;
+    public GameObject baseGO;
 
     private ProjectorController projectorController;
 
@@ -80,7 +81,7 @@ public class SpawnController : MonoBehaviour
 
             IEnemy enemy = go.GetComponent<IEnemy>();
             EnemyController enemyController = go.GetComponent<EnemyController>();
-            enemyController.primaryTarget = GameController.instance.baseController.transform;
+            enemyController.primaryTarget = baseGO.transform;
             enemy.enemyType = toSpawn[0];
 
             go.transform.position = spawnPoints[Random.Range(0, spawnPoints.Length - 1)].transform.position;

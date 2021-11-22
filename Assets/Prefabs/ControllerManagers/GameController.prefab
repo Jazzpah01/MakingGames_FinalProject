@@ -43,12 +43,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ef28325d5e73b84d8b27b66ff328f87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnController: {fileID: 0}
   player: {fileID: 0}
   keyboardControl: 1
   state: 1
-  strategyController: {fileID: 0}
+  buildingController: {fileID: 0}
   enemyParent: {fileID: 0}
   buildTimer: 9001
   gameOverScreen: {fileID: 0}
-  spawnController: {fileID: 0}
   baseController: {fileID: 0}

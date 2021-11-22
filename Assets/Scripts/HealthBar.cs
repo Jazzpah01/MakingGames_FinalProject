@@ -13,10 +13,15 @@ public class HealthBar : MonoBehaviour
 
     Coroutine routineIncrease, routineDecrease;
 
+    private Camera cam;
 
+    private void Start()
+    {
+        cam = PlayerManager.instance.cam;
+    }
     void Update()
     {
-        FaceTarget(PlayerManager.instance.camera.transform);
+        FaceTarget(cam.transform);
     }
     //face the healthbars in the direction of the camera each frame.
     private void FaceTarget(Transform target)
