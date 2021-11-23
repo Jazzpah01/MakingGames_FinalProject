@@ -14,5 +14,6 @@ public enum ActorType
 {
     Player,
     Enemy,
-    Obstacle
+    Obstacle,
+    Wall
 }

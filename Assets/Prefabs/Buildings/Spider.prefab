@@ -967,6 +967,7 @@ MonoBehaviour:
   healthbar: {fileID: 950378279979943878}
   projectorController: {fileID: 8639636804332807110}
   spotlight: {fileID: 3483663023809083034}
+  setType: 2
 --- !u!1 &5298574579653070962
 GameObject:
   m_ObjectHideFlags: 0

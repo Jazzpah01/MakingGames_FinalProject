@@ -68,7 +68,7 @@ public class EnemyController: MonoBehaviour, IEnemy
 
             IActor target = secondaryTarget.GetComponent<IActor>();
 
-            if ((target.type == ActorType.Obstacle || target.type == ActorType.Player) && damagerCollision.Stay.Contains(col) && time1 >= time2)
+            if ((target.type == ActorType.Wall || target.type == ActorType.Obstacle || target.type == ActorType.Player ) && damagerCollision.Stay.Contains(col) && time1 >= time2)
             {
                 target.Health -= damage;
                 time2 = time1 + 1;

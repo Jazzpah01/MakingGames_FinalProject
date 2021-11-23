@@ -10,10 +10,11 @@ public class Buildable : MonoBehaviour, IActor
     public HealthBar healthbar;
     public ProjectorController projectorController;
     public Light spotlight;
+    public ActorType setType;
 
     private float currentHealth;
 
-    public ActorType type => ActorType.Obstacle;
+    public ActorType type => setType;
 
     public float Speed { get => speed; set { speed = value; } }
     public float MaxHealth => maxHealth;

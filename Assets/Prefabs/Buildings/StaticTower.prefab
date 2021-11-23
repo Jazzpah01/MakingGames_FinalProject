@@ -773,6 +773,7 @@ MonoBehaviour:
   healthbar: {fileID: 5239637589751290106}
   projectorController: {fileID: 3867101360403018253}
   spotlight: {fileID: 7006261208530420386}
+  setType: 2
 --- !u!1001 &173506617180876765
 PrefabInstance:
   m_ObjectHideFlags: 0
