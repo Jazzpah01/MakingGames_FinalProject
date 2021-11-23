@@ -246,13 +246,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a3a9ab166775f243919e68b7b1bebce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
   primaryTarget: {fileID: 0}
   healthBar: {fileID: 3229079331559079160}
   detectionCollision: {fileID: 5487138768297406203}
   damagerCollision: {fileID: 6140874914621642849}
   deathEffect: {fileID: 192757836124602699, guid: f4dddb6fda5ba164eae37c20d9e8e544,
     type: 3}
+  damage: 10
   maxHealth: 100
 --- !u!136 &5980018141852729467
 CapsuleCollider:
