@@ -960,6 +960,7 @@ MonoBehaviour:
   baseHealthFill: {fileID: 1261007442865627082}
   playerHealthFill: {fileID: 1261007444145674387}
   resourceCounter: {fileID: 1261007444608041506}
+  damageIndicatorTimer: 0.05
 --- !u!222 &1261007444597868331
 CanvasRenderer:
   m_ObjectHideFlags: 0

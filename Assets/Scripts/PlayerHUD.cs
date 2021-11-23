@@ -15,6 +15,7 @@ public class PlayerHUD : MonoBehaviour
     public Image baseHealthFill;
     public Image playerHealthFill;
     public TextMeshProUGUI resourceCounter;
+    public float damageIndicatorTimer;
 
     private float oldBaseHealth;
     private float oldPlayerHealth;
@@ -53,14 +54,14 @@ public class PlayerHUD : MonoBehaviour
     IEnumerator baseHealthBarDamageIndicator()
     {
         baseHealthFill.color = new Color32(255,0,0,255);
-        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(damageIndicatorTimer);
         baseHealthFill.color = new Color32(133,160,39,255);
     }
 
     IEnumerator playerHealthBarDamageIndicator()
     {
         playerHealthFill.color = new Color32(255,0,0,255);
-        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(damageIndicatorTimer);
         playerHealthFill.color = new Color32(133,160,39,255);
     }
 }
