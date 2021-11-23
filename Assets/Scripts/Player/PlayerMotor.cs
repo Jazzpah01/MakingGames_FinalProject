@@ -15,10 +15,12 @@ public class PlayerMotor : MonoBehaviour
     public float maxVelocityChange = 10.0f;
     public float dashCooldown;
     public float dashLength;
+    public float attackDashLength;
 
     private LayerMask movementMask;
     private float directionX, directionZ;
     private bool dashing = false;
+    private bool attacking = false;
     private float dashTimer;
     private float dashSpeed = 100;
 
@@ -30,56 +32,50 @@ public class PlayerMotor : MonoBehaviour
         cam = playerManager.cam;
         movementMask = GetComponent<PlayerController>().movementMask;
         dashLength *= 0.01f;
+        attackDashLength *= 0.001f;
     }
 
     private void FixedUpdate()
     {
-        dashTimer -= Time.fixedDeltaTime;
-        //click to move
-        if (target != null)
+
+        directionX = 0;
+        directionZ = 0;
+
+        if (Input.GetKeyDown(KeyCode.Space) && 0 >= dashTimer)
         {
-            agent.SetDestination(target.position);
-            FaceTarget();
+            dashTimer += dashCooldown;
+            Dash(dashLength);
         }
-        //keyboard movement
-        if (playerManager.keyboardControl)
+
+        //interrupt and dash
+        if (!dashing && !attacking)
         {
-            directionX = 0;
-            directionZ = 0;
-            if (Input.GetKey(KeyCode.Space) && 0 >= dashTimer)
-            {
-                dashTimer += dashCooldown;
-                Dash(dashLength);
-            }
-            if (!dashing)
-            {
-                MovementKeyInput();
-                Move();
-            }
-            else
-            {
-                Dash(dashLength);
-            }
+            MovementKeyInput();
+            Move();
+        }
+        else if (attacking)
+        {
+            AttackDash();
+        }
+        else if (dashing)
+        {
+            Dash(dashLength);
         }
         else
         {
-            if (Input.GetMouseButton(0))
-            {
-                Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
-                if (Physics.Raycast(ray, out hit, 1000, movementMask))
-                {
-                    agent.SetDestination(hit.transform.position);
-                }
-            }
+            Debug.Log("Something is horribly wrong");
         }
-    }
 
-    public void StopFollowingTarget()
-    {
-        agent.stoppingDistance = 0f;
-        agent.updateRotation = true;
-        target = null;
+        //interrupt and dash
+        if (!attacking)
+        {
+            MovementKeyInput();
+            Move();
+        }
+        else
+        {
+            Dash(attackDashLength);
+        }
     }
 
     private void MovementKeyInput()
@@ -119,12 +115,14 @@ public class PlayerMotor : MonoBehaviour
 
     private void Dash(float length)
     {
+        dashTimer -= Time.fixedDeltaTime;
         dashing = true;
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 1000, movementMask))
         {
             Vector3 hitpoint = new Vector3(hit.point.x, 0, hit.point.z);
+            transform.rotation = Quaternion.LookRotation(hitpoint);
             Vector3 direction = (hitpoint - transform.position).normalized;
             direction *= dashSpeed;
             agent.velocity = direction;
@@ -133,16 +131,39 @@ public class PlayerMotor : MonoBehaviour
         {
             Debug.Log("Mouse not on movementmask");
         }
-        if (0 >= dashTimer-dashCooldown+length)
+        if (0 >= dashTimer - dashCooldown + length)
         {
             dashing = false;
         }
     }
-
-    private void FaceTarget()
+    public void AttackDash()
     {
-        Vector3 direction = (target.position - transform.position).normalized;
-        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.z));
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
+        attackDashLength -= Time.fixedDeltaTime;
+        Vector3 hitpoint = Vector3.zero;
+        if (!attacking)
+        {
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 1000, movementMask))
+            {
+                hitpoint = new Vector3(hit.point.x, 0, hit.point.z);
+                attacking = true;
+            }
+        }
+        if (hitpoint != Vector3.zero)
+        {
+            transform.rotation = Quaternion.LookRotation(hitpoint);
+            Vector3 direction = (hitpoint - transform.position).normalized;
+            direction *= dashSpeed;
+            agent.velocity = direction;
+        }
+        else
+        {
+            Debug.Log("Something is wrong here");
+        }
+        if (0 >= attackDashLength)
+        {
+            attacking = false;
+        }
     }
 }

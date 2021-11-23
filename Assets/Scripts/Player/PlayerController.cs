@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour, IActor, IState
     PlayerManager playerManager;
     GameController gameController;
     PlayerCombat combat;
+    PlayerMotor motor;
 
     public LayerMask movementMask;
     public LayerMask actorMask;
@@ -40,6 +41,7 @@ public class PlayerController : MonoBehaviour, IActor, IState
     {
         playerManager = PlayerManager.instance;
         gameController = GameController.instance;
+        motor = GetComponent<PlayerMotor>();
         combat = GetComponent<PlayerCombat>();
         cam = playerManager.cam;
         health = maxHealth;
@@ -58,18 +60,14 @@ public class PlayerController : MonoBehaviour, IActor, IState
         //left click
         if (Input.GetMouseButton(0))
         {
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            //if we left click on the actor mask
-            if (Physics.Raycast(ray, out hit, 1000, actorMask))
-            {
-                combat.NormalAttack(hit);
-            }
+            combat.PrimaryAttack(cam, actorMask);
         }
+
         //right click
         if (Input.GetMouseButtonDown(1))
         {
-            combat.AOEAttack();
+            motor.AttackDash();
+            combat.SecondaryAttack();
         }
     }
 

@@ -3,63 +3,59 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-struct Ability
-{
-    public float attackDamage;
-    public float attackCooldown;
-    public float attackRange;
-    public GameObject attackEffect;
-    public CollisionObserver attackObserver;
-    private float attackTime;
-}
 public class PlayerCombat : MonoBehaviour
 {
-    public float attackDamage;
-    public float attackCooldown;
-    public float attackRange;
-    public GameObject attackEffect;
-    public CollisionObserver attackObserver;
-    private float attackTime;
 
-    public float AOEAttackDamage;
-    public float AOEAttackCooldown;
-    public float AOEAttackRange;
-    public GameObject AOEAttackEffect;
-    public CollisionObserver AOEObserver;
-    private float AOEAttackTime;
+    public float primaryAttackDamage;
+    public float primaryAttackCooldown;
+    public float primaryAttackRange;
+    public GameObject primaryAttackEffect;
+    public CollisionObserver primaryAttackObserver;
+    private float primaryAttackTime;
+
+    public float secondaryAttackDamage;
+    public float secondaryAttackCooldown;
+    public float secondaryAttackRange;
+    public GameObject secondaryAttackEffect;
+    public CollisionObserver secondaryObserver;
+    private float secondaryAttackTime;
 
 
     internal void UpdateCooldowns()
     {
         //update cooldowns
-        attackTime -= Time.deltaTime;
-        AOEAttackTime -= Time.deltaTime;
+        primaryAttackTime -= Time.deltaTime;
+        secondaryAttackTime -= Time.deltaTime;
     }
-    //normal attack
-    public void NormalAttack(RaycastHit hit)
+    public void PrimaryAttack(Camera cam, LayerMask mask)
     {
-        if (attackTime <= 0 && attackObserver.Stay.Contains(hit.collider))
+        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        //if we left click on the actor mask
+        if (Physics.Raycast(ray, out hit, 1000, mask))
+        {
+        if (primaryAttackTime <= 0 && primaryAttackObserver.Stay.Contains(hit.collider))
         {
             IActor actor = hit.transform.GetComponent<IActor>();
 
             if (actor != null && actor.type == ActorType.Enemy)
             {
-                attackTime = attackCooldown;
-                actor.Health -= attackDamage;
-                Instantiate(attackEffect).transform.position = hit.point;
+                primaryAttackTime = primaryAttackCooldown;
+                actor.Health -= primaryAttackDamage;
+                Instantiate(primaryAttackEffect).transform.position = hit.point;
             }
+        }
         }
     }
 
-    //area attack
-    public void AOEAttack()
+    public void SecondaryAttack()
     {
-        if (AOEAttackTime < 0)
+        if (secondaryAttackTime < 0)
         {
-            Collider[] collisions = AOEObserver.Stay.ToArray();
-            AOEAttackTime = AOEAttackCooldown;
+            secondaryAttackTime = secondaryAttackCooldown;
+            Collider[] collisions = secondaryObserver.Stay.ToArray();
 
-            Instantiate(AOEAttackEffect).transform.position = transform.position;
+            Instantiate(secondaryAttackEffect).transform.position = transform.position;
 
             for (int i = 0; i < collisions.Length; i++)
             {
@@ -68,15 +64,9 @@ public class PlayerCombat : MonoBehaviour
                 if (actor == null || actor.type != ActorType.Enemy)
                     continue;
 
-                actor.Health -= AOEAttackDamage;
+                actor.Health -= secondaryAttackDamage;
 
-                if (actor.gameObject == null)
-                {
-                    i--;
-                }
             }
         }
     }
-    //TODO: damage player, normal attack, enemy health ui, player health ui
-
 }
