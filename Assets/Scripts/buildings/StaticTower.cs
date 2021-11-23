@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StaticTower : MonoBehaviour, IActor
+public class StaticTower : MonoBehaviour
 {
-    public string buildingName;
     public GameObject peak;
     public GameObject projectile;
-    public HealthBar healthbar;
     public List<GameObject> enemies;
     public float distanceToClosestEnemy;
     public GameObject closestEnemy;
@@ -17,22 +15,6 @@ public class StaticTower : MonoBehaviour, IActor
     public float damage = 25;
     public float maxHealth = 100;
 
-    private float currentHealth;
-    public float MaxHealth => maxHealth;
-    public float Health { get => currentHealth; 
-            set
-            {
-                currentHealth = value;
-                healthbar.SetHealthbar(currentHealth / maxHealth);
-                if (currentHealth <= 0f)
-                {
-                    Die();
-                }
-            }
-        }
-    private float speed = 3.0f;
-    public float Speed { get => speed; set { speed = value;}}
-    public ActorType type => ActorType.Obstacle;
     private float timer;
 
     // Start is called before the first frame update
@@ -47,8 +29,6 @@ public class StaticTower : MonoBehaviour, IActor
         detectionCollision.Subscribe(Detection_Exit, CollisionObserver.CollisionType.Exit);
 
         distanceToClosestEnemy = -1;
-        healthbar.textBox.text = buildingName;
-        healthbar.SetHealthImageColour(Color.green);
     }
 
     // Update is called once per frame
@@ -140,22 +120,5 @@ public class StaticTower : MonoBehaviour, IActor
                 }
             }
         }
-    }
-
-    IEnumerator SmoothSliderDecrease(float amount, Image image)
-    {
-        if (image != null)
-            while (image.fillAmount > amount)
-        {
-            if(image != null)
-            image.fillAmount -= 0.01f;
-
-            yield return new WaitForSeconds(0.000001f);
-        }
-    }
-
-    private void Die()
-    {
-        Destroy(gameObject);
     }
 }
