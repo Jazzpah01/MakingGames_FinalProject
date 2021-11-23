@@ -6,7 +6,7 @@ using TMPro;
 
 public class StrategyHUD : MonoBehaviour
 {
-    [HideInInspector] public StrategyController strategyController;
+    [HideInInspector] public BuildingController strategyController;
 
     public BuildingList buildings;
     public float offset = -10;
@@ -23,11 +23,11 @@ public class StrategyHUD : MonoBehaviour
     private void Start()
     {
         gameManager = GameManager.instance;
-        strategyController = GameController.instance.strategyController;
+        strategyController = gameManager.buildingController;
 
         // Setup menu for selecting buildings
-        print(initialItem);
-        print(buildings[0]);
+        //print(initialItem);
+        //print(buildings[0]);
 
         SetElementValues(initialItem, buildings[0]);
 

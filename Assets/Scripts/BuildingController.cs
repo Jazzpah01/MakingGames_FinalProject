@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
 
-public class StrategyController : MonoBehaviour, IState
+public class BuildingController : MonoBehaviour, IState
 {
     [HideInInspector]
     public Camera cam;
@@ -14,7 +14,7 @@ public class StrategyController : MonoBehaviour, IState
     public Transform buildablesParent;
     public float startRotation = 0;
     public float rotationAngle = 45;
-    public StrategyHUD strategyHUD;
+    public HUD hud;
 
     [HideInInspector]
     private GameObject GO = null;
@@ -22,15 +22,19 @@ public class StrategyController : MonoBehaviour, IState
     private bool isBuilding = false;
     private GameObject prefab;
     private LayerMask containmentLayerMask;
-
+    private StrategyHUD strategyHUD;
     private int currentCost = 0;
+
+    GameManager gameManager;
 
     private void Start()
     {
-        cam = PlayerManager.instance.camera;
-        GameManager.instance.resource = roundResource;
+        gameManager = GameManager.instance;
+        gameManager.resource = roundResource;
+        cam = PlayerManager.instance.cam;
         rotation = startRotation;
         prefab = null;
+        strategyHUD = hud.strategyHUD;
     }
 
     public void UpdateState()
@@ -87,15 +91,15 @@ public class StrategyController : MonoBehaviour, IState
                     //if the dummy-gameobject is within the containmentLayerMask
                     if (Physics.Raycast(ray, out hit, 1000, containmentLayerMask))
                     {
-                        //hacky fix until red models are made
-                        GO.transform.GetChild(0).gameObject.SetActive(false);
+                        //turn off spotlight
+                        GO.GetComponent<Buildable>().spotlight.enabled = false;
 
                         // Transform dummy-gameobject to an actual building
-                        if (Input.GetMouseButtonDown(0) && GameManager.instance.resource >= currentCost)
+                        if (Input.GetMouseButtonDown(0) && gameManager.resource >= currentCost)
                         {
                             SpawnPrefab();
                             // Make it so the player can place multiple buildings
-                            if (GameManager.instance.resource < currentCost)
+                            if (gameManager.resource < currentCost)
                             {
                                 isBuilding = false;
                             }
@@ -105,8 +109,7 @@ public class StrategyController : MonoBehaviour, IState
                     else
                     {
                         //indication that GO cannot be placed here
-                        //hacky fix until red models are made
-                        GO.transform.GetChild(0).gameObject.SetActive(true);
+                        GO.GetComponent<Buildable>().spotlight.enabled = true;
                     }
                 }
                 GO.transform.position = spawnpoint;
@@ -125,7 +128,7 @@ public class StrategyController : MonoBehaviour, IState
     /// <param name="type">Type of building.</param>
     public void SelectPrefab(BuildingType type)
     {
-        if (GameManager.instance.resource < type.cost)
+        if (gameManager.resource < type.cost)
         {
             // Code for when you don't have enough resources
             return;
@@ -151,9 +154,8 @@ public class StrategyController : MonoBehaviour, IState
     {
         GO.GetComponent<NavMeshObstacle>().enabled = true;
         GO.GetComponent<IActor>().enabled = true;
-        //TODO hacky enable healthbar
-        GO.transform.GetChild(2).gameObject.SetActive(true);
-        GameManager.instance.resource -= currentCost;
+        gameManager.resource -= currentCost;
+        GO.GetComponent<Buildable>().healthbar.gameObject.SetActive(true);
         strategyHUD.UpdateAlfa();
         ChangeGOAlfa(1);
         GO = null;

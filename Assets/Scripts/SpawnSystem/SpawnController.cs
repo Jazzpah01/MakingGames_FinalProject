@@ -15,8 +15,9 @@ public class SpawnController : MonoBehaviour
 
     [Header("References")]
     public GameObject enemyParent;
+    public GameObject baseGO;
 
-    private ProjectorController projectorController;
+    private Projector projectorController;
 
     public int CurrentWave
     {
@@ -60,7 +61,7 @@ public class SpawnController : MonoBehaviour
     {
         CurrentWave = 0;
         toSpawn = new List<EnemyType>();
-        projectorController = GetComponentInChildren<ProjectorController>();
+        projectorController = GetComponentInChildren<Projector>();
     }
 
     private void Update()
@@ -79,6 +80,7 @@ public class SpawnController : MonoBehaviour
             GameObject go = Instantiate(toSpawn[0].prefab);
 
             IEnemy enemy = go.GetComponent<IEnemy>();
+
             enemy.enemyType = toSpawn[0];
 
             go.transform.position = spawnPoints[Random.Range(0, spawnPoints.Length - 1)].transform.position;

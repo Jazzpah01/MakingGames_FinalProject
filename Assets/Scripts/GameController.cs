@@ -14,12 +14,13 @@ public class GameController : MBStateMachine
 
     public static GameController instance;
 
+    public SpawnController spawnController;
+
     [HideInInspector]
     public GameObject player;
 
     public bool keyboardControl = false;
     public GameState state = GameState.Strategy;
-    public StrategyController strategyController;
     public GameObject enemyParent;
     public float buildTimer = 9001;
     public GameObject gameOverScreen;
@@ -29,9 +30,10 @@ public class GameController : MBStateMachine
     private int nextWave = 0;
 
     private float buildTime;
+    private BuildingController buildingController;
     private PlayerController playerController;
-
-    public SpawnController spawnController;
+    private PlayerManager playerManager;
+    private GameManager gameManager;
 
     public Base baseController;
 
@@ -43,8 +45,11 @@ public class GameController : MBStateMachine
 
     private void Start()
     {
-        player = PlayerManager.instance.player;
-        playerController = player.GetComponent<PlayerController>();
+        playerManager = PlayerManager.instance;
+        gameManager = GameManager.instance;
+        buildingController = gameManager.buildingController;
+        player = playerManager.player;
+        playerController = playerManager.playerController;
 
         ChangeState(state);
     }
@@ -62,14 +67,14 @@ public class GameController : MBStateMachine
         switch (newState)
         {
             case GameState.Combat: 
-                if (!PlayerManager.instance.buildWhileCombat)
+                if (!playerManager.buildWhileCombat)
                     player.SetActive(true);
                 base.ChangeState(playerController);
                 break;
             case GameState.Strategy:
-                if (!PlayerManager.instance.buildWhileCombat)
+                if (!playerManager.buildWhileCombat)
                     player.SetActive(false);
-                base.ChangeState(strategyController);
+                base.ChangeState(buildingController);
                 break;
             default:
                 throw new System.Exception("Cannot have None state!");
@@ -81,15 +86,15 @@ public class GameController : MBStateMachine
     {
         if (!InWave && oldInWave)
         {
-            GameManager.instance.resource += strategyController.roundResource;
+            gameManager.resource += buildingController.roundResource;
         }
         if (state == GameState.Combat)
         {
             if (InWave == false)
             {
                 ChangeState(GameState.Strategy);
-                GameManager.instance.inBattle = false;
-            } else if (Input.GetKeyDown(KeyCode.B) && PlayerManager.instance.buildWhileCombat)
+                gameManager.inBattle = false;
+            } else if (Input.GetKeyDown(KeyCode.B) && playerManager.buildWhileCombat)
             {
                 ChangeState(GameState.Strategy);
             }
@@ -116,11 +121,16 @@ public class GameController : MBStateMachine
         if (oldInWave == false)
         {
             // Start wave
-            GameManager.instance.inBattle = true;
+            gameManager.inBattle = true;
             spawnController.SpawnEnemies(nextWave);
             nextWave++;
             oldInWave = true;
         }
         ChangeState(GameState.Combat);
+    }
+
+    public int getNextWave()
+    {
+        return nextWave;
     }
 }

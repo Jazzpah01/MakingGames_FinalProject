@@ -9,8 +9,11 @@ public class GameManager : MonoBehaviour
 
     public int resource;
 
-    [Header("References")]
+    [Header("Controller References")]
+    public GameController gameController;
     public SpawnController spawnController;
+    public BuildingController buildingController;
+
 
     void Awake()
     {

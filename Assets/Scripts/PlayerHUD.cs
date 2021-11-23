@@ -6,27 +6,62 @@ using TMPro;
 
 public class PlayerHUD : MonoBehaviour
 {
-    [HideInInspector] public PlayerController playerController;
-    [HideInInspector] public StrategyController strategyController;
-    [HideInInspector] public Base baseS;
+    PlayerController playerController;
+    GameManager gameManager;
 
+    public Base baseController;
     public Slider playerHealthBar;
     public Slider baseHealthBar;
+    public Image baseHealthFill;
+    public Image playerHealthFill;
     public TextMeshProUGUI resourceCounter;
+    public float damageIndicatorTimer;
+
+    private float oldBaseHealth;
+    private float oldPlayerHealth;
 
     private void Start()
     {
-        strategyController = GameController.instance.strategyController;
-        playerController = GameController.instance.player.GetComponent<PlayerController>();
-        baseS = GameController.instance.baseController;
+        playerController = PlayerManager.instance.playerController;
+        gameManager = GameManager.instance;
+        oldPlayerHealth = playerController.Health;
+        oldBaseHealth = baseController.Health;
     }
 
     private void Update()
     {
+        
         // Update player values on the hud
+        if(oldPlayerHealth > playerController.Health)
+        {
+            StartCoroutine(playerHealthBarDamageIndicator());
+        }
         playerHealthBar.value = playerController.Health / playerController.MaxHealth;
-        baseHealthBar.value = baseS.Health / baseS.MaxHealth;
+        if(oldBaseHealth > baseController.Health)
+        {
+            StartCoroutine(baseHealthBarDamageIndicator());
+        }
+        baseHealthBar.value = baseController.Health / baseController.MaxHealth;
 
-        resourceCounter.text = GameManager.instance.resource.ToString();
+        resourceCounter.text = gameManager.resource.ToString();
+
+        oldBaseHealth = baseController.Health;
+        oldPlayerHealth = playerController.Health;
+    }
+
+
+    
+    IEnumerator baseHealthBarDamageIndicator()
+    {
+        baseHealthFill.color = new Color32(255,0,0,255);
+        yield return new WaitForSeconds(damageIndicatorTimer);
+        baseHealthFill.color = new Color32(133,160,39,255);
+    }
+
+    IEnumerator playerHealthBarDamageIndicator()
+    {
+        playerHealthFill.color = new Color32(255,0,0,255);
+        yield return new WaitForSeconds(damageIndicatorTimer);
+        playerHealthFill.color = new Color32(133,160,39,255);
     }
 }

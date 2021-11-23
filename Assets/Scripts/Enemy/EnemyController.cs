@@ -10,6 +10,7 @@ public class EnemyController: MonoBehaviour, IEnemy
     public CollisionObserver detectionCollision;
     public CollisionObserver damagerCollision;
     public GameObject deathEffect;
+    public float damage;
 
     private Transform secondaryTarget;
     private NavMeshAgent agent;
@@ -69,7 +70,7 @@ public class EnemyController: MonoBehaviour, IEnemy
 
             if ((target.type == ActorType.Obstacle || target.type == ActorType.Player) && damagerCollision.Stay.Contains(col) && time1 >= time2)
             {
-                target.Health -= 10;
+                target.Health -= damage;
                 time2 = time1 + 1;
             }
 

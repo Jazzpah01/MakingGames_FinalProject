@@ -22,7 +22,7 @@ public class PlayerMotor : MonoBehaviour
     {
         playerManager = PlayerManager.instance;
         agent = GetComponent<NavMeshAgent>();
-        cam = playerManager.camera;
+        cam = playerManager.cam;
     }
 
     private void FixedUpdate()
