@@ -776,10 +776,35 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 1.4
       objectReference: {fileID: 0}
+    - target: {fileID: 8891149032523313452, guid: 13bb7fe5814de22468f1668fcbcd9aef,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8891149032523313452, guid: 13bb7fe5814de22468f1668fcbcd9aef,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8891149032921158130, guid: 13bb7fe5814de22468f1668fcbcd9aef,
         type: 3}
       propertyPath: offset
       value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8891149033143283354, guid: 13bb7fe5814de22468f1668fcbcd9aef,
+        type: 3}
+      propertyPath: baseHealthFill
+      value: 
+      objectReference: {fileID: 1161954083}
+    - target: {fileID: 8891149033801791095, guid: 13bb7fe5814de22468f1668fcbcd9aef,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8891149033801791095, guid: 13bb7fe5814de22468f1668fcbcd9aef,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8891149034226476616, guid: 13bb7fe5814de22468f1668fcbcd9aef,
         type: 3}
@@ -825,6 +850,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ef28325d5e73b84d8b27b66ff328f87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1161954083 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8891149033801791092, guid: 13bb7fe5814de22468f1668fcbcd9aef,
+    type: 3}
+  m_PrefabInstance: {fileID: 795847463}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1358038802
