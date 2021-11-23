@@ -91,8 +91,8 @@ public class BuildingController : MonoBehaviour, IState
                     //if the dummy-gameobject is within the containmentLayerMask
                     if (Physics.Raycast(ray, out hit, 1000, containmentLayerMask))
                     {
-                        //hacky fix until red models are made
-                        GO.transform.GetChild(0).gameObject.SetActive(false);
+                        //turn off spotlight
+                        GO.GetComponent<Buildable>().spotlight.enabled = false;
 
                         // Transform dummy-gameobject to an actual building
                         if (Input.GetMouseButtonDown(0) && gameManager.resource >= currentCost)
@@ -109,8 +109,7 @@ public class BuildingController : MonoBehaviour, IState
                     else
                     {
                         //indication that GO cannot be placed here
-                        //hacky fix until red models are made
-                        GO.transform.GetChild(0).gameObject.SetActive(true);
+                        GO.GetComponent<Buildable>().spotlight.enabled = true;
                     }
                 }
                 GO.transform.position = spawnpoint;
@@ -155,9 +154,8 @@ public class BuildingController : MonoBehaviour, IState
     {
         GO.GetComponent<NavMeshObstacle>().enabled = true;
         GO.GetComponent<IActor>().enabled = true;
-        //TODO hacky enable healthbar
-        GO.transform.GetChild(2).gameObject.SetActive(true);
         gameManager.resource -= currentCost;
+        GO.GetComponent<Buildable>().healthbar.gameObject.SetActive(true);
         strategyHUD.UpdateAlfa();
         ChangeGOAlfa(1);
         GO = null;

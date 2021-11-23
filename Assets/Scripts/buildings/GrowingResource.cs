@@ -2,36 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GrowingResource : MonoBehaviour, IActor
+public class GrowingResource : MonoBehaviour
 {
-    public string buildingName;
-    public float health;
     public float growthTime = 0.5f;
     public float harvestTimer = 0.5f;
     public int maxResourcesGained = 5;
-    public HealthBar healthbar;
     private Vector3 growth = new Vector3(0.1f,0.1f,0.1f);
-    public ActorType type => ActorType.Obstacle;
-    public float Speed { get => Speed; set => Speed = 0; }
-    public float MaxHealth => 100;
-    public float Health { get => health; set => health = value; }
     public int additionalWavesBeforeHarvest;
     
     private float timer;
     private int growthStage;
     private int currentResourcesGained;
     private int plantedWave;
-    private GameManager GM;
+    private GameManager gameManager;
+    private Buildable buildable;
     private GameObject model;
+    private float health, maxHealth;
 
     // Start is called before the first frame update
     void Start()
     {
-        health = MaxHealth;
-        healthbar.textBox.text = buildingName;
-        healthbar.SetHealthImageColour(Color.green);
-        GM = GameManager.instance;
-        plantedWave = GM.gameController.getNextWave();
+        buildable = GetComponent<Buildable>();
+        maxHealth = buildable.MaxHealth;
+        gameManager = GameManager.instance;
+        plantedWave = gameManager.gameController.getNextWave();
         foreach(Transform child in transform)
         {
             if(child.name == "Model")
@@ -45,9 +39,8 @@ public class GrowingResource : MonoBehaviour, IActor
     // Update is called once per frame
     void Update()
     {
-        checkHealth();
-
-        if(GameManager.instance.inBattle == false && plantedWave + additionalWavesBeforeHarvest < GM.gameController.getNextWave())
+        health = buildable.Health;
+        if(gameManager.inBattle == false && plantedWave + additionalWavesBeforeHarvest < gameManager.gameController.getNextWave())
         {
             harvest();
         }
@@ -64,7 +57,7 @@ public class GrowingResource : MonoBehaviour, IActor
     void harvest()
     {
             calculateResourcesGained();
-            GameManager.instance.resource += currentResourcesGained;
+            gameManager.resource += currentResourcesGained;
             Destroy(this.gameObject);
     }
 /*
@@ -90,16 +83,8 @@ public class GrowingResource : MonoBehaviour, IActor
 
     void calculateResourcesGained()
     {
-        float percentageLifeRemaining = (health/MaxHealth);
+        float percentageLifeRemaining = (health/maxHealth);
         int resourceValue = (int)(maxResourcesGained * percentageLifeRemaining);
         currentResourcesGained = resourceValue;
-    }
-
-    void checkHealth()
-    {
-        if(Health <= 0)
-        {
-            Destroy(this.gameObject);
-        }
     }
 }
