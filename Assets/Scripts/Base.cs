@@ -31,6 +31,6 @@ public class Base : MonoBehaviour, IActor
     private void Start()
     {
         health = maxHealth;
-        gameController = GameController.instance;
+        gameController = GameManager.instance.gameController;
     }
 }

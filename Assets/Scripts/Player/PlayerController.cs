@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour, IActor, IState
         playerManager = PlayerManager.instance;
         gameController = GameController.instance;
         combat = GetComponent<PlayerCombat>();
-        cam = playerManager.camera;
+        cam = playerManager.cam;
         health = maxHealth;
     }
 

@@ -124,7 +124,9 @@ public class InteractableUI : MonoBehaviour, IPointerClickHandler, IPointerEnter
         if (Interactable && inside)
         {
             if (OnClicked != null &&
-                (eventData.pointerClick == PointerEventData.InputButton.Left && ))
+                (eventData.button == PointerEventData.InputButton.Left && mouseButton.HasFlag(MouseClickEvent.LeftMouseButton) ||
+                eventData.button == PointerEventData.InputButton.Right && mouseButton.HasFlag(MouseClickEvent.RightMouseButton) ||
+                eventData.button == PointerEventData.InputButton.Middle && mouseButton.HasFlag(MouseClickEvent.MiddleMouseButton)))
                 OnClicked(mainGameObject, eventData);
         }
     }

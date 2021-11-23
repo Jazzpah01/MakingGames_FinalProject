@@ -5,18 +5,25 @@ using TMPro;
 
 public class ResourceTextScript : MonoBehaviour
 {
-    TextMeshProUGUI TMP;
     GameManager gameManager;
-    // Start is called before the first frame update
+    TextMeshProUGUI TMP;
+
+    public string message = "Nectar Essence: ";
+
+    float tempOld = -1;
+
     void Start()
     {
-        TMP = this.gameObject.GetComponent<TextMeshProUGUI>();
+        TMP = gameObject.GetComponent<TextMeshProUGUI>();
         gameManager = GameManager.instance;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        TMP.SetText("Nectar Essence: " + gameManager.resource);
+        if (tempOld != gameManager.resource)
+        {
+            TMP.SetText(message + gameManager.resource);
+            tempOld = gameManager.resource;
+        }
     }
 }
