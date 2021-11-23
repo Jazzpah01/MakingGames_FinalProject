@@ -8,8 +8,9 @@ public class StrategyHUD : MonoBehaviour
 {
     [HideInInspector] public BuildingController strategyController;
 
-    public BuildingList buildings;
+    private BuildingList buildings;
     public float offset = -10;
+    public float contentChunkSize = 400;
 
     private List<GameObject> itemList = new List<GameObject>();
     private InteractableUI toggled;
@@ -19,6 +20,7 @@ public class StrategyHUD : MonoBehaviour
     [Header("References")]
     public GameObject initialItem;
     public GameObject scrollPanel;
+    public GameObject defendButton;
     public BuildingDescription description;
 
 
@@ -26,11 +28,12 @@ public class StrategyHUD : MonoBehaviour
     {
         gameManager = GameManager.instance;
         strategyController = gameManager.buildingController;
+        buildings = GameManager.instance.buildingTypes;
+
+        // Setup buttons
+        defendButton.GetComponentInChildren<InteractableUI>().OnClicked += delegate { DefendButton(); };
 
         // Setup menu for selecting buildings
-        //print(initialItem);
-        //print(buildings[0]);
-
         SetElementValues(initialItem, buildings[0]);
 
         initialItem.GetComponentInChildren<InteractableUI>().OnClicked += delegate { ButtonPressed(0); };
@@ -59,6 +62,7 @@ public class StrategyHUD : MonoBehaviour
 
         RectTransform panelRect = scrollPanel.GetComponent<RectTransform>();
         panelRect.position = panelRect.position * new Vector2(1, 0);
+        panelRect.sizeDelta = new Vector2(0, contentChunkSize * items);
     }
     public void UpdateAlfa()
     {
@@ -92,16 +96,11 @@ public class StrategyHUD : MonoBehaviour
 
     private void Update()
     {
-        //if (GameManager.instance.buildingController == null && toggled != null)
-        //{
-        //    toggled.Toggled = false;
-        //    toggled = null;
-        //}
-
-        //foreach (GameObject go in itemList)
-        //{
-        //
-        //}
+        if (!GameManager.instance.buildingController.isBuilding && toggled != null)
+        {
+            toggled.Toggled = false;
+            toggled = null;
+        }
     }
 
     private void SetElementPosition(GameObject item, int indexOfItem)
@@ -129,6 +128,9 @@ public class StrategyHUD : MonoBehaviour
     {
         strategyController.SelectPrefab(buildings[index]);
 
+        if (toggled != null)
+            toggled.Toggled = false;
+
         toggled = itemList[index].GetComponentInChildren<InteractableUI>();
         toggled.Toggled = true;
     }
@@ -142,5 +144,12 @@ public class StrategyHUD : MonoBehaviour
     public void UnHighlightButton()
     {
         description.gameObject.SetActive(false);
+    }
+
+
+
+    public void DefendButton()
+    {
+        GameController.instance.GoToBattle();
     }
 }

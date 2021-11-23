@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 
 public class SpawnController : MonoBehaviour
 {
-    public EnemyList enemyList;
+    private EnemyList enemyList;
     public List<WaveData> waves;
 
     public Transform[] spawnPoints;
@@ -59,6 +59,7 @@ public class SpawnController : MonoBehaviour
 
     void Start()
     {
+        enemyList = GameManager.instance.enemyTypes;
         CurrentWave = 0;
         toSpawn = new List<EnemyType>();
         projectorController = GetComponentInChildren<Projector>();
@@ -103,6 +104,9 @@ public class SpawnController : MonoBehaviour
     }
 
     public void SpawnEnemies(int waveIndex) {
+        if (waves == null || waves.Count < 1)
+            throw new System.Exception("Cannot spawn a wave in a level with no waves!");
+
         CurrentWave = waveIndex;
 
         WaveData waveData = waves[CurrentWave];

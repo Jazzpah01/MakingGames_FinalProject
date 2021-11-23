@@ -9,6 +9,10 @@ public class GameManager : MonoBehaviour
 
     public int resource;
 
+    [Header("Level Data")]
+    public BuildingList buildingTypes;
+    public EnemyList enemyTypes;
+
     [Header("Controller References")]
     public GameController gameController;
     public SpawnController spawnController;

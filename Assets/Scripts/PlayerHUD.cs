@@ -24,6 +24,7 @@ public class PlayerHUD : MonoBehaviour
     {
         playerController = PlayerManager.instance.playerController;
         gameManager = GameManager.instance;
+        baseController = GameController.instance.baseController;
         oldPlayerHealth = playerController.Health;
         oldBaseHealth = baseController.Health;
     }

@@ -125,9 +125,11 @@ public class InteractableUI : MonoBehaviour, IPointerClickHandler, IPointerEnter
         {
             if (OnClicked != null &&
                 (eventData.button == PointerEventData.InputButton.Left && mouseButton.HasFlag(MouseClickEvent.LeftMouseButton) ||
-                eventData.button == PointerEventData.InputButton.Right && mouseButton.HasFlag(MouseClickEvent.RightMouseButton) ||
-                eventData.button == PointerEventData.InputButton.Middle && mouseButton.HasFlag(MouseClickEvent.MiddleMouseButton)))
+                 eventData.button == PointerEventData.InputButton.Right && mouseButton.HasFlag(MouseClickEvent.RightMouseButton) ||
+                 eventData.button == PointerEventData.InputButton.Middle && mouseButton.HasFlag(MouseClickEvent.MiddleMouseButton)))
+            {
                 OnClicked(mainGameObject, eventData);
+            }
         }
     }
 
@@ -171,5 +173,7 @@ public class InteractableUI : MonoBehaviour, IPointerClickHandler, IPointerEnter
 
         if (options.HasFlag(InteractableUIOptions.RemoveImageOnHighlight))
             image.gameObject.SetActive(!highlight);
+        if (options.HasFlag(InteractableUIOptions.RemoveHighlightOnToggle) && Toggled)
+            highlightImage.gameObject.SetActive(false);
     }
 }
