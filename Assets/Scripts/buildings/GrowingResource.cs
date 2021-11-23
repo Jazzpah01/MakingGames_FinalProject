@@ -8,10 +8,6 @@ public class GrowingResource : MonoBehaviour
     public float harvestTimer = 0.5f;
     public int maxResourcesGained = 5;
 
-    public string buildingName;
-    public float health;
-    public int maxResourcesGained;
-
     private Vector3 growth = new Vector3(0.1f,0.1f,0.1f);
     public int additionalWavesBeforeHarvest;
     private int currentResourcesGained;
