@@ -60,6 +60,7 @@ public class PlayerController : MonoBehaviour, IActor, IState
         //left click
         if (Input.GetMouseButton(0))
         {
+            motor.AttackDash();
             combat.PrimaryAttack(cam, actorMask);
         }
 
