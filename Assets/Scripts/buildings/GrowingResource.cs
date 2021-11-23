@@ -6,9 +6,7 @@ public class GrowingResource : MonoBehaviour, IActor
 {
     public string buildingName;
     public float health;
-    public float growthTime = 0.5f;
-    public float harvestTimer = 0.5f;
-    public int maxResourcesGained = 5;
+    public int maxResourcesGained;
     public HealthBar healthbar;
     private Vector3 growth = new Vector3(0.1f,0.1f,0.1f);
     public ActorType type => ActorType.Obstacle;
@@ -16,9 +14,6 @@ public class GrowingResource : MonoBehaviour, IActor
     public float MaxHealth => 100;
     public float Health { get => health; set => health = value; }
     public int additionalWavesBeforeHarvest;
-    
-    private float timer;
-    private int growthStage;
     private int currentResourcesGained;
     private int plantedWave;
     private GameManager GM;
