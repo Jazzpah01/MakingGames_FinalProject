@@ -49,6 +49,8 @@ public class InteractableUI : MonoBehaviour, IPointerClickHandler, IPointerEnter
 
     private Color initialImageColor;
     private bool inside = false;
+    private List<Color> colors = new List<Color>();
+    private Image[] images;
 
     // Use this for player controllers.
     public static bool OnUI { 
@@ -63,20 +65,39 @@ public class InteractableUI : MonoBehaviour, IPointerClickHandler, IPointerEnter
 
     public bool Interactable { get => interactable; 
         set {
+            if (value == interactable)
+                return;
+
             if (value)
             {
                 if (image != null)
                 {
                     image.color = initialImageColor;
                 }
+
+                for (int i = 0; i < images.Length; i++)
+                {
+                    images[i].color = colors[i];
+                }
+
+                interactable = value;
             } else
             {
-                SetHighlighted(inside);
+                SetHighlighted(false);
 
-                if (image != null)
+                for (int i = 0; i < images.Length; i++)
                 {
-                    image.color = new Color(image.color.r / 2, image.color.g / 2, image.color.b / 2, image.color.a / 2);
+                    Color c = images[i].color;
+                    c.a = 0.5f;
+                    c.r = 0;
+                    c.g = 0;
+                    c.b = 0;
+                    images[i].color = c;
                 }
+
+                OnDisable();
+
+                interactable = value;
             }
         } 
     }
@@ -117,6 +138,13 @@ public class InteractableUI : MonoBehaviour, IPointerClickHandler, IPointerEnter
 
         if (mainGameObject == null)
             throw new Exception("Cannot have an interactable UI with no main GameObject.");
+
+        images = mainGameObject.GetComponentsInChildren<Image>();
+
+        foreach (Image item in images)
+        {
+            colors.Add(item.color);
+        }
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -135,6 +163,9 @@ public class InteractableUI : MonoBehaviour, IPointerClickHandler, IPointerEnter
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if (!Interactable)
+            return;
+
         if (!inside)
             onUICount++;
 
@@ -150,6 +181,9 @@ public class InteractableUI : MonoBehaviour, IPointerClickHandler, IPointerEnter
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        if (!Interactable)
+            return;
+
         if (inside)
             onUICount--;
 
@@ -165,6 +199,9 @@ public class InteractableUI : MonoBehaviour, IPointerClickHandler, IPointerEnter
 
     private void SetHighlighted(bool highlight)
     {
+        if (!Interactable)
+            return;
+
         // Sanitise input
         if (highlightImage == null)
             return;
@@ -175,5 +212,15 @@ public class InteractableUI : MonoBehaviour, IPointerClickHandler, IPointerEnter
             image.gameObject.SetActive(!highlight);
         if (options.HasFlag(InteractableUIOptions.RemoveHighlightOnToggle) && Toggled)
             highlightImage.gameObject.SetActive(false);
+    }
+
+    private void OnDisable()
+    {
+        if (inside)
+            onUICount--;
+
+        toggled = false;
+
+        SetHighlighted(false);
     }
 }

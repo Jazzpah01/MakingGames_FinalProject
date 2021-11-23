@@ -82,7 +82,7 @@ public class BuildingController : MonoBehaviour, IState
                     if (ob != null)
                         ob.enabled = false;
 
-                    GO.GetComponent<IActor>().enabled = false;
+                    GO.GetComponent<Buildable>().OnPlacing();
                 }
                 else
                 {
@@ -151,9 +151,8 @@ public class BuildingController : MonoBehaviour, IState
     private void SpawnPrefab()
     {
         GO.GetComponent<NavMeshObstacle>().enabled = true;
-        GO.GetComponent<IActor>().enabled = true;
         gameManager.resource -= currentCost;
-        GO.GetComponent<Buildable>().healthbar.gameObject.SetActive(true);
+        GO.GetComponent<Buildable>().OnBuild();
         ChangeGOAlfa(1);
         GO = null;
     }

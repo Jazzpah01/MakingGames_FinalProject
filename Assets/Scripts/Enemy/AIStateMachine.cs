@@ -14,7 +14,6 @@ public abstract class AIStateMachine : MBStateMachine
 
     protected void Initialize()
     {
-        print("Test start");
         Initialized = true;
         controller = GetComponent<IActor>();
         agent = GetComponent<NavMeshAgent>();

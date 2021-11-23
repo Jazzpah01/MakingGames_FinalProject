@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GrowingResource : MonoBehaviour
+public class GrowingResource : MonoBehaviour, IBuildingBehavior
 {
     public float growthTime = 0.5f;
     public float harvestTimer = 0.5f;

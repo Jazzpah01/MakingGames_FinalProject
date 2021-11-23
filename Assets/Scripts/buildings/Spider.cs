@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spider : MonoBehaviour
+public class Spider : MonoBehaviour, IBuildingBehavior
 {
     public GameObject model;
     public GameObject web;

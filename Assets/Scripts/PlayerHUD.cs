@@ -9,7 +9,7 @@ public class PlayerHUD : MonoBehaviour
     PlayerController playerController;
     GameManager gameManager;
 
-    public Base baseController;
+    private Base baseController;
     public Slider playerHealthBar;
     public Slider baseHealthBar;
     public Image baseHealthFill;

@@ -66,32 +66,20 @@ public class StrategyHUD : MonoBehaviour
     }
     public void UpdateAlfa()
     {
-        //float alfa = 1;
-        //int i = 0;
-        //foreach (GameObject GO in itemList)
-        //{
-        //    Image[] images = new Image[0];
-        //    images = GO.GetComponentsInChildren<Image>();
-        //
-        //    if (gameManager.resource < buildings[i].cost)
-        //    {
-        //        alfa = 0.2f;
-        //    }
-        //    else
-        //    {
-        //        alfa = 1;
-        //    }
-        //    foreach (Image image in images)
-        //    {
-        //        if (!image.name.Equals("Button"))
-        //        {
-        //            Color tempColor = image.color;
-        //            tempColor.a = alfa;
-        //            image.color = tempColor;
-        //        }
-        //    }
-        //    i++;
-        //}
+        float alfa = 1;
+        int i = 0;
+        foreach (GameObject GO in itemList)
+        {
+            float cost = GO.GetComponentInChildren<UIBuildingItem>().Type.cost;
+
+            if (GameManager.instance.resource < cost)
+            {
+                GO.GetComponentInChildren<InteractableUI>().Interactable = false;
+            } else
+            {
+                GO.GetComponentInChildren<InteractableUI>().Interactable = true;
+            }
+        }
     }
 
     private void Update()
@@ -101,6 +89,7 @@ public class StrategyHUD : MonoBehaviour
             toggled.Toggled = false;
             toggled = null;
         }
+        UpdateAlfa();
     }
 
     private void SetElementPosition(GameObject item, int indexOfItem)
@@ -145,8 +134,6 @@ public class StrategyHUD : MonoBehaviour
     {
         description.gameObject.SetActive(false);
     }
-
-
 
     public void DefendButton()
     {

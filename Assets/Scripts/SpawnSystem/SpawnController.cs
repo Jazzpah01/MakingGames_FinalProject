@@ -89,23 +89,14 @@ public class SpawnController : MonoBehaviour
 
             toSpawn.RemoveAt(0);
         }
-        //else if (toSpawn.Count == 0 && CurrentCombatValue == 0)
-        //{
-        //    if (CurrentWave >= waves.Count - 1)
-        //    {
-        //        // End level
-        //    } else
-        //    {
-        //        // Next wave
-        //        CurrentWave++;
-        //        Spawn();
-        //    }
-        //}
     }
 
     public void SpawnEnemies(int waveIndex) {
         if (waves == null || waves.Count < 1)
             throw new System.Exception("Cannot spawn a wave in a level with no waves!");
+
+        if (waveIndex >= waves.Count)
+            waveIndex = waves.Count - 1;
 
         CurrentWave = waveIndex;
 

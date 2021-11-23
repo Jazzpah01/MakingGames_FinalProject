@@ -771,8 +771,9 @@ MonoBehaviour:
   maxHealth: 200
   speed: 0
   healthbar: {fileID: 5239637589751290106}
-  projectorController: {fileID: 3867101360403018253}
   spotlight: {fileID: 7006261208530420386}
+  buildingProjections: {fileID: 1309791049706921081}
+  actorType: 2
 --- !u!1001 &173506617180876765
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -927,21 +928,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18a7c69b9cdd0de48b0b27a3d39afcb3, type: 3}
---- !u!114 &3867101360403018253 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2848496218345481998, guid: 18a7c69b9cdd0de48b0b27a3d39afcb3,
-    type: 3}
-  m_PrefabInstance: {fileID: 1309791049707083011}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10168c1909ea30d43a15345a4f5e70f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1309791049706677273 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 422170, guid: 18a7c69b9cdd0de48b0b27a3d39afcb3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1309791049707083011}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1309791049706921081 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 166266, guid: 18a7c69b9cdd0de48b0b27a3d39afcb3,
     type: 3}
   m_PrefabInstance: {fileID: 1309791049707083011}
   m_PrefabAsset: {fileID: 0}

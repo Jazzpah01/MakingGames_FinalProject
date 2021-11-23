@@ -36,7 +36,7 @@ public class Ant : AIStateMachine
         if (currentState == attack)
         {
             if (attack.status == AIState.StateStatus.Finished &&
-                targetDistance <= range)
+                targetDistance > range)
             {
                 ChangeState(pathMove);
             }

@@ -13,8 +13,15 @@ public class IgnoreParent : MonoBehaviour
 
     void Start()
     {
-        originalPosition = transform.position;
-        originalRotation = transform.rotation;
+        ResetTransformValues();
+    }
+
+    public void ResetTransformValues()
+    {
+        if (ignoreParentPosition)
+            originalPosition = transform.position;
+        if (ignoreParentRotation)
+            originalRotation = transform.rotation;
     }
 
     private void LateUpdate()

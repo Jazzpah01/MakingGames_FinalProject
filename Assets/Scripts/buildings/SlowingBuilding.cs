@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SlowingBuilding : MonoBehaviour
+public class SlowingBuilding : MonoBehaviour, IBuildingBehavior
 {
-
+    public float walkDistance = 13;
     float walktimer = 5;
     float gastimer = 0.2f;
     float yRotation;
@@ -21,6 +21,8 @@ public class SlowingBuilding : MonoBehaviour
         speed = GetComponent<Buildable>().Speed;
         yRotation = transform.rotation.y;
         gm = GameManager.instance;
+
+        walktimer = walkDistance / speed;
     }
 
     void FixedUpdate()
@@ -47,6 +49,7 @@ public class SlowingBuilding : MonoBehaviour
 
         transform.Rotate(0.0f, 180.0f, 0.0f, Space.Self);
         yRotation = transform.rotation.y;
-        walktimer = 5;
+
+        walktimer = walkDistance / speed;
     }
 }

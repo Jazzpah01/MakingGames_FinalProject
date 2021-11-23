@@ -150,6 +150,9 @@ MonoBehaviour:
   move:
     speedModifyer: 1
     stoppingDistance: 0.8
+  flee:
+    speedModifyer: 1.5
+    stoppingDistance: 0.8
   attack:
     damage: 500
     delay: 0.2
@@ -536,7 +539,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 50
+  m_Radius: 100
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1562670120480825331
 MonoBehaviour:

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Aphid : AIStateMachine
 {
-    public DirectMove move;
+    public PathMove move;
+    public PathMove flee;
     public InstantAttack attack;
 
     public CollisionObserver detectCarrots;
@@ -16,11 +17,11 @@ public class Aphid : AIStateMachine
     {
         Initialize();
         move.Initialize(this);
+        flee.Initialize(this);
         attack.Initialize(this);
 
         target = null;
 
-        //detectCarrots.Subscribe(detectCarrot_Enter, CollisionObserver.CollisionType.Enter);
         detectAttack.Subscribe(detectAttack_Enter, CollisionObserver.CollisionType.Enter);
         detectAttack.Subscribe(detectAttack_Exit, CollisionObserver.CollisionType.Exit);
 
@@ -36,12 +37,22 @@ public class Aphid : AIStateMachine
 
         if (currentState == move)
         {
+            if (target == null)
+            {
+                ChangeState(flee);
+            }
+
             if (inRange)
             {
                 ChangeState(attack);
             }
         } else if (currentState == attack)
         {
+            if (target == null)
+            {
+                ChangeState(flee);
+            }
+
             if (attack.status == AIState.StateStatus.Finished)
             {
                 ChangeState(move);
@@ -55,6 +66,9 @@ public class Aphid : AIStateMachine
     {
         foreach (Collider other in detectCarrots.Stay)
         {
+            if (other == null)
+                continue;
+
             IActor a = other.gameObject.GetComponent<IActor>();
 
             if (a != null && a.type == ActorType.Crops)
