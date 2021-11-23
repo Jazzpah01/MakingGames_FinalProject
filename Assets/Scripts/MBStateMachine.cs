@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MBStateMachine : MonoBehaviour
+public abstract class MBStateMachine : MonoBehaviour
 {
-    private IState currentState;
+    public IState currentState;
 
     protected void Update()
     {

@@ -21,3 +21,6 @@ MonoBehaviour:
       type: 3}
     value: 1.5
     identifyer: 1
+  - prefab: {fileID: 797109595003254403, guid: d1ebfda4b6cb9fd41bdc20214f12919d, type: 3}
+    value: 1
+    identifyer: 2

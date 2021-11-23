@@ -80,8 +80,7 @@ public class SpawnController : MonoBehaviour
             GameObject go = Instantiate(toSpawn[0].prefab);
 
             IEnemy enemy = go.GetComponent<IEnemy>();
-            EnemyController enemyController = go.GetComponent<EnemyController>();
-            enemyController.primaryTarget = baseGO.transform;
+
             enemy.enemyType = toSpawn[0];
 
             go.transform.position = spawnPoints[Random.Range(0, spawnPoints.Length - 1)].transform.position;
