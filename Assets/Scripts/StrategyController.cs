@@ -175,7 +175,7 @@ public class StrategyController : MonoBehaviour, IState
 
     public void EnterState()
     {
-        strategyHUD.UpdateAlfa();
+        //strategyHUD.UpdateAlfa();
     }
 
     public void ExitState()

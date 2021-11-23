@@ -20,9 +20,9 @@ public class InteractableUI : MonoBehaviour, IPointerClickHandler, IPointerEnter
     public enum InteractableUIOptions
     {
         None = 0,
-        ReplaceImageWithHighlight = 1,
-        ReplaceImageWithToggle = 2,
-        DisableHighlightOnToggle = 4
+        RemoveImageOnHighlight = 1,
+        RemoveImageOnToggle = 2,
+        RemoveHighlightOnToggle = 4
     }
 
     // Events that other classes can subscribe to
@@ -94,7 +94,7 @@ public class InteractableUI : MonoBehaviour, IPointerClickHandler, IPointerEnter
 
             if (value)
             {
-                if (options.HasFlag(InteractableUIOptions.DisableHighlightOnToggle) && Highlighted)
+                if (options.HasFlag(InteractableUIOptions.RemoveHighlightOnToggle) && Highlighted)
                 {
                     highlightImage.gameObject.SetActive(false);
                 }
@@ -123,7 +123,8 @@ public class InteractableUI : MonoBehaviour, IPointerClickHandler, IPointerEnter
     {
         if (Interactable && inside)
         {
-            if (OnClicked != null)
+            if (OnClicked != null &&
+                (eventData.pointerClick == PointerEventData.InputButton.Left && ))
                 OnClicked(mainGameObject, eventData);
         }
     }
@@ -166,7 +167,7 @@ public class InteractableUI : MonoBehaviour, IPointerClickHandler, IPointerEnter
 
         highlightImage.gameObject.SetActive(highlight);
 
-        if (options.HasFlag(InteractableUIOptions.ReplaceImageWithHighlight))
+        if (options.HasFlag(InteractableUIOptions.RemoveImageOnHighlight))
             image.gameObject.SetActive(!highlight);
     }
 }
