@@ -25,7 +25,7 @@ public class AIState : IState
         if (parent == null)
             throw new System.Exception("Cannot enter a state that hasn't been initialized!");
 
-        if (!parent.initialized)
+        if (!parent.Initialized)
             throw new System.Exception("Cannot enter a state, when the state machine hasn't been initialized!");
 
         status = StateStatus.Executing;

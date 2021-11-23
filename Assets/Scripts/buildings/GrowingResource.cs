@@ -11,7 +11,7 @@ public class GrowingResource : MonoBehaviour, IActor
     public int maxResourcesGained = 5;
     public HealthBar healthbar;
     private Vector3 growth = new Vector3(0.1f,0.1f,0.1f);
-    public ActorType type => ActorType.Obstacle;
+    public ActorType type => ActorType.Crops;
     public float Speed { get => Speed; set => Speed = 0; }
     public float MaxHealth => 100;
     public float Health { get => health; set => health = value; }

@@ -10,13 +10,19 @@ public class DirectMove : AIState
 
     protected override void UpdateAIState()
     {
+        if (parent.target.IsDestroyed())
+        {
+            parent.target = null;
+            return;
+        }
+
         Vector3 difference = (parent.target.gameObject.transform.position - parent.transform.position);
 
         if (difference.magnitude <= stoppingDistance)
             return;
 
         Vector3 targetVelocity = difference.normalized;
-        targetVelocity *= parent.target.Speed;
+        targetVelocity *= parent.controller.Speed * speedModifyer;
 
         targetVelocity.y = 0;
 

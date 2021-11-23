@@ -7,10 +7,7 @@ public class Ant : AIStateMachine
     public PathMove pathMove;
     public InstantAttack attack;
 
-    public float cooldown = 0.5f;
     public float range = 3;
-
-    private float cooldownTimer = 0;
 
     // Start is called before the first frame update
     protected void Start()
@@ -27,20 +24,19 @@ public class Ant : AIStateMachine
     // Update is called once per frame
     void Update()
     {
-        if (cooldownTimer < cooldown)
-            cooldownTimer += Time.deltaTime;
+        float targetDistance = (transform.position - target.gameObject.transform.position).magnitude;
 
         if (currentState == pathMove)
         {
-            if ((transform.position - target.gameObject.transform.position).magnitude < range &&
-                cooldownTimer >= cooldown)
+            if (targetDistance <= range)
             {
                 ChangeState(attack);
             }
         } else 
         if (currentState == attack)
         {
-            if (attack.status == AIState.StateStatus.Finished)
+            if (attack.status == AIState.StateStatus.Finished &&
+                targetDistance <= range)
             {
                 ChangeState(pathMove);
             }
