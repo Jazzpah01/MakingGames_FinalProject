@@ -46,6 +46,7 @@ public class EnemyController: MonoBehaviour, IEnemy
     public int typeIdentifyer { set; get; }
     public float value { get; set; }
     public EnemyType enemyType { get; set; }
+    public GameObject spawnPoint { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
     void Start()
     {

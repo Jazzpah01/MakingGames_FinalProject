@@ -84,8 +84,11 @@ public class SpawnController : MonoBehaviour
 
             enemy.enemyType = toSpawn[0];
 
-            go.transform.position = spawnPoints[Random.Range(0, spawnPoints.Length - 1)].transform.position;
+            GameObject spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length - 1)].gameObject;
+
+            go.transform.position = spawnPoint.transform.position;
             go.transform.parent = enemyParent.transform;
+            enemy.spawnPoint = spawnPoint;
 
             toSpawn.RemoveAt(0);
         }

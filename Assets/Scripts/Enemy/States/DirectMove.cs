@@ -10,13 +10,13 @@ public class DirectMove : AIState
 
     protected override void UpdateAIState()
     {
-        if (parent.target.IsDestroyed())
+        if (parent.TargetTransform.IsDestroyed())
         {
-            parent.target = null;
+            parent.Target = null;
             return;
         }
 
-        Vector3 difference = (parent.target.gameObject.transform.position - parent.transform.position);
+        Vector3 difference = (parent.TargetTransform.position - parent.transform.position);
 
         if (difference.magnitude <= stoppingDistance)
             return;

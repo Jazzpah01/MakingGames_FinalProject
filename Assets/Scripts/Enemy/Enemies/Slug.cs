@@ -18,7 +18,7 @@ public class Slug : AIStateMachine
         move.Initialize(this);
         attack.Initialize(this);
 
-        target = GameController.instance.baseController;
+        Target = GameController.instance.baseController;
 
         ChangeState(move);
     }
@@ -28,24 +28,24 @@ public class Slug : AIStateMachine
         if (currentState == move)
         {
             if ((transform.position - GameController.instance.player.transform.position).magnitude <=
-            (transform.position - target.gameObject.transform.position).magnitude)
+            (transform.position - Target.gameObject.transform.position).magnitude)
             {
-                target = GameController.instance.player.GetComponent<IActor>();
+                Target = GameController.instance.player.GetComponent<IActor>();
             }
 
             if ((transform.position - GameController.instance.baseController.transform.position).magnitude <=
-            (transform.position - target.gameObject.transform.position).magnitude)
+            (transform.position - Target.gameObject.transform.position).magnitude)
             {
-                target = GameController.instance.baseController;
+                Target = GameController.instance.baseController;
             }
 
-            if (detectAttack.Stay.Contains(target.gameObject.GetComponent<Collider>()))
+            if (detectAttack.Stay.Contains(Target.gameObject.GetComponent<Collider>()))
             {
                 ChangeState(attack);
             }
         } else if (currentState == attack)
         {
-            if (detectAttack.Exit.Contains(target.gameObject.GetComponent<Collider>()))
+            if (detectAttack.Exit.Contains(Target.gameObject.GetComponent<Collider>()))
             {
                 ChangeState(move);
             }
@@ -62,10 +62,10 @@ public class Slug : AIStateMachine
             return;
 
         if ((otherActor.gameObject.transform.position - transform.position).magnitude <
-            (target.gameObject.transform.position - transform.position).magnitude &&
+            (Target.gameObject.transform.position - transform.position).magnitude &&
             otherActor.type == ActorType.Obstacle)
         {
-            target = otherActor;
+            Target = otherActor;
             ChangeState(move);
         }
     }

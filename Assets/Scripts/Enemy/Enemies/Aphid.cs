@@ -20,7 +20,7 @@ public class Aphid : AIStateMachine
         flee.Initialize(this);
         attack.Initialize(this);
 
-        target = null;
+        Target = null;
 
         detectAttack.Subscribe(detectAttack_Enter, CollisionObserver.CollisionType.Enter);
         detectAttack.Subscribe(detectAttack_Exit, CollisionObserver.CollisionType.Exit);
@@ -32,13 +32,20 @@ public class Aphid : AIStateMachine
 
     void Update()
     {
-        if (target == null)
-            SetCarrotTarget();
+        if (Target.IsDestroyed())
+        {
+            inRange = false;
+            if (currentState != flee)
+            {
+                SetCarrotTarget();
+            }
+        }
 
         if (currentState == move)
         {
-            if (target == null)
+            if (Target.IsDestroyed())
             {
+                TargetTransform = ((IEnemy)controller).spawnPoint.transform;
                 ChangeState(flee);
             }
 
@@ -48,14 +55,23 @@ public class Aphid : AIStateMachine
             }
         } else if (currentState == attack)
         {
-            if (target == null)
+            if (Target.IsDestroyed())
             {
+                TargetTransform = ((IEnemy)controller).spawnPoint.transform;
                 ChangeState(flee);
             }
 
             if (attack.status == AIState.StateStatus.Finished)
             {
                 ChangeState(move);
+            }
+        } else if (currentState == flee)
+        {
+            Vector3 dist = (TargetTransform.position - transform.position);
+            dist.y = 0;
+            if ((dist).magnitude < 4)
+            {
+                Destroy(this.gameObject);
             }
         }
 
@@ -73,7 +89,7 @@ public class Aphid : AIStateMachine
 
             if (a != null && a.type == ActorType.Crops)
             {
-                target = a;
+                Target = a;
                 break;
             }
         }
@@ -83,7 +99,7 @@ public class Aphid : AIStateMachine
     {
         IActor otherActor = other.GetComponent<IActor>();
 
-        if (otherActor != null && otherActor == target)
+        if (otherActor != null && otherActor == Target)
         {
             inRange = true;
         }
@@ -93,7 +109,7 @@ public class Aphid : AIStateMachine
     {
         IActor otherActor = other.GetComponent<IActor>();
 
-        if (otherActor != null && otherActor == target)
+        if (otherActor != null && otherActor == Target)
         {
             inRange = false;
         }

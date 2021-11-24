@@ -11,7 +11,7 @@ public class PathMove : AIState
     protected override void EnterAIState()
     {
         parent.agent.speed = parent.controller.Speed * speedModifyer;
-        parent.agent.stoppingDistance = 0.8f;
+        parent.agent.stoppingDistance = stoppingDistance;
         parent.agent.updateRotation = false;
         parent.agent.isStopped = false;
     }
@@ -25,14 +25,14 @@ public class PathMove : AIState
 
     protected override void UpdateAIState()
     {
-        if (parent.target.IsDestroyed())
+        if (parent.TargetTransform.IsDestroyed())
         {
-            parent.target = null;
+            parent.Target = null;
             parent.agent.SetDestination(parent.transform.position);
             parent.agent.isStopped = true;
             return;
         }
 
-        parent.agent.SetDestination(parent.target.gameObject.transform.position);
+        parent.agent.SetDestination(parent.TargetTransform.position);
     }
 }

@@ -31,6 +31,8 @@ public class Enemy : MonoBehaviour, IEnemy
         }
     }
 
+    public GameObject spawnPoint { get; set; }
+
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();

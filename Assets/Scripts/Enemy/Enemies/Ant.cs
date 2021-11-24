@@ -16,7 +16,7 @@ public class Ant : AIStateMachine
         pathMove.Initialize(this);
         attack.Initialize(this);
 
-        target = GameController.instance.player.GetComponent<PlayerController>();
+        Target = GameController.instance.player.GetComponent<PlayerController>();
 
         ChangeState(pathMove);
     }
@@ -24,7 +24,7 @@ public class Ant : AIStateMachine
     // Update is called once per frame
     void Update()
     {
-        float targetDistance = (transform.position - target.gameObject.transform.position).magnitude;
+        float targetDistance = (transform.position - Target.gameObject.transform.position).magnitude;
 
         if (currentState == pathMove)
         {

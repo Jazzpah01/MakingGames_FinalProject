@@ -29,7 +29,7 @@ public class InstantAttack : AIState
         } else
         {
             delayTimer = 0;
-            parent.target.Health -= damage;
+            parent.Target.Health -= damage;
             status = StateStatus.Finished;
             ready = false;
             parent.CallInSeconds(Cooldown, cooldown);
