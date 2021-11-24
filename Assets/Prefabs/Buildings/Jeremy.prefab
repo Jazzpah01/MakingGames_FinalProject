@@ -236,7 +236,7 @@ GameObject:
   - component: {fileID: 641325662270382582}
   - component: {fileID: 641325662270382576}
   - component: {fileID: 641325662270382583}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: DetectionCollision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -586,7 +586,7 @@ GameObject:
   - component: {fileID: 641325663243885527}
   - component: {fileID: 641325663243885521}
   - component: {fileID: 641325663243885520}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: DamagerCollision
   m_TagString: Untagged
   m_Icon: {fileID: 0}

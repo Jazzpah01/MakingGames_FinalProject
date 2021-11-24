@@ -31,6 +31,9 @@ public class Enemy : MonoBehaviour, IEnemy
         }
     }
 
+    public bool blockDamage { get; set; }
+    public float damageReduction { get; set; }
+
     public GameObject spawnPoint { get; set; }
 
     private void Awake()
@@ -41,6 +44,7 @@ public class Enemy : MonoBehaviour, IEnemy
     // Start is called before the first frame update
     void Start()
     {
+        blockDamage = false;
         Health = maxHealth;
     }
 

@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Slug will attack Player and Building, and any obstacle in the way
+/// </summary>
 public class Slug : AIStateMachine
 {
     public DirectMove move;
@@ -14,12 +17,18 @@ public class Slug : AIStateMachine
 
     private void Start()
     {
+        // Initialize
         Initialize();
         move.Initialize(this);
         attack.Initialize(this);
 
+        // Set target to base initially
         Target = GameController.instance.baseController;
 
+        // Setup collision observers
+        detectObstruction.Subscribe(detectObstruction_Enter, CollisionObserver.CollisionType.Enter);
+
+        // Change state
         ChangeState(move);
     }
 
@@ -27,6 +36,7 @@ public class Slug : AIStateMachine
     {
         if (currentState == move)
         {
+            // Move state, move towards target
             if ((transform.position - GameController.instance.player.transform.position).magnitude <=
             (transform.position - Target.gameObject.transform.position).magnitude)
             {
@@ -45,6 +55,14 @@ public class Slug : AIStateMachine
             }
         } else if (currentState == attack)
         {
+            // Attack state, deal damage to target
+            if (Target.IsDestroyed())
+            {
+                Target = GameController.instance.player.GetComponent<IActor>();
+                ChangeState(move);
+                return;
+            }
+
             if (detectAttack.Exit.Contains(Target.gameObject.GetComponent<Collider>()))
             {
                 ChangeState(move);

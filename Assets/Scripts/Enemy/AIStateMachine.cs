@@ -11,6 +11,7 @@ public abstract class AIStateMachine : MBStateMachine
     private IActor target;
     private Transform targetTransform;
 
+    // Target of the AI. The states will use this as reference.
     public IActor Target { get => target;
         set
         {
@@ -24,6 +25,7 @@ public abstract class AIStateMachine : MBStateMachine
             }
         }
     }
+    // Target transform of the AI. The states will use this as reference.
     public Transform TargetTransform
     {
         get => targetTransform;
@@ -45,6 +47,11 @@ public abstract class AIStateMachine : MBStateMachine
         agent = GetComponent<NavMeshAgent>();
     }
 
+    /// <summary>
+    /// Method to call a delegate after a given amount of seconds. Useful for cooldowns.
+    /// </summary>
+    /// <param name="method"></param>
+    /// <param name="seconds"></param>
     public void CallInSeconds(Action method, float seconds)
     {
         StartCoroutine(CallInSecondsCoroutine(method, seconds));

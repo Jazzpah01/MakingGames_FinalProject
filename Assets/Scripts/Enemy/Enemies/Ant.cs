@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Ant will attack the player exclusively.
+/// </summary>
 public class Ant : AIStateMachine
 {
     public PathMove pathMove;
@@ -16,7 +19,7 @@ public class Ant : AIStateMachine
         pathMove.Initialize(this);
         attack.Initialize(this);
 
-        Target = GameController.instance.player.GetComponent<PlayerController>();
+        Target = GameController.instance.player.GetComponent<IActor>();
 
         ChangeState(pathMove);
     }

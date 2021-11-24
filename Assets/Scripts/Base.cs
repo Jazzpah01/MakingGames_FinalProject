@@ -19,7 +19,6 @@ public class Base : MonoBehaviour, IActor
         set
         {
             health = value;
-            //print(health);
 
             if (health <= 0)
             {
@@ -28,9 +27,13 @@ public class Base : MonoBehaviour, IActor
         }
     }
 
+    public bool blockDamage { get; set; }
+    public float damageReduction { get; set; }
+
     private void Start()
     {
         health = maxHealth;
         gameController = GameManager.instance.gameController;
+        blockDamage = false;
     }
 }

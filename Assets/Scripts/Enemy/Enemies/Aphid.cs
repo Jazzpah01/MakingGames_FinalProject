@@ -15,17 +15,33 @@ public class Aphid : AIStateMachine
 
     protected void Start()
     {
+        // Find a crops to follow
+        IActor[] crops = GameManager.instance.buildingController.buildablesParent.gameObject.GetComponentsInChildren<IActor>();
+
+        foreach (IActor item in crops)
+        {
+            if (item.type == ActorType.Crops)
+            {
+                Target = item;
+            }
+        }
+
+        // If crops doesn't exit: remove this
+        if (Target.IsDestroyed())
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+
+        // Initialize states and machine
         Initialize();
         move.Initialize(this);
         flee.Initialize(this);
         attack.Initialize(this);
 
-        Target = null;
-
+        // Subscribe to elements
         detectAttack.Subscribe(detectAttack_Enter, CollisionObserver.CollisionType.Enter);
         detectAttack.Subscribe(detectAttack_Exit, CollisionObserver.CollisionType.Exit);
-
-        SetCarrotTarget();
 
         ChangeState(move);
     }
@@ -43,6 +59,7 @@ public class Aphid : AIStateMachine
 
         if (currentState == move)
         {
+            // Move state. Move to a crops actor
             if (Target.IsDestroyed())
             {
                 TargetTransform = ((IEnemy)controller).spawnPoint.transform;
@@ -55,6 +72,7 @@ public class Aphid : AIStateMachine
             }
         } else if (currentState == attack)
         {
+            // In state attack. Attack target
             if (Target.IsDestroyed())
             {
                 TargetTransform = ((IEnemy)controller).spawnPoint.transform;
@@ -67,6 +85,7 @@ public class Aphid : AIStateMachine
             }
         } else if (currentState == flee)
         {
+            // In flee state: When at spawn point, remove this game object
             Vector3 dist = (TargetTransform.position - transform.position);
             dist.y = 0;
             if ((dist).magnitude < 4)
