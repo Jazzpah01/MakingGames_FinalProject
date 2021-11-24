@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.AI;
 
 
@@ -15,6 +16,7 @@ public class PlayerMotor : MonoBehaviour
     public float maxVelocityChange = 10.0f;
     public float dashCooldown;
     public float dashLength;
+    public float dashSpeed;
     public float attackDashLength;
 
     private LayerMask movementMask;
@@ -23,7 +25,7 @@ public class PlayerMotor : MonoBehaviour
     private bool dashing = false;
     private bool attacking = false;
     private float dashTimer;
-    private float dashSpeed = 100;
+    private float distance = 999999;
 
 
     void Start()
@@ -33,38 +35,32 @@ public class PlayerMotor : MonoBehaviour
         cam = playerManager.cam;
         movementMask = GetComponent<PlayerController>().movementMask;
         actorMask = GetComponent<PlayerController>().actorMask;
-        dashLength *= 0.01f;
         attackDashLength *= 0.001f;
     }
 
     private void FixedUpdate()
     {
+        dashTimer -= Time.fixedDeltaTime;
 
         directionX = 0;
         directionZ = 0;
 
-        if (Input.GetKeyDown(KeyCode.Space) && 0 >= dashTimer)
+        if (Input.GetKey(KeyCode.Space) && 0 >= dashTimer && !dashing && !attacking)
         {
             dashTimer += dashCooldown;
-            Dash();
-        }
 
-        if (!dashing && !attacking)
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 1000, movementMask))
+            {
+                Dash(hit.point, dashSpeed, dashLength);
+            }
+
+        }
+        else if (!dashing && !attacking)
         {
             MovementKeyInput();
             Move();
-        }
-        else if (attacking)
-        {
-            AttackDash();
-        }
-        else if (dashing)
-        {
-            Dash();
-        }
-        else
-        {
-            Debug.Log("Something is horribly wrong");
         }
     }
 
@@ -102,71 +98,96 @@ public class PlayerMotor : MonoBehaviour
 
         agent.velocity = rotaMatrix.MultiplyPoint3x4(velocityChange);
     }
-
-    private void Dash()
+    public void Dash(Vector3 dashPoint, float dashMultiplier, float length)
     {
-        dashTimer -= Time.fixedDeltaTime;
-        Vector3 hitpoint = Vector3.zero;
-        if (!dashing)
-        {
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 1000, movementMask))
-            {
-                hitpoint = new Vector3(hit.point.x, 0, hit.point.z);
-                dashing = true;
-            }
-            else
-            {
-                Debug.Log("Mouse not on movementmask");
-            }
-
-        }
-        if (hitpoint != Vector3.zero)
-        {
-            transform.rotation = Quaternion.LookRotation(hitpoint);
-            Vector3 direction = (hitpoint - transform.position).normalized;
-            direction *= dashSpeed;
-            agent.velocity = direction;
-        }
-        else
-        {
-            Debug.Log("somehting went wrong here");
-        }
-
-        if (0 >= dashTimer - dashCooldown + dashLength)
-        {
-            dashing = false;
-        }
+        dashing = true;
+        StartCoroutine(DashE(dashPoint, dashSpeed, dashLength));
     }
-    public void AttackDash()
+    private IEnumerator DashE(Vector3 dashPoint, float dashMultiplier, float length)
     {
-        attackDashLength -= Time.fixedDeltaTime;
-        Vector3 hitpoint = Vector3.zero;
-        if (!attacking)
+        transform.rotation = Quaternion.LookRotation(dashPoint);
+        Vector3 moveTo = ((dashPoint - transform.position).normalized) * length;
+        Vector3 position = (moveTo + transform.position);
+        float d = Vector3.Distance(position, transform.position);
+        distance = d;
+        while (d > 1)
         {
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 1000, actorMask))
+            d = Vector3.Distance(position, transform.position);
+            if (d > distance)
             {
-                hitpoint = new Vector3(hit.point.x, 0, hit.point.z);
-                attacking = true;
+                break;
             }
+            distance = d;
+            agent.velocity = moveTo * dashMultiplier;
+
+            yield return new WaitForSeconds(0.01f);
         }
-        if (hitpoint != Vector3.zero)
-        {
-            transform.rotation = Quaternion.LookRotation(hitpoint);
-            Vector3 direction = (hitpoint - transform.position).normalized;
-            direction *= dashSpeed;
-            agent.velocity = direction;
-        }
-        else
-        {
-            Debug.Log("Something is wrong here");
-        }
-        if (0 >= attackDashLength)
-        {
-            attacking = false;
-        }
+        dashing = false;
     }
+
+    //private void Dash()
+    //{
+    //    Vector3 hitpoint = Vector3.zero;
+    //    if (!dashing)
+    //    {
+    //        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+    //        RaycastHit hit;
+    //        if (Physics.Raycast(ray, out hit, 1000, movementMask))
+    //        {
+    //            hitpoint = new Vector3(hit.point.x, 0, hit.point.z);
+    //            dashing = true;
+    //        }
+    //        else
+    //        {
+    //            Debug.Log("Mouse not on movementmask");
+    //        }
+
+    //    }
+    //    if (hitpoint != Vector3.zero)
+    //    {
+    //        transform.rotation = Quaternion.LookRotation(hitpoint);
+    //        Vector3 direction = (hitpoint - transform.position).normalized;
+    //        direction *= dashSpeed;
+    //        agent.velocity = direction;
+    //    }
+    //    else
+    //    {
+    //        Debug.Log("somehting went wrong here");
+    //    }
+
+    //    if (0 >= dashTimer - dashCooldown + dashLength)
+    //    {
+    //        dashing = false;
+    //    }
+    //}
+    //public void AttackDash()
+    //{
+    //    attackDashLength -= Time.fixedDeltaTime;
+    //    Vector3 hitpoint = Vector3.zero;
+    //    if (!attacking)
+    //    {
+    //        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+    //        RaycastHit hit;
+    //        if (Physics.Raycast(ray, out hit, 1000, actorMask))
+    //        {
+    //            hitpoint = new Vector3(hit.point.x, 0, hit.point.z);
+    //            attacking = true;
+    //        }
+    //    }
+    //    if (hitpoint != Vector3.zero)
+    //    {
+    //        transform.rotation = Quaternion.LookRotation(hitpoint);
+    //        Vector3 direction = (hitpoint - transform.position).normalized;
+    //        direction *= dashSpeed;
+    //        agent.velocity = direction;
+    //    }
+    //    else
+    //    {
+    //        Debug.Log("Something is wrong here");
+    //    }
+    //    if (0 >= attackDashLength)
+    //    {
+    //        attacking = false;
+    //    }
+    //}
 }

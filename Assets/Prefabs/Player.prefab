@@ -461,6 +461,7 @@ MonoBehaviour:
   maxVelocityChange: 10
   dashCooldown: 3
   dashLength: 5
+  dashSpeed: 5
   attackDashLength: 3
 --- !u!114 &1784768863079845807
 MonoBehaviour:

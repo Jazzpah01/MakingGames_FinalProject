@@ -58,16 +58,16 @@ public class PlayerController : MonoBehaviour, IActor, IState
         }
 
         //left click
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && combat.PrimaryAttackReady())
         {
-            motor.AttackDash();
+            //motor.AttackDash();
             combat.PrimaryAttack(cam, actorMask);
         }
 
         //right click
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) && combat.SecondaryAttackReady())
         {
-            motor.AttackDash();
+            //motor.AttackDash();
             combat.SecondaryAttack();
         }
     }

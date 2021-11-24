@@ -34,7 +34,7 @@ public class PlayerCombat : MonoBehaviour
         //if we left click on the actor mask
         if (Physics.Raycast(ray, out hit, 1000, mask))
         {
-        if (primaryAttackTime <= 0 && primaryAttackObserver.Stay.Contains(hit.collider))
+        if (PrimaryAttackReady() && primaryAttackObserver.Stay.Contains(hit.collider))
         {
             IActor actor = hit.transform.GetComponent<IActor>();
 
@@ -50,7 +50,7 @@ public class PlayerCombat : MonoBehaviour
 
     public void SecondaryAttack()
     {
-        if (secondaryAttackTime < 0)
+        if (SecondaryAttackReady())
         {
             secondaryAttackTime = secondaryAttackCooldown;
             Collider[] collisions = secondaryObserver.Stay.ToArray();
@@ -68,5 +68,21 @@ public class PlayerCombat : MonoBehaviour
 
             }
         }
+    }
+
+    public bool PrimaryAttackReady()
+    {
+        if (0 < primaryAttackCooldown)
+            return true;
+        else
+            return false;
+    }
+
+    public bool SecondaryAttackReady()
+    {
+        if (0 < primaryAttackCooldown)
+            return true;
+        else
+            return false;
     }
 }
