@@ -98,16 +98,30 @@ public class PlayerMotor : MonoBehaviour
 
         agent.velocity = rotaMatrix.MultiplyPoint3x4(velocityChange);
     }
-    public void Dash(Vector3 dashPoint, float dashMultiplier, float length)
+    //attempt to dash, return false if dash fails due to another dash in progress
+    public bool Dash(Vector3 dashPoint, float dashMultiplier, float length)
     {
-        dashing = true;
-        StartCoroutine(DashE(dashPoint, dashSpeed, dashLength));
+        if (!dashing)
+        {
+            dashing = true;
+            Coroutine c = StartCoroutine(DashE(dashPoint, dashMultiplier, length));
+            return true;
+        }
+        else
+        {
+            Debug.Log("Trying to dash while dash is already in progress");
+            return false;
+        }
     }
     private IEnumerator DashE(Vector3 dashPoint, float dashMultiplier, float length)
     {
+        // turn the player to look at the point
         transform.rotation = Quaternion.LookRotation(dashPoint);
+        // find the vector
         Vector3 moveTo = ((dashPoint - transform.position).normalized) * length;
+        // find the point
         Vector3 position = (moveTo + transform.position);
+
         float d = Vector3.Distance(position, transform.position);
         distance = d;
         while (d > 1)
