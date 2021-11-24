@@ -59,6 +59,9 @@ public class Buildable : MonoBehaviour, IActor
         
     }
 
+    /// <summary>
+    /// Call as this building is being placed. Before it is places.
+    /// </summary>
     public void OnPlacing()
     {
         buildingBehavior.enabled = false;
@@ -67,6 +70,9 @@ public class Buildable : MonoBehaviour, IActor
             ob.enabled = false;
     }
 
+    /// <summary>
+    /// Call when this building is places onto the map.
+    /// </summary>
     public void OnBuild()
     {
         // Set some game objects to ignore parent transform
@@ -90,12 +96,18 @@ public class Buildable : MonoBehaviour, IActor
         GameController.instance.OnChangeToCombat += OnCombatMode;
     }
 
+    /// <summary>
+    /// Call when entering StrategyState
+    /// </summary>
     public void OnBuildingMode()
     {
         if (buildingProjections != null)
             buildingProjections.SetActive(true);
     }
 
+    /// <summary>
+    /// Call when entering CombatState
+    /// </summary>
     public void OnCombatMode()
     {
         if (buildingProjections != null)
@@ -110,7 +122,10 @@ public class Buildable : MonoBehaviour, IActor
     }
 
 
-
+    /// <summary>
+    /// Find and enable all components IgnoreParent within a GameObject and children.
+    /// </summary>
+    /// <param name="toIgnore">GameObject which IgnoreParent components should be activated.</param>
     private void IgnoreInObject(GameObject toIgnore)
     {
         IgnoreParent[] ignoreParentsList = toIgnore.GetComponentsInChildren<IgnoreParent>();
