@@ -60,15 +60,37 @@ public class PlayerController : MonoBehaviour, IActor, IState
         //left click
         if (Input.GetMouseButton(0) && combat.PrimaryAttackReady())
         {
-            //motor.AttackDash();
-            combat.PrimaryAttack(cam, actorMask);
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 1000, movementMask))
+            {
+                //prepare to attack by turning to look at this direction
+                motor.TurnTowardsTarget(hit.point);
+                //attempt to do the attack
+                if (combat.PrimaryAttack(cam, actorMask))
+                {
+                    //if attack is successful, dash
+                    motor.Dash(combat.primaryAttackDashSpeed, combat.primaryAttackDashLength);
+                }
+            }
         }
 
         //right click
         if (Input.GetMouseButtonDown(1) && combat.SecondaryAttackReady())
         {
-            //motor.AttackDash();
-            combat.SecondaryAttack();
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 1000, movementMask))
+            {
+                //prepare to attack by turning to look at this direction
+                motor.TurnTowardsTarget(hit.point);
+                //attempt to do the attack
+                if (combat.SecondaryAttack())
+                {
+                    //if attack is successful, dash
+                    motor.Dash(combat.SecondaryAttackDashSpeed, combat.SecondaryAttackDashLength);
+                }
+            }
         }
     }
 

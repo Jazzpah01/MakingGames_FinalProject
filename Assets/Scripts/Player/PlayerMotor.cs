@@ -40,26 +40,26 @@ public class PlayerMotor : MonoBehaviour
 
     private void FixedUpdate()
     {
+        //dash cooldown
         dashTimer -= Time.fixedDeltaTime;
 
+        //reset direction variables so we return to standing still
         directionX = 0;
         directionZ = 0;
 
+        //dash or move
         if (Input.GetKey(KeyCode.Space) && 0 >= dashTimer && !dashing && !attacking)
         {
+            //reset dash cooldown
             dashTimer += dashCooldown;
-
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 1000, movementMask))
-            {
-                Dash(hit.point, dashSpeed, dashLength);
-            }
-
+            //dash
+            Dash(dashSpeed, dashLength);
         }
         else if (!dashing && !attacking)
         {
+            //read input keys
             MovementKeyInput();
+            //move the player
             Move();
         }
     }
@@ -98,27 +98,39 @@ public class PlayerMotor : MonoBehaviour
 
         agent.velocity = rotaMatrix.MultiplyPoint3x4(velocityChange);
     }
-    //attempt to dash, return false if dash fails due to another dash in progress
-    public bool Dash(Vector3 dashPoint, float dashMultiplier, float length)
+
+    //attempt to dash, return false if dash fails
+    public bool Dash(float dashSpeed, float DashLength)
     {
-        if (!dashing)
+        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 1000, movementMask))
         {
-            dashing = true;
-            Coroutine c = StartCoroutine(DashE(dashPoint, dashMultiplier, length));
-            return true;
+            if (!dashing)
+            {
+                dashing = true;
+                Coroutine c = StartCoroutine(DashE(hit.point, dashSpeed, DashLength));
+                return true;
+            }
+            else
+            {
+                Debug.Log("Trying to dash while dash is already in progress");
+                return false;
+            }
         }
         else
         {
-            Debug.Log("Trying to dash while dash is already in progress");
+            Debug.Log("Raycast on dash failed");
             return false;
         }
     }
-    private IEnumerator DashE(Vector3 dashPoint, float dashMultiplier, float length)
+
+    private IEnumerator DashE(Vector3 dashPoint, float dashSpeed, float dashLength)
     {
         // turn the player to look at the point
-        transform.rotation = Quaternion.LookRotation(dashPoint);
+        TurnTowardsTarget(dashPoint);
         // find the vector
-        Vector3 moveTo = ((dashPoint - transform.position).normalized) * length;
+        Vector3 moveTo = ((dashPoint - transform.position).normalized) * dashLength;
         // find the point
         Vector3 position = (moveTo + transform.position);
 
@@ -132,76 +144,15 @@ public class PlayerMotor : MonoBehaviour
                 break;
             }
             distance = d;
-            agent.velocity = moveTo * dashMultiplier;
+            agent.velocity = moveTo * dashSpeed;
 
             yield return new WaitForSeconds(0.01f);
         }
         dashing = false;
     }
 
-    //private void Dash()
-    //{
-    //    Vector3 hitpoint = Vector3.zero;
-    //    if (!dashing)
-    //    {
-    //        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-    //        RaycastHit hit;
-    //        if (Physics.Raycast(ray, out hit, 1000, movementMask))
-    //        {
-    //            hitpoint = new Vector3(hit.point.x, 0, hit.point.z);
-    //            dashing = true;
-    //        }
-    //        else
-    //        {
-    //            Debug.Log("Mouse not on movementmask");
-    //        }
-
-    //    }
-    //    if (hitpoint != Vector3.zero)
-    //    {
-    //        transform.rotation = Quaternion.LookRotation(hitpoint);
-    //        Vector3 direction = (hitpoint - transform.position).normalized;
-    //        direction *= dashSpeed;
-    //        agent.velocity = direction;
-    //    }
-    //    else
-    //    {
-    //        Debug.Log("somehting went wrong here");
-    //    }
-
-    //    if (0 >= dashTimer - dashCooldown + dashLength)
-    //    {
-    //        dashing = false;
-    //    }
-    //}
-    //public void AttackDash()
-    //{
-    //    attackDashLength -= Time.fixedDeltaTime;
-    //    Vector3 hitpoint = Vector3.zero;
-    //    if (!attacking)
-    //    {
-    //        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-    //        RaycastHit hit;
-    //        if (Physics.Raycast(ray, out hit, 1000, actorMask))
-    //        {
-    //            hitpoint = new Vector3(hit.point.x, 0, hit.point.z);
-    //            attacking = true;
-    //        }
-    //    }
-    //    if (hitpoint != Vector3.zero)
-    //    {
-    //        transform.rotation = Quaternion.LookRotation(hitpoint);
-    //        Vector3 direction = (hitpoint - transform.position).normalized;
-    //        direction *= dashSpeed;
-    //        agent.velocity = direction;
-    //    }
-    //    else
-    //    {
-    //        Debug.Log("Something is wrong here");
-    //    }
-    //    if (0 >= attackDashLength)
-    //    {
-    //        attacking = false;
-    //    }
-    //}
+    public void TurnTowardsTarget(Vector3 target)
+    {
+        transform.rotation = Quaternion.LookRotation(new Vector3(target.x,0,target.z));
+    }
 }
