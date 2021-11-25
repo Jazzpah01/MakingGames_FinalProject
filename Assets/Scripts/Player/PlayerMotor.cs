@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.AI;
 
 
@@ -10,12 +11,21 @@ public class PlayerMotor : MonoBehaviour
 
     [HideInInspector]
     Camera cam;
-    LayerMask movementMask;
 
     public float isoAngle = -45;
     public float maxVelocityChange = 10.0f;
+    public float dashCooldown;
+    public float dashLength;
+    public float dashSpeed;
+    public float attackDashLength;
 
+    private LayerMask movementMask;
+    private LayerMask actorMask;
     private float directionX, directionZ;
+    private bool dashing = false;
+    private bool attacking = false;
+    private float dashTimer;
+    private float distance = 999999;
 
 
     void Start()
@@ -23,75 +33,131 @@ public class PlayerMotor : MonoBehaviour
         playerManager = PlayerManager.instance;
         agent = GetComponent<NavMeshAgent>();
         cam = playerManager.cam;
+        movementMask = GetComponent<PlayerController>().movementMask;
+        actorMask = GetComponent<PlayerController>().actorMask;
+        attackDashLength *= 0.001f;
     }
 
     private void FixedUpdate()
     {
-        //click to move
-        if (target != null)
+        //dash cooldown
+        dashTimer -= Time.fixedDeltaTime;
+
+        //reset direction variables so we return to standing still
+        directionX = 0;
+        directionZ = 0;
+
+        //dash or move
+        if (Input.GetKey(KeyCode.Space) && 0 >= dashTimer && !dashing && !attacking)
         {
-            agent.SetDestination(target.position);
-            FaceTarget();
+            //reset dash cooldown
+            dashTimer += dashCooldown;
+            //dash
+            Dash(dashSpeed, dashLength);
         }
-        //keyboard movement
-        if (playerManager.keyboardControl)
+        else if (!dashing && !attacking)
         {
-            directionX = 0;
-            directionZ = 0;
-            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-            {
-                directionZ = -1;
-            }
-            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-            {
-                directionZ = 1;
-            }
-            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
-            {
-                directionX = -1;
-            }
-            if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
-            {
-                directionX = 1;
-            }
-            Vector3 targetVelocity = new Vector3(directionX, 0, directionZ).normalized;
-            targetVelocity *= agent.speed;
+            //read input keys
+            MovementKeyInput();
+            //move the player
+            Move();
+        }
+    }
 
-            Vector3 velocityChange = targetVelocity;
-            velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
-            velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
-            velocityChange.y = 0;
+    private void MovementKeyInput()
+    {
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        {
+            directionZ = -1;
+        }
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        {
+            directionZ = 1;
+        }
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+        {
+            directionX = -1;
+        }
+        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+        {
+            directionX = 1;
+        }
+    }
+    private void Move()
+    {
+        agent.updateRotation = true;
 
-            Quaternion rotation = Quaternion.Euler(0, isoAngle, 0);
-            Matrix4x4 rotaMatrix = Matrix4x4.Rotate(rotation);
+        Vector3 targetVelocity = new Vector3(directionX, 0, directionZ).normalized;
+        targetVelocity *= agent.speed;
 
-            agent.velocity = rotaMatrix.MultiplyPoint3x4(velocityChange);
+        Vector3 velocityChange = targetVelocity;
+        velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
+        velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
+        velocityChange.y = 0;
+
+        Quaternion rotation = Quaternion.Euler(0, isoAngle, 0);
+        Matrix4x4 rotaMatrix = Matrix4x4.Rotate(rotation);
+
+        agent.velocity = rotaMatrix.MultiplyPoint3x4(velocityChange);
+    }
+
+    //attempt to dash, return false if dash fails
+    public bool Dash(float dashSpeed, float DashLength)
+    {
+        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 1000, movementMask))
+        {
+            if (!dashing)
+            {
+                dashing = true;
+                Coroutine c = StartCoroutine(DashE(hit.point, dashSpeed, DashLength));
+                return true;
+            }
+            else
+            {
+                Debug.Log("Trying to dash while dash is already in progress");
+                return false;
+            }
         }
         else
         {
-            if (Input.GetMouseButton(0))
-            {
-                Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
-                if (Physics.Raycast(ray, out hit, 1000, movementMask))
-                {
-                    agent.SetDestination(hit.transform.position);
-                }
-            }
+            Debug.Log("Raycast on dash failed");
+            return false;
         }
     }
 
-    public void StopFollowingTarget()
+    private IEnumerator DashE(Vector3 dashPoint, float dashSpeed, float dashLength)
     {
-        agent.stoppingDistance = 0f;
-        agent.updateRotation = true;
-        target = null;
+        // turn the player to look at the point
+        TurnTowardsTarget(dashPoint);
+        // find the vector
+        Vector3 moveTo = ((dashPoint - transform.position).normalized) * dashLength;
+        // find the point
+        Vector3 position = (moveTo + transform.position);
+
+        float d = Vector3.Distance(position, transform.position);
+        distance = d;
+        while (d > 1)
+        {
+            d = Vector3.Distance(position, transform.position);
+            if (d > distance)
+            {
+                break;
+            }
+            distance = d;
+            agent.velocity = moveTo * dashSpeed;
+
+            yield return new WaitForSeconds(0.01f);
+        }
+        dashing = false;
     }
 
-    private void FaceTarget()
+    public void TurnTowardsTarget(Vector3 target)
     {
-        Vector3 direction = (target.position - transform.position).normalized;
-        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.z));
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
+        //transform.rotation = Quaternion.LookRotation(new Vector3(target.x,0,target.z));
+        agent.updateRotation = false;
+        transform.rotation = Quaternion.LookRotation(new Vector3(target.x,0,target.z) - transform.position);
+        //transform.rotation = new Quaternion(0, Vector3.Angle(new Vector3(1, 0, 0), target - transform.position), 0, 0);
     }
 }

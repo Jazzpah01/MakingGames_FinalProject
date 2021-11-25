@@ -57,16 +57,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 863.485
       objectReference: {fileID: 0}
-    - target: {fileID: 2723149444006585304, guid: 331d54d02b9dbea4db316c70afd23fbb,
-        type: 3}
-      propertyPath: maxHealth
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 2723149444006585306, guid: 331d54d02b9dbea4db316c70afd23fbb,
-        type: 3}
-      propertyPath: m_Speed
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 2952568507763849965, guid: 331d54d02b9dbea4db316c70afd23fbb,
         type: 3}
       propertyPath: m_Size
@@ -413,7 +403,7 @@ PrefabInstance:
     - target: {fileID: 8178444715990651465, guid: 331d54d02b9dbea4db316c70afd23fbb,
         type: 3}
       propertyPath: m_Name
-      value: Level1
+      value: Level_Prototype2
       objectReference: {fileID: 0}
     - target: {fileID: 8178444715990651470, guid: 331d54d02b9dbea4db316c70afd23fbb,
         type: 3}

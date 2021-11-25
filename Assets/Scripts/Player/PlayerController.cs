@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour, IActor, IState
     PlayerManager playerManager;
     GameController gameController;
     PlayerCombat combat;
+    PlayerMotor motor;
 
     public LayerMask movementMask;
     public LayerMask actorMask;
@@ -43,6 +44,7 @@ public class PlayerController : MonoBehaviour, IActor, IState
     {
         playerManager = PlayerManager.instance;
         gameController = GameController.instance;
+        motor = GetComponent<PlayerMotor>();
         combat = GetComponent<PlayerCombat>();
         cam = playerManager.cam;
         health = maxHealth;
@@ -60,20 +62,42 @@ public class PlayerController : MonoBehaviour, IActor, IState
         }
 
         //left click
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && combat.PrimaryAttackReady())
         {
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            //if we left click on the actor mask
-            if (Physics.Raycast(ray, out hit, 1000, actorMask))
+            if (Physics.Raycast(ray, out hit, 1000, movementMask))
             {
-                combat.NormalAttack(hit);
+                //prepare to attack by turning to look at this direction
+                motor.TurnTowardsTarget(hit.point);
+                //attempt to do the attack
+                if (combat.PrimaryAttack(cam, actorMask))
+                {
+                    //if attack is successful, dash
+                    motor.Dash(combat.primaryAttackDashSpeed, 
+                        Mathf.Min(combat.primaryAttackDashLength, Vector3.Distance(transform.position, hit.point)));
+                }
             }
         }
+
         //right click
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) && combat.SecondaryAttackReady())
         {
-            combat.AOEAttack();
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 1000, movementMask))
+            {
+                //prepare to attack by turning to look at this direction
+                motor.TurnTowardsTarget(hit.point);
+                //attempt to do the attack
+                if (combat.SecondaryAttack())
+                {
+                    //if attack is successful, dash
+                    //motor.Dash(combat.SecondaryAttackDashSpeed, 
+                    //    Mathf.Min(combat.SecondaryAttackDashLength, Vector3.Distance(transform.position, hit.point)));
+                    motor.Dash(combat.SecondaryAttackDashSpeed, combat.SecondaryAttackDashLength);
+                }
+            }
         }
     }
 
