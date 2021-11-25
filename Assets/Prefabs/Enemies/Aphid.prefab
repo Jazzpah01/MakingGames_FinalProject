@@ -157,7 +157,11 @@ MonoBehaviour:
     speedModifyer: 1.5
     stoppingDistance: 0.8
   attack:
+<<<<<<< Updated upstream
     damage: 5
+=======
+    damage: 1
+>>>>>>> Stashed changes
     delay: 0.2
     cooldown: 0.5
   detectCarrots: {fileID: 1562670120480825331}

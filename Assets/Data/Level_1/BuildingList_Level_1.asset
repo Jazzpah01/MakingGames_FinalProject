@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcbd5e9c16d021d41ac1a62f67e18d59, type: 3}
+  m_Name: BuildingList_Level_1
+  m_EditorClassIdentifier: 
+  buildings:
+  - name: Seeds
+    cost: 5
+    prefab: {fileID: 8063388511463166607, guid: df1ab6f0658de7a458a76a80eef4f5f0,
+      type: 3}
+    containmentLayermask:
+      serializedVersion: 2
+      m_Bits: 128
+    description: Plant and it will be given.
+    icon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}

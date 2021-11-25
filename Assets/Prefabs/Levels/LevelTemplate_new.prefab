@@ -1004,7 +1004,7 @@ PrefabInstance:
         type: 3}
       propertyPath: buildingTypes
       value: 
-      objectReference: {fileID: 11400000, guid: 1dd769dc9010f6f4790795d5fc1a5459,
+      objectReference: {fileID: 11400000, guid: 7b716ec2cf4aad5448bc0ea102774cec,
         type: 2}
     - target: {fileID: 8512250981877331766, guid: 245f2728504e3ce4ca0b56aa08b9833a,
         type: 3}
@@ -1641,6 +1641,11 @@ PrefabInstance:
       propertyPath: playerHUD
       value: 
       objectReference: {fileID: 4091229579886864116}
+    - target: {fileID: 5779020899837879335, guid: d4f9c9bd227cb8943ae41e110baac061,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.00012207031
+      objectReference: {fileID: 0}
     - target: {fileID: 5841121586438895708, guid: d4f9c9bd227cb8943ae41e110baac061,
         type: 3}
       propertyPath: m_SizeDelta.y
@@ -1649,7 +1654,7 @@ PrefabInstance:
     - target: {fileID: 5841121586438895708, guid: d4f9c9bd227cb8943ae41e110baac061,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000030517578
+      value: -0.000045776367
       objectReference: {fileID: 0}
     - target: {fileID: 6341877278416149076, guid: d4f9c9bd227cb8943ae41e110baac061,
         type: 3}

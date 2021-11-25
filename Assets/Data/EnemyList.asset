@@ -13,12 +13,21 @@ MonoBehaviour:
   m_Name: EnemyList
   m_EditorClassIdentifier: 
   enemyList:
+<<<<<<< Updated upstream
   - prefab: {fileID: 797109595003254403, guid: ca3611a94cd6bd847b9a7f55f32cc0fb, type: 3}
     value: 5
     identifyer: 0
   - prefab: {fileID: 797109595003254403, guid: 4ccad7ad5deb6f44fb3de03c4ddb5d94, type: 3}
     value: 1.5
     identifyer: 1
-  - prefab: {fileID: 797109595003254403, guid: d1ebfda4b6cb9fd41bdc20214f12919d, type: 3}
+=======
+  - prefab: {fileID: 797109595003254403, guid: 4ccad7ad5deb6f44fb3de03c4ddb5d94, type: 3}
     value: 1
+    identifyer: 0
+>>>>>>> Stashed changes
+  - prefab: {fileID: 797109595003254403, guid: d1ebfda4b6cb9fd41bdc20214f12919d, type: 3}
+    value: 2
+    identifyer: 1
+  - prefab: {fileID: 797109595003254403, guid: ca3611a94cd6bd847b9a7f55f32cc0fb, type: 3}
+    value: 5
     identifyer: 2
