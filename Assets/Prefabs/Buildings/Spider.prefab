@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6421234795517817250}
   - component: {fileID: 8090511628695263101}
   - component: {fileID: 4672435637946601580}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Legs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 4852886025877578159}
   - component: {fileID: 7291880837243622984}
   - component: {fileID: 5507810595860496949}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Sphere (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -203,7 +203,7 @@ GameObject:
   - component: {fileID: 6468436794433729402}
   - component: {fileID: 2307032612976925080}
   - component: {fileID: 5225772753601185000}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Sphere (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -298,7 +298,7 @@ GameObject:
   - component: {fileID: 2840441806735523451}
   - component: {fileID: 7028795354666819386}
   - component: {fileID: 8391584551757339939}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -391,7 +391,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6508080504964346983}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Eye (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -424,7 +424,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7339869313869733857}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Pincer (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -459,7 +459,7 @@ GameObject:
   - component: {fileID: 782911127332877623}
   - component: {fileID: 3473657949867822009}
   - component: {fileID: 6457625894001631610}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -522,7 +522,7 @@ GameObject:
   - component: {fileID: 5507167052091670443}
   - component: {fileID: 7975162447456749848}
   - component: {fileID: 5035527293779534740}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -617,7 +617,7 @@ GameObject:
   - component: {fileID: 776831011075041411}
   - component: {fileID: 8913420031537486235}
   - component: {fileID: 3281676365361350854}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -712,7 +712,7 @@ GameObject:
   - component: {fileID: 8224264038228182212}
   - component: {fileID: 2681129524653201956}
   - component: {fileID: 1162912156545626837}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Legs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -808,7 +808,7 @@ GameObject:
   - component: {fileID: 2843102957803506520}
   - component: {fileID: 4651065148533040541}
   - component: {fileID: 4011700244051187451}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Sphere (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -902,7 +902,7 @@ GameObject:
   - component: {fileID: 3785452752489637356}
   - component: {fileID: 6018058521253454721}
   - component: {fileID: 6888774537144770947}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Spider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -917,7 +917,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4962991376061601507}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.78, z: -61.86}
+  m_LocalPosition: {x: 0, y: 3.04, z: -61.86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 782911127332877623}
@@ -967,6 +967,7 @@ MonoBehaviour:
   healthbar: {fileID: 950378279979943878}
   spotlight: {fileID: 3483663023809083034}
   buildingProjections: {fileID: 0}
+  ignoreOnBuild: {fileID: 7136522108213594600}
   actorType: 2
 --- !u!1 &5298574579653070962
 GameObject:
@@ -980,7 +981,7 @@ GameObject:
   - component: {fileID: 6072879071659084013}
   - component: {fileID: 4320650705024690609}
   - component: {fileID: 5384593886807728518}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Legs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1073,7 +1074,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5532105594458328811}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1109,7 +1110,7 @@ GameObject:
   - component: {fileID: 566620513264226669}
   - component: {fileID: 383216846234543528}
   - component: {fileID: 1774751200491016080}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1204,7 +1205,7 @@ GameObject:
   - component: {fileID: 1495254225286967770}
   - component: {fileID: 6559879035724023032}
   - component: {fileID: 4046417079123188570}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Sphere (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1299,7 +1300,7 @@ GameObject:
   - component: {fileID: 1868196933765891689}
   - component: {fileID: 1703647068815962562}
   - component: {fileID: 7470641112856590928}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Legs (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1395,7 +1396,7 @@ GameObject:
   - component: {fileID: 2927489936184054522}
   - component: {fileID: 732026988858301817}
   - component: {fileID: 5777307207428446582}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Cylinder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1491,7 +1492,7 @@ GameObject:
   - component: {fileID: 4343992297144521105}
   - component: {fileID: 587232096389170124}
   - component: {fileID: 207409864358731384}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Legs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1599,7 +1600,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7136522108213594600}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.24, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1493704390736828402}
@@ -1618,7 +1619,7 @@ GameObject:
   - component: {fileID: 4788597179582193575}
   - component: {fileID: 8870532330211266688}
   - component: {fileID: 1752109178987415689}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Legs (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1714,7 +1715,7 @@ GameObject:
   - component: {fileID: 2750128325634369053}
   - component: {fileID: 8404397509304284427}
   - component: {fileID: 7513234311596773399}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Legs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1807,7 +1808,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1242028919697255786}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Pincer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1843,7 +1844,7 @@ GameObject:
   - component: {fileID: 4645560602764709939}
   - component: {fileID: 5936194253453194189}
   - component: {fileID: 6950744196388897712}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1939,7 +1940,7 @@ GameObject:
   - component: {fileID: 4850225766828168091}
   - component: {fileID: 4738571345721718052}
   - component: {fileID: 6112770607654886641}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Legs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2035,7 +2036,7 @@ GameObject:
   - component: {fileID: 7590780576567068398}
   - component: {fileID: 2913848810812229235}
   - component: {fileID: 8529121255438155460}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Cylinder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2131,7 +2132,7 @@ GameObject:
   - component: {fileID: 4859297918999104288}
   - component: {fileID: 4061692648735352024}
   - component: {fileID: 356717009018109455}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2226,7 +2227,7 @@ GameObject:
   - component: {fileID: 2958336228993447446}
   - component: {fileID: 5329002182513079245}
   - component: {fileID: 8563557364772840647}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}

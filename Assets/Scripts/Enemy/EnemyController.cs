@@ -47,6 +47,8 @@ public class EnemyController: MonoBehaviour, IEnemy
     public float value { get; set; }
     public EnemyType enemyType { get; set; }
     public GameObject spawnPoint { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+    public bool blockDamage { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+    public float damageReduction { get; set; }
 
     void Start()
     {
@@ -85,7 +87,7 @@ public class EnemyController: MonoBehaviour, IEnemy
             StopFollowingTarget();
         }
     }
-        IEnumerator PlayHitEffects()
+    IEnumerator PlayHitEffects()
     {
         Material oldMaterial = material;
         material.color = Color.white;

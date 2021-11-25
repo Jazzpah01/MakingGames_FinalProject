@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// An AI state which will attack the target with some cooldown and delay.
+/// </summary>
 [System.Serializable]
 public class InstantAttack : AIState
 {
@@ -29,7 +32,7 @@ public class InstantAttack : AIState
         } else
         {
             delayTimer = 0;
-            parent.Target.Health -= damage;
+            parent.Target.Health -= damage - parent.controller.damageReduction;
             status = StateStatus.Finished;
             ready = false;
             parent.CallInSeconds(Cooldown, cooldown);

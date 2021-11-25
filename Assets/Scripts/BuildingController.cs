@@ -150,7 +150,6 @@ public class BuildingController : MonoBehaviour, IState
 
     private void SpawnPrefab()
     {
-        GO.GetComponent<NavMeshObstacle>().enabled = true;
         gameManager.resource -= currentCost;
         GO.GetComponent<Buildable>().OnBuild();
         ChangeGOAlfa(1);

@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// An AI state, which will use a direct path to walk, regardless of obstacles.
+/// </summary>
 [System.Serializable]
 public class DirectMove : AIState
 {
