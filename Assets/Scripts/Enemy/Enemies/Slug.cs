@@ -81,7 +81,9 @@ public class Slug : AIStateMachine
 
         if ((otherActor.gameObject.transform.position - transform.position).magnitude <
             (Target.gameObject.transform.position - transform.position).magnitude &&
-            otherActor.type == ActorType.Obstacle)
+            (otherActor.type == ActorType.Obstacle || 
+            otherActor.type == ActorType.Wall ||
+            otherActor.type == ActorType.Crops))
         {
             Target = otherActor;
             ChangeState(move);

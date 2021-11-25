@@ -5,6 +5,9 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour, IEnemy
 {
+    public HealthBar healthBar;
+    public GameObject deathEffect;
+
     public float maxHealth;
 
     private NavMeshAgent agent;
@@ -19,14 +22,19 @@ public class Enemy : MonoBehaviour, IEnemy
 
     public float MaxHealth => MaxHealth;
 
-    public float Health { get => health;
+    public float Health
+    {
+        get => health;
         set
         {
             health = value;
-
+            //TODO: implement hiteffects
+            //PlayHitEffects();
+            healthBar.SetHealthbar(health / maxHealth);
             if (health <= 0)
             {
                 Destroy(this.gameObject);
+                Instantiate(deathEffect).transform.position = transform.position;
             }
         }
     }
