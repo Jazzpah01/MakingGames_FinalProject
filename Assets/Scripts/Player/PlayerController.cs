@@ -70,7 +70,8 @@ public class PlayerController : MonoBehaviour, IActor, IState
                 if (combat.PrimaryAttack(cam, actorMask))
                 {
                     //if attack is successful, dash
-                    motor.Dash(combat.primaryAttackDashSpeed, combat.primaryAttackDashLength);
+                    motor.Dash(combat.primaryAttackDashSpeed, 
+                        Mathf.Min(combat.primaryAttackDashLength, Vector3.Distance(transform.position, hit.point)));
                 }
             }
         }
@@ -88,6 +89,8 @@ public class PlayerController : MonoBehaviour, IActor, IState
                 if (combat.SecondaryAttack())
                 {
                     //if attack is successful, dash
+                    //motor.Dash(combat.SecondaryAttackDashSpeed, 
+                    //    Mathf.Min(combat.SecondaryAttackDashLength, Vector3.Distance(transform.position, hit.point)));
                     motor.Dash(combat.SecondaryAttackDashSpeed, combat.SecondaryAttackDashLength);
                 }
             }

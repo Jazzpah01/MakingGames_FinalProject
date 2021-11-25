@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6165355198238823824}
   - component: {fileID: 8521841493717054708}
   - component: {fileID: 5487138768297406203}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: DetectionCollision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ GameObject:
   - component: {fileID: 5220258315394469146}
   - component: {fileID: 6669751714318334945}
   - component: {fileID: 9187301958987836828}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 837688658919367988}
   - component: {fileID: 7288382849640900128}
   - component: {fileID: 6140874914621642849}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: DamagerCollision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -246,7 +246,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a3a9ab166775f243919e68b7b1bebce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
   primaryTarget: {fileID: 0}
   healthBar: {fileID: 3229079331559079160}
   detectionCollision: {fileID: 5487138768297406203}

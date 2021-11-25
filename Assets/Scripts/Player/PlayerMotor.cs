@@ -85,6 +85,8 @@ public class PlayerMotor : MonoBehaviour
     }
     private void Move()
     {
+        agent.updateRotation = true;
+
         Vector3 targetVelocity = new Vector3(directionX, 0, directionZ).normalized;
         targetVelocity *= agent.speed;
 
@@ -153,6 +155,9 @@ public class PlayerMotor : MonoBehaviour
 
     public void TurnTowardsTarget(Vector3 target)
     {
-        transform.rotation = Quaternion.LookRotation(new Vector3(target.x,0,target.z));
+        //transform.rotation = Quaternion.LookRotation(new Vector3(target.x,0,target.z));
+        agent.updateRotation = false;
+        transform.rotation = Quaternion.LookRotation(new Vector3(target.x,0,target.z) - transform.position);
+        //transform.rotation = new Quaternion(0, Vector3.Angle(new Vector3(1, 0, 0), target - transform.position), 0, 0);
     }
 }

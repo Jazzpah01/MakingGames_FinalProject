@@ -62,25 +62,8 @@ public class PlayerCombat : MonoBehaviour
 
     public bool SecondaryAttack()
     {
-        Collider[] collisions = secondaryObserver.Stay.ToArray();
-        for (int i = 0; i < collisions.Length; i++)
-        {
-            IActor actor = collisions[i].GetComponent<IActor>();
-            if (actor != null && actor.type == ActorType.Enemy)
-            {
-                actor.Health -= secondaryAttackDamage;
-                Ray ray = new Ray(transform.position, actor.gameObject.transform.position-transform.position);
-                Debug.DrawRay(transform.position, actor.gameObject.transform.position - transform.position, Color.red, 10);
-                RaycastHit hit;
-                if (Physics.Raycast(ray, out hit, 1000, actor.gameObject.layer))
-                {
-                    Instantiate(secondaryAttackEffect, hit.point, Quaternion.identity);
-                }
-                secondaryAttackCooldown = secondaryAttackCooldownHolder;
-                return true;
-            }
-        }
-        return false;
+        StartCoroutine(DealAOEDamage());
+        return true;
     }
 
     public bool PrimaryAttackReady()
@@ -97,5 +80,28 @@ public class PlayerCombat : MonoBehaviour
             return true;
         else
             return false;
+    }
+
+    IEnumerator DealAOEDamage()
+    {
+        yield return new WaitForSeconds(0.01f);
+
+        Collider[] collisions = secondaryObserver.Stay.ToArray();
+        for (int i = 0; i < collisions.Length; i++)
+        {
+            IActor actor = collisions[i].GetComponent<IActor>();
+            if (actor != null && actor.type == ActorType.Enemy)
+            {
+                actor.Health -= secondaryAttackDamage;
+                Ray ray = new Ray(transform.position, actor.gameObject.transform.position - transform.position);
+                Debug.DrawRay(transform.position, actor.gameObject.transform.position - transform.position, Color.red, 10);
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit, 1000, actor.gameObject.layer))
+                {
+                    Instantiate(secondaryAttackEffect, hit.point, Quaternion.identity);
+                }
+                secondaryAttackCooldown = secondaryAttackCooldownHolder;
+            }
+        }
     }
 }
