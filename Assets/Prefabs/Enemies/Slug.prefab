@@ -135,8 +135,8 @@ MonoBehaviour:
   healthBar: {fileID: 7321637065923144998}
   deathEffect: {fileID: 192757836124602699, guid: f4dddb6fda5ba164eae37c20d9e8e544,
     type: 3}
-  maxHealth: 50
-  speed: 1
+  maxHealth: 500
+  speed: 2
 --- !u!114 &8095194503222227595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,7 +154,7 @@ MonoBehaviour:
     speedModifyer: 1
     stoppingDistance: 0.8
   attack:
-    damage: 150
+    damage: 10
     delay: 0.5
     cooldown: 3
   detectObstruction: {fileID: 1562670120480825331}
