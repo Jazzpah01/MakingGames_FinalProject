@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GrowingResource : MonoBehaviour
+public class GrowingResource : MonoBehaviour, IBuildingBehavior
 {
     public float growthTime = 0.5f;
     public float harvestTimer = 0.5f;
     public int maxResourcesGained = 5;
 
     private Vector3 growth = new Vector3(0.1f,0.1f,0.1f);
+
     public int additionalWavesBeforeHarvest;
     private int currentResourcesGained;
     private int plantedWave;

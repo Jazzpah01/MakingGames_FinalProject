@@ -8,6 +8,8 @@ public interface IActor: IDamageable
     GameObject gameObject { get; }
     float Speed {get; set;}
     bool enabled { get; set; }
+    bool blockDamage { get; set; }
+    float damageReduction { get; set; }
 }
 
 public enum ActorType
@@ -15,5 +17,6 @@ public enum ActorType
     Player,
     Enemy,
     Obstacle,
-    Wall
+    Wall,
+    Crops
 }

@@ -9,7 +9,7 @@ public class PlayerHUD : MonoBehaviour
     PlayerController playerController;
     GameManager gameManager;
 
-    public Base baseController;
+    private Base baseController;
     public Slider playerHealthBar;
     public Slider baseHealthBar;
     public Image baseHealthFill;
@@ -24,6 +24,7 @@ public class PlayerHUD : MonoBehaviour
     {
         playerController = PlayerManager.instance.playerController;
         gameManager = GameManager.instance;
+        baseController = GameController.instance.baseController;
         oldPlayerHealth = playerController.Health;
         oldBaseHealth = baseController.Health;
     }

@@ -14,15 +14,14 @@ public class BuildingController : MonoBehaviour, IState
     public Transform buildablesParent;
     public float startRotation = 0;
     public float rotationAngle = 45;
-    public HUD hud;
 
     [HideInInspector]
-    private GameObject GO = null;
+    public GameObject GO = null;
     private float rotation;
-    private bool isBuilding = false;
+    [HideInInspector]
+    public bool isBuilding = false;
     private GameObject prefab;
     private LayerMask containmentLayerMask;
-    private StrategyHUD strategyHUD;
     private int currentCost = 0;
 
     GameManager gameManager;
@@ -34,13 +33,12 @@ public class BuildingController : MonoBehaviour, IState
         cam = PlayerManager.instance.cam;
         rotation = startRotation;
         prefab = null;
-        strategyHUD = hud.strategyHUD;
     }
 
     public void UpdateState()
     {
         // Stop update while hovering the HUD.
-        if (EventSystem.current.IsPointerOverGameObject())
+        if (InteractableUI.OnUI)
         {
             RemoveDummy();
 
@@ -84,7 +82,7 @@ public class BuildingController : MonoBehaviour, IState
                     if (ob != null)
                         ob.enabled = false;
 
-                    GO.GetComponent<IActor>().enabled = false;
+                    GO.GetComponent<Buildable>().OnPlacing();
                 }
                 else
                 {
@@ -152,11 +150,8 @@ public class BuildingController : MonoBehaviour, IState
 
     private void SpawnPrefab()
     {
-        GO.GetComponent<NavMeshObstacle>().enabled = true;
-        GO.GetComponent<IActor>().enabled = true;
         gameManager.resource -= currentCost;
-        GO.GetComponent<Buildable>().healthbar.gameObject.SetActive(true);
-        strategyHUD.UpdateAlfa();
+        GO.GetComponent<Buildable>().OnBuild();
         ChangeGOAlfa(1);
         GO = null;
     }
@@ -177,7 +172,7 @@ public class BuildingController : MonoBehaviour, IState
 
     public void EnterState()
     {
-        strategyHUD.UpdateAlfa();
+        //strategyHUD.UpdateAlfa();
     }
 
     public void ExitState()

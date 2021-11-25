@@ -8,30 +8,38 @@ public class StrategyHUD : MonoBehaviour
 {
     [HideInInspector] public BuildingController strategyController;
 
-    public BuildingList buildings;
+    private BuildingList buildings;
     public float offset = -10;
+    public float contentChunkSize = 400;
 
     private List<GameObject> itemList = new List<GameObject>();
+    private InteractableUI toggled;
 
     GameManager gameManager;
 
     [Header("References")]
     public GameObject initialItem;
     public GameObject scrollPanel;
+    public GameObject defendButton;
+    public BuildingDescription description;
 
 
     private void Start()
     {
         gameManager = GameManager.instance;
         strategyController = gameManager.buildingController;
+        buildings = GameManager.instance.buildingTypes;
+
+        // Setup buttons
+        defendButton.GetComponentInChildren<InteractableUI>().OnClicked += delegate { DefendButton(); };
 
         // Setup menu for selecting buildings
-        //print(initialItem);
-        //print(buildings[0]);
-
         SetElementValues(initialItem, buildings[0]);
 
-        initialItem.GetComponentInChildren<Button>().onClick.AddListener(delegate { SelectPrefab(0); });
+        initialItem.GetComponentInChildren<InteractableUI>().OnClicked += delegate { ButtonPressed(0); };
+        initialItem.GetComponentInChildren<InteractableUI>().OnEnter += delegate { HighlightButton(0); };
+        initialItem.GetComponentInChildren<InteractableUI>().OnExit += delegate { UnHighlightButton(); };
+
         itemList.Add(initialItem);
         int items = 1;
 
@@ -47,11 +55,14 @@ public class StrategyHUD : MonoBehaviour
 
             int index = i;
 
-            newItem.GetComponentInChildren<Button>().onClick.AddListener(delegate { SelectPrefab(index); });
+            newItem.GetComponentInChildren<InteractableUI>().OnClicked += delegate { ButtonPressed(index); };
+            newItem.GetComponentInChildren<InteractableUI>().OnEnter += delegate { HighlightButton(index); };
+            newItem.GetComponentInChildren<InteractableUI>().OnExit += delegate { UnHighlightButton(); };
         }
 
         RectTransform panelRect = scrollPanel.GetComponent<RectTransform>();
         panelRect.position = panelRect.position * new Vector2(1, 0);
+        panelRect.sizeDelta = new Vector2(0, contentChunkSize * items);
     }
     public void UpdateAlfa()
     {
@@ -59,28 +70,26 @@ public class StrategyHUD : MonoBehaviour
         int i = 0;
         foreach (GameObject GO in itemList)
         {
-            Image[] images = new Image[0];
-            images = GO.GetComponentsInChildren<Image>();
+            float cost = GO.GetComponentInChildren<UIBuildingItem>().Type.cost;
 
-            if (gameManager.resource < buildings[i].cost)
+            if (GameManager.instance.resource < cost)
             {
-                alfa = 0.2f;
-            }
-            else
+                GO.GetComponentInChildren<InteractableUI>().Interactable = false;
+            } else
             {
-                alfa = 1;
+                GO.GetComponentInChildren<InteractableUI>().Interactable = true;
             }
-            foreach (Image image in images)
-            {
-                if (!image.name.Equals("Button"))
-                {
-                    Color tempColor = image.color;
-                    tempColor.a = alfa;
-                    image.color = tempColor;
-                }
-            }
-            i++;
         }
+    }
+
+    private void Update()
+    {
+        if (!GameManager.instance.buildingController.isBuilding && toggled != null)
+        {
+            toggled.Toggled = false;
+            toggled = null;
+        }
+        UpdateAlfa();
     }
 
     private void SetElementPosition(GameObject item, int indexOfItem)
@@ -104,8 +113,30 @@ public class StrategyHUD : MonoBehaviour
     /// Will set strategy controller's prefab
     /// </summary>
     /// <param name="index"></param>
-    public void SelectPrefab(int index)
+    public void ButtonPressed(int index)
     {
         strategyController.SelectPrefab(buildings[index]);
+
+        if (toggled != null)
+            toggled.Toggled = false;
+
+        toggled = itemList[index].GetComponentInChildren<InteractableUI>();
+        toggled.Toggled = true;
+    }
+
+    public void HighlightButton(int index)
+    {
+        description.UpdateItemDescription(buildings[index]);
+        description.gameObject.SetActive(true);
+    }
+
+    public void UnHighlightButton()
+    {
+        description.gameObject.SetActive(false);
+    }
+
+    public void DefendButton()
+    {
+        GameController.instance.GoToBattle();
     }
 }

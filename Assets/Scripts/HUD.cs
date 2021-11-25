@@ -18,5 +18,4 @@ public class HUD : MonoBehaviour
         strategyHUD.gameObject.SetActive(!gameManager.inBattle);
         playerHUD.gameObject.SetActive(gameManager.inBattle);
     }
-
 }

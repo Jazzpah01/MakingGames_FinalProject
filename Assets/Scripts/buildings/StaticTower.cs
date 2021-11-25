@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StaticTower : MonoBehaviour
+public class StaticTower : MonoBehaviour, IBuildingBehavior
 {
     public GameObject peak;
     public GameObject projectile;

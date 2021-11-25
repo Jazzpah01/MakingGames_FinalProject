@@ -12,6 +12,10 @@ public class GameController : MBStateMachine
         Strategy
     }
 
+    public delegate void OnChangeState();
+    public OnChangeState OnChangeToCombat;
+    public OnChangeState OnChangeToBuilding;
+
     public static GameController instance;
 
     public SpawnController spawnController;
@@ -70,11 +74,15 @@ public class GameController : MBStateMachine
                 if (!playerManager.buildWhileCombat)
                     player.SetActive(true);
                 base.ChangeState(playerController);
+                if (OnChangeToCombat != null)
+                    OnChangeToCombat();
                 break;
             case GameState.Strategy:
                 if (!playerManager.buildWhileCombat)
                     player.SetActive(false);
                 base.ChangeState(buildingController);
+                if (OnChangeToBuilding != null)
+                    OnChangeToBuilding();
                 break;
             default:
                 throw new System.Exception("Cannot have None state!");
@@ -101,15 +109,7 @@ public class GameController : MBStateMachine
         }
         else if (state == GameState.Strategy)
         {
-            //if (Input.GetKeyDown(KeyCode.B))
-            //{
-            //    if (!InWave)
-            //    {
-            //        // Start wave
-            //        GoToBattle();
-            //    }
-            //    ChangeState(GameState.Combat);
-            //}
+
         }
 
 

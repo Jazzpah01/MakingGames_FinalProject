@@ -5,7 +5,6 @@ using UnityEngine;
 public class ProjectorController : MonoBehaviour
 {
     public float size;
-    public bool lockPosition;
 
     private LayerMask ignoreLayer;
     private Projector proj;
