@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class LevelDescription : MonoBehaviour
 {
-    public GameObject[] contents;
+    [HideInInspector]public List<GameObject> contents;
     private int index;
 
     private void Start()
     {
-        index = contents.Length-1;
+        foreach (Transform child in transform)
+        {
+            contents.Add(child.gameObject);
+        }
+
+        index = contents.Count-1;
         foreach (GameObject go in contents)
         {
             go.SetActive(false);

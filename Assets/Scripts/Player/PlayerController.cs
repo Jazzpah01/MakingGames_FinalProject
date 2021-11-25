@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour, IActor, IState
         combat.UpdateCooldowns();
 
         //return if the pointer 
-        if (EventSystem.current.IsPointerOverGameObject())
+        if (InteractableUI.OnUI)
         {
             return;
         }

@@ -43,6 +43,12 @@ public class PlayerMotor : MonoBehaviour
         //dash cooldown
         dashTimer -= Time.fixedDeltaTime;
 
+        //return if the pointer 
+        if (InteractableUI.OnUI)
+        {
+            return;
+        }
+
         //reset direction variables so we return to standing still
         directionX = 0;
         directionZ = 0;
@@ -66,6 +72,12 @@ public class PlayerMotor : MonoBehaviour
 
     private void MovementKeyInput()
     {
+        //return if the pointer 
+        if (InteractableUI.OnUI)
+        {
+            return;
+        }
+
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             directionZ = -1;

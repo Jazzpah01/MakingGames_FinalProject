@@ -217,7 +217,11 @@ public class InteractableUI : MonoBehaviour, IPointerClickHandler, IPointerEnter
     private void OnDisable()
     {
         if (inside)
+        {
             onUICount--;
+            inside = false;
+        }
+            
 
         toggled = false;
 
