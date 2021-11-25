@@ -29,8 +29,7 @@ public class Aphid : AIStateMachine
         // If crops doesn't exit: remove this
         if (Target.IsDestroyed())
         {
-            Destroy(this.gameObject);
-            return;
+            Target = GameController.instance.baseController;
         }
 
         // Initialize states and machine
@@ -62,8 +61,7 @@ public class Aphid : AIStateMachine
             // Move state. Move to a crops actor
             if (Target.IsDestroyed())
             {
-                TargetTransform = ((IEnemy)controller).spawnPoint.transform;
-                ChangeState(flee);
+                Target = GameController.instance.baseController;
             }
 
             if (inRange)
@@ -75,8 +73,8 @@ public class Aphid : AIStateMachine
             // In state attack. Attack target
             if (Target.IsDestroyed())
             {
-                TargetTransform = ((IEnemy)controller).spawnPoint.transform;
-                ChangeState(flee);
+                Target = GameController.instance.baseController;
+                ChangeState(move);
             }
 
             if (attack.status == AIState.StateStatus.Finished)
