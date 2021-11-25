@@ -47,7 +47,7 @@ public class GameController : MBStateMachine
         buildTime = buildTimer;
     }
 
-    private void Start()
+    public void Start()
     {
         playerManager = PlayerManager.instance;
         gameManager = GameManager.instance;

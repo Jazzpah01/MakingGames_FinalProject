@@ -18,6 +18,8 @@ public class SpawnController : MonoBehaviour
     public GameObject baseGO;
 
     private Projector projectorController;
+    public GameController gameController;
+    public LevelManager levelManager;
 
     public int CurrentWave
     {
@@ -59,6 +61,8 @@ public class SpawnController : MonoBehaviour
 
     void Start()
     {
+        levelManager = LevelManager.instance;
+        gameController = GameController.instance;
         enemyList = GameManager.instance.enemyTypes;
         CurrentWave = 0;
         toSpawn = new List<EnemyType>();
@@ -70,7 +74,12 @@ public class SpawnController : MonoBehaviour
         if (InWave == false)
             return;
 
+        if(gameController.getNextWave() > waves.Count)
+        {
+            levelManager.loadNextLevel();
+        }
         Spawn();
+        
     }
 
     private void Spawn()
