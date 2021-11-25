@@ -524,13 +524,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dd1667fdf93433469494e2c97db1460, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingName: Jeremy
-  speed: 2
   damage: 5
   detectionCollision: {fileID: 641325662270382576}
   damagerCollision: {fileID: 641325663243885521}
-  maxHealth: 300
-  healthbar: {fileID: 1948593179552404295}
 --- !u!208 &641325662967931259
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -578,6 +574,7 @@ MonoBehaviour:
   healthbar: {fileID: 1948593179552404295}
   projectorController: {fileID: 138087604491046715}
   spotlight: {fileID: 2546444746254981868}
+  setType: 2
 --- !u!1 &641325663243885522
 GameObject:
   m_ObjectHideFlags: 0

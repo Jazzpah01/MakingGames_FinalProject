@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BuildingWalkingInCircles : MonoBehaviour
+public class BuildingWalkingInCircles : MonoBehaviour, IBuildingBehavior
 {
     double StartPos;
 

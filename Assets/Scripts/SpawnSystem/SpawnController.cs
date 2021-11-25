@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 
 public class SpawnController : MonoBehaviour
 {
-    public EnemyList enemyList;
+    private EnemyList enemyList;
     public List<WaveData> waves;
 
     public Transform[] spawnPoints;
@@ -18,6 +18,8 @@ public class SpawnController : MonoBehaviour
     public GameObject baseGO;
 
     private Projector projectorController;
+    public GameController gameController;
+    public LevelManager levelManager;
 
     public int CurrentWave
     {
@@ -59,6 +61,9 @@ public class SpawnController : MonoBehaviour
 
     void Start()
     {
+        levelManager = LevelManager.instance;
+        gameController = GameController.instance;
+        enemyList = GameManager.instance.enemyTypes;
         CurrentWave = 0;
         toSpawn = new List<EnemyType>();
         projectorController = GetComponentInChildren<Projector>();
@@ -69,7 +74,12 @@ public class SpawnController : MonoBehaviour
         if (InWave == false)
             return;
 
+        if(gameController.getNextWave() > waves.Count)
+        {
+            levelManager.loadNextLevel();
+        }
         Spawn();
+        
     }
 
     private void Spawn()
@@ -80,30 +90,26 @@ public class SpawnController : MonoBehaviour
             GameObject go = Instantiate(toSpawn[0].prefab);
 
             IEnemy enemy = go.GetComponent<IEnemy>();
-            EnemyController enemyController = go.GetComponent<EnemyController>();
-            enemyController.primaryTarget = baseGO.transform;
+
             enemy.enemyType = toSpawn[0];
 
-            go.transform.position = spawnPoints[Random.Range(0, spawnPoints.Length - 1)].transform.position;
+            GameObject spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length - 1)].gameObject;
+
+            go.transform.position = spawnPoint.transform.position;
             go.transform.parent = enemyParent.transform;
+            enemy.spawnPoint = spawnPoint;
 
             toSpawn.RemoveAt(0);
         }
-        //else if (toSpawn.Count == 0 && CurrentCombatValue == 0)
-        //{
-        //    if (CurrentWave >= waves.Count - 1)
-        //    {
-        //        // End level
-        //    } else
-        //    {
-        //        // Next wave
-        //        CurrentWave++;
-        //        Spawn();
-        //    }
-        //}
     }
 
     public void SpawnEnemies(int waveIndex) {
+        if (waves == null || waves.Count < 1)
+            throw new System.Exception("Cannot spawn a wave in a level with no waves!");
+
+        if (waveIndex >= waves.Count)
+            waveIndex = waves.Count - 1;
+
         CurrentWave = waveIndex;
 
         WaveData waveData = waves[CurrentWave];

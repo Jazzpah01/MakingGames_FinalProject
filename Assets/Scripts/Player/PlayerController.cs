@@ -37,6 +37,9 @@ public class PlayerController : MonoBehaviour, IActor, IState
         }
     }
 
+    public bool blockDamage { get; set; }
+    public float damageReduction { get; set; }
+
     private void Start()
     {
         playerManager = PlayerManager.instance;
@@ -45,6 +48,7 @@ public class PlayerController : MonoBehaviour, IActor, IState
         combat = GetComponent<PlayerCombat>();
         cam = playerManager.cam;
         health = maxHealth;
+        blockDamage = false;
     }
 
     public void UpdateState()

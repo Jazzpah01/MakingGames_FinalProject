@@ -252,6 +252,7 @@ MonoBehaviour:
   damagerCollision: {fileID: 6140874914621642849}
   deathEffect: {fileID: 192757836124602699, guid: f4dddb6fda5ba164eae37c20d9e8e544,
     type: 3}
+  damage: 10
   maxHealth: 100
 --- !u!136 &5980018141852729467
 CapsuleCollider:

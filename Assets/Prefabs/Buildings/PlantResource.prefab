@@ -595,12 +595,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffe604223d22844468a5134838f30083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingName: Plant Resource
-  health: 100
   growthTime: 3
   harvestTimer: 0.5
   maxResourcesGained: 5
-  healthbar: {fileID: 8520103144020020281}
   additionalWavesBeforeHarvest: 1
 --- !u!208 &-3724557957165586548
 NavMeshObstacle:
@@ -645,9 +642,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingName: Plant Resource
   maxHealth: 100
+  speed: 0
   healthbar: {fileID: 8520103144020020281}
   projectorController: {fileID: 6289448382385237221}
   spotlight: {fileID: 8565433613306034439}
+  setType: 2
 --- !u!1 &8063388511527572908
 GameObject:
   m_ObjectHideFlags: 0

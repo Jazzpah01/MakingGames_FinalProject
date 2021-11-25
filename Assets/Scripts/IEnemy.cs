@@ -5,4 +5,5 @@ using UnityEngine;
 public interface IEnemy: IActor
 {
     EnemyType enemyType { get; set; }
+    GameObject spawnPoint { get; set; }
 }

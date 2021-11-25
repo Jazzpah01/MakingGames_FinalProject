@@ -1421,10 +1421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc484034c927f9f4fb6d5d3a34e071b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingName: Mr. StankyLegs
   slowGas: {fileID: 4287681875827543527, guid: 537f37cfbc5976c4b97ed821df4ad6e6, type: 3}
-  healthbar: {fileID: 5189771630414342660}
-  maxHealth: 100
 --- !u!208 &9182319209031491160
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -1459,6 +1456,7 @@ MonoBehaviour:
   healthbar: {fileID: 5189771630414342660}
   projectorController: {fileID: 2658534087003215035}
   spotlight: {fileID: 4435724069188237049}
+  setType: 2
 --- !u!1 &5489908528202503743
 GameObject:
   m_ObjectHideFlags: 0
