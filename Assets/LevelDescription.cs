@@ -4,20 +4,19 @@ using UnityEngine;
 
 public class LevelDescription : MonoBehaviour
 {
-    [HideInInspector]public List<GameObject> contents;
-    private int index;
+    public List<GameObject> contents = new List<GameObject>();
+    private int index = 0;
 
     private void Start()
     {
+        Debug.Log(contents.Count);
         foreach (Transform child in transform)
         {
-            contents.Add(child.gameObject);
-        }
-
-        index = contents.Count-1;
-        foreach (GameObject go in contents)
-        {
-            go.SetActive(false);
+            if (!contents.Contains(child.gameObject))
+            {
+                contents.Add(child.gameObject);
+            }
+            child.gameObject.SetActive(false);
         }
         contents[index].SetActive(true);
     }
@@ -26,8 +25,8 @@ public class LevelDescription : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             contents[index].SetActive(false);
-            index--;
-            if (index >= 0)
+            index++;
+            if (index < contents.Count)
             {
                 contents[index].SetActive(true);
             }
