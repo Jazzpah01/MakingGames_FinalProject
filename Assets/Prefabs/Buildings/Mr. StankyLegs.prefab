@@ -1421,7 +1421,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc484034c927f9f4fb6d5d3a34e071b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkDistance: 12
   slowGas: {fileID: 4287681875827543527, guid: 537f37cfbc5976c4b97ed821df4ad6e6, type: 3}
 --- !u!208 &9182319209031491160
 NavMeshObstacle:
@@ -1455,9 +1454,9 @@ MonoBehaviour:
   maxHealth: 100
   speed: 3
   healthbar: {fileID: 5189771630414342660}
+  projectorController: {fileID: 2658534087003215035}
   spotlight: {fileID: 4435724069188237049}
-  buildingProjections: {fileID: 244010893184875215}
-  actorType: 2
+  setType: 2
 --- !u!1 &5489908528202503743
 GameObject:
   m_ObjectHideFlags: 0
@@ -2200,7 +2199,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 422170, guid: 18a7c69b9cdd0de48b0b27a3d39afcb3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.61
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 422170, guid: 18a7c69b9cdd0de48b0b27a3d39afcb3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2244,32 +2243,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18a7c69b9cdd0de48b0b27a3d39afcb3, type: 3}
---- !u!1 &244010893184875215 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 166266, guid: 18a7c69b9cdd0de48b0b27a3d39afcb3,
+--- !u!114 &2658534087003215035 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2848496218345481998, guid: 18a7c69b9cdd0de48b0b27a3d39afcb3,
     type: 3}
   m_PrefabInstance: {fileID: 244010893185037237}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10168c1909ea30d43a15345a4f5e70f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &244010893184647855 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 422170, guid: 18a7c69b9cdd0de48b0b27a3d39afcb3,
     type: 3}
   m_PrefabInstance: {fileID: 244010893185037237}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6392085521468848523
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 244010893184875215}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 187502ce00324f24a96e6ffe14c74575, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ignoreParentPosition: 0
-  ignoreParentRotation: 0
 --- !u!1001 &8056680412535622544
 PrefabInstance:
   m_ObjectHideFlags: 0

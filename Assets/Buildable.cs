@@ -11,6 +11,7 @@ public class Buildable : MonoBehaviour, IActor
     public HealthBar healthbar;
     //public ProjectorController projectorController;
     public Light spotlight;
+    public ActorType setType;
 
     public GameObject buildingProjections;
     public GameObject ignoreOnBuild;
@@ -20,7 +21,7 @@ public class Buildable : MonoBehaviour, IActor
     private float currentHealth;
     private IBuildingBehavior buildingBehavior;
 
-    public ActorType type => actorType;
+    public ActorType type => setType;
 
     public float Speed { get => speed; set { speed = value; } }
     public float MaxHealth => maxHealth;

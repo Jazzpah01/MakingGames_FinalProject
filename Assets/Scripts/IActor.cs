@@ -17,5 +17,6 @@ public enum ActorType
     Player,
     Enemy,
     Obstacle,
+    Wall,
     Crops
 }
