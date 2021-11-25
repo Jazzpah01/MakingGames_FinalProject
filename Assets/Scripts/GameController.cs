@@ -54,7 +54,7 @@ public class GameController : MBStateMachine
         buildingController = gameManager.buildingController;
         player = playerManager.player;
         playerController = playerManager.playerController;
-
+        playerManager.cam.gameObject.GetComponent<CameraController>().StartCameraIntro();
         ChangeState(state);
     }
 
