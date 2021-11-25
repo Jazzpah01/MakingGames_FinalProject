@@ -10,7 +10,6 @@ public class LevelDescription : MonoBehaviour
     private void Start()
     {
         index = contents.Length-1;
-        Debug.Log(index);
         foreach (GameObject go in contents)
         {
             go.SetActive(false);
