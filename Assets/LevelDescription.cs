@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LevelDescription : MonoBehaviour
 {
-    [HideInInspector]public List<GameObject> contents;
+    private List<GameObject> contents = new List<GameObject>();
     private int index;
 
     private void Start()
