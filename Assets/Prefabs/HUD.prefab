@@ -259,7 +259,7 @@ RectTransform:
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -43, y: -33.713196}
   m_SizeDelta: {x: -84.2498, y: -30.9984}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -693,7 +693,7 @@ RectTransform:
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -57, y: -32.175995}
   m_SizeDelta: {x: -21.6235, y: -22.1244}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -752,7 +752,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1261007444283488369
 RectTransform:
   m_ObjectHideFlags: 0
@@ -790,10 +790,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   strategyController: {fileID: 0}
-  buildings: {fileID: 11400000, guid: 1dd769dc9010f6f4790795d5fc1a5459, type: 2}
   offset: 0
+  contentChunkSize: 400
   initialItem: {fileID: 4920052706184438220}
   scrollPanel: {fileID: 9018589617286599497}
+  defendButton: {fileID: 0}
+  description: {fileID: 0}
 --- !u!222 &1261007444283488371
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -918,7 +920,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1261007444597868329
 RectTransform:
   m_ObjectHideFlags: 0
@@ -954,7 +956,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07f00537523104842ac646d2e515d84e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseController: {fileID: 0}
   playerHealthBar: {fileID: 1261007444377231109}
   baseHealthBar: {fileID: 1261007442928222627}
   baseHealthFill: {fileID: 1261007442865627082}
@@ -1984,6 +1985,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d9f8f200f7b533448a269dba52b82c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  title: {fileID: 0}
   description: {fileID: 0}
 --- !u!1 &4392216081027613497
 GameObject:
@@ -2728,17 +2730,17 @@ PrefabInstance:
     - target: {fileID: 2746434365920300261, guid: 7749de6b6d4f75f45bcac18fea06e86b,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2746434365920300261, guid: 7749de6b6d4f75f45bcac18fea06e86b,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2746434365920300261, guid: 7749de6b6d4f75f45bcac18fea06e86b,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: -20
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3962143178763980466, guid: 7749de6b6d4f75f45bcac18fea06e86b,
         type: 3}
@@ -2783,12 +2785,17 @@ PrefabInstance:
     - target: {fileID: 6543766538217388223, guid: 7749de6b6d4f75f45bcac18fea06e86b,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6543766538217388223, guid: 7749de6b6d4f75f45bcac18fea06e86b,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6543766538217388223, guid: 7749de6b6d4f75f45bcac18fea06e86b,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6543766538217388223, guid: 7749de6b6d4f75f45bcac18fea06e86b,
         type: 3}
@@ -2939,6 +2946,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 2500
+      objectReference: {fileID: 0}
+    - target: {fileID: 9041768345459207317, guid: 7749de6b6d4f75f45bcac18fea06e86b,
+        type: 3}
+      propertyPath: m_Size
+      value: 0.5574376
+      objectReference: {fileID: 0}
+    - target: {fileID: 9041768345459207317, guid: 7749de6b6d4f75f45bcac18fea06e86b,
+        type: 3}
+      propertyPath: m_Value
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7749de6b6d4f75f45bcac18fea06e86b, type: 3}
