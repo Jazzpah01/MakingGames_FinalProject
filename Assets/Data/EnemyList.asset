@@ -16,9 +16,18 @@ MonoBehaviour:
   - prefab: {fileID: 797109595003254403, guid: 4ccad7ad5deb6f44fb3de03c4ddb5d94, type: 3}
     value: 1
     identifyer: 0
-  - prefab: {fileID: 797109595003254403, guid: d1ebfda4b6cb9fd41bdc20214f12919d, type: 3}
+  - prefab: {fileID: 797109595003254403, guid: fbf9b0032f5872a4c9ae028315257fc1, type: 3}
     value: 2
     identifyer: 1
-  - prefab: {fileID: 797109595003254403, guid: ca3611a94cd6bd847b9a7f55f32cc0fb, type: 3}
+  - prefab: {fileID: 797109595003254403, guid: d1ebfda4b6cb9fd41bdc20214f12919d, type: 3}
     value: 5
     identifyer: 2
+  - prefab: {fileID: 797109595003254403, guid: d39975478db400b418d69611db3a6b7a, type: 3}
+    value: 7
+    identifyer: 3
+  - prefab: {fileID: 797109595003254403, guid: ca3611a94cd6bd847b9a7f55f32cc0fb, type: 3}
+    value: 10
+    identifyer: 4
+  - prefab: {fileID: 797109595003254403, guid: 3ef563c821be2a54abdba5ca38dbc5ac, type: 3}
+    value: 15
+    identifyer: 5

@@ -19,6 +19,6 @@ MonoBehaviour:
       type: 3}
     containmentLayermask:
       serializedVersion: 2
-      m_Bits: 64
+      m_Bits: 128
     description: To obtain more Nectar Essence, plant the Seeds and wait...
     icon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
