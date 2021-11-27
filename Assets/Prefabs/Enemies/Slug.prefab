@@ -111,7 +111,7 @@ Transform:
   m_GameObject: {fileID: 797109595003254403}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 8101417107238253837}
   - {fileID: 5199958269474482671}
@@ -135,7 +135,7 @@ MonoBehaviour:
   healthBar: {fileID: 7321637065923144998}
   deathEffect: {fileID: 192757836124602699, guid: f4dddb6fda5ba164eae37c20d9e8e544,
     type: 3}
-  maxHealth: 50
+  maxHealth: 500
   speed: 1
 --- !u!114 &8095194503222227595
 MonoBehaviour:
@@ -154,7 +154,7 @@ MonoBehaviour:
     speedModifyer: 1
     stoppingDistance: 0.8
   attack:
-    damage: 150
+    damage: 15
     delay: 0.5
     cooldown: 3
   detectObstruction: {fileID: 1562670120480825331}

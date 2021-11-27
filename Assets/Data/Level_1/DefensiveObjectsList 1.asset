@@ -13,56 +13,12 @@ MonoBehaviour:
   m_Name: DefensiveObjectsList 1
   m_EditorClassIdentifier: 
   buildings:
-  - name: Wall
-    cost: 1
-    prefab: {fileID: 2782804534701062994, guid: 03892feb8bb90f248bbc0aed8527ac48,
-      type: 3}
-    containmentLayermask:
-      serializedVersion: 2
-      m_Bits: 64
-    description: Good for defence yo.
-    icon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-  - name: Jeremy
-    cost: 2
-    prefab: {fileID: 641325662967931237, guid: 8f13fa425de3cf9478dd05d29c5ba94c, type: 3}
-    containmentLayermask:
-      serializedVersion: 2
-      m_Bits: 64
-    description: Jeremy is happy boy.
-    icon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-  - name: Mr. Stanky Legs
-    cost: 2
-    prefab: {fileID: 5355251333915570780, guid: 45757f1371f45fb4b9970af133564347,
-      type: 3}
-    containmentLayermask:
-      serializedVersion: 2
-      m_Bits: 64
-    description: Slow them down with stanky legs.
-    icon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-  - name: Static Tower
-    cost: 3
-    prefab: {fileID: 9202268415749759745, guid: be7dd906ca4f9c347aa3479e652d84e6,
-      type: 3}
-    containmentLayermask:
-      serializedVersion: 2
-      m_Bits: 64
-    description: Two go brrr
-    icon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-  - name: Plant Resource
+  - name: Seeds
     cost: 3
     prefab: {fileID: 8063388511463166607, guid: df1ab6f0658de7a458a76a80eef4f5f0,
       type: 3}
     containmentLayermask:
       serializedVersion: 2
-      m_Bits: 128
-    description: Place at fertilized ground to gain resources.
-    icon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-  - name: Spider
-    cost: 3
-    prefab: {fileID: 4962991376061601507, guid: 5690637f5aae53e4c879e3d15a177737,
-      type: 3}
-    containmentLayermask:
-      serializedVersion: 2
       m_Bits: 64
-    description: Does spider things
+    description: To obtain more Nectar Essence, plant the Seeds and wait...
     icon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}

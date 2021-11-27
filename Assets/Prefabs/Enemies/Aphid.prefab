@@ -135,7 +135,7 @@ MonoBehaviour:
   healthBar: {fileID: 4181097153804717211}
   deathEffect: {fileID: 192757836124602699, guid: f4dddb6fda5ba164eae37c20d9e8e544,
     type: 3}
-  maxHealth: 50
+  maxHealth: 100
   speed: 4
 --- !u!114 &8335485817116311813
 MonoBehaviour:
@@ -157,8 +157,8 @@ MonoBehaviour:
     speedModifyer: 1.5
     stoppingDistance: 0.8
   attack:
-    damage: 500
-    delay: 0.2
+    damage: 1
+    delay: 0.3
     cooldown: 0.5
   detectCarrots: {fileID: 1562670120480825331}
   detectAttack: {fileID: 6004581929075582031}

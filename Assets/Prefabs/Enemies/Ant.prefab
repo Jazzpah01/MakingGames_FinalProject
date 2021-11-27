@@ -133,7 +133,7 @@ MonoBehaviour:
   healthBar: {fileID: 7016897219840272751}
   deathEffect: {fileID: 192757836124602699, guid: f4dddb6fda5ba164eae37c20d9e8e544,
     type: 3}
-  maxHealth: 100
+  maxHealth: 200
   speed: 3
 --- !u!114 &2760495144896973161
 MonoBehaviour:
@@ -153,7 +153,7 @@ MonoBehaviour:
     stoppingDistance: 0.8
   attack:
     damage: 5
-    delay: 0.2
+    delay: 0.3
     cooldown: 2
   range: 3
 --- !u!136 &1380614552679334418
