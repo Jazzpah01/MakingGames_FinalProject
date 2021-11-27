@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fcbd5e9c16d021d41ac1a62f67e18d59, type: 3}
-  m_Name: BuildingList 1
+  m_Name: DefensiveObjectsList 1
   m_EditorClassIdentifier: 
   buildings:
   - name: Wall
@@ -47,4 +47,22 @@ MonoBehaviour:
       serializedVersion: 2
       m_Bits: 64
     description: Two go brrr
+    icon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  - name: Plant Resource
+    cost: 3
+    prefab: {fileID: 8063388511463166607, guid: df1ab6f0658de7a458a76a80eef4f5f0,
+      type: 3}
+    containmentLayermask:
+      serializedVersion: 2
+      m_Bits: 128
+    description: Place at fertilized ground to gain resources.
+    icon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  - name: Spider
+    cost: 3
+    prefab: {fileID: 4962991376061601507, guid: 5690637f5aae53e4c879e3d15a177737,
+      type: 3}
+    containmentLayermask:
+      serializedVersion: 2
+      m_Bits: 64
+    description: Does spider things
     icon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
