@@ -1,2 +1,4 @@
+* text=auto
+
 **/*.prefab binary
 **/*.prefab.meta binary
