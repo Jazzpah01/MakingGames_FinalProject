@@ -72,7 +72,7 @@ public class StrategyHUD : MonoBehaviour
         {
             float cost = GO.GetComponentInChildren<UIBuildingItem>().Type.cost;
 
-            if (GameManager.instance.resource < cost)
+            if (GameManager.instance.currentResource < cost)
             {
                 GO.GetComponentInChildren<InteractableUI>().Interactable = false;
             } else

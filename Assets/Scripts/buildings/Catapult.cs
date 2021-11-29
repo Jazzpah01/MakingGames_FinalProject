@@ -58,11 +58,9 @@ public class Catapult : MonoBehaviour
         if (actor == null)
             return;
 
-        switch (actor.type)
+        if (actor.isActorType(ActorType.Enemy))
         {
-            case ActorType.Enemy:
-                enemies.Add(actor.gameObject);
-                break;
+            enemies.Add(actor.gameObject);
         }
     }
     private void Detection_Stay(Collider other)
@@ -81,11 +79,9 @@ public class Catapult : MonoBehaviour
         if (actor == null)
             return;
 
-        switch (actor.type)
+        if (actor.isActorType(ActorType.Enemy))
         {
-            case ActorType.Enemy:
-                enemies.Remove(actor.gameObject);
-                break;
+            enemies.Remove(actor.gameObject);
         }
     }
     private void checkNearByEnemeis()

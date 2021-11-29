@@ -5,9 +5,15 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    [HideInInspector] public bool inBattle = false;
 
-    public int resource;
+    public GameController.GameState GameState => gameController.state;
+
+    [Header("Resources")]
+    public float initialResource;
+    [Tooltip("Each round these will be added to resources. NOTE: For the first building phase, ONLY the intial resource is added.")]
+    public float roundResource;
+
+    [System.NonSerialized] public float currentResource;
 
     [Header("Level Data")]
     public BuildingList buildingTypes;
@@ -22,5 +28,10 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         instance = this;
+    }
+
+    private void Start()
+    {
+        currentResource = initialResource;
     }
 }

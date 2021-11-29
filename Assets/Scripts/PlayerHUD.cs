@@ -44,7 +44,7 @@ public class PlayerHUD : MonoBehaviour
         }
         baseHealthBar.value = baseController.Health / baseController.MaxHealth;
 
-        resourceCounter.text = gameManager.resource.ToString();
+        resourceCounter.text = gameManager.currentResource.ToString();
 
         oldBaseHealth = baseController.Health;
         oldPlayerHealth = playerController.Health;

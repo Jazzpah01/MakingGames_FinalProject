@@ -39,7 +39,8 @@ public class GrowingResource : MonoBehaviour, IBuildingBehavior
     void Update()
     {
         health = buildable.Health;
-        if(gameManager.inBattle == false && plantedWave + additionalWavesBeforeHarvest < gameManager.gameController.getNextWave())
+        if(gameManager.gameController.state == GameController.GameState.Strategy && 
+            plantedWave + additionalWavesBeforeHarvest < gameManager.gameController.getNextWave())
         {
             harvest();
         }
@@ -56,7 +57,7 @@ public class GrowingResource : MonoBehaviour, IBuildingBehavior
     void harvest()
     {
             calculateResourcesGained();
-            gameManager.resource += currentResourcesGained;
+            gameManager.currentResource += currentResourcesGained;
             Destroy(this.gameObject);
     }
 /*

@@ -35,7 +35,7 @@ public class ProjectileScript : MonoBehaviour
         if (actor == null)
             return;
 
-        if(actor.type == ActorType.Enemy && actor.gameObject == Target.gameObject)
+        if(actor.actorType == ActorType.Enemy && actor.gameObject == Target.gameObject)
         {
             actor.Health -= damage;
             Destroy(this.gameObject);

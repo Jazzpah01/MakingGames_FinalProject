@@ -39,7 +39,7 @@ public class CatapultProjectileScript : MonoBehaviour
         if (actor == null)
             return;
 
-        if(actor.type == ActorType.Enemy && actor.gameObject == Target.gameObject)
+        if(actor.actorType == ActorType.Enemy && actor.gameObject == Target.gameObject)
         {
             foreach(GameObject obj in EnemiesInAoE)
             {
@@ -63,7 +63,7 @@ public class CatapultProjectileScript : MonoBehaviour
         if (actor == null)
             return;
 
-        if(actor.type == ActorType.Enemy)
+        if(actor.actorType == ActorType.Enemy)
         {
             EnemiesInAoE.Add(other.gameObject);
         }
@@ -75,7 +75,7 @@ public class CatapultProjectileScript : MonoBehaviour
         if (actor == null)
             return;
 
-        if(actor.type == ActorType.Enemy)
+        if(actor.actorType == ActorType.Enemy)
         {
             EnemiesInAoE.Remove(other.gameObject);
         }

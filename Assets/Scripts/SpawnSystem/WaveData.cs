@@ -5,6 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class WaveData
 {
+    public float addRoundResource;
     public float totalValue;
     public float combatValue;
     public List<EnemyWeight> enemyWeights;

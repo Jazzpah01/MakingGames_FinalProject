@@ -20,10 +20,10 @@ public class ResourceTextScript : MonoBehaviour
 
     void Update()
     {
-        if (tempOld != gameManager.resource)
+        if (tempOld != gameManager.currentResource)
         {
-            TMP.SetText(message + gameManager.resource);
-            tempOld = gameManager.resource;
+            TMP.SetText(message + gameManager.currentResource);
+            tempOld = gameManager.currentResource;
         }
     }
 }

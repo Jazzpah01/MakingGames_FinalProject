@@ -30,15 +30,15 @@ public class SlowingBuilding : MonoBehaviour, IBuildingBehavior
         gasPosition = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
 
         gastimer -= Time.deltaTime;
-        if (walktimer > 0 && gm.inBattle)
+        if (walktimer > 0 && gm.gameController.state == GameController.GameState.Combat)
         {
             walktimer -= Time.deltaTime;
             transform.Translate(Vector3.forward * (Time.deltaTime * speed));
-        } else if (gm.inBattle) {
+        } else if (gm.gameController.state == GameController.GameState.Combat) {
             TurnAround();
         }
 
-        if(gastimer < 0 && gm.inBattle)
+        if(gastimer < 0 && gm.gameController.state == GameController.GameState.Combat)
         {
             Instantiate(slowGas, gasPosition, Quaternion.identity);
             gastimer = 0.2f;
