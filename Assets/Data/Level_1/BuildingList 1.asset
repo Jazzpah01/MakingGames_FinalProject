@@ -23,4 +23,4 @@ MonoBehaviour:
     description: These Seeds were given to you by the Queen's helper- Joe The Spider.
       Plant them on the fertile soil to harvest Nectar Essence, which in turn will
       help you to sustain the land.
-    icon: {fileID: 21300000, guid: 5e87e5b5d5b4a6640b27ed0b64d1eeaa, type: 3}
+    icon: {fileID: 21300000, guid: 6eec930d7ed7164429f6084cf87a0bcb, type: 3}
