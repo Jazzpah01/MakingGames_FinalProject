@@ -76,6 +76,13 @@ How to upload a branch NAME that is only local.
 git push -u origin NAME
 
 ---
+How to git add everything in a folder
+
+git add FOLDER
+
+Example: git add Assets/Models/
+
+---
 To list remove branches: git branch -v -a
 
 https://stackoverflow.com/questions/1783405/how-do-i-check-out-a-remote-git-branch
