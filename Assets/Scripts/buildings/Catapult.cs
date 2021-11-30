@@ -11,6 +11,7 @@ public class Catapult : MonoBehaviour
     public float distanceToClosestEnemy;
     public GameObject closestEnemy;
     public CollisionObserver detectionCollision;
+    Animator animator;
 
     public float shootCooldown;
     public float damage = 25;
@@ -29,6 +30,9 @@ public class Catapult : MonoBehaviour
         detectionCollision.Subscribe(Detection_Stay, CollisionObserver.CollisionType.Stay);
         detectionCollision.Subscribe(Detection_Exit, CollisionObserver.CollisionType.Exit);
 
+        
+        animator = transform.GetChild(3).GetComponent<Animator>();
+
         distanceToClosestEnemy = -1;
     }
 
@@ -38,8 +42,10 @@ public class Catapult : MonoBehaviour
         timer += Time.deltaTime;
     }
 
-    void shoot()
-    {
+    public void shoot()
+    {            
+        this.transform.GetChild(3).transform.LookAt(closestEnemy.transform, Vector3.up);
+
         timer = 0.0f;
         GameObject newProjectile = Instantiate(projectile) as GameObject;
         newProjectile.transform.position = peak.transform.position;
@@ -69,11 +75,10 @@ public class Catapult : MonoBehaviour
     {
         checkNearByEnemeis();
 
-        if(timer > shootCooldown && distanceToClosestEnemy > 0 && closestEnemy != null)
+       /* if(timer > shootCooldown && distanceToClosestEnemy > 0 && closestEnemy != null)
         {
-            this.transform.LookAt(closestEnemy.transform, Vector3.up);
-            shoot();
-        }
+            //shoot();
+        }*/
     }
     private void Detection_Exit(Collider other)
     {
@@ -92,7 +97,10 @@ public class Catapult : MonoBehaviour
     {
         distanceToClosestEnemy = -1;
         closestEnemy = null;
-
+        if(enemies.Count > 0 )
+        {   
+            animator.SetTrigger("Shooting"); 
+        }
         if(enemies.Count == 1 && enemies[0] != null)
         {
             closestEnemy = enemies[0];
