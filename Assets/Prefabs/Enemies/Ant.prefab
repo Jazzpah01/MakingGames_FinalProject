@@ -134,7 +134,7 @@ MonoBehaviour:
   deathEffect: {fileID: 192757836124602699, guid: f4dddb6fda5ba164eae37c20d9e8e544,
     type: 3}
   maxHealth: 100
-  speed: 3
+  speed: 4
 --- !u!114 &2760495144896973161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,7 +154,7 @@ MonoBehaviour:
   attack:
     damage: 5
     delay: 0.2
-    cooldown: 2
+    cooldown: 1
   range: 3
 --- !u!136 &1380614552679334418
 CapsuleCollider:

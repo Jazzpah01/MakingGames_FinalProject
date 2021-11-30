@@ -573,10 +573,9 @@ MonoBehaviour:
   speed: 2
   healthbar: {fileID: 1948593179552404295}
   spotlight: {fileID: 2546444746254981868}
-  setType: 2
+  setType: 36
   buildingProjections: {fileID: 2768994441708888399}
   ignoreOnBuild: {fileID: 0}
-  actorType: 0
 --- !u!1 &641325663243885522
 GameObject:
   m_ObjectHideFlags: 0
