@@ -134,7 +134,7 @@ MonoBehaviour:
   deathEffect: {fileID: 192757836124602699, guid: f4dddb6fda5ba164eae37c20d9e8e544,
     type: 3}
   maxHealth: 150
-  speed: 5
+  speed: 8
 --- !u!114 &2760495144896973161
 MonoBehaviour:
   m_ObjectHideFlags: 0
