@@ -40,7 +40,10 @@ public class Catapult : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        this.transform.GetChild(3).transform.LookAt(closestEnemy.transform, Vector3.up);
+        if(closestEnemy != null)
+        {
+            this.transform.GetChild(3).transform.LookAt(closestEnemy.transform, Vector3.up);
+        }
     }
 
     public void shoot()
