@@ -40,12 +40,11 @@ public class Catapult : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
+        this.transform.GetChild(3).transform.LookAt(closestEnemy.transform, Vector3.up);
     }
 
     public void shoot()
     {            
-        this.transform.GetChild(3).transform.LookAt(closestEnemy.transform, Vector3.up);
-
         timer = 0.0f;
         GameObject newProjectile = Instantiate(projectile) as GameObject;
         newProjectile.transform.position = peak.transform.position;
@@ -74,12 +73,8 @@ public class Catapult : MonoBehaviour
     private void Detection_Stay(Collider other)
     {
         checkNearByEnemeis();
-
-       /* if(timer > shootCooldown && distanceToClosestEnemy > 0 && closestEnemy != null)
-        {
-            //shoot();
-        }*/
     }
+    
     private void Detection_Exit(Collider other)
     {
         IActor actor = other.GetComponent<IActor>();
