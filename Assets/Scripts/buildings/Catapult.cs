@@ -31,7 +31,7 @@ public class Catapult : MonoBehaviour
         detectionCollision.Subscribe(Detection_Exit, CollisionObserver.CollisionType.Exit);
 
         
-        animator = transform.GetChild(3).GetComponent<Animator>();
+        animator = transform.GetChild(3).GetChild(0).GetComponent<Animator>();
 
         distanceToClosestEnemy = -1;
     }
@@ -93,6 +93,12 @@ public class Catapult : MonoBehaviour
                 break;
         }
     }
+
+    public List<GameObject> getEnemies()
+    {
+        return enemies;
+    }
+
     private void checkNearByEnemeis()
     {
         distanceToClosestEnemy = -1;

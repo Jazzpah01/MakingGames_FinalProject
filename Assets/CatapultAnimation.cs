@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class CatapultAnimation : MonoBehaviour
 {
-    private GameObject parent;
+    public GameObject parent;
     private bool shootReady;
     
     Animator animator;
     // Start is called before the first frame update
     void Start()
     {
-        parent = transform.parent.gameObject;
         animator = transform.GetComponent<Animator>();
         shootReady = true;
     }
@@ -25,8 +24,11 @@ public class CatapultAnimation : MonoBehaviour
     public void testShoot()
     {
         //Debug.Log("Shoot called from animation");
-        parent.GetComponent<Catapult>().shoot();
-        shootReady = false;
+        if(parent.GetComponent<Catapult>().getEnemies().Count > 0)
+        {
+            parent.GetComponent<Catapult>().shoot();
+            shootReady = false;
+        }
     }
 
     public void readyShot()
