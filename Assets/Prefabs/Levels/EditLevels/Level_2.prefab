@@ -4347,10 +4347,37 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -0.088
       objectReference: {fileID: 0}
+    - target: {fileID: 1230093869927658679, guid: 365e77927a760a145b9580db4e29df3a,
+        type: 3}
+      propertyPath: m_text
+      value: "\u201CAhh\u2026 right... Can you smell that little one?\u201D *Sniff,
+        Sniff \u201CThe giants\u2026 the freaky freaky giants\u2026 They have this
+        obsession with black substances. Our Queen calls it the Ever-Gracious Aromatic
+        Pile of Bitterness.\u201D\r\n\u201CIt's just a goddamn Pile of Coffee, Joe.\u201D\r\n\u201CThere
+        is lots of it anyway\u2026 Scattered all around the place. It will help you
+        to protect our home from the buggers. The Ants and Aphids detest the smell
+        so they will simply go around it.\u201D\r\n\u201CWell enough banter! Good
+        luck Little One!\u201D\r\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1230093869927658679, guid: 365e77927a760a145b9580db4e29df3a,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 22.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1610024254566611460, guid: 365e77927a760a145b9580db4e29df3a,
+        type: 3}
+      propertyPath: m_text
+      value: "The Ant\u2019s retribution!\r\n\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1610024254566611460, guid: 365e77927a760a145b9580db4e29df3a,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 60.55
+      objectReference: {fileID: 0}
     - target: {fileID: 1737285443989528484, guid: 365e77927a760a145b9580db4e29df3a,
         type: 3}
       propertyPath: m_Speed
-      value: 15
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1737285443989528484, guid: 365e77927a760a145b9580db4e29df3a,
         type: 3}
@@ -4381,6 +4408,20 @@ PrefabInstance:
         type: 3}
       propertyPath: maxVelocityChange
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1819209013542610397, guid: 365e77927a760a145b9580db4e29df3a,
+        type: 3}
+      propertyPath: m_text
+      value: "\u201CWait, can you hear that? The ever-gracious Queen just murmured
+        something...\u201D\r\n\u201CUse the Nectar Essence\u2026 to call on the Ever-Gra\u2026
+        ahm ahm\u2026 Too weak...\u201D\r\n\u201CHush Queen, we will tell the Little
+        One. Don\u2019t you worry Queen.\u201D\r\n\u201CShooting flower that\u2019s
+        all there is to it\u2026 stop being so melodramatic Joe...\u201D \r\n\u201CYou
+        are disrespecting the Queen! These plants are called The Ever-Gracious-Guardian-Flower,
+        created by our Queen to help you on your quest.\u201D \r\n\u201CAnd\u2026?\u201D\r\n\u201CAnd
+        what, Jeremy?\u201D\r\n\u201CYou forgot something idiot... Do you really
+        think this one here will be satisfied with a shooting cool-ass flower? No\u2026
+        The little one needs more staff to toy with...\u201D\r\n\n"
       objectReference: {fileID: 0}
     - target: {fileID: 2094113796281321306, guid: 365e77927a760a145b9580db4e29df3a,
         type: 3}
@@ -4579,13 +4620,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3756459245402022232, guid: 365e77927a760a145b9580db4e29df3a,
         type: 3}
+      propertyPath: waves.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3756459245402022232, guid: 365e77927a760a145b9580db4e29df3a,
+        type: 3}
       propertyPath: waves.Array.data[0].totalValue
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3756459245402022232, guid: 365e77927a760a145b9580db4e29df3a,
         type: 3}
       propertyPath: waves.Array.data[1].totalValue
-      value: 42
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 3756459245402022232, guid: 365e77927a760a145b9580db4e29df3a,
+        type: 3}
+      propertyPath: waves.Array.data[2].totalValue
+      value: 48
       objectReference: {fileID: 0}
     - target: {fileID: 3756459245402022232, guid: 365e77927a760a145b9580db4e29df3a,
         type: 3}
@@ -4599,12 +4650,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3756459245402022232, guid: 365e77927a760a145b9580db4e29df3a,
         type: 3}
+      propertyPath: waves.Array.data[2].combatValue
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3756459245402022232, guid: 365e77927a760a145b9580db4e29df3a,
+        type: 3}
+      propertyPath: waves.Array.data[1].addRoundResource
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3756459245402022232, guid: 365e77927a760a145b9580db4e29df3a,
+        type: 3}
+      propertyPath: waves.Array.data[2].addRoundResource
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3756459245402022232, guid: 365e77927a760a145b9580db4e29df3a,
+        type: 3}
       propertyPath: waves.Array.data[0].enemyWeights.Array.size
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3756459245402022232, guid: 365e77927a760a145b9580db4e29df3a,
         type: 3}
       propertyPath: waves.Array.data[1].enemyWeights.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3756459245402022232, guid: 365e77927a760a145b9580db4e29df3a,
+        type: 3}
+      propertyPath: waves.Array.data[2].enemyWeights.Array.size
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3756459245402022232, guid: 365e77927a760a145b9580db4e29df3a,
@@ -4629,6 +4700,28 @@ PrefabInstance:
       propertyPath: waves.Array.data[1].enemyWeights.Array.data[1].weight
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3756459245402022232, guid: 365e77927a760a145b9580db4e29df3a,
+        type: 3}
+      propertyPath: waves.Array.data[2].enemyWeights.Array.data[0].prefab
+      value: 
+      objectReference: {fileID: 797109595003254403, guid: 4ccad7ad5deb6f44fb3de03c4ddb5d94,
+        type: 3}
+    - target: {fileID: 3756459245402022232, guid: 365e77927a760a145b9580db4e29df3a,
+        type: 3}
+      propertyPath: waves.Array.data[2].enemyWeights.Array.data[0].weight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3756459245402022232, guid: 365e77927a760a145b9580db4e29df3a,
+        type: 3}
+      propertyPath: waves.Array.data[2].enemyWeights.Array.data[1].prefab
+      value: 
+      objectReference: {fileID: 797109595003254403, guid: d1ebfda4b6cb9fd41bdc20214f12919d,
+        type: 3}
+    - target: {fileID: 3756459245402022232, guid: 365e77927a760a145b9580db4e29df3a,
+        type: 3}
+      propertyPath: waves.Array.data[2].enemyWeights.Array.data[1].weight
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4406921331180399564, guid: 365e77927a760a145b9580db4e29df3a,
         type: 3}
       propertyPath: m_Carve
@@ -4643,6 +4736,34 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Extents.z
       value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5074749346979002855, guid: 365e77927a760a145b9580db4e29df3a,
+        type: 3}
+      propertyPath: m_text
+      value: "The Ant\u2019s retribution!\r\n\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5074749346979002855, guid: 365e77927a760a145b9580db4e29df3a,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 60.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 5400545195541585757, guid: 365e77927a760a145b9580db4e29df3a,
+        type: 3}
+      propertyPath: m_text
+      value: "\u201CYou showed those Buggers! Hahahaha, for a moment I considered
+        jumping in there.\u201D  The Queen will be pleased!\u201D \r\n\u201CAhm,
+        Ahm,The Ever-Gracious Queen will be pleased!\u201D Adds Joe.\r\n\u201CBut
+        you made somebody quite angry, little one. You see the Aphids are being used
+        by the Ants, and they don\u2019t like when you hurt their prey\u2026 Beware
+        Little One, unlike the Aphids, the Ants will hurt you! They want to defend
+        the Aphids because they eat the Aphids once they have collected enough Nectar.\u201D
+        Joe explains. \r\n\u201C Hahaha they are vicious these Ants...You are screwed
+        little one\u2026\u201D Jeremy seems quite amused by your misfortune...\r\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5400545195541585757, guid: 365e77927a760a145b9580db4e29df3a,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 20.55
       objectReference: {fileID: 0}
     - target: {fileID: 5599564238564458642, guid: 365e77927a760a145b9580db4e29df3a,
         type: 3}
@@ -4668,6 +4789,16 @@ PrefabInstance:
         type: 3}
       propertyPath: secondaryAttackDamage
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6412301444617183023, guid: 365e77927a760a145b9580db4e29df3a,
+        type: 3}
+      propertyPath: m_text
+      value: "The Ant\u2019s retribution!\r\n\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6412301444617183023, guid: 365e77927a760a145b9580db4e29df3a,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 60.55
       objectReference: {fileID: 0}
     - target: {fileID: 6548874302202093267, guid: 365e77927a760a145b9580db4e29df3a,
         type: 3}
