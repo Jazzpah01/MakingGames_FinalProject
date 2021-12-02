@@ -9,7 +9,7 @@ public class LevelDescription : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log(contents.Count);
+        //Debug.Log(contents.Count);
         foreach (Transform child in transform)
         {
             if (!contents.Contains(child.gameObject))
