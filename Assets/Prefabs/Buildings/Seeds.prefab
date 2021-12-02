@@ -595,10 +595,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffe604223d22844468a5134838f30083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  growthTime: 3
-  harvestTimer: 0.5
+  growthTime: 0
+  harvestTimer: 0
   maxResourcesGained: 5
-  additionalWavesBeforeHarvest: 1
+  additionalWavesBeforeHarvest: 0
 --- !u!208 &-3724557957165586548
 NavMeshObstacle:
   m_ObjectHideFlags: 0
