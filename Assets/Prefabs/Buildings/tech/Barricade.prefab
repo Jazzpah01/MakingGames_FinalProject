@@ -280,7 +280,7 @@ MonoBehaviour:
   speed: 0
   healthbar: {fileID: 4106165504943000003}
   spotlight: {fileID: 6420362992458343380}
-  setType: 3
+  setType: 2
   buildingProjections: {fileID: 0}
   ignoreOnBuild: {fileID: 0}
   actorType: 3
