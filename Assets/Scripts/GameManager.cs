@@ -9,6 +9,10 @@ public class GameManager : MonoBehaviour
 
     public int resource;
 
+    [Header("Sound")]
+    public bool soundOn = true;
+    public bool musicOn = true;
+
     [Header("Level Data")]
     public BuildingList buildingTypes;
     public EnemyList enemyTypes;
