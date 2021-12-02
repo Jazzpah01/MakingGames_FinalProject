@@ -6,7 +6,8 @@ public interface IActor: IDamageable
 {
     ActorType type { get; }
     GameObject gameObject { get; }
-    float Speed {get; set;}
+    float Speed {get; set; }
+    float SpeedModifyer { get; set; }
     bool enabled { get; set; }
     bool blockDamage { get; set; }
     float damageReduction { get; set; }

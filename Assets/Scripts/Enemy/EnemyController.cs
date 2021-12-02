@@ -49,6 +49,7 @@ public class EnemyController: MonoBehaviour, IEnemy
     public GameObject spawnPoint { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     public bool blockDamage { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     public float damageReduction { get; set; }
+    public float SpeedModifyer { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
     void Start()
     {

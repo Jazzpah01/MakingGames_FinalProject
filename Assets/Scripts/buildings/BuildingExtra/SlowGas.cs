@@ -35,7 +35,7 @@ public class SlowGas : MonoBehaviour
         switch (actor.type)
         {
             case ActorType.Enemy:
-                actor.Speed = actor.Speed/2;
+                actor.SpeedModifyer = 0.50f;
                 break;
         }
     }
@@ -50,7 +50,7 @@ public class SlowGas : MonoBehaviour
         switch (actor.type)
         {
             case ActorType.Enemy:
-                actor.Speed = actor.Speed*2;
+                actor.SpeedModifyer = 1;
                 break;
         }
     }

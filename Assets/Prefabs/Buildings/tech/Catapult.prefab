@@ -48,7 +48,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 415400073512205163}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -416,10 +416,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2613454309904885838}
   - component: {fileID: 8443509432160686943}
-  - component: {fileID: 6183669311951482142}
   - component: {fileID: 8417107451701060552}
   - component: {fileID: 2743539870908128381}
   - component: {fileID: 2028647433923470686}
+  - component: {fileID: 7141986965789050329}
   m_Layer: 9
   m_Name: Catapult
   m_TagString: Untagged
@@ -463,20 +463,6 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
---- !u!136 &6183669311951482142
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9202268415749759745}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.3
-  m_Height: 2.5
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8417107451701060552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -528,7 +514,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9202268415749759745}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 7f94a745ce745704e8c955f4d3965adf, type: 2}
   m_CullingMode: 0
@@ -539,6 +525,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!65 &7141986965789050329
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9202268415749759745}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6.03, y: 4.56, z: 8.33}
+  m_Center: {x: 0.12, y: 1.73, z: -1.08}
 --- !u!1001 &173506617180876765
 PrefabInstance:
   m_ObjectHideFlags: 0

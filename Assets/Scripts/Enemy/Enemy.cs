@@ -43,6 +43,7 @@ public class Enemy : MonoBehaviour, IEnemy
     public float damageReduction { get; set; }
 
     public GameObject spawnPoint { get; set; }
+    public float SpeedModifyer { get; set; }
 
     private void Awake()
     {
@@ -54,6 +55,7 @@ public class Enemy : MonoBehaviour, IEnemy
     {
         blockDamage = false;
         Health = maxHealth;
+        SpeedModifyer = 1;
     }
 
     // Update is called once per frame

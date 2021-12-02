@@ -25,7 +25,7 @@ public class DirectMove : AIState
             return;
 
         Vector3 targetVelocity = difference.normalized;
-        targetVelocity *= parent.controller.Speed * speedModifyer;
+        targetVelocity *= parent.controller.Speed * speedModifyer * parent.controller.SpeedModifyer;
 
         targetVelocity.y = 0;
 

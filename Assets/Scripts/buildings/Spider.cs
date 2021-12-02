@@ -45,8 +45,8 @@ public class Spider : MonoBehaviour, IBuildingBehavior
         {
             case ActorType.Enemy:
                 enemies.Add(actor.gameObject);
-                actor.Speed = actor.Speed / speedReduction;
-                actor.gameObject.GetComponent<IActor>().damageReduction = actor.gameObject.GetComponent<IActor>().damageReduction - damageReduction;
+                actor.SpeedModifyer = speedReduction;
+                actor.gameObject.GetComponent<IActor>().damageReduction = damageReduction;
                 break;
         }
     }
@@ -57,12 +57,11 @@ public class Spider : MonoBehaviour, IBuildingBehavior
         if (actor == null)
             return;
 
-
         switch (actor.type)
         {
             case ActorType.Enemy:
-                actor.Speed = actor.Speed * speedReduction;
-                actor.gameObject.GetComponent<IActor>().damageReduction = actor.gameObject.GetComponent<IActor>().damageReduction + damageReduction;
+                actor.SpeedModifyer = speedReduction;
+                actor.gameObject.GetComponent<IActor>().damageReduction = damageReduction;
                 enemies.Remove(actor.gameObject);
                 break;
         }

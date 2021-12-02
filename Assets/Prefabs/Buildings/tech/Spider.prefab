@@ -497,7 +497,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.8
+  m_Radius: 1.61
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6457625894001631610
 MonoBehaviour:
@@ -948,7 +948,7 @@ MonoBehaviour:
   animator: {fileID: 7284332604878202787}
   damage: 25
   damageReduction: 2
-  speedReduction: 2
+  speedReduction: 0.5
   attackCooldown: 2
   enemies: []
 --- !u!114 &6888774537144770947
@@ -963,8 +963,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cf6f44b9970b7c4d8f561050a107b58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingName: 
-  maxHealth: 0
+  buildingName: Spooder
+  maxHealth: 100
   speed: 5
   healthbar: {fileID: 950378279979943878}
   spotlight: {fileID: 3483663023809083034}
@@ -2349,7 +2349,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9079586703019944108}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.6099999, z: 0}
+  m_LocalPosition: {x: 0, y: -0.38, z: 0}
   m_LocalScale: {x: 15, y: 0.1, z: 15}
   m_Children: []
   m_Father: {fileID: 5077727954037813622}
