@@ -104,8 +104,8 @@ public class PlayerCombat : MonoBehaviour
                     {
                         Instantiate(secondaryAttackEffect, hit.point, Quaternion.identity);
                     }
-                    GameObject go = Instantiate(AOEEffect, transform.position, transform.localRotation);
-                    go.transform.rotation = transform.rotation;
+                    //GameObject go = Instantiate(AOEEffect, transform.position, transform.localRotation);
+                    //go.transform.rotation = transform.rotation;
                 }));
                 secondaryAttackCooldown = secondaryAttackCooldownHolder;
             }
