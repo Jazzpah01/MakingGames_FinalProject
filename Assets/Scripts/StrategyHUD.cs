@@ -11,6 +11,7 @@ public class StrategyHUD : MonoBehaviour
     private BuildingList buildings;
     public float offset = -10;
     public float contentChunkSize = 400;
+    public float buildableSelectedScale;
 
     private List<GameObject> itemList = new List<GameObject>();
     private InteractableUI toggled;
@@ -28,7 +29,7 @@ public class StrategyHUD : MonoBehaviour
     {
         gameManager = GameManager.instance;
         strategyController = gameManager.buildingController;
-        buildings = GameManager.instance.buildingTypes;
+        buildings = gameManager.buildingTypes;
 
         // Setup buttons
         defendButton.GetComponentInChildren<InteractableUI>().OnClicked += delegate { DefendButton(); };
@@ -72,7 +73,7 @@ public class StrategyHUD : MonoBehaviour
         {
             float cost = GO.GetComponentInChildren<UIBuildingItem>().Type.cost;
 
-            if (GameManager.instance.resource < cost)
+            if (gameManager.resource < cost)
             {
                 GO.GetComponentInChildren<InteractableUI>().Interactable = false;
             } else
@@ -84,8 +85,9 @@ public class StrategyHUD : MonoBehaviour
 
     private void Update()
     {
-        if (!GameManager.instance.buildingController.isBuilding && toggled != null)
+        if (!gameManager.buildingController.isBuilding && toggled != null)
         {
+            toggled.mainGameObject.transform.localScale -= new Vector3(buildableSelectedScale, buildableSelectedScale, buildableSelectedScale);
             toggled.Toggled = false;
             toggled = null;
         }
@@ -118,9 +120,14 @@ public class StrategyHUD : MonoBehaviour
         strategyController.SelectPrefab(buildings[index]);
 
         if (toggled != null)
+        {
             toggled.Toggled = false;
+            toggled.mainGameObject.transform.localScale -= new Vector3(buildableSelectedScale, buildableSelectedScale, buildableSelectedScale);
+
+        }
 
         toggled = itemList[index].GetComponentInChildren<InteractableUI>();
+        toggled.mainGameObject.transform.localScale += new Vector3(buildableSelectedScale, buildableSelectedScale, buildableSelectedScale);
         toggled.Toggled = true;
     }
 
@@ -137,6 +144,7 @@ public class StrategyHUD : MonoBehaviour
 
     public void DefendButton()
     {
+        toggled.mainGameObject.transform.localScale -= new Vector3(buildableSelectedScale, buildableSelectedScale, buildableSelectedScale);
         GameController.instance.GoToBattle();
     }
 }
