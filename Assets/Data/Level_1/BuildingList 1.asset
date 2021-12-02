@@ -23,4 +23,26 @@ MonoBehaviour:
     description: These Seeds were given to you by the Queen's helper- Joe The Spider.
       Plant them on the fertile soil to harvest Nectar Essence, which in turn will
       help you to sustain the land.
-    icon: {fileID: 21300000, guid: 6eec930d7ed7164429f6084cf87a0bcb, type: 3}
+    icon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  - name: Coffee Pile
+    cost: 1
+    prefab: {fileID: 8063388511463166607, guid: df1ab6f0658de7a458a76a80eef4f5f0,
+      type: 3}
+    containmentLayermask:
+      serializedVersion: 2
+      m_Bits: 128
+    description: These Seeds were given to you by the Queen's helper- Joe The Spider.
+      Plant them on the fertile soil to harvest Nectar Essence, which in turn will
+      help you to sustain the land.
+    icon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  - name: Seeds
+    cost: 3
+    prefab: {fileID: 8063388511463166607, guid: df1ab6f0658de7a458a76a80eef4f5f0,
+      type: 3}
+    containmentLayermask:
+      serializedVersion: 2
+      m_Bits: 128
+    description: These Seeds were given to you by the Queen's helper- Joe The Spider.
+      Plant them on the fertile soil to harvest Nectar Essence, which in turn will
+      help you to sustain the land.
+    icon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}

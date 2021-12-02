@@ -722,8 +722,8 @@ MonoBehaviour:
   distanceToClosestEnemy: 0
   closestEnemy: {fileID: 0}
   detectionCollision: {fileID: 2834692135045452658}
-  shootCooldown: 0.5
-  damage: 25
+  shootCooldown: 1
+  damage: 10
   maxHealth: 200
 --- !u!208 &8443509432160686943
 NavMeshObstacle:

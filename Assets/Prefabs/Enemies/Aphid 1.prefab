@@ -157,7 +157,7 @@ MonoBehaviour:
     speedModifyer: 1.5
     stoppingDistance: 0.8
   attack:
-    damage: 2
+    damage: 4
     delay: 0.2
     cooldown: 1
   detectCarrots: {fileID: 1562670120480825331}

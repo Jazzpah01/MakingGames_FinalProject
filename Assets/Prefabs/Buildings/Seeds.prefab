@@ -641,7 +641,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingName: Plant Resource
-  maxHealth: 25
+  maxHealth: 40
   speed: 0
   healthbar: {fileID: 8520103144020020281}
   spotlight: {fileID: 8565433613306034439}
