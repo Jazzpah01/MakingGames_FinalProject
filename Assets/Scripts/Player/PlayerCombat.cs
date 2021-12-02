@@ -26,6 +26,9 @@ public class PlayerCombat : MonoBehaviour
     public CollisionObserver secondaryObserver;
     private float secondaryAttackCooldownHolder;
 
+    [Header("Stuff")]
+    public GameObject AOEEffect;
+
     private void Start()
     {
         primaryAttackCooldownHolder = primaryAttackCooldown;
@@ -37,24 +40,23 @@ public class PlayerCombat : MonoBehaviour
         primaryAttackCooldown -= Time.deltaTime;
         secondaryAttackCooldown -= Time.deltaTime;
     }
-    public bool PrimaryAttack(Camera cam, LayerMask mask)
+    public bool PrimaryAttack(RaycastHit hit, LayerMask mask)
     {
-        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
         //if we left click on the actor mask
-        if (Physics.Raycast(ray, out hit, 1000, mask))
+        if (primaryAttackObserver.Stay.Contains(hit.collider))
         {
-            if (primaryAttackObserver.Stay.Contains(hit.collider))
-            {
-                IActor actor = hit.transform.GetComponent<IActor>();
+            IActor actor = hit.transform.GetComponent<IActor>();
 
-                if (actor != null && actor.type == ActorType.Enemy)
+            if (actor != null && actor.type == ActorType.Enemy)
+            {
+                StartCoroutine(Utility.DelayedAbility(0.1f, delegate
                 {
                     actor.Health -= primaryAttackDamage;
-                    Instantiate(primaryAttackEffect,hit.point,Quaternion.identity);
-                    primaryAttackCooldown = primaryAttackCooldownHolder;
-                    return true;
-                }
+                    Instantiate(primaryAttackEffect, hit.point, Quaternion.identity);
+                }));
+
+                primaryAttackCooldown = primaryAttackCooldownHolder;
+                return true;
             }
         }
         return false;
@@ -92,14 +94,19 @@ public class PlayerCombat : MonoBehaviour
             IActor actor = collisions[i].GetComponent<IActor>();
             if (actor != null && actor.type == ActorType.Enemy)
             {
-                actor.Health -= secondaryAttackDamage;
-                Ray ray = new Ray(transform.position, actor.gameObject.transform.position - transform.position);
-                Debug.DrawRay(transform.position, actor.gameObject.transform.position - transform.position, Color.red, 10);
-                RaycastHit hit;
-                if (Physics.Raycast(ray, out hit, 1000, actor.gameObject.layer))
+                StartCoroutine(Utility.DelayedAbility(0.5f, delegate
                 {
-                    Instantiate(secondaryAttackEffect, hit.point, Quaternion.identity);
-                }
+                    actor.Health -= secondaryAttackDamage;
+                    Ray ray = new Ray(transform.position, actor.gameObject.transform.position - transform.position);
+                    Debug.DrawRay(transform.position, actor.gameObject.transform.position - transform.position, Color.red, 10);
+                    RaycastHit hit;
+                    if (Physics.Raycast(ray, out hit, 1000, actor.gameObject.layer))
+                    {
+                        Instantiate(secondaryAttackEffect, hit.point, Quaternion.identity);
+                    }
+                    GameObject go = Instantiate(AOEEffect, transform.position, transform.localRotation);
+                    go.transform.rotation = transform.rotation;
+                }));
                 secondaryAttackCooldown = secondaryAttackCooldownHolder;
             }
         }
