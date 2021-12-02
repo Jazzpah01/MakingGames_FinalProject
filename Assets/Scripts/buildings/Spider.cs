@@ -8,6 +8,7 @@ public class Spider : MonoBehaviour, IBuildingBehavior
     public GameObject web;
     public CollisionObserver detectionCollision;
     public CollisionObserver damageCollision;
+    public Animator animator;
 
     public float damage;
     public float damageReduction;
@@ -93,8 +94,12 @@ public class Spider : MonoBehaviour, IBuildingBehavior
     {
         if(enemies.Count > 0 && enemies[0] != null)
         {
+            animator.SetTrigger("Walking"); 
+            model.transform.LookAt(new Vector3(enemies[0].transform.position.x, model.transform.position.y, enemies[0].transform.position.z), Vector3.up);
             model.transform.position = Vector3.MoveTowards(model.transform.position, new Vector3(enemies[0].transform.position.x, model.transform.position.y, enemies[0].transform.position.z), speed * Time.fixedDeltaTime);
-        } else {
+        } else if (model.transform.position != this.transform.position) {
+            animator.SetTrigger("Walking"); 
+            model.transform.LookAt(this.transform.position);
             model.transform.position = Vector3.MoveTowards(model.transform.position, this.transform.position, speed * Time.fixedDeltaTime);
         }
     }

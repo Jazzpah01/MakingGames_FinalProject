@@ -9,6 +9,8 @@ public class PlayerMotor : MonoBehaviour
     NavMeshAgent agent;
     PlayerManager playerManager;
 
+    public Animator animator;
+
     [HideInInspector]
     Camera cam;
 
@@ -27,6 +29,9 @@ public class PlayerMotor : MonoBehaviour
     private float dashTimer;
     private float distance = 999999;
 
+    [System.NonSerialized] public bool isMoving = false;
+    [System.NonSerialized] public bool blockMoving = false;
+
 
     void Start()
     {
@@ -43,6 +48,8 @@ public class PlayerMotor : MonoBehaviour
         //dash cooldown
         dashTimer -= Time.fixedDeltaTime;
 
+        isMoving = false;
+
         //return if the pointer 
         if (InteractableUI.OnUI)
         {
@@ -56,12 +63,13 @@ public class PlayerMotor : MonoBehaviour
         //dash or move
         if (Input.GetKey(KeyCode.Space) && 0 >= dashTimer && !dashing && !attacking)
         {
+            animator.SetTrigger("dash");
             //reset dash cooldown
             dashTimer += dashCooldown;
             //dash
             Dash(dashSpeed, dashLength);
         }
-        else if (!dashing && !attacking)
+        else if (!dashing && !attacking && !blockMoving)
         {
             //read input keys
             MovementKeyInput();
@@ -111,6 +119,11 @@ public class PlayerMotor : MonoBehaviour
         Matrix4x4 rotaMatrix = Matrix4x4.Rotate(rotation);
 
         agent.velocity = rotaMatrix.MultiplyPoint3x4(velocityChange);
+
+        if (targetVelocity.magnitude > 0)
+        {
+            isMoving = true;
+        }
     }
 
     //attempt to dash, return false if dash fails

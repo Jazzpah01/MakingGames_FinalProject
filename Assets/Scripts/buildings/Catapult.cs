@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Catapult : MonoBehaviour
+public class Catapult : MonoBehaviour, IBuildingBehavior
 {
     public GameObject peak;
     public GameObject projectile;
@@ -11,6 +11,7 @@ public class Catapult : MonoBehaviour
     public float distanceToClosestEnemy;
     public GameObject closestEnemy;
     public CollisionObserver detectionCollision;
+    Animator animator;
 
     public float shootCooldown;
     public float damage = 25;
@@ -29,6 +30,9 @@ public class Catapult : MonoBehaviour
         detectionCollision.Subscribe(Detection_Stay, CollisionObserver.CollisionType.Stay);
         detectionCollision.Subscribe(Detection_Exit, CollisionObserver.CollisionType.Exit);
 
+        
+        animator = transform.GetChild(3).GetChild(0).GetComponent<Animator>();
+
         distanceToClosestEnemy = -1;
     }
 
@@ -36,10 +40,14 @@ public class Catapult : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
+        if(closestEnemy != null)
+        {
+            this.transform.GetChild(3).transform.LookAt(closestEnemy.transform, Vector3.up);
+        }
     }
 
-    void shoot()
-    {
+    public void shoot()
+    {            
         timer = 0.0f;
         GameObject newProjectile = Instantiate(projectile) as GameObject;
         newProjectile.transform.position = peak.transform.position;
@@ -68,13 +76,8 @@ public class Catapult : MonoBehaviour
     private void Detection_Stay(Collider other)
     {
         checkNearByEnemeis();
-
-        if(timer > shootCooldown && distanceToClosestEnemy > 0 && closestEnemy != null)
-        {
-            this.transform.LookAt(closestEnemy.transform, Vector3.up);
-            shoot();
-        }
     }
+    
     private void Detection_Exit(Collider other)
     {
         IActor actor = other.GetComponent<IActor>();
@@ -88,11 +91,20 @@ public class Catapult : MonoBehaviour
                 break;
         }
     }
+
+    public List<GameObject> getEnemies()
+    {
+        return enemies;
+    }
+
     private void checkNearByEnemeis()
     {
         distanceToClosestEnemy = -1;
         closestEnemy = null;
-
+        if(enemies.Count > 0 )
+        {   
+            animator.SetTrigger("Shooting"); 
+        }
         if(enemies.Count == 1 && enemies[0] != null)
         {
             closestEnemy = enemies[0];
