@@ -32,7 +32,7 @@ public class SlowGas : MonoBehaviour
         if (actor == null)
             return;
 
-        switch (actor.type)
+        switch (actor.actorType)
         {
             case ActorType.Enemy:
                 actor.Speed = actor.Speed/2;
@@ -47,7 +47,7 @@ public class SlowGas : MonoBehaviour
             return;
 
 
-        switch (actor.type)
+        switch (actor.actorType)
         {
             case ActorType.Enemy:
                 actor.Speed = actor.Speed*2;

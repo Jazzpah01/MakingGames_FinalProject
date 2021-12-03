@@ -16,12 +16,10 @@ public class Buildable : MonoBehaviour, IActor
     public GameObject buildingProjections;
     public GameObject ignoreOnBuild;
 
-    public ActorType actorType;
-
     private float currentHealth;
     private IBuildingBehavior buildingBehavior;
 
-    public ActorType type => setType;
+    public ActorType actorType => setType;
 
     public float Speed { get => speed; set { speed = value; } }
     public float MaxHealth => maxHealth;
@@ -58,6 +56,11 @@ public class Buildable : MonoBehaviour, IActor
     private void Update()
     {
         
+    }
+
+    public bool isActorType(ActorType type)
+    {
+        return (type & actorType) != ActorType.None;
     }
 
     /// <summary>

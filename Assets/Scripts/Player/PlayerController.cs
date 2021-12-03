@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour, IActor, IState
     private Camera cam;
     private float health;
 
-    public ActorType type => ActorType.Player;
+    public ActorType actorType => ActorType.Player;
     //this was made to satisfy implementation of IActor, may need some refactoring
     private float speed;
 
@@ -114,5 +114,10 @@ public class PlayerController : MonoBehaviour, IActor, IState
     public void LateUpdateState()
     {
 
+    }
+
+    public bool isActorType(ActorType type)
+    {
+        return (type & actorType) != ActorType.None;
     }
 }

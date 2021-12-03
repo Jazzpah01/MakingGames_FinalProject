@@ -48,7 +48,7 @@ public class PlayerCombat : MonoBehaviour
             {
                 IActor actor = hit.transform.GetComponent<IActor>();
 
-                if (actor != null && actor.type == ActorType.Enemy)
+                if (actor != null && actor.isActorType(ActorType.Enemy))
                 {
                     actor.Health -= primaryAttackDamage;
                     Instantiate(primaryAttackEffect,hit.point,Quaternion.identity);
@@ -90,7 +90,7 @@ public class PlayerCombat : MonoBehaviour
         for (int i = 0; i < collisions.Length; i++)
         {
             IActor actor = collisions[i].GetComponent<IActor>();
-            if (actor != null && actor.type == ActorType.Enemy)
+            if (actor != null && actor.isActorType(ActorType.Enemy))
             {
                 actor.Health -= secondaryAttackDamage;
                 Ray ray = new Ray(transform.position, actor.gameObject.transform.position - transform.position);

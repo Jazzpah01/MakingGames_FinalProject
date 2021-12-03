@@ -22,30 +22,28 @@ public class BuildingWalkingInCircles : MonoBehaviour, IBuildingBehavior
         gameManager = GameManager.instance;
         speed = GetComponent<Buildable>().Speed;
         StartPos = transform.position.x;
-        detectionCollision.Subscribe(Detection_Stay, CollisionObserver.CollisionType.Stay);
+        detectionCollision.Subscribe(Detection_Enter, CollisionObserver.CollisionType.Enter);
         detectionCollision.Subscribe(Detection_Exit, CollisionObserver.CollisionType.Exit);
     }
 
     void FixedUpdate()
     {
-        if (gameManager.inBattle)
+        if (gameManager.gameController.state == GameController.GameState.Combat)
         {
         transform.Translate(Vector3.forward * (Time.deltaTime * speed));
         transform.Rotate(0.0f, rotation, 0.0f, Space.Self);
         }
     }
 
-    private void Detection_Stay(Collider other)
+    private void Detection_Enter(Collider other)
     {
         IActor actor = other.GetComponent<IActor>();
         if (actor == null)
             return;
 
-        switch (actor.type)
+        if (actor.isActorType(ActorType.Enemy))
         {
-            case ActorType.Enemy:
-                actor.Health -= damage;
-                break;
+            actor.Health -= damage;
         }
     }
 

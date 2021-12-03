@@ -9,7 +9,7 @@ public class Base : MonoBehaviour, IActor
     public float maxHealth = 500;
     private float health;
 
-    public ActorType type => ActorType.Obstacle;
+    public ActorType actorType => ActorType.Obstacle;
 
     private float speed = 0;
     public float Speed { get => speed; set { speed = value;}}
@@ -35,5 +35,10 @@ public class Base : MonoBehaviour, IActor
         health = maxHealth;
         gameController = GameManager.instance.gameController;
         blockDamage = false;
+    }
+
+    public bool isActorType(ActorType type)
+    {
+        return type.HasFlag(actorType);
     }
 }

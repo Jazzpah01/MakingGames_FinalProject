@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour, IEnemy
 
     public EnemyType enemyType { get; set; }
 
-    public ActorType type => ActorType.Enemy;
+    public ActorType actorType => ActorType.Enemy;
 
     public float Speed { get => speed; set => speed = value; }
 
@@ -60,5 +60,10 @@ public class Enemy : MonoBehaviour, IEnemy
     void Update()
     {
         
+    }
+
+    public bool isActorType(ActorType type)
+    {
+        return (type & actorType) != ActorType.None;
     }
 }

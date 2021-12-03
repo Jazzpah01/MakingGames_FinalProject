@@ -17,7 +17,7 @@ public class PlayerMotor : MonoBehaviour
     public float dashCooldown;
     public float dashLength;
     public float dashSpeed;
-    public float attackDashLength;
+    //public float attackDashLength;
 
     private LayerMask movementMask;
     private LayerMask actorMask;
@@ -35,7 +35,7 @@ public class PlayerMotor : MonoBehaviour
         cam = playerManager.cam;
         movementMask = GetComponent<PlayerController>().movementMask;
         actorMask = GetComponent<PlayerController>().actorMask;
-        attackDashLength *= 0.001f;
+        //attackDashLength *= 0.001f;
     }
 
     private void FixedUpdate()
@@ -57,7 +57,7 @@ public class PlayerMotor : MonoBehaviour
         if (Input.GetKey(KeyCode.Space) && 0 >= dashTimer && !dashing && !attacking)
         {
             //reset dash cooldown
-            dashTimer += dashCooldown;
+            dashTimer = dashCooldown;
             //dash
             Dash(dashSpeed, dashLength);
         }
@@ -101,16 +101,12 @@ public class PlayerMotor : MonoBehaviour
 
         Vector3 targetVelocity = new Vector3(directionX, 0, directionZ).normalized;
         targetVelocity *= agent.speed;
-
-        Vector3 velocityChange = targetVelocity;
-        velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
-        velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
-        velocityChange.y = 0;
+        targetVelocity.y = 0;
 
         Quaternion rotation = Quaternion.Euler(0, isoAngle, 0);
         Matrix4x4 rotaMatrix = Matrix4x4.Rotate(rotation);
 
-        agent.velocity = rotaMatrix.MultiplyPoint3x4(velocityChange);
+        agent.velocity = rotaMatrix.MultiplyPoint3x4(targetVelocity);
     }
 
     //attempt to dash, return false if dash fails
@@ -148,6 +144,8 @@ public class PlayerMotor : MonoBehaviour
         // find the point
         Vector3 position = (moveTo + transform.position);
 
+        float remainingDistance = dashLength;
+
         float d = Vector3.Distance(position, transform.position);
         distance = d;
         while (d > 1)
@@ -158,7 +156,7 @@ public class PlayerMotor : MonoBehaviour
                 break;
             }
             distance = d;
-            agent.velocity = moveTo * dashSpeed;
+            agent.velocity = moveTo * Mathf.Min(d, dashSpeed);
 
             yield return new WaitForSeconds(0.01f);
         }
@@ -167,9 +165,7 @@ public class PlayerMotor : MonoBehaviour
 
     public void TurnTowardsTarget(Vector3 target)
     {
-        //transform.rotation = Quaternion.LookRotation(new Vector3(target.x,0,target.z));
         agent.updateRotation = false;
         transform.rotation = Quaternion.LookRotation(new Vector3(target.x,0,target.z) - transform.position);
-        //transform.rotation = new Quaternion(0, Vector3.Angle(new Vector3(1, 0, 0), target - transform.position), 0, 0);
     }
 }

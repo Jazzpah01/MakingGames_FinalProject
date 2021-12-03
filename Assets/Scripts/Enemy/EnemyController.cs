@@ -21,7 +21,7 @@ public class EnemyController: MonoBehaviour, IEnemy
     public float maxHealth;
     private float health = 100;
 
-    public ActorType type => ActorType.Enemy;
+    public ActorType actorType => ActorType.Enemy;
 
     public float Speed { get => agent.speed;
         set {
@@ -71,7 +71,7 @@ public class EnemyController: MonoBehaviour, IEnemy
 
             IActor target = secondaryTarget.GetComponent<IActor>();
 
-            if ((target.type == ActorType.Wall || target.type == ActorType.Obstacle || target.type == ActorType.Player ) && damagerCollision.Stay.Contains(col) && time1 >= time2)
+            if ((target.actorType == ActorType.Wall || target.actorType == ActorType.Obstacle || target.actorType == ActorType.Player ) && damagerCollision.Stay.Contains(col) && time1 >= time2)
             {
                 target.Health -= damage;
                 time2 = time1 + 1;
@@ -116,7 +116,7 @@ public class EnemyController: MonoBehaviour, IEnemy
         if (actor == null)
             return;
 
-        switch (actor.type)
+        switch (actor.actorType)
         {
             case ActorType.Player:
                 secondaryTarget = other.transform;
@@ -136,7 +136,7 @@ public class EnemyController: MonoBehaviour, IEnemy
         if (actor == null)
             return;
 
-        switch (actor.type)
+        switch (actor.actorType)
         {
             case ActorType.Player:
                 secondaryTarget = null;
@@ -152,5 +152,10 @@ public class EnemyController: MonoBehaviour, IEnemy
         Vector3 direction = (target.position - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.z));
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
+    }
+
+    public bool isActorType(ActorType type)
+    {
+        return type.HasFlag(actorType);
     }
 }

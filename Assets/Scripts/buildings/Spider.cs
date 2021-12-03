@@ -40,13 +40,12 @@ public class Spider : MonoBehaviour, IBuildingBehavior
         if (actor == null)
             return;
 
-        switch (actor.type)
+        if (actor.isActorType(ActorType.Enemy))
         {
-            case ActorType.Enemy:
-                enemies.Add(actor.gameObject);
-                actor.Speed = actor.Speed / speedReduction;
-                actor.gameObject.GetComponent<IActor>().damageReduction = actor.gameObject.GetComponent<IActor>().damageReduction - damageReduction;
-                break;
+
+            enemies.Add(actor.gameObject);
+            actor.Speed = actor.Speed / speedReduction;
+            actor.gameObject.GetComponent<IActor>().damageReduction = actor.gameObject.GetComponent<IActor>().damageReduction - damageReduction;
         }
     }
 
@@ -57,13 +56,11 @@ public class Spider : MonoBehaviour, IBuildingBehavior
             return;
 
 
-        switch (actor.type)
+        if (actor.isActorType(ActorType.Enemy))
         {
-            case ActorType.Enemy:
-                actor.Speed = actor.Speed * speedReduction;
-                actor.gameObject.GetComponent<IActor>().damageReduction = actor.gameObject.GetComponent<IActor>().damageReduction + damageReduction;
-                enemies.Remove(actor.gameObject);
-                break;
+            actor.Speed = actor.Speed * speedReduction;
+            actor.gameObject.GetComponent<IActor>().damageReduction = actor.gameObject.GetComponent<IActor>().damageReduction + damageReduction;
+            enemies.Remove(actor.gameObject);
         }
     }
 
@@ -73,19 +70,17 @@ public class Spider : MonoBehaviour, IBuildingBehavior
         if(actor == null)
             return;
 
-        switch (actor.type)
+        if (actor.isActorType(ActorType.Enemy))
         {
-            case ActorType.Enemy:
-                if(timer > attackCooldown)
-                {
-                    actor.Health = actor.Health - damage;
-                    timer = 0;
-                }
-                if(actor.Health == 0)
-                {
-                    enemies.Remove(actor.gameObject);
-                }
-                break;
+            if (timer > attackCooldown)
+            {
+                actor.Health = actor.Health - damage;
+                timer = 0;
+            }
+            if (actor.Health == 0)
+            {
+                enemies.Remove(actor.gameObject);
+            }
         }
     }
 

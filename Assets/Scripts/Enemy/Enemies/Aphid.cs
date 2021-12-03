@@ -20,7 +20,7 @@ public class Aphid : AIStateMachine
 
         foreach (IActor item in crops)
         {
-            if (item.type == ActorType.Crops)
+            if (item.isActorType(ActorType.Crops))
             {
                 Target = item;
             }
@@ -104,7 +104,7 @@ public class Aphid : AIStateMachine
 
             IActor a = other.gameObject.GetComponent<IActor>();
 
-            if (a != null && a.type == ActorType.Crops)
+            if (a != null && a.isActorType(ActorType.Crops))
             {
                 Target = a;
                 break;

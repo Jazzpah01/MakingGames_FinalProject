@@ -74,12 +74,11 @@ public class SpawnController : MonoBehaviour
         if (InWave == false)
             return;
 
-        if(gameController.getNextWave() > waves.Count)
+        if(LevelManager.instance != null && gameController.getNextWave() > waves.Count)
         {
             levelManager.loadNextLevel();
         }
         Spawn();
-        
     }
 
     private void Spawn()
@@ -103,7 +102,7 @@ public class SpawnController : MonoBehaviour
         }
     }
 
-    public void SpawnEnemies(int waveIndex) {
+    public void StartWave(int waveIndex) {
         if (waves == null || waves.Count < 1)
             throw new System.Exception("Cannot spawn a wave in a level with no waves!");
 
@@ -132,6 +131,8 @@ public class SpawnController : MonoBehaviour
         Shuffle<EnemyType>(toSpawn);
 
         Spawn();
+
+        GameManager.instance.currentResource += waveData.addRoundResource;
     }
 
     private EnemyType GetEnemyType(int waveIndex, int weightIndex)

@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class LevelDescription : MonoBehaviour
 {
-    public List<GameObject> contents = new List<GameObject>();
+    [NonSerialized] private List<GameObject> contents = new List<GameObject>();
     private int index = 0;
 
     private void Start()

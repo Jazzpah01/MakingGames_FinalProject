@@ -23,7 +23,8 @@ public class StrategyHUD : MonoBehaviour
     [Header("References")]
     public GameObject initialItem;
     public GameObject scrollPanel;
-    public GameObject defendButton;
+    public InteractableUI defendButton;
+    public InteractableUI menuButton;
     public BuildingDescription description;
 
 
@@ -35,6 +36,7 @@ public class StrategyHUD : MonoBehaviour
 
         // Setup buttons
         defendButton.GetComponentInChildren<InteractableUI>().OnClicked += delegate { DefendButton(); };
+        menuButton.GetComponentInChildren<InteractableUI>().OnClicked += delegate { DefendButton(); };
 
         // Setup menu for selecting buildings
         SetElementValues(initialItem, buildings[0]);
@@ -75,7 +77,7 @@ public class StrategyHUD : MonoBehaviour
         {
             float cost = GO.GetComponentInChildren<UIBuildingItem>().Type.cost;
 
-            if (gameManager.resource < cost)
+            if (GameManager.instance.currentResource < cost)
             {
                 GO.GetComponentInChildren<InteractableUI>().Interactable = false;
             } else
@@ -122,7 +124,6 @@ public class StrategyHUD : MonoBehaviour
         if (toggled != null)
         {
             SetToggled(false);
-
         }
 
         toggled = itemList[index].GetComponentInChildren<InteractableUI>();
