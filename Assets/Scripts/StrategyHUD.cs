@@ -13,6 +13,8 @@ public class StrategyHUD : MonoBehaviour
     public float contentChunkSize = 400;
     public float buildableSelectedScale;
 
+    public float itemScaleOnToggle = 1;
+
     private List<GameObject> itemList = new List<GameObject>();
     private InteractableUI toggled;
 
@@ -87,9 +89,7 @@ public class StrategyHUD : MonoBehaviour
     {
         if (!gameManager.buildingController.isBuilding && toggled != null)
         {
-            toggled.mainGameObject.transform.localScale -= new Vector3(buildableSelectedScale, buildableSelectedScale, buildableSelectedScale);
-            toggled.Toggled = false;
-            toggled = null;
+            SetToggled(false);
         }
         UpdateAlfa();
     }
@@ -121,13 +121,12 @@ public class StrategyHUD : MonoBehaviour
 
         if (toggled != null)
         {
-            toggled.Toggled = false;
-            toggled.mainGameObject.transform.localScale -= new Vector3(buildableSelectedScale, buildableSelectedScale, buildableSelectedScale);
+            SetToggled(false);
 
         }
 
         toggled = itemList[index].GetComponentInChildren<InteractableUI>();
-        toggled.mainGameObject.transform.localScale += new Vector3(buildableSelectedScale, buildableSelectedScale, buildableSelectedScale);
+        SetToggled(true);
         toggled.Toggled = true;
     }
 
@@ -144,7 +143,34 @@ public class StrategyHUD : MonoBehaviour
 
     public void DefendButton()
     {
-        toggled.mainGameObject.transform.localScale -= new Vector3(buildableSelectedScale, buildableSelectedScale, buildableSelectedScale);
+        if (toggled != null)
+        {
+            SetToggled(false);
+        }
+
         GameController.instance.GoToBattle();
     }
+
+
+    public void SetToggled(bool b)
+    {
+        if (toggled == null)
+            return;
+
+        if (toggled.Toggled && !b)
+        {
+            toggled.mainGameObject.transform.localScale /= itemScaleOnToggle;
+            toggled.Toggled = b;
+            toggled = null;
+        } else if (!toggled.Toggled && b)
+        {
+            toggled.mainGameObject.transform.localScale *= itemScaleOnToggle;
+            toggled.Toggled = b;
+        } else
+        {
+            toggled.Toggled = b;
+        }
+    }
+
+
 }
