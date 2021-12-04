@@ -275,15 +275,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cf6f44b9970b7c4d8f561050a107b58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingName: Barricade
-  maxHealth: 250
-  speed: 0
+  data: {fileID: 11400000, guid: 83e7602242a5b5e4db9c26bbee44b71a, type: 2}
   healthbar: {fileID: 4106165504943000003}
   spotlight: {fileID: 6420362992458343380}
   setType: 3
   buildingProjections: {fileID: 0}
   ignoreOnBuild: {fileID: 0}
-  actorType: 3
 --- !u!1 &2883257046259061764
 GameObject:
   m_ObjectHideFlags: 0

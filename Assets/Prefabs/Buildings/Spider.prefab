@@ -901,8 +901,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3785452752489637356}
-  - component: {fileID: 6018058521253454721}
   - component: {fileID: 6888774537144770947}
+  - component: {fileID: 6018058521253454721}
   m_Layer: 0
   m_Name: Spider
   m_TagString: Untagged
@@ -929,6 +929,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6888774537144770947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4962991376061601507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cf6f44b9970b7c4d8f561050a107b58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 80b463e226da8e145987e2d8df83ce95, type: 2}
+  healthbar: {fileID: 950378279979943878}
+  spotlight: {fileID: 3483663023809083034}
+  setType: 2
+  buildingProjections: {fileID: 0}
+  ignoreOnBuild: {fileID: 7136522108213594600}
 --- !u!114 &6018058521253454721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -946,32 +964,7 @@ MonoBehaviour:
   detectionCollision: {fileID: 2346642059636290181}
   damageCollision: {fileID: 6457625894001631610}
   animator: {fileID: 7284332604878202787}
-  damage: 25
-  damageReduction: 2
-  speedReduction: 2
-  attackCooldown: 2
   enemies: []
---- !u!114 &6888774537144770947
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4962991376061601507}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cf6f44b9970b7c4d8f561050a107b58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buildingName: 
-  maxHealth: 0
-  speed: 5
-  healthbar: {fileID: 950378279979943878}
-  spotlight: {fileID: 3483663023809083034}
-  setType: 2
-  buildingProjections: {fileID: 0}
-  ignoreOnBuild: {fileID: 7136522108213594600}
-  actorType: 0
 --- !u!1 &5298574579653070962
 GameObject:
   m_ObjectHideFlags: 0

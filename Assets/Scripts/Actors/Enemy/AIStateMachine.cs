@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 public abstract class AIStateMachine : MBStateMachine
 {
-    public ActorData actorData;
+    [NonSerialized]public ActorData actorData;
 
     public IActor controller;
 
@@ -57,6 +57,7 @@ public abstract class AIStateMachine : MBStateMachine
         controller.MaxHealth = data.maxHealth;
         controller.Health = data.maxHealth;
         controller.Speed = data.speed;
+        controller.speedModifyer = 1;
 
         Initialized = true;
     }

@@ -10,7 +10,8 @@ public interface IActor: IDamageable
     float Speed {get; set;}
     bool enabled { get; set; }
     bool blockDamage { get; set; }
-    float damageReduction { get; set; }
+    float speedModifyer { get; set; }
+    float damageModifyer { get; set; }
 }
 
 [System.Flags]

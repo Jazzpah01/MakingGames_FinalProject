@@ -10,6 +10,7 @@ public class SlowGas : MonoBehaviour
     public CollisionObserver slowCollision;
 
     public float lifeTime;
+    public float speedModifyer = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -32,11 +33,13 @@ public class SlowGas : MonoBehaviour
         if (actor == null)
             return;
 
-        switch (actor.actorType)
+        if (actor.isActorType(ActorType.Enemy))
         {
-            case ActorType.Enemy:
-                actor.Speed = actor.Speed/2;
-                break;
+            actor.speedModifyer *= speedModifyer;
+            //Utility.DelayedAbility(0.5f, delegate
+            //{
+            //    actor.speedModifyer /= speedModifyer;
+            //});
         }
     }
 
@@ -46,13 +49,16 @@ public class SlowGas : MonoBehaviour
         if (actor == null)
             return;
 
-
-        switch (actor.actorType)
+        if (actor.isActorType(ActorType.Enemy))
         {
-            case ActorType.Enemy:
-                actor.Speed = actor.Speed*2;
-                break;
+            actor.speedModifyer /= speedModifyer;
         }
+    }
+
+    public void setValues(float speedModifyer, float lifeTime)
+    {
+        this.speedModifyer = speedModifyer;
+        this.lifeTime = lifeTime;
     }
 
     IEnumerator SmoothSliderDecrease(float amount, Image image)

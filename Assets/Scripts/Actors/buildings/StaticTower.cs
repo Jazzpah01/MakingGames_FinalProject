@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class StaticTower : MonoBehaviour, IBuildingBehavior
 {
     public GameObject peak;
-    public GameObject projectile;
     public List<GameObject> enemies;
     public float distanceToClosestEnemy;
     public GameObject closestEnemy;
@@ -44,9 +43,9 @@ public class StaticTower : MonoBehaviour, IBuildingBehavior
     void shoot()
     {
         timer = 0.0f;
-        GameObject newProjectile = Instantiate(projectile) as GameObject;
+        GameObject newProjectile = Instantiate(data.projectilePrefab) as GameObject;
         newProjectile.transform.position = peak.transform.position;
-        newProjectile.GetComponent<ProjectileScript>().setDamage(data.damage);
+        newProjectile.GetComponent<ProjectileScript>().setValue(data.damage, data.projectileSpeed);
         newProjectile.GetComponent<ProjectileScript>().setTarget(closestEnemy);
     }
 

@@ -14,14 +14,19 @@ public class Catapult : MonoBehaviour, IBuildingBehavior
     Animator animator;
 
     public float shootCooldown;
-    public float damage = 25;
-    public float maxHealth = 100;
-
     private float timer;
+
+    private Buildable buildable;
+    private CatapultData data;
 
     // Start is called before the first frame update
     void Start()
     {
+        buildable = GetComponent<Buildable>();
+        data = (CatapultData)buildable.data;
+
+        shootCooldown = data.cooldown;
+
         timer = 0;
 
         enemies = new List<GameObject>();
@@ -30,7 +35,6 @@ public class Catapult : MonoBehaviour, IBuildingBehavior
         detectionCollision.Subscribe(Detection_Stay, CollisionObserver.CollisionType.Stay);
         detectionCollision.Subscribe(Detection_Exit, CollisionObserver.CollisionType.Exit);
 
-        
         animator = transform.GetChild(3).GetChild(0).GetComponent<Animator>();
 
         distanceToClosestEnemy = -1;
@@ -47,17 +51,17 @@ public class Catapult : MonoBehaviour, IBuildingBehavior
     }
 
     public void shoot()
-    {            
-        timer = 0.0f;
+    {
+        timer = shootCooldown;
         GameObject newProjectile = Instantiate(projectile) as GameObject;
         newProjectile.transform.position = peak.transform.position;
-        newProjectile.GetComponent<CatapultProjectileScript>().setDamage(damage);
+        newProjectile.GetComponent<CatapultProjectileScript>().setValues(data.damage, data.projectileSpeed);
         newProjectile.GetComponent<CatapultProjectileScript>().setTarget(closestEnemy);
     }
 
-    public void setDamage(float d)
+    public void setValues(float d, float cooldown)
     {
-        damage = d;
+        shootCooldown = cooldown;
     }
 
     private void Detection_Enter(Collider other)

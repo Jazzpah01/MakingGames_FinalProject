@@ -45,8 +45,8 @@ public class Spider : MonoBehaviour, IBuildingBehavior
         {
 
             enemies.Add(actor.gameObject);
-            actor.Speed = actor.Speed / speedReduction;
-            actor.gameObject.GetComponent<IActor>().damageReduction = actor.gameObject.GetComponent<IActor>().damageReduction - damageReduction;
+            actor.damageModifyer *= data.damageModifyer;
+            actor.speedModifyer *= data.speedModifyer;
         }
     }
 
@@ -56,11 +56,10 @@ public class Spider : MonoBehaviour, IBuildingBehavior
         if (actor == null)
             return;
 
-
         if (actor.isActorType(ActorType.Enemy))
         {
-            actor.Speed = actor.Speed * speedReduction;
-            actor.gameObject.GetComponent<IActor>().damageReduction = actor.gameObject.GetComponent<IActor>().damageReduction + damageReduction;
+            actor.damageModifyer /= data.damageModifyer;
+            actor.speedModifyer  /= data.speedModifyer;
             enemies.Remove(actor.gameObject);
         }
     }
@@ -73,9 +72,9 @@ public class Spider : MonoBehaviour, IBuildingBehavior
 
         if (actor.isActorType(ActorType.Enemy))
         {
-            if (timer > attackCooldown)
+            if (timer > data.attackCooldown)
             {
-                actor.Health = actor.Health - damage;
+                actor.Health -= data.damage;
                 timer = 0;
             }
             if (actor.Health == 0)
@@ -91,11 +90,11 @@ public class Spider : MonoBehaviour, IBuildingBehavior
         {
             animator.SetTrigger("Walking"); 
             model.transform.LookAt(new Vector3(enemies[0].transform.position.x, model.transform.position.y, enemies[0].transform.position.z), Vector3.up);
-            model.transform.position = Vector3.MoveTowards(model.transform.position, new Vector3(enemies[0].transform.position.x, model.transform.position.y, enemies[0].transform.position.z), speed * Time.fixedDeltaTime);
+            model.transform.position = Vector3.MoveTowards(model.transform.position, new Vector3(enemies[0].transform.position.x, model.transform.position.y, enemies[0].transform.position.z), data.speed * Time.fixedDeltaTime);
         } else if (model.transform.position != this.transform.position) {
             animator.SetTrigger("Walking"); 
             model.transform.LookAt(this.transform.position);
-            model.transform.position = Vector3.MoveTowards(model.transform.position, this.transform.position, speed * Time.fixedDeltaTime);
+            model.transform.position = Vector3.MoveTowards(model.transform.position, this.transform.position, data.speed * Time.fixedDeltaTime);
         }
     }
 }

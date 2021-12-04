@@ -8,11 +8,11 @@ public class Enemy : MonoBehaviour, IEnemy
     public HealthBar healthBar;
     public GameObject deathEffect;
 
-    public float maxHealth;
+    private float maxHealth;
 
     private NavMeshAgent agent;
     private float health;
-    public float speed;
+    private float speed;
 
     public EnemyType enemyType { get; set; }
 
@@ -38,9 +38,10 @@ public class Enemy : MonoBehaviour, IEnemy
     }
 
     public bool blockDamage { get; set; }
-    public float damageReduction { get; set; }
+    public float damageModifyer { get; set; }
 
     public GameObject spawnPoint { get; set; }
+    public float speedModifyer { get; set; }
 
     private void Awake()
     {
@@ -50,8 +51,6 @@ public class Enemy : MonoBehaviour, IEnemy
     // Start is called before the first frame update
     void Start()
     {
-        blockDamage = false;
-        Health = maxHealth;
     }
 
     // Update is called once per frame

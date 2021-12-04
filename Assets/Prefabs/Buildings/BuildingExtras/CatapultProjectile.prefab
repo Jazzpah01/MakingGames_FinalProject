@@ -51,7 +51,6 @@ MonoBehaviour:
   detectionCollision: {fileID: 4992853990937489569}
   damagerCollision: {fileID: 677906383098456126}
   EnemiesInAoE: []
-  speed: 20
 --- !u!1 &4137818804911064262
 GameObject:
   m_ObjectHideFlags: 0
@@ -174,7 +173,7 @@ Transform:
   m_GameObject: {fileID: 5120816504812100543}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.3517, y: 2.3517, z: 2.3517}
   m_Children: []
   m_Father: {fileID: 7196315834768825548}
   m_RootOrder: 3

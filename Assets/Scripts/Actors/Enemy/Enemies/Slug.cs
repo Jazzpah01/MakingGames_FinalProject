@@ -21,8 +21,8 @@ public class Slug : AIStateMachine
 
         // Initialize
         Initialize(data);
-        data.move.Initialize(this);
-        data.attack.Initialize(this);
+        data.directMove.Initialize(this);
+        data.instantAttack.Initialize(this);
 
         // Set target to base initially
         Target = GameController.instance.baseController;
@@ -31,12 +31,12 @@ public class Slug : AIStateMachine
         detectObstruction.Subscribe(detectObstruction_Enter, CollisionObserver.CollisionType.Enter);
 
         // Change state
-        ChangeState(data.move);
+        ChangeState(data.directMove);
     }
 
     private void Update()
     {
-        if (currentState == data.move)
+        if (currentState == data.directMove)
         {
             // Move state, data.move towards target
             if ((transform.position - GameController.instance.player.transform.position).magnitude <=
@@ -53,21 +53,21 @@ public class Slug : AIStateMachine
 
             if (detectAttack.Stay.Contains(Target.gameObject.GetComponent<Collider>()))
             {
-                ChangeState(data.attack);
+                ChangeState(data.instantAttack);
             }
-        } else if (currentState == data.attack)
+        } else if (currentState == data.instantAttack)
         {
             // Attack state, deal damage to target
             if (Target.IsDestroyed())
             {
                 Target = GameController.instance.player.GetComponent<IActor>();
-                ChangeState(data.move);
+                ChangeState(data.directMove);
                 return;
             }
 
             if (detectAttack.Exit.Contains(Target.gameObject.GetComponent<Collider>()))
             {
-                ChangeState(data.move);
+                ChangeState(data.directMove);
             }
         }
 
@@ -86,7 +86,7 @@ public class Slug : AIStateMachine
             (otherActor.isActorType(ActorType.Obstacle)))
         {
             Target = otherActor;
-            ChangeState(data.move);
+            ChangeState(data.directMove);
         }
     }
 }

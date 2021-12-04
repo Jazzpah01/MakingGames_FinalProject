@@ -7,9 +7,9 @@ public class ProjectileScript : MonoBehaviour
     public GameObject Target;   
     public CollisionObserver detectionCollision;
     public CollisionObserver damagerCollision;
-    private float damage;
 
-    public float speed = 10;
+    private float damage;
+    private float speed = 10;
 
     // Start is called before the first frame update
     void Start()
@@ -49,9 +49,10 @@ public class ProjectileScript : MonoBehaviour
             return;
     }
 
-    public void setDamage(float d)
+    public void setValue(float damage, float projectileSpeed)
     {
-        damage = d;
+        this.damage = damage;
+        speed = projectileSpeed;
     }
     public void setTarget(GameObject t)
     {

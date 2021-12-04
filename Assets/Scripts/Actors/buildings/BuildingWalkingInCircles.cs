@@ -15,12 +15,16 @@ public class BuildingWalkingInCircles : MonoBehaviour, IBuildingBehavior
     private float rotation = 0.7f;
     private float speed;
 
-    private Buildable buildable;
-
     GameManager gameManager;
+
+    private Buildable buildable;
+    private CircleBuildingData data;
 
     void Start()
     {
+        buildable = GetComponent<Buildable>();
+        data = (CircleBuildingData)buildable.data;
+
         gameManager = GameManager.instance;
         speed = GetComponent<Buildable>().Speed;
         StartPos = transform.position.x;
@@ -32,8 +36,8 @@ public class BuildingWalkingInCircles : MonoBehaviour, IBuildingBehavior
     {
         if (gameManager.gameController.state == GameController.GameState.Combat)
         {
-        transform.Translate(Vector3.forward * (Time.deltaTime * speed));
-        transform.Rotate(0.0f, rotation, 0.0f, Space.Self);
+            transform.Translate(Vector3.forward * (Time.deltaTime * speed));
+            transform.Rotate(0.0f, rotation, 0.0f, Space.Self);
         }
     }
 
@@ -45,7 +49,7 @@ public class BuildingWalkingInCircles : MonoBehaviour, IBuildingBehavior
 
         if (actor.isActorType(ActorType.Enemy))
         {
-            actor.Health -= damage;
+            actor.Health -= data.damage;
         }
     }
 

@@ -28,7 +28,8 @@ public class Base : MonoBehaviour, IActor
     }
 
     public bool blockDamage { get; set; }
-    public float damageReduction { get; set; }
+    public float damageModifyer { get; set; }
+    public float speedModifyer { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 
     private void Start()
     {

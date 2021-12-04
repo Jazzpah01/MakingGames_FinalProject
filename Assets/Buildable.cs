@@ -5,14 +5,15 @@ using UnityEngine.AI;
 
 public class Buildable : MonoBehaviour, IActor
 {
-    public string buildingName;
-    public float maxHealth;
-    public float speed = 0;
+    public BuildableData data;
+
+    private string buildingName;
+    private float maxHealth;
+    private float speed = 0;
     public HealthBar healthbar;
     public Light spotlight;
     public ActorType setType;
 
-    public ActorData data;
 
     public GameObject buildingProjections;
     public GameObject ignoreOnBuild;
@@ -39,7 +40,8 @@ public class Buildable : MonoBehaviour, IActor
     }
 
     public bool blockDamage { get; set; }
-    public float damageReduction { get; set; }
+    public float damageModifyer { get; set; }
+    public float speedModifyer { get; set; }
 
     private void Awake()
     {
@@ -50,6 +52,7 @@ public class Buildable : MonoBehaviour, IActor
     {
         MaxHealth = data.maxHealth;
         currentHealth = MaxHealth;
+        Speed = data.speed;
 
         blockDamage = false;
 
@@ -120,6 +123,15 @@ public class Buildable : MonoBehaviour, IActor
     {
         if (buildingProjections != null)
             buildingProjections.SetActive(false);
+    }
+
+    /// <summary>
+    /// Set building type to update name.
+    /// </summary>
+    /// <param name="buildingType">Type of building.</param>
+    public void SetBuildingType(BuildingType buildingType)
+    {
+        buildingName = buildingType.name;
     }
 
     private void Die()

@@ -44,7 +44,8 @@ public class PlayerController : MonoBehaviour, IActor, IState
     }
 
     public bool blockDamage { get; set; }
-    public float damageReduction { get; set; }
+    public float damageModifyer { get; set; }
+    public float speedModifyer { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
     private void Awake()
     {

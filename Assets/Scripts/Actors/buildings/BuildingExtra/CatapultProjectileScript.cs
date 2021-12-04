@@ -10,7 +10,7 @@ public class CatapultProjectileScript : MonoBehaviour
     public List<GameObject> EnemiesInAoE;
     private float damage;
 
-    public float speed;
+    private float speed;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +19,7 @@ public class CatapultProjectileScript : MonoBehaviour
         detectionCollision.Subscribe(Detection_Exit, CollisionObserver.CollisionType.Exit);
 
         damagerCollision.Subscribe(Detection_EnterDamageZone, CollisionObserver.CollisionType.Enter);
-        damagerCollision.Subscribe(Detection_ExitDamageZone, CollisionObserver.CollisionType.Enter);
+        damagerCollision.Subscribe(Detection_ExitDamageZone, CollisionObserver.CollisionType.Exit);
     }
 
     // Update is called once per frame
@@ -39,12 +39,11 @@ public class CatapultProjectileScript : MonoBehaviour
         if (actor == null)
             return;
 
-        if(actor.actorType == ActorType.Enemy && actor.gameObject == Target.gameObject)
+        if(actor.isActorType(ActorType.Enemy) && actor.gameObject == Target.gameObject)
         {
             foreach(GameObject obj in EnemiesInAoE)
             {
                 obj.GetComponent<IActor>().Health -= damage;
-               // actor.Health -= damage;
             }
             Destroy(this.gameObject);
         }
@@ -63,7 +62,7 @@ public class CatapultProjectileScript : MonoBehaviour
         if (actor == null)
             return;
 
-        if(actor.actorType == ActorType.Enemy)
+        if(actor.isActorType(ActorType.Enemy))
         {
             EnemiesInAoE.Add(other.gameObject);
         }
@@ -75,15 +74,16 @@ public class CatapultProjectileScript : MonoBehaviour
         if (actor == null)
             return;
 
-        if(actor.actorType == ActorType.Enemy)
+        if (actor.isActorType(ActorType.Enemy))
         {
             EnemiesInAoE.Remove(other.gameObject);
         }
     }
 
-    public void setDamage(float d)
+    public void setValues(float d, float s)
     {
         damage = d;
+        speed = s;
     }
     public void setTarget(GameObject t)
     {

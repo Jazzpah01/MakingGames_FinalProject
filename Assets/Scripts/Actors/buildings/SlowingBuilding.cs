@@ -14,15 +14,19 @@ public class SlowingBuilding : MonoBehaviour, IBuildingBehavior
     public GameObject slowGas;
 
     private GameManager gm;
-    private float speed;
+
+    private Buildable buildable;
+    private LineSlowerData data;
 
     void Start()
     {
-        speed = GetComponent<Buildable>().Speed;
+        buildable = GetComponent<Buildable>();
+        data = (LineSlowerData)buildable.data;
+
         yRotation = transform.rotation.y;
         gm = GameManager.instance;
 
-        walktimer = walkDistance / speed;
+        walktimer = walkDistance / data.speed;
     }
 
     void FixedUpdate()
@@ -33,15 +37,16 @@ public class SlowingBuilding : MonoBehaviour, IBuildingBehavior
         if (walktimer > 0 && gm.gameController.state == GameController.GameState.Combat)
         {
             walktimer -= Time.deltaTime;
-            transform.Translate(Vector3.forward * (Time.deltaTime * speed));
+            transform.Translate(Vector3.forward * (Time.deltaTime * data.speed));
         } else if (gm.gameController.state == GameController.GameState.Combat) {
             TurnAround();
         }
 
         if(gastimer < 0 && gm.gameController.state == GameController.GameState.Combat)
         {
-            Instantiate(slowGas, gasPosition, Quaternion.identity);
-            gastimer = 0.2f;
+            GameObject go = Instantiate(slowGas, gasPosition, Quaternion.identity);
+            go.GetComponent<SlowGas>().setValues(data.speedModifyer, data.slowObjectLifeTime);
+            gastimer = data.slowObjectEveryXSecond;
         }
     }
 
@@ -50,6 +55,6 @@ public class SlowingBuilding : MonoBehaviour, IBuildingBehavior
         transform.Rotate(0.0f, 180.0f, 0.0f, Space.Self);
         yRotation = transform.rotation.y;
 
-        walktimer = walkDistance / speed;
+        walktimer = walkDistance / data.speed;
     }
 }

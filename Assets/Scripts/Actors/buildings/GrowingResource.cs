@@ -6,23 +6,23 @@ public class GrowingResource : MonoBehaviour, IBuildingBehavior
 {
     public float growthTime = 0.5f;
     public float harvestTimer = 0.5f;
-    public int maxResourcesGained = 5;
 
     private Vector3 growth = new Vector3(0.1f,0.1f,0.1f);
 
-    public int additionalWavesBeforeHarvest;
     private int currentResourcesGained;
     private int plantedWave;
     private GameManager gameManager;
-    private Buildable buildable;
     private GameObject model;
-    private float health, maxHealth;
+
+    private Buildable buildable;
+    private ResourceBuildingData data;
 
     // Start is called before the first frame update
     void Start()
     {
         buildable = GetComponent<Buildable>();
-        maxHealth = buildable.MaxHealth;
+        data = (ResourceBuildingData) buildable.data;
+
         gameManager = GameManager.instance;
         plantedWave = gameManager.gameController.getNextWave();
         foreach(Transform child in transform)
@@ -38,20 +38,11 @@ public class GrowingResource : MonoBehaviour, IBuildingBehavior
     // Update is called once per frame
     void Update()
     {
-        health = buildable.Health;
         if(gameManager.gameController.state == GameController.GameState.Strategy && 
-            plantedWave + additionalWavesBeforeHarvest < gameManager.gameController.getNextWave())
+            plantedWave + data.wavesToHarvest < gameManager.gameController.getNextWave())
         {
             harvest();
         }
-        /*
-        if(GameManager.instance.inBattle == true)
-        {
-            timer += Time.deltaTime;
-            checkHealth();
-            checkGrowth();
-            checkFullyGrown();
-        }*/
     }
 
     void harvest()
@@ -60,31 +51,11 @@ public class GrowingResource : MonoBehaviour, IBuildingBehavior
             gameManager.currentResource += currentResourcesGained;
             Destroy(this.gameObject);
     }
-/*
-    void checkGrowth()
-    {
-        if(timer > growthTime && growthStage < 10)
-        {
-            growthStage++;
-            model.transform.localScale += growth;
-            timer = 0;
-        }
-    }
-
-    void checkFullyGrown()
-    {
-        if(growthStage == 10 && timer > harvestTimer)
-        {
-            calculateResourcesGained();
-            GameManager.instance.resource += currentResourcesGained;
-            Destroy(this.gameObject);
-        }
-    }*/
 
     void calculateResourcesGained()
     {
-        float percentageLifeRemaining = (health/maxHealth);
-        int resourceValue = (int)(maxResourcesGained * percentageLifeRemaining);
+        float percentageLifeRemaining = (buildable.Health/buildable.MaxHealth);
+        int resourceValue = (int)(data.resourceGain * percentageLifeRemaining);
         currentResourcesGained = resourceValue;
     }
 }

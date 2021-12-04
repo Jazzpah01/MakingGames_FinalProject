@@ -32,7 +32,7 @@ public class InstantAttack : AIState
         } else
         {
             delayTimer = 0;
-            parent.Target.Health -= damage - parent.controller.damageReduction;
+            parent.Target.Health -= damage * parent.controller.damageModifyer;
             status = StateStatus.Finished;
             ready = false;
             parent.CallInSeconds(Cooldown, cooldown);

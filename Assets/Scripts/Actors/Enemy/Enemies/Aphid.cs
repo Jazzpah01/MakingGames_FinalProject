@@ -34,14 +34,14 @@ public class Aphid : AIStateMachine
 
         // Initialize states and machine
         Initialize(data);
-        data.move.Initialize(this);
-        data.attack.Initialize(this);
+        data.pathMove.Initialize(this);
+        data.instantAttack.Initialize(this);
 
         // Subscribe to elements
         detectAttack.Subscribe(detectAttack_Enter, CollisionObserver.CollisionType.Enter);
         detectAttack.Subscribe(detectAttack_Exit, CollisionObserver.CollisionType.Exit);
 
-        ChangeState(data.move);
+        ChangeState(data.pathMove);
     }
 
     void Update()
@@ -52,7 +52,7 @@ public class Aphid : AIStateMachine
             SetCarrotTarget();
         }
 
-        if (currentState == data.move)
+        if (currentState == data.pathMove)
         {
             // Move state. Move to a crops actor
             if (Target.IsDestroyed())
@@ -62,20 +62,20 @@ public class Aphid : AIStateMachine
 
             if (inRange)
             {
-                ChangeState(data.attack);
+                ChangeState(data.instantAttack);
             }
-        } else if (currentState == data.attack)
+        } else if (currentState == data.instantAttack)
         {
             // In state data.attack. Attack target
             if (Target.IsDestroyed())
             {
                 Target = GameController.instance.baseController;
-                ChangeState(data.move);
+                ChangeState(data.pathMove);
             }
 
-            if (data.attack.status == AIState.StateStatus.Finished)
+            if (data.instantAttack.status == AIState.StateStatus.Finished)
             {
-                ChangeState(data.move);
+                ChangeState(data.pathMove);
             }
         }
 

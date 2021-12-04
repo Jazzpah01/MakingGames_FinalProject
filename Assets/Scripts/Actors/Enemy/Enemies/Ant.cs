@@ -16,7 +16,7 @@ public class Ant : AIStateMachine
     {
         Initialize(data);
         data.pathMove.Initialize(this);
-        data.attack.Initialize(this);
+        data.instantAttack.Initialize(this);
 
         Target = GameController.instance.player.GetComponent<IActor>();
 
@@ -32,12 +32,12 @@ public class Ant : AIStateMachine
         {
             if (targetDistance <= range)
             {
-                ChangeState(data.attack);
+                ChangeState(data.instantAttack);
             }
         } else 
-        if (currentState == data.attack)
+        if (currentState == data.instantAttack)
         {
-            if (data.attack.status == AIState.StateStatus.Finished &&
+            if (data.instantAttack.status == AIState.StateStatus.Finished &&
                 targetDistance > range)
             {
                 ChangeState(data.pathMove);

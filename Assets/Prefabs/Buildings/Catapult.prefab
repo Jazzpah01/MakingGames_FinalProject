@@ -489,15 +489,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cf6f44b9970b7c4d8f561050a107b58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingName: Catapult
-  maxHealth: 200
-  speed: 0
+  data: {fileID: 11400000, guid: 1d01fa8e6cad7c84abe147cd37b9f816, type: 2}
   healthbar: {fileID: 5239637589751290106}
   spotlight: {fileID: 7006261208530420386}
   setType: 2
   buildingProjections: {fileID: 1309791049706921081}
   ignoreOnBuild: {fileID: 0}
-  actorType: 0
 --- !u!114 &2743539870908128381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -518,8 +515,6 @@ MonoBehaviour:
   closestEnemy: {fileID: 0}
   detectionCollision: {fileID: 2834692135045452658}
   shootCooldown: 2
-  damage: 100
-  maxHealth: 100
 --- !u!95 &2028647433923470686
 Animator:
   serializedVersion: 3

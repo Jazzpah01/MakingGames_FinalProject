@@ -16,7 +16,7 @@ public class PathMove : AIState
         if (parent.IsDestroyed())
             return;
 
-        parent.agent.speed = parent.controller.Speed * speedModifyer;
+        parent.agent.speed = parent.controller.Speed * speedModifyer * parent.controller.speedModifyer;
         parent.agent.stoppingDistance = stoppingDistance;
         parent.agent.updateRotation = false;
         parent.agent.isStopped = false;
@@ -27,6 +27,7 @@ public class PathMove : AIState
         if (parent.IsDestroyed())
             return;
 
+        parent.agent.speed = parent.controller.Speed * speedModifyer * parent.controller.speedModifyer;
         parent.agent.isStopped = true;
         parent.agent.stoppingDistance = 0f;
         parent.agent.updateRotation = true;
@@ -43,6 +44,7 @@ public class PathMove : AIState
             return;
         }
 
+        parent.agent.speed = parent.controller.Speed * speedModifyer * parent.controller.speedModifyer;
         parent.agent.SetDestination(parent.TargetTransform.position);
     }
 }
