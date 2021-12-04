@@ -51,9 +51,8 @@ public class StrategyHUD : MonoBehaviour
 
         for (int i = 1; i < buildings.Count; i++)
         {
-            GameObject newItem = Instantiate(initialItem);
+            GameObject newItem = Instantiate(initialItemPrefab, scrollPanel.transform.parent);
             itemList.Add(newItem);
-            newItem.transform.parent = initialItem.transform.parent;
             items++;
 
             SetElementPosition(newItem, i);
