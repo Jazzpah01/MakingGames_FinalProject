@@ -19,20 +19,25 @@ public class StrategyHUD : MonoBehaviour
     GameManager gameManager;
 
     [Header("References")]
-    public GameObject initialItem;
+    public GameObject initialItemPrefab;
     public GameObject scrollPanel;
     public GameObject defendButton;
     public BuildingDescription description;
 
+    private GameObject initialItem;
 
     private void Start()
     {
+        initialItem = initialItemPrefab;
         gameManager = GameManager.instance;
         strategyController = gameManager.buildingController;
         buildings = gameManager.buildingTypes;
 
         // Setup buttons
         defendButton.GetComponentInChildren<InteractableUI>().OnClicked += delegate { DefendButton(); };
+
+        //
+        //Instantiate
 
         // Setup menu for selecting buildings
         SetElementValues(initialItem, buildings[0]);
