@@ -26,14 +26,57 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Armature|ShootingCatapult
+      takeName: Armature|ShootingCatapult
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 24
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0.30082136
+        functionName: testShoot
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0
+        functionName: Start
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []
@@ -80,7 +123,107 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton: []
+    skeleton:
+    - name: Catapult(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Inner_Bottom_Frame_log_Cylinder.001
+      parentName: Catapult(Clone)
+      position: {x: 0.08493366, y: 0.0043502506, z: 7.537349}
+      rotation: {x: -0.7071067, y: -0.000000030908616, z: 0.000000030908623, w: 0.7071068}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Blocking_Frame_Log3_Cylinder.001
+      parentName: Catapult(Clone)
+      position: {x: 0.088710465, y: 2.1414733, z: 8.440838}
+      rotation: {x: -0.7071067, y: -0.000000030908616, z: 0.000000030908623, w: 0.7071068}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Main_Log_Cylinder.001
+      parentName: Catapult(Clone)
+      position: {x: 0.09863133, y: 2.5173879, z: 7.0930424}
+      rotation: {x: -0.7071067, y: -0.000000030908616, z: 0.000000030908623, w: 0.7071068}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Spool_Cylinder.001
+      parentName: Catapult(Clone)
+      position: {x: 0.089321345, y: 0.4372969, z: 5.8247404}
+      rotation: {x: -0.7071067, y: -0.000000030908616, z: 0.000000030908623, w: 0.7071068}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Main_Log_Connector_Rope_Cylinder.001
+      parentName: Catapult(Clone)
+      position: {x: 0.06456237, y: 1.5171566, z: 5.795651}
+      rotation: {x: -0.7071067, y: -0.000000030908616, z: 0.000000030908623, w: 0.7071068}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Rock_Connector_Rope_Cylinder.001
+      parentName: Catapult(Clone)
+      position: {x: 0.06904813, y: 1.9408714, z: 11.960488}
+      rotation: {x: -0.7071067, y: -0.000000030908616, z: 0.000000030908623, w: 0.7071068}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Wheel_Cylinder.001
+      parentName: Catapult(Clone)
+      position: {x: 2.9008977, y: 0.10002012, z: 4.932291}
+      rotation: {x: -0.7071067, y: -0.000000030908616, z: 0.000000030908623, w: 0.7071068}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Wheel2_Cylinder.001
+      parentName: Catapult(Clone)
+      position: {x: 2.9008977, y: 0.100019336, z: 9.97611}
+      rotation: {x: -0.7071067, y: -0.000000030908616, z: 0.000000030908623, w: 0.7071068}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Wheel3_Cylinder.001
+      parentName: Catapult(Clone)
+      position: {x: -2.6089609, y: 0.10002007, z: 4.932291}
+      rotation: {x: -0.7071067, y: -0.000000030908616, z: 0.000000030908623, w: 0.7071068}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Wheel4_Cylinder.001
+      parentName: Catapult(Clone)
+      position: {x: -2.6089609, y: 0.10001933, z: 9.848182}
+      rotation: {x: -0.7071067, y: -0.000000030908616, z: 0.000000030908623, w: 0.7071068}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Armature
+      parentName: Catapult(Clone)
+      position: {x: -0, y: 2.3862805, z: 10.361364}
+      rotation: {x: 1, y: 0, z: -7.498799e-33, w: 6.123234e-17}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Bone
+      parentName: Armature
+      position: {x: 0.0008237776, y: -0.0015657991, z: 0.00447871}
+      rotation: {x: -0.7071068, y: -0.000000030908627, z: 0.000000030908627, w: -0.7071068}
+      scale: {x: 1, y: 0.99999946, z: 0.99999946}
+    - name: Bone.003
+      parentName: Armature
+      position: {x: -0, y: -0.0031639265, z: 0.05655937}
+      rotation: {x: -0.00000004371139, y: -0.000000028885635, z: -1, w: 1.2814151e-15}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Bone.004
+      parentName: Armature
+      position: {x: 0.009196108, y: 0.019555174, z: 0.0453622}
+      rotation: {x: -0.0000000015571245, y: 0.00000006337437, z: 0.7071067, w: 0.7071068}
+      scale: {x: 0.99999934, y: 0.99999934, z: 1}
+    - name: Bone.001
+      parentName: Armature
+      position: {x: 0.0008237776, y: -0.0015657991, z: 0.00447871}
+      rotation: {x: -0.9753424, y: 0.0000000117049614, z: 0.000000040575607, w: 0.22069743}
+      scale: {x: 1, y: 0.99999934, z: 0.99999934}
+    - name: Bone.002
+      parentName: Bone.001
+      position: {x: 7.4505804e-11, y: 0.020905973, z: -1.06485626e-10}
+      rotation: {x: 0.5630143, y: -0.42780247, z: 0.42780212, w: 0.56301445}
+      scale: {x: 0.99999976, y: 1.0000017, z: 1.0000025}
+    - name: Bone.005
+      parentName: Bone.002
+      position: {x: 4.34496e-11, y: 0.0076866457, z: -0.0000000011942992}
+      rotation: {x: 0.00000008940696, y: -0.000000004423782, z: 0.022374412, w: 0.99974966}
+      scale: {x: 1.0000001, y: 0.99999833, z: 0.9999985}
+    - name: Bone.006
+      parentName: Armature
+      position: {x: 0.00079385756, y: 0.014033507, z: 0.0453622}
+      rotation: {x: 0.00000047389636, y: -0.046488486, z: -0.99891883, w: 0.00000007758369}
+      scale: {x: 1, y: 1.0000002, z: 1.000031}
+    - name: CoffeeProjectile
+      parentName: Catapult(Clone)
+      position: {x: 0.17566116, y: 3.1172671, z: 4.62387}
+      rotation: {x: 0.15379685, y: -0.000000043191335, z: 0.0000000067226744, w: 0.9881025}
+      scale: {x: 59.973164, y: 59.97317, z: 59.97317}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -91,13 +234,13 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   additionalBone: 0
   userData: 

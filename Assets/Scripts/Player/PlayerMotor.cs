@@ -8,16 +8,17 @@ public class PlayerMotor : MonoBehaviour
     Transform target;
     NavMeshAgent agent;
     PlayerManager playerManager;
+    PlayerController controller;
+
+    private PlayerData data;
+
+    public Animator animator;
 
     [HideInInspector]
     Camera cam;
 
     public float isoAngle = -45;
     public float maxVelocityChange = 10.0f;
-    public float dashCooldown;
-    public float dashLength;
-    public float dashSpeed;
-    //public float attackDashLength;
 
     private LayerMask movementMask;
     private LayerMask actorMask;
@@ -27,21 +28,30 @@ public class PlayerMotor : MonoBehaviour
     private float dashTimer;
     private float distance = 999999;
 
+    [System.NonSerialized] public bool isMoving = false;
+    [System.NonSerialized] public bool blockMoving = false;
+
+    
 
     void Start()
     {
         playerManager = PlayerManager.instance;
+        controller = GetComponent<PlayerController>();
+
+        data = controller.data;
+
         agent = GetComponent<NavMeshAgent>();
         cam = playerManager.cam;
         movementMask = GetComponent<PlayerController>().movementMask;
         actorMask = GetComponent<PlayerController>().actorMask;
-        //attackDashLength *= 0.001f;
     }
 
     private void FixedUpdate()
     {
         //dash cooldown
         dashTimer -= Time.fixedDeltaTime;
+
+        isMoving = false;
 
         //return if the pointer 
         if (InteractableUI.OnUI)
@@ -56,12 +66,13 @@ public class PlayerMotor : MonoBehaviour
         //dash or move
         if (Input.GetKey(KeyCode.Space) && 0 >= dashTimer && !dashing && !attacking)
         {
+            animator.SetTrigger("dash");
             //reset dash cooldown
-            dashTimer = dashCooldown;
+            dashTimer = data.dashCooldown;
             //dash
-            Dash(dashSpeed, dashLength);
+            Dash(data.dashSpeed, data.dashLength);
         }
-        else if (!dashing && !attacking)
+        else if (!dashing && !attacking && !blockMoving)
         {
             //read input keys
             MovementKeyInput();
@@ -107,6 +118,11 @@ public class PlayerMotor : MonoBehaviour
         Matrix4x4 rotaMatrix = Matrix4x4.Rotate(rotation);
 
         agent.velocity = rotaMatrix.MultiplyPoint3x4(targetVelocity);
+
+        if (targetVelocity.magnitude > 0)
+        {
+            isMoving = true;
+        }
     }
 
     //attempt to dash, return false if dash fails

@@ -1607,6 +1607,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: HUD
       objectReference: {fileID: 0}
+    - target: {fileID: 5841121586438895708, guid: d4f9c9bd227cb8943ae41e110baac061,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.000030517578
+      objectReference: {fileID: 0}
+    - target: {fileID: 6450858123676432855, guid: d4f9c9bd227cb8943ae41e110baac061,
+        type: 3}
+      propertyPath: m_Size
+      value: 0.78872275
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4f9c9bd227cb8943ae41e110baac061, type: 3}
 --- !u!224 &8295815485989606996 stripped

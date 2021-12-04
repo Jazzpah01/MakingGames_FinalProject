@@ -9,9 +9,10 @@ public class Buildable : MonoBehaviour, IActor
     public float maxHealth;
     public float speed = 0;
     public HealthBar healthbar;
-    //public ProjectorController projectorController;
     public Light spotlight;
     public ActorType setType;
+
+    public ActorData data;
 
     public GameObject buildingProjections;
     public GameObject ignoreOnBuild;
@@ -21,8 +22,8 @@ public class Buildable : MonoBehaviour, IActor
 
     public ActorType actorType => setType;
 
-    public float Speed { get => speed; set { speed = value; } }
-    public float MaxHealth => maxHealth;
+    public float Speed { get; set; }
+    public float MaxHealth { get; set; }
     public float Health
     {
         get => currentHealth;
@@ -47,8 +48,11 @@ public class Buildable : MonoBehaviour, IActor
 
     private void Start()
     {
-        currentHealth = maxHealth;
+        MaxHealth = data.maxHealth;
+        currentHealth = MaxHealth;
+
         blockDamage = false;
+
         healthbar.textBox.text = buildingName;
         healthbar.SetHealthImageColour(Color.green);
     }

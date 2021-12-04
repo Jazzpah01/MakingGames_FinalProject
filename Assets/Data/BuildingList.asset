@@ -66,3 +66,12 @@ MonoBehaviour:
       m_Bits: 64
     description: Does spider things
     icon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  - name: Catapult
+    cost: 3
+    prefab: {fileID: 9202268415749759745, guid: 6e7eb57f8fd5a6c49b86644ac703ae2d,
+      type: 3}
+    containmentLayermask:
+      serializedVersion: 2
+      m_Bits: 64
+    description: big shooter
+    icon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}

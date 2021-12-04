@@ -12,8 +12,8 @@ public class Base : MonoBehaviour, IActor
     public ActorType actorType => ActorType.Obstacle;
 
     private float speed = 0;
-    public float Speed { get => speed; set { speed = value;}}
-    public float MaxHealth => maxHealth;
+    public float Speed { get; set; }
+    public float MaxHealth { get; set; }
 
     public float Health { get => health; 
         set
