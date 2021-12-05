@@ -38,6 +38,7 @@ public class GameController : MBStateMachine
     private PlayerController playerController;
     private PlayerManager playerManager;
     private GameManager gameManager;
+    private HUD hUD;
 
     private GameState oldState = GameState.None;
 
