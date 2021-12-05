@@ -13,14 +13,21 @@ MonoBehaviour:
   m_Name: EnemyList
   m_EditorClassIdentifier: 
   enemyList:
-  - prefab: {fileID: 5980018141852729465, guid: 2dec638b8949bd940a384c9cad405dea,
-      type: 3}
+  - prefab: {fileID: 797109595003254403, guid: 4ccad7ad5deb6f44fb3de03c4ddb5d94, type: 3}
     value: 1
     identifyer: 0
-  - prefab: {fileID: 3690775772985590633, guid: 94f665dbf55e7ae48a3401c4dfa56924,
-      type: 3}
-    value: 1.5
+  - prefab: {fileID: 797109595003254403, guid: 9c6181ec8e05c284697a4ba16b5bf4c8, type: 3}
+    value: 2
     identifyer: 1
   - prefab: {fileID: 797109595003254403, guid: d1ebfda4b6cb9fd41bdc20214f12919d, type: 3}
-    value: 1
+    value: 5
+    identifyer: 2
+  - prefab: {fileID: 797109595003254403, guid: ca3611a94cd6bd847b9a7f55f32cc0fb, type: 3}
+    value: 5
+    identifyer: 2
+  - prefab: {fileID: 797109595003254403, guid: ca3611a94cd6bd847b9a7f55f32cc0fb, type: 3}
+    value: 5
+    identifyer: 2
+  - prefab: {fileID: 797109595003254403, guid: c620a24dca3f78e4ebe64e7f85b523fb, type: 3}
+    value: 5
     identifyer: 2

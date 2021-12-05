@@ -13,20 +13,20 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   maxHealth: 100
-  speed: 5
-  dashCooldown: 0.2
-  dashLength: 5
-  dashSpeed: 3
-  primaryAttackDamage: 50
-  primaryAttackCooldown: 0.2
+  speed: 10
+  dashCooldown: 2
+  dashLength: 10
+  dashSpeed: 5
+  primaryAttackDamage: 40
+  primaryAttackCooldown: -48.810547
   primaryAttackRange: 3
   primaryAttackDashLength: 2
   primaryAttackDashSpeed: 5
   primaryDelay: 0.1
   primaryHitParticlePrefab: {fileID: 1570927096764274, guid: bb2e07f58dad1c241bed6a97dfa7470c,
     type: 3}
-  secondaryAttackDamage: 30
-  secondaryAttackCooldown: 0.4
+  secondaryAttackDamage: 25
+  secondaryAttackCooldown: -108.52379
   secondaryAttackRange: 1
   SecondaryAttackDashLength: 3
   SecondaryAttackDashSpeed: 4
