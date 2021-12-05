@@ -9,10 +9,7 @@ public class Enemy : MonoBehaviour, IEnemy
     public GameObject deathEffect;
 
     private float maxHealth;
-
-    private NavMeshAgent agent;
     private float health;
-    private float speed;
 
     public EnemyType enemyType { get; set; }
 
@@ -28,11 +25,14 @@ public class Enemy : MonoBehaviour, IEnemy
             health = value;
             //TODO: implement hiteffects
             //PlayHitEffects();
-            healthBar.SetHealthbar(health / maxHealth);
             if (health <= 0)
             {
+                Instantiate(deathEffect, transform.position, Quaternion.identity);
                 Destroy(this.gameObject);
-                Instantiate(deathEffect).transform.position = transform.position;
+            }
+            else
+            {
+                healthBar.SetHealthbar(health / maxHealth);
             }
         }
     }
@@ -42,22 +42,6 @@ public class Enemy : MonoBehaviour, IEnemy
 
     public GameObject spawnPoint { get; set; }
     public float speedModifyer { get; set; }
-
-    private void Awake()
-    {
-        agent = GetComponent<NavMeshAgent>();
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public bool isActorType(ActorType type)
     {

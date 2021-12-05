@@ -30,11 +30,14 @@ public class EnemyController: MonoBehaviour, IEnemy
             health = value;
             //TODO: implement hiteffects
             //PlayHitEffects();
-            healthBar.SetHealthbar(health/maxHealth);
             if (health <= 0)
             {
                 Destroy(this.gameObject);
                 Instantiate(deathEffect).transform.position = transform.position;
+            }
+            else
+            {
+                healthBar.SetHealthbar(health/maxHealth);
             }
         } 
     }
