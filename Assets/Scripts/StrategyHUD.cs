@@ -44,7 +44,7 @@ public class StrategyHUD : MonoBehaviour
         // Setup buttons
         defendButton.GetComponentInChildren<InteractableUI>().OnClicked += delegate { DefendButton(); };
         menuButton.GetComponentInChildren<InteractableUI>().OnClicked += delegate { PauseButton(); };
-
+        Debug.Log(buildings.Count);
         for (int i = 0; i < buildings.Count; i++)
         {
             //instantiate the item
@@ -68,10 +68,6 @@ public class StrategyHUD : MonoBehaviour
             //add the item to itemList
             itemList.Add(newItem);
         }
-
-        //RectTransform panelRect = scrollPanel.GetComponent<RectTransform>();
-        //panelRect.position = panelRect.position * new Vector2(1, 0);
-        //panelRect.sizeDelta = new Vector2(0, contentChunkSize * buildings.Count);
     }
 
 
@@ -85,7 +81,8 @@ public class StrategyHUD : MonoBehaviour
 
         Vector3 v = contentRT.transform.position;
         //TODO: find the best values here
-        contentRT.transform.position = new Vector3(v.x,scrollStart+(scrollEnd*scrollbar.value),v.z);
+        float scrollSize = 90*itemList.Count;
+        contentRT.transform.position = new Vector3(v.x,(scrollSize + (scrollSize*scrollbar.value)*-1) + 500, v.z);
     }
     
     public void UpdateAlfa()
