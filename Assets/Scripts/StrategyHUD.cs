@@ -112,7 +112,6 @@ public class StrategyHUD : MonoBehaviour
     public void ButtonPressed(int index)
     {
         strategyController.SelectPrefab(buildings[index]);
-
         if (toggled != null)
         {
             SetToggled(false);

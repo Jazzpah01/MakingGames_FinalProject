@@ -592,8 +592,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 026fa4b5ca9c67d48828d2872d669fcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialResource: 0
-  roundResource: 0
+  initialResource: 10
+  roundResource: 10
   soundOn: 1
   musicOn: 1
   buildingTypes: {fileID: 11400000, guid: 1dd769dc9010f6f4790795d5fc1a5459, type: 2}
