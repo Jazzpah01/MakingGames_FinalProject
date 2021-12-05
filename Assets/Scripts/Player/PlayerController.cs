@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour, IActor, IState
 
     public bool blockDamage { get; set; }
     public float damageModifyer { get; set; }
-    public float speedModifyer { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+    public float speedModifyer { get; set; }
 
     private void Awake()
     {
@@ -62,6 +62,9 @@ public class PlayerController : MonoBehaviour, IActor, IState
 
         MaxHealth = data.maxHealth;
         Health = data.maxHealth;
+        Speed = data.speed;
+        damageModifyer = 1;
+        speedModifyer = 1;
 
         blockDamage = false;
     }

@@ -38,7 +38,7 @@ public class PlayerCombat : MonoBehaviour
 
             if (actor != null && actor.isActorType(ActorType.Enemy))
             {
-                StartCoroutine(Utility.DelayedAbility(0.1f, delegate
+                StartCoroutine(Utility.DelayedAbility(data.primaryDelay, delegate
                 {
                     if (actor.IsDestroyed())
                     {
@@ -46,7 +46,6 @@ public class PlayerCombat : MonoBehaviour
                     }
                     actor.Health -= data.primaryAttackDamage;
 
-                    
                     Instantiate(data.primaryHitParticlePrefab, hit.point, Quaternion.identity);
                 }));
 
@@ -89,13 +88,13 @@ public class PlayerCombat : MonoBehaviour
             IActor actor = collisions[i].GetComponent<IActor>();
             if (actor != null && actor.isActorType(ActorType.Enemy))
             {
-                StartCoroutine(Utility.DelayedAbility(0.5f, delegate
+                StartCoroutine(Utility.DelayedAbility(data.secondaryDelay, delegate
                 {
                     if (actor.IsDestroyed())
                     {
                         return;
                     }
-                        actor.Health -= data.secondaryAttackDamage;
+                    actor.Health -= data.secondaryAttackDamage;
 
                     Ray ray = new Ray(transform.position, actor.gameObject.transform.position - transform.position);
                     Debug.DrawRay(transform.position, actor.gameObject.transform.position - transform.position, Color.red, 10);

@@ -111,7 +111,7 @@ public class PlayerMotor : MonoBehaviour
         agent.updateRotation = true;
 
         Vector3 targetVelocity = new Vector3(directionX, 0, directionZ).normalized;
-        targetVelocity *= agent.speed;
+        targetVelocity *= data.speed;
         targetVelocity.y = 0;
 
         Quaternion rotation = Quaternion.Euler(0, isoAngle, 0);
