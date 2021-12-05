@@ -44,7 +44,6 @@ public class StrategyHUD : MonoBehaviour
         // Setup buttons
         defendButton.GetComponentInChildren<InteractableUI>().OnClicked += delegate { DefendButton(); };
         menuButton.GetComponentInChildren<InteractableUI>().OnClicked += delegate { PauseButton(); };
-        Debug.Log(buildings.Count);
         for (int i = 0; i < buildings.Count; i++)
         {
             //instantiate the item
