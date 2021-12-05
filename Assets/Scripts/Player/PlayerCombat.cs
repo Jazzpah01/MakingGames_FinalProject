@@ -31,6 +31,7 @@ public class PlayerCombat : MonoBehaviour
     }
     public bool PrimaryAttack(RaycastHit hit, LayerMask mask)
     {
+        primaryAttackCooldownHolder = data.primaryAttackCooldown;
         //if we left click on the actor mask
         if (primaryAttackObserver.Stay.Contains(hit.collider))
         {
@@ -48,7 +49,6 @@ public class PlayerCombat : MonoBehaviour
 
                     Instantiate(data.primaryHitParticlePrefab, hit.point, Quaternion.identity);
                 }));
-                primaryAttackCooldownHolder = data.primaryAttackCooldown;
                 return true;
             }
         }
@@ -57,6 +57,7 @@ public class PlayerCombat : MonoBehaviour
 
     public bool SecondaryAttack()
     {
+        secondaryAttackCooldownHolder = data.secondaryAttackCooldown;
         Collider[] collisions = secondaryObserver.Stay.ToArray();
         for (int i = 0; i < collisions.Length; i++)
         {
@@ -79,7 +80,6 @@ public class PlayerCombat : MonoBehaviour
                         Instantiate(data.secondaryHitParticlePrefab, hit.point, Quaternion.identity);
                     }
                 }));
-                secondaryAttackCooldownHolder = data.secondaryAttackCooldown;
             }
         }
         return true;
