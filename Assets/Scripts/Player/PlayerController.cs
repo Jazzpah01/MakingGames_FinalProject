@@ -136,6 +136,7 @@ public class PlayerController : MonoBehaviour, IActor, IState
                 if (combat.SecondaryAttack())
                 {
                     StartCoroutine(Utility.DelayedAbility(data.secondaryDelay, delegate {
+
                         //if attack is successful, dash
                         //motor.Dash(combat.SecondaryAttackDashSpeed, 
                         //    Mathf.Min(combat.SecondaryAttackDashLength, Vector3.Distance(transform.position, hit.point)));
