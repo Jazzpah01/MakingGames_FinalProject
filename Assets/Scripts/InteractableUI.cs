@@ -41,7 +41,7 @@ public class InteractableUI : MonoBehaviour, IPointerClickHandler, IPointerEnter
     [Tooltip("The main/parent GameObject of a UI element.")]
     public GameObject mainGameObject;
     public Image image;
-    public Image highlightImage;
+    public GameObject highlightImage;
     public Image toggledImage;
 
     private Color initialImageColor;
@@ -114,7 +114,7 @@ public class InteractableUI : MonoBehaviour, IPointerClickHandler, IPointerEnter
             {
                 if (options.HasFlag(InteractableUIOptions.RemoveHighlightOnToggle) && Highlighted)
                 {
-                    highlightImage.gameObject.SetActive(false);
+                        highlightImage.gameObject.SetActive(false);
                 }
             } else
             {
@@ -203,12 +203,12 @@ public class InteractableUI : MonoBehaviour, IPointerClickHandler, IPointerEnter
         if (highlightImage == null)
             return;
 
-        highlightImage.gameObject.SetActive(highlight);
+            highlightImage.gameObject.SetActive(highlight);
 
         if (options.HasFlag(InteractableUIOptions.RemoveImageOnHighlight))
             image.gameObject.SetActive(!highlight);
         if (options.HasFlag(InteractableUIOptions.RemoveHighlightOnToggle) && Toggled)
-            highlightImage.gameObject.SetActive(false);
+                highlightImage.gameObject.SetActive(false);
     }
 
     private void OnDisable()

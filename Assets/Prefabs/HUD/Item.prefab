@@ -204,7 +204,7 @@ MonoBehaviour:
   mouseButton: 1
   mainGameObject: {fileID: 2056174679532443842}
   image: {fileID: 2056174680012180295}
-  highlightImage: {fileID: 8930556548664075975}
+  highlightImage: {fileID: 3206865440023013920}
   toggledImage: {fileID: 3102354729681301619}
 --- !u!114 &2056174680352560007
 MonoBehaviour:

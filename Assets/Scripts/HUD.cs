@@ -7,12 +7,10 @@ public class HUD : MonoBehaviour
     public GameObject playerHUDPrefab;
     public GameObject strategyHUDPrefab;
     public GameObject levelDescriptionPrefab;
-    public GameObject pauseMenuPrefab;
 
     private PlayerHUD playerHUD;
     private StrategyHUD strategyHUD;
     private GameObject levelDescription;
-    private GameObject pauseMenu;
 
     GameManager gameManager;
 
@@ -22,12 +20,10 @@ public class HUD : MonoBehaviour
         playerHUD = Instantiate(playerHUDPrefab,transform).GetComponent<PlayerHUD>();
         strategyHUD = Instantiate(strategyHUDPrefab,transform).GetComponent<StrategyHUD>();
         levelDescription = Instantiate(levelDescriptionPrefab, transform);
-        pauseMenu = Instantiate(pauseMenuPrefab, transform);
 
         gameManager = GameManager.instance;
 
         levelDescription.SetActive(false);
-        pauseMenu.SetActive(false);
         playerHUD.gameObject.SetActive(false);
     }
     public void UpdateHUD()

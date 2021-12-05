@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class StrategyHUD : MonoBehaviour
 {
@@ -20,8 +21,8 @@ public class StrategyHUD : MonoBehaviour
     public GameObject defendButton;
     public GameObject menuButton;
     public float itemScaleOnToggle = 1;
-
     public BuildingDescription description;
+    public GameObject pauseMenu;
 
     private List<GameObject> itemList;
     private InteractableUI toggled;
@@ -37,10 +38,12 @@ public class StrategyHUD : MonoBehaviour
         gameManager = GameManager.instance;
         strategyController = gameManager.buildingController;
         buildings = gameManager.buildingTypes;
+        pauseMenu.SetActive(false);
+
 
         // Setup buttons
         defendButton.GetComponentInChildren<InteractableUI>().OnClicked += delegate { DefendButton(); };
-        menuButton.GetComponentInChildren<InteractableUI>().OnClicked += delegate { DefendButton(); };
+        menuButton.GetComponentInChildren<InteractableUI>().OnClicked += delegate { PauseButton(); };
 
         for (int i = 0; i < buildings.Count; i++)
         {
@@ -143,8 +146,17 @@ public class StrategyHUD : MonoBehaviour
         }
         GameController.instance.GoToBattle();
     }
+    public void PauseButton()
+    {
+        pauseMenu.SetActive(true);
+        Time.timeScale = 0;
+    }
 
-
+    public void ResumeButton()
+    {
+        Time.timeScale = 1;
+        pauseMenu.SetActive(false);
+    }
     public void SetToggled(bool b)
     {
         if (toggled == null)
