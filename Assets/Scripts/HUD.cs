@@ -13,7 +13,6 @@ public class HUD : MonoBehaviour
     private StrategyHUD strategyHUD;
     private GameObject levelDescription;
     private GameObject pauseMenu;
-    private bool battle;
 
     GameManager gameManager;
 
@@ -29,19 +28,9 @@ public class HUD : MonoBehaviour
 
         levelDescription.SetActive(false);
         pauseMenu.SetActive(false);
-
-        UpdateHUD();
+        playerHUD.gameObject.SetActive(false);
     }
-    private void Update()
-    {
-        if (gameManager.inBattle != battle)
-        {
-            battle = gameManager.inBattle;
-            UpdateHUD();
-        }
-    }
-
-    private void UpdateHUD()
+    public void UpdateHUD()
     {
         strategyHUD.gameObject.SetActive(gameManager.gameController.state == GameController.GameState.Strategy);
         playerHUD.gameObject.SetActive(gameManager.gameController.state == GameController.GameState.Combat);

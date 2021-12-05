@@ -18,7 +18,8 @@ public class StrategyHUD : MonoBehaviour
     public Scrollbar scrollbar;
     public float scrollStart, scrollEnd;
     public GameObject defendButton;
-	public float itemScaleOnToggle = 1;
+    public GameObject menuButton;
+    public float itemScaleOnToggle = 1;
 
     public BuildingDescription description;
 
@@ -26,7 +27,7 @@ public class StrategyHUD : MonoBehaviour
     private InteractableUI toggled;
     private BuildingController strategyController;
     private BuildingList buildings;
-    private int resource;
+    private float resource;
     private RectTransform contentRT;
 
     private void Start()
@@ -86,14 +87,14 @@ public class StrategyHUD : MonoBehaviour
     
     public void UpdateAlfa()
     {
-        if (gameManager.resource != resource)
+        if (gameManager.currentResource != resource)
         {
-            resource = gameManager.resource;
+            resource = gameManager.currentResource;
             foreach (GameObject GO in itemList)
             {
                 float cost = GO.GetComponentInChildren<UIBuildingItem>().Type.cost;
 
-                if (gameManager.resource < cost)
+                if (gameManager.currentResource < cost)
                 {
                     GO.GetComponentInChildren<InteractableUI>().Interactable = false;
                 }

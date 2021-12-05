@@ -64,6 +64,8 @@ MonoBehaviour:
   scrollStart: 540
   scrollEnd: 400
   defendButton: {fileID: 3826565906558758238}
+  menuButton: {fileID: 4334136192804478458}
+  itemScaleOnToggle: 1
   description: {fileID: 4803185922434489667}
 --- !u!1 &72529616697796295
 GameObject:

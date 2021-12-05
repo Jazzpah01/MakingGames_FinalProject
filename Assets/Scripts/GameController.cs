@@ -29,6 +29,7 @@ public class GameController : MBStateMachine
     public float buildTimer = 9001;
     public GameObject gameOverScreen;
 
+    public HUD hUD;
     public bool InWave => spawnController.InWave;
     private bool oldInWave = false;
     private int nextWave = 0;
@@ -38,9 +39,6 @@ public class GameController : MBStateMachine
     private PlayerController playerController;
     private PlayerManager playerManager;
     private GameManager gameManager;
-    private HUD hUD;
-
-    private GameState oldState = GameState.None;
 
     public Base baseController;
 
@@ -76,7 +74,7 @@ public class GameController : MBStateMachine
 
         switch (newState)
         {
-            case GameState.Combat: 
+            case GameState.Combat:
                 if (!playerManager.buildWhileCombat)
                     player.SetActive(true);
                 base.ChangeState(playerController);
@@ -111,13 +109,13 @@ public class GameController : MBStateMachine
             if (InWave == false)
             {
                 ChangeState(GameState.Strategy);
+                hUD.UpdateHUD();
             }
         }
         else if (state == GameState.Strategy)
         {
 
         }
-
 
         oldInWave = InWave;
         base.Update();
@@ -132,6 +130,7 @@ public class GameController : MBStateMachine
             oldInWave = true;
         }
         ChangeState(GameState.Combat);
+        hUD.UpdateHUD();
     }
 
     public int getNextWave()
