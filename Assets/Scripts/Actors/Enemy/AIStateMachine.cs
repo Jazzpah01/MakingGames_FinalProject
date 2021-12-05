@@ -58,6 +58,7 @@ public abstract class AIStateMachine : MBStateMachine
         controller.Health = data.maxHealth;
         controller.Speed = data.speed;
         controller.speedModifyer = 1;
+        controller.damageModifyer = 1;
 
         Initialized = true;
     }
