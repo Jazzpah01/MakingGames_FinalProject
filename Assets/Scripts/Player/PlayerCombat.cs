@@ -40,7 +40,13 @@ public class PlayerCombat : MonoBehaviour
             {
                 StartCoroutine(Utility.DelayedAbility(0.1f, delegate
                 {
+                    if (actor.IsDestroyed())
+                    {
+                        return;
+                    }
                     actor.Health -= data.primaryAttackDamage;
+
+                    
                     Instantiate(data.primaryHitParticlePrefab, hit.point, Quaternion.identity);
                 }));
 
@@ -85,7 +91,12 @@ public class PlayerCombat : MonoBehaviour
             {
                 StartCoroutine(Utility.DelayedAbility(0.5f, delegate
                 {
-                    actor.Health -= data.secondaryAttackDamage;
+                    if (actor.IsDestroyed())
+                    {
+                        return;
+                    }
+                        actor.Health -= data.secondaryAttackDamage;
+
                     Ray ray = new Ray(transform.position, actor.gameObject.transform.position - transform.position);
                     Debug.DrawRay(transform.position, actor.gameObject.transform.position - transform.position, Color.red, 10);
                     RaycastHit hit;
