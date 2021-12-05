@@ -10,7 +10,6 @@ public class BuildingController : MonoBehaviour, IState
     [HideInInspector]
     public Camera cam;
     public LayerMask groundLayerMask;
-    public int roundResource = 2;
     public Transform buildablesParent;
     public float startRotation = 0;
     public float rotationAngle = 45;
@@ -22,14 +21,13 @@ public class BuildingController : MonoBehaviour, IState
     public bool isBuilding = false;
     private GameObject prefab;
     private LayerMask containmentLayerMask;
-    private int currentCost = 0;
+    private float currentCost = 0;
 
     GameManager gameManager;
 
     private void Start()
     {
         gameManager = GameManager.instance;
-        gameManager.resource = roundResource;
         cam = PlayerManager.instance.cam;
         rotation = startRotation;
         prefab = null;
@@ -93,11 +91,11 @@ public class BuildingController : MonoBehaviour, IState
                         GO.GetComponent<Buildable>().spotlight.enabled = false;
 
                         // Transform dummy-gameobject to an actual building
-                        if (Input.GetMouseButtonDown(0) && gameManager.resource >= currentCost)
+                        if (Input.GetMouseButtonDown(0) && gameManager.currentResource >= currentCost)
                         {
                             SpawnPrefab();
                             // Make it so the player can place multiple buildings
-                            if (gameManager.resource < currentCost)
+                            if (gameManager.currentResource < currentCost)
                             {
                                 isBuilding = false;
                             }
@@ -126,14 +124,14 @@ public class BuildingController : MonoBehaviour, IState
     /// <param name="type">Type of building.</param>
     public void SelectPrefab(BuildingType type)
     {
-        if (gameManager.resource < type.cost)
+        if (gameManager.currentResource < type.cost)
         {
             // Code for when you don't have enough resources
             return;
         }
         this.prefab = type.prefab;
         this.containmentLayerMask = type.containmentLayermask;
-        this.currentCost = (int)type.cost;
+        this.currentCost = type.cost;
         isBuilding = true;
     }
 
@@ -150,7 +148,7 @@ public class BuildingController : MonoBehaviour, IState
 
     private void SpawnPrefab()
     {
-        gameManager.resource -= currentCost;
+        gameManager.currentResource -= currentCost;
         GO.GetComponent<Buildable>().OnBuild();
         ChangeGOAlfa(1);
         GO = null;

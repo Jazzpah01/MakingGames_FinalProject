@@ -148,13 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
-  pathMove:
-    speedModifyer: 1
-    stoppingDistance: 0.8
-  attack:
-    damage: 5
-    delay: 0.2
-    cooldown: 2
+  data: {fileID: 11400000, guid: 7652f37b6cfab3c4585988c309a76d8c, type: 2}
   range: 3
 --- !u!136 &1380614552679334418
 CapsuleCollider:

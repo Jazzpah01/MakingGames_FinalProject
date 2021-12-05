@@ -18,6 +18,8 @@ public class StrategyHUD : MonoBehaviour
     public Scrollbar scrollbar;
     public float scrollStart, scrollEnd;
     public GameObject defendButton;
+	public float itemScaleOnToggle = 1;
+
     public BuildingDescription description;
 
     private List<GameObject> itemList;
@@ -37,6 +39,7 @@ public class StrategyHUD : MonoBehaviour
 
         // Setup buttons
         defendButton.GetComponentInChildren<InteractableUI>().OnClicked += delegate { DefendButton(); };
+        menuButton.GetComponentInChildren<InteractableUI>().OnClicked += delegate { DefendButton(); };
 
         for (int i = 0; i < buildings.Count; i++)
         {
@@ -72,15 +75,11 @@ public class StrategyHUD : MonoBehaviour
     {
         if (!gameManager.buildingController.isBuilding && toggled != null)
         {
-            toggled.mainGameObject.transform.localScale -= new Vector3(itemSelectedScale, itemSelectedScale, itemSelectedScale);
-            toggled.Toggled = false;
-            toggled = null;
+            SetToggled(false);
         }
         UpdateAlfa();
-        Debug.Log(contentRT.rect.yMin);
 
         Vector3 v = contentRT.transform.position;
-        //Debug.Log(v.y);
         //TODO: find the best values here
         contentRT.transform.position = new Vector3(v.x,scrollStart+(scrollEnd*scrollbar.value),v.z);
     }
@@ -116,13 +115,11 @@ public class StrategyHUD : MonoBehaviour
 
         if (toggled != null)
         {
-            toggled.Toggled = false;
-            toggled.mainGameObject.transform.localScale -= new Vector3(itemSelectedScale, itemSelectedScale, itemSelectedScale);
-
+            SetToggled(false);
         }
 
         toggled = itemList[index].GetComponentInChildren<InteractableUI>();
-        toggled.mainGameObject.transform.localScale += new Vector3(itemSelectedScale, itemSelectedScale, itemSelectedScale);
+        SetToggled(true);
         toggled.Toggled = true;
     }
 
@@ -139,7 +136,31 @@ public class StrategyHUD : MonoBehaviour
 
     public void DefendButton()
     {
-        toggled.mainGameObject.transform.localScale -= new Vector3(itemSelectedScale, itemSelectedScale, itemSelectedScale);
+        if (toggled != null)
+        {
+            SetToggled(false);
+        }
         GameController.instance.GoToBattle();
+    }
+
+
+    public void SetToggled(bool b)
+    {
+        if (toggled == null)
+            return;
+
+        if (toggled.Toggled && !b)
+        {
+            toggled.mainGameObject.transform.localScale /= itemScaleOnToggle;
+            toggled.Toggled = b;
+            toggled = null;
+        } else if (!toggled.Toggled && b)
+        {
+            toggled.mainGameObject.transform.localScale *= itemScaleOnToggle;
+            toggled.Toggled = b;
+        } else
+        {
+            toggled.Toggled = b;
+        }
     }
 }

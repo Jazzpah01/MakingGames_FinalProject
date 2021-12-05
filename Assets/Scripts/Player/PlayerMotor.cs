@@ -8,16 +8,17 @@ public class PlayerMotor : MonoBehaviour
     Transform target;
     NavMeshAgent agent;
     PlayerManager playerManager;
+    PlayerController controller;
+
+    private PlayerData data;
+
+    public Animator animator;
 
     [HideInInspector]
     Camera cam;
 
     public float isoAngle = -45;
     public float maxVelocityChange = 10.0f;
-    public float dashCooldown;
-    public float dashLength;
-    public float dashSpeed;
-    public float attackDashLength;
 
     private LayerMask movementMask;
     private LayerMask actorMask;
@@ -27,21 +28,30 @@ public class PlayerMotor : MonoBehaviour
     private float dashTimer;
     private float distance = 999999;
 
+    [System.NonSerialized] public bool isMoving = false;
+    [System.NonSerialized] public bool blockMoving = false;
+
+    
 
     void Start()
     {
         playerManager = PlayerManager.instance;
+        controller = GetComponent<PlayerController>();
+
+        data = controller.data;
+
         agent = GetComponent<NavMeshAgent>();
         cam = playerManager.cam;
         movementMask = GetComponent<PlayerController>().movementMask;
         actorMask = GetComponent<PlayerController>().actorMask;
-        attackDashLength *= 0.001f;
     }
 
     private void FixedUpdate()
     {
         //dash cooldown
         dashTimer -= Time.fixedDeltaTime;
+
+        isMoving = false;
 
         //return if the pointer 
         if (InteractableUI.OnUI)
@@ -56,12 +66,13 @@ public class PlayerMotor : MonoBehaviour
         //dash or move
         if (Input.GetKey(KeyCode.Space) && 0 >= dashTimer && !dashing && !attacking)
         {
+            animator.SetTrigger("dash");
             //reset dash cooldown
-            dashTimer += dashCooldown;
+            dashTimer = data.dashCooldown;
             //dash
-            Dash(dashSpeed, dashLength);
+            Dash(data.dashSpeed, data.dashLength);
         }
-        else if (!dashing && !attacking)
+        else if (!dashing && !attacking && !blockMoving)
         {
             //read input keys
             MovementKeyInput();
@@ -101,16 +112,17 @@ public class PlayerMotor : MonoBehaviour
 
         Vector3 targetVelocity = new Vector3(directionX, 0, directionZ).normalized;
         targetVelocity *= agent.speed;
-
-        Vector3 velocityChange = targetVelocity;
-        velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
-        velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
-        velocityChange.y = 0;
+        targetVelocity.y = 0;
 
         Quaternion rotation = Quaternion.Euler(0, isoAngle, 0);
         Matrix4x4 rotaMatrix = Matrix4x4.Rotate(rotation);
 
-        agent.velocity = rotaMatrix.MultiplyPoint3x4(velocityChange);
+        agent.velocity = rotaMatrix.MultiplyPoint3x4(targetVelocity);
+
+        if (targetVelocity.magnitude > 0)
+        {
+            isMoving = true;
+        }
     }
 
     //attempt to dash, return false if dash fails
@@ -148,6 +160,8 @@ public class PlayerMotor : MonoBehaviour
         // find the point
         Vector3 position = (moveTo + transform.position);
 
+        float remainingDistance = dashLength;
+
         float d = Vector3.Distance(position, transform.position);
         distance = d;
         while (d > 1)
@@ -158,7 +172,7 @@ public class PlayerMotor : MonoBehaviour
                 break;
             }
             distance = d;
-            agent.velocity = moveTo * dashSpeed;
+            agent.velocity = moveTo * Mathf.Min(d, dashSpeed);
 
             yield return new WaitForSeconds(0.01f);
         }
@@ -167,9 +181,7 @@ public class PlayerMotor : MonoBehaviour
 
     public void TurnTowardsTarget(Vector3 target)
     {
-        //transform.rotation = Quaternion.LookRotation(new Vector3(target.x,0,target.z));
         agent.updateRotation = false;
         transform.rotation = Quaternion.LookRotation(new Vector3(target.x,0,target.z) - transform.position);
-        //transform.rotation = new Quaternion(0, Vector3.Angle(new Vector3(1, 0, 0), target - transform.position), 0, 0);
     }
 }

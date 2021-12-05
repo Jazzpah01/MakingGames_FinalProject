@@ -9,11 +9,11 @@ public class Base : MonoBehaviour, IActor
     public float maxHealth = 500;
     private float health;
 
-    public ActorType type => ActorType.Obstacle;
+    public ActorType actorType => ActorType.Obstacle;
 
     private float speed = 0;
-    public float Speed { get => speed; set { speed = value;}}
-    public float MaxHealth => maxHealth;
+    public float Speed { get; set; }
+    public float MaxHealth { get; set; }
 
     public float Health { get => health; 
         set
@@ -28,12 +28,18 @@ public class Base : MonoBehaviour, IActor
     }
 
     public bool blockDamage { get; set; }
-    public float damageReduction { get; set; }
+    public float damageModifyer { get; set; }
+    public float speedModifyer { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 
     private void Start()
     {
         health = maxHealth;
         gameController = GameManager.instance.gameController;
         blockDamage = false;
+    }
+
+    public bool isActorType(ActorType type)
+    {
+        return type.HasFlag(actorType);
     }
 }

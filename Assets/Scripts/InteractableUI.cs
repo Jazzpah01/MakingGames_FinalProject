@@ -32,10 +32,7 @@ public class InteractableUI : MonoBehaviour, IPointerClickHandler, IPointerEnter
     public MouseEvent OnClicked;
 
     [Header("Options")]
-    //[Tooltip("If enabled, then the highligh image will replace the default image.")]
-    //public bool replaceWithHighlight;
-    //[Tooltip("If enabled, then the toggle image will replace the default image and highlight image.")]
-    //public bool replaceWithToggledImage;
+    [Tooltip("Options defining whether toggle image or highlight image replaces original image.")]
     public InteractableUIOptions options = InteractableUIOptions.None;
     [Tooltip("If this is a button, specify the mouse buttons to use.")]
     public MouseClickEvent mouseButton = MouseClickEvent.None;
@@ -226,5 +223,13 @@ public class InteractableUI : MonoBehaviour, IPointerClickHandler, IPointerEnter
         toggled = false;
 
         SetHighlighted(false);
+    }
+
+    private void OnEnable()
+    {
+        if (!inside)
+        {
+            SetHighlighted(false);
+        }
     }
 }

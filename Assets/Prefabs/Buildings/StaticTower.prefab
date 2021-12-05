@@ -113,7 +113,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7482625429727328194
 Transform:
   m_ObjectHideFlags: 0
@@ -121,12 +121,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 415400073512205163}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalRotation: {x: 0.7071067, y: 0.000000030908616, z: -0.000000030908623, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0.013859996}
+  m_LocalScale: {x: 0.003, y: 0.0030000007, z: 0.0030000007}
   m_Children: []
-  m_Father: {fileID: 1065570057172380514}
-  m_RootOrder: 5
+  m_Father: {fileID: 7344396563774729581}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2092636374684204955
 MeshFilter:
@@ -411,7 +411,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2613454309904885838}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2834692135045452658
 MonoBehaviour:
@@ -548,7 +548,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1065570057172380514
 Transform:
   m_ObjectHideFlags: 0
@@ -565,9 +565,8 @@ Transform:
   - {fileID: 2113698014698713833}
   - {fileID: 8404447909920336419}
   - {fileID: 5362919134042993882}
-  - {fileID: 7482625429727328194}
   m_Father: {fileID: 2613454309904885838}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8336511832567206411
 GameObject:
@@ -673,10 +672,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2613454309904885838}
+  - component: {fileID: 8417107451701060552}
   - component: {fileID: 8487136533381545894}
   - component: {fileID: 8443509432160686943}
   - component: {fileID: 6183669311951482142}
-  - component: {fileID: 8417107451701060552}
   m_Layer: 9
   m_Name: StaticTower
   m_TagString: Untagged
@@ -698,11 +697,33 @@ Transform:
   - {fileID: 1923794051778195158}
   - {fileID: 1309791049706677273}
   - {fileID: 3999740662941586872}
+  - {fileID: 7344396563774729581}
   - {fileID: 1065570057172380514}
   - {fileID: 1582390785933738177}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8417107451701060552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9202268415749759745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cf6f44b9970b7c4d8f561050a107b58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingName: Static Tower
+  maxHealth: 200
+  speed: 0
+  healthbar: {fileID: 5239637589751290106}
+  spotlight: {fileID: 7006261208530420386}
+  setType: 2
+  data: {fileID: 11400000, guid: f91fd1c2ead33c244be4d591a062a26f, type: 2}
+  buildingProjections: {fileID: 1309791049706921081}
+  ignoreOnBuild: {fileID: 0}
 --- !u!114 &8487136533381545894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -716,15 +737,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   peak: {fileID: 415400073512205163}
-  projectile: {fileID: 2320750876935825114, guid: 171497534b7e3ea4e9e07e27cece2913,
-    type: 3}
   enemies: []
   distanceToClosestEnemy: 0
   closestEnemy: {fileID: 0}
   detectionCollision: {fileID: 2834692135045452658}
-  shootCooldown: 0.5
-  damage: 25
-  maxHealth: 200
 --- !u!208 &8443509432160686943
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -755,27 +771,6 @@ CapsuleCollider:
   m_Height: 2.5
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8417107451701060552
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9202268415749759745}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cf6f44b9970b7c4d8f561050a107b58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buildingName: Static Tower
-  maxHealth: 200
-  speed: 0
-  healthbar: {fileID: 5239637589751290106}
-  spotlight: {fileID: 7006261208530420386}
-  setType: 2
-  buildingProjections: {fileID: 1309791049706921081}
-  ignoreOnBuild: {fileID: 0}
-  actorType: 0
 --- !u!1001 &173506617180876765
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -941,6 +936,81 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 166266, guid: 18a7c69b9cdd0de48b0b27a3d39afcb3,
     type: 3}
   m_PrefabInstance: {fileID: 1309791049707083011}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7090408257282968198
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2613454309904885838}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 84ad67fc71cdea344b98653745340ee1,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 84ad67fc71cdea344b98653745340ee1,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 84ad67fc71cdea344b98653745340ee1,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.411
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 84ad67fc71cdea344b98653745340ee1,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 84ad67fc71cdea344b98653745340ee1,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 84ad67fc71cdea344b98653745340ee1,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 84ad67fc71cdea344b98653745340ee1,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.000000030908616
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 84ad67fc71cdea344b98653745340ee1,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.000000030908623
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 84ad67fc71cdea344b98653745340ee1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 84ad67fc71cdea344b98653745340ee1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 84ad67fc71cdea344b98653745340ee1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 84ad67fc71cdea344b98653745340ee1,
+        type: 3}
+      propertyPath: m_Name
+      value: ShootTower
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 84ad67fc71cdea344b98653745340ee1, type: 3}
+--- !u!4 &7344396563774729581 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 84ad67fc71cdea344b98653745340ee1,
+    type: 3}
+  m_PrefabInstance: {fileID: 7090408257282968198}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8033365428872903022
 PrefabInstance:
@@ -1121,12 +1191,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6547b7794ac741e4d884918d5e16c1b4, type: 3}
---- !u!224 &3999740662941586872 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 6412512043429981398, guid: 6547b7794ac741e4d884918d5e16c1b4,
-    type: 3}
-  m_PrefabInstance: {fileID: 8033365428872903022}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5239637589751290106 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2867334920193679764, guid: 6547b7794ac741e4d884918d5e16c1b4,
@@ -1139,3 +1203,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dac349888b7e8b49991417b443a98bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &3999740662941586872 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6412512043429981398, guid: 6547b7794ac741e4d884918d5e16c1b4,
+    type: 3}
+  m_PrefabInstance: {fileID: 8033365428872903022}
+  m_PrefabAsset: {fileID: 0}

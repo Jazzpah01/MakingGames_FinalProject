@@ -5,26 +5,26 @@ using UnityEngine.AI;
 
 public class Buildable : MonoBehaviour, IActor
 {
-    public string buildingName;
-    public float maxHealth;
-    public float speed = 0;
+    public BuildableData data;
+
+    private string buildingName;
+    private float maxHealth;
+    private float speed = 0;
     public HealthBar healthbar;
-    //public ProjectorController projectorController;
     public Light spotlight;
     public ActorType setType;
+
 
     public GameObject buildingProjections;
     public GameObject ignoreOnBuild;
 
-    public ActorType actorType;
-
     private float currentHealth;
     private IBuildingBehavior buildingBehavior;
 
-    public ActorType type => setType;
+    public ActorType actorType => setType;
 
-    public float Speed { get => speed; set { speed = value; } }
-    public float MaxHealth => maxHealth;
+    public float Speed { get; set; }
+    public float MaxHealth { get; set; }
     public float Health
     {
         get => currentHealth;
@@ -40,7 +40,8 @@ public class Buildable : MonoBehaviour, IActor
     }
 
     public bool blockDamage { get; set; }
-    public float damageReduction { get; set; }
+    public float damageModifyer { get; set; }
+    public float speedModifyer { get; set; }
 
     private void Awake()
     {
@@ -49,8 +50,12 @@ public class Buildable : MonoBehaviour, IActor
 
     private void Start()
     {
-        currentHealth = maxHealth;
+        MaxHealth = data.maxHealth;
+        currentHealth = MaxHealth;
+        Speed = data.speed;
+
         blockDamage = false;
+
         healthbar.textBox.text = buildingName;
         healthbar.SetHealthImageColour(Color.green);
     }
@@ -58,6 +63,11 @@ public class Buildable : MonoBehaviour, IActor
     private void Update()
     {
         
+    }
+
+    public bool isActorType(ActorType type)
+    {
+        return (type & actorType) != ActorType.None;
     }
 
     /// <summary>
@@ -113,6 +123,15 @@ public class Buildable : MonoBehaviour, IActor
     {
         if (buildingProjections != null)
             buildingProjections.SetActive(false);
+    }
+
+    /// <summary>
+    /// Set building type to update name.
+    /// </summary>
+    /// <param name="buildingType">Type of building.</param>
+    public void SetBuildingType(BuildingType buildingType)
+    {
+        buildingName = buildingType.name;
     }
 
     private void Die()

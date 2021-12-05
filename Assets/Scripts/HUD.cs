@@ -43,7 +43,7 @@ public class HUD : MonoBehaviour
 
     private void UpdateHUD()
     {
-        strategyHUD.gameObject.SetActive(!gameManager.inBattle);
-        playerHUD.gameObject.SetActive(gameManager.inBattle);
+        strategyHUD.gameObject.SetActive(gameManager.gameController.state == GameController.GameState.Strategy);
+        playerHUD.gameObject.SetActive(gameManager.gameController.state == GameController.GameState.Combat);
     }
 }

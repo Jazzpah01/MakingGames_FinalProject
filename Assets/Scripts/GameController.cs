@@ -24,7 +24,7 @@ public class GameController : MBStateMachine
     public GameObject player;
 
     public bool keyboardControl = false;
-    public GameState state = GameState.Strategy;
+    [System.NonSerialized] public GameState state = GameState.None;
     public GameObject enemyParent;
     public float buildTimer = 9001;
     public GameObject gameOverScreen;
@@ -39,6 +39,8 @@ public class GameController : MBStateMachine
     private PlayerManager playerManager;
     private GameManager gameManager;
     private HUD hUD;
+
+    private GameState oldState = GameState.None;
 
     public Base baseController;
 
@@ -56,7 +58,7 @@ public class GameController : MBStateMachine
         player = playerManager.player;
         playerController = playerManager.playerController;
 
-        ChangeState(state);
+        ChangeState(GameState.Strategy);
     }
 
     internal void GameOver()
@@ -69,6 +71,9 @@ public class GameController : MBStateMachine
 
     public void ChangeState(GameState newState)
     {
+        if (newState == state)
+            return;
+
         switch (newState)
         {
             case GameState.Combat: 
@@ -79,6 +84,10 @@ public class GameController : MBStateMachine
                     OnChangeToCombat();
                 break;
             case GameState.Strategy:
+                if (state == GameState.None)
+                {
+                    gameManager.currentResource = gameManager.roundResource;
+                }
                 if (!playerManager.buildWhileCombat)
                     player.SetActive(false);
                 base.ChangeState(buildingController);
@@ -95,15 +104,11 @@ public class GameController : MBStateMachine
     {
         if (!InWave && oldInWave)
         {
-            gameManager.resource += buildingController.roundResource;
+            gameManager.currentResource += gameManager.roundResource;
         }
         if (state == GameState.Combat)
         {
             if (InWave == false)
-            {
-                ChangeState(GameState.Strategy);
-                gameManager.inBattle = false;
-            } else if (Input.GetKeyDown(KeyCode.B) && playerManager.buildWhileCombat)
             {
                 ChangeState(GameState.Strategy);
             }
@@ -122,8 +127,7 @@ public class GameController : MBStateMachine
         if (oldInWave == false)
         {
             // Start wave
-            gameManager.inBattle = true;
-            spawnController.SpawnEnemies(nextWave);
+            spawnController.StartWave(nextWave);
             nextWave++;
             oldInWave = true;
         }

@@ -150,13 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
-  move:
-    speedModifyer: 1
-    stoppingDistance: 0.8
-  attack:
-    damage: 150
-    delay: 0.5
-    cooldown: 3
+  data: {fileID: 11400000, guid: 1d5b2e01b19b189498b8fdcdfb607891, type: 2}
   detectObstruction: {fileID: 1562670120480825331}
   detectAttack: {fileID: 6004581929075582031}
 --- !u!136 &1380614552679334418
