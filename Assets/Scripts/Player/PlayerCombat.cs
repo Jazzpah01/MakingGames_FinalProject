@@ -26,8 +26,8 @@ public class PlayerCombat : MonoBehaviour
     internal void UpdateCooldowns()
     {
         //update cooldowns
-        data.primaryAttackCooldown -= Time.deltaTime;
-        data.secondaryAttackCooldown -= Time.deltaTime;
+        primaryAttackCooldownHolder -= Time.deltaTime;
+        secondaryAttackCooldownHolder -= Time.deltaTime;
     }
     public bool PrimaryAttack(RaycastHit hit, LayerMask mask)
     {
@@ -48,8 +48,7 @@ public class PlayerCombat : MonoBehaviour
 
                     Instantiate(data.primaryHitParticlePrefab, hit.point, Quaternion.identity);
                 }));
-
-                data.primaryAttackCooldown = primaryAttackCooldownHolder;
+                primaryAttackCooldownHolder = data.primaryAttackCooldown;
                 return true;
             }
         }
@@ -58,30 +57,6 @@ public class PlayerCombat : MonoBehaviour
 
     public bool SecondaryAttack()
     {
-        StartCoroutine(DealAOEDamage());
-        return true;
-    }
-
-    public bool PrimaryAttackReady()
-    {
-        if (0 >= data.primaryAttackCooldown)
-            return true;
-        else
-            return false;
-    }
-
-    public bool SecondaryAttackReady()
-    {
-        if (0 >= data.secondaryAttackCooldown)
-            return true;
-        else
-            return false;
-    }
-
-    IEnumerator DealAOEDamage()
-    {
-        yield return new WaitForSeconds(0.01f);
-
         Collider[] collisions = secondaryObserver.Stay.ToArray();
         for (int i = 0; i < collisions.Length; i++)
         {
@@ -103,11 +78,26 @@ public class PlayerCombat : MonoBehaviour
                     {
                         Instantiate(data.secondaryHitParticlePrefab, hit.point, Quaternion.identity);
                     }
-                    //GameObject go = Instantiate(AOEEffect, transform.position, transform.localRotation);
-                    //go.transform.rotation = transform.rotation;
                 }));
-                data.secondaryAttackCooldown = secondaryAttackCooldownHolder;
+                secondaryAttackCooldownHolder = data.secondaryAttackCooldown;
             }
         }
+        return true;
+    }
+
+    public bool PrimaryAttackReady()
+    {
+        if (0 >= primaryAttackCooldownHolder)
+            return true;
+        else
+            return false;
+    }
+
+    public bool SecondaryAttackReady()
+    {
+        if (0 >= secondaryAttackCooldownHolder)
+            return true;
+        else
+            return false;
     }
 }

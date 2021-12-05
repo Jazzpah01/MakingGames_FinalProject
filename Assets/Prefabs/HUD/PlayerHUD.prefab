@@ -435,8 +435,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -43, y: -33.713196}
-  m_SizeDelta: {x: -84.2498, y: -30.9984}
+  m_AnchoredPosition: {x: -41.9409, y: -32.5839}
+  m_SizeDelta: {x: -83.8818, y: -28.7414}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6724336915108137327
 CanvasRenderer:
@@ -466,7 +466,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 7482667652216324306, guid: 6df43d8017f13914f927c2adae480731,
+    type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -736,7 +737,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 7482667652216324306, guid: 6df43d8017f13914f927c2adae480731,
+    type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -898,7 +900,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07f00537523104842ac646d2e515d84e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseController: {fileID: 0}
   playerHealthBar: {fileID: 6724336916483426721}
   baseHealthBar: {fileID: 6724336915038623495}
   baseHealthFill: {fileID: 6724336915108137326}

@@ -94,9 +94,6 @@ public class PlayerController : MonoBehaviour, IActor, IState
         //left click
         if (Input.GetMouseButton(0) && combat.PrimaryAttackReady())
         {
-            animator.SetBool("moving", false);
-            animator.SetTrigger("attack");
-            motor.blockMoving = true;
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
@@ -107,6 +104,9 @@ public class PlayerController : MonoBehaviour, IActor, IState
                 //attempt to do the attack
                 if (combat.PrimaryAttack(hit, actorMask))
                 {
+                    animator.SetBool("moving", false);
+                    animator.SetTrigger("attack");
+                    motor.blockMoving = true;
                     StartCoroutine(DelayedAbility(data.primaryDelay, delegate
                     {
                         //if attack is successful, dash
@@ -115,9 +115,6 @@ public class PlayerController : MonoBehaviour, IActor, IState
                         motor.blockMoving = false;
                     }));
                 }
-            } else
-            {
-                motor.blockMoving = false;
             }
         }
 
@@ -147,10 +144,6 @@ public class PlayerController : MonoBehaviour, IActor, IState
                         motor.blockMoving = false;
                     }));
                 }
-            }
-            else
-            {
-                motor.blockMoving = false;
             }
         }
     }
