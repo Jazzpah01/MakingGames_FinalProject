@@ -2395,7 +2395,7 @@ MonoBehaviour:
   - {fileID: 5426259652465888092}
   enemyParent: {fileID: 8178444715532291036}
   baseGO: {fileID: 8178444715087797868}
-  gameController: {fileID: 0}
+  gameController: {fileID: 8178444716690308236}
   levelManager: {fileID: 0}
 --- !u!1 &8955064277893087081
 GameObject:

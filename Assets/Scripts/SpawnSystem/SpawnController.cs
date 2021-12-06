@@ -18,8 +18,8 @@ public class SpawnController : MonoBehaviour
     public GameObject baseGO;
 
     private Projector projectorController;
-    public GameController gameController;
-    public LevelManager levelManager;
+    private GameController gameController;
+    private LevelManager levelManager;
 
     public int CurrentWave
     {

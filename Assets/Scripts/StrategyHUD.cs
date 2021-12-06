@@ -159,12 +159,12 @@ public class StrategyHUD : MonoBehaviour
 
         if (toggled.Toggled && !b)
         {
-            toggled.mainGameObject.transform.localScale /= itemScaleOnToggle;
+            toggled.mainGameObject.transform.localScale -= new Vector3(itemScaleOnToggle, itemScaleOnToggle, itemScaleOnToggle);
             toggled.Toggled = b;
             toggled = null;
         } else if (!toggled.Toggled && b)
         {
-            toggled.mainGameObject.transform.localScale *= itemScaleOnToggle;
+            toggled.mainGameObject.transform.localScale += new Vector3(itemScaleOnToggle, itemScaleOnToggle, itemScaleOnToggle);
             toggled.Toggled = b;
         } else
         {
