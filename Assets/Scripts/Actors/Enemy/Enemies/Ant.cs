@@ -8,6 +8,8 @@ using UnityEngine;
 public class Ant : AIStateMachine
 {
     public AntData data;
+    public Animator animator;
+    public GameObject model;
 
     public float range = 3;
 
@@ -30,6 +32,8 @@ public class Ant : AIStateMachine
 
         if (currentState == data.pathMove)
         {
+            animator.SetTrigger("Walking");
+            model.transform.LookAt(Target.gameObject.transform, Vector3.up);
             if (targetDistance <= range)
             {
                 ChangeState(data.instantAttack);
@@ -37,6 +41,8 @@ public class Ant : AIStateMachine
         } else 
         if (currentState == data.instantAttack)
         {
+            animator.SetTrigger("Walking");
+            model.transform.LookAt(Target.gameObject.transform);
             if (data.instantAttack.status == AIState.StateStatus.Finished &&
                 targetDistance > range)
             {
