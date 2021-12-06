@@ -11,7 +11,7 @@ public class StrategyHUD : MonoBehaviour
 
     public float offset = -10;
     public float contentChunkSize = 400;
-    public float itemSelectedScale;
+    public float itemScaleOnToggle;
 
     [Header("References")]
     public GameObject initialItemPrefab;
@@ -20,7 +20,8 @@ public class StrategyHUD : MonoBehaviour
     public float scrollStart, scrollEnd;
     public GameObject defendButton;
     public GameObject menuButton;
-    public float itemScaleOnToggle = 1;
+    public GameObject scrollUpButton;
+    public GameObject scrollDownButton;
     public BuildingDescription description;
     public GameObject pauseMenu;
 
@@ -44,6 +45,9 @@ public class StrategyHUD : MonoBehaviour
         // Setup buttons
         defendButton.GetComponentInChildren<InteractableUI>().OnClicked += delegate { DefendButton(); };
         menuButton.GetComponentInChildren<InteractableUI>().OnClicked += delegate { PauseButton(); };
+        scrollUpButton.GetComponentInChildren<InteractableUI>().OnClicked += delegate { ScrollUp(); };
+        scrollDownButton.GetComponentInChildren<InteractableUI>().OnClicked += delegate { ScrollDown(); };
+
         for (int i = 0; i < buildings.Count; i++)
         {
             //instantiate the item
@@ -69,7 +73,6 @@ public class StrategyHUD : MonoBehaviour
         }
     }
 
-
     private void Update()
     {
         if (!gameManager.buildingController.isBuilding && toggled != null)
@@ -81,7 +84,7 @@ public class StrategyHUD : MonoBehaviour
         Vector3 v = contentRT.transform.position;
         //TODO: find the best values here
         float scrollSize = 90*itemList.Count;
-        contentRT.transform.position = new Vector3(v.x,(scrollSize + (scrollSize*scrollbar.value)*-1) + 500, v.z);
+        contentRT.transform.position = new Vector3(v.x,(scrollSize + (scrollSize*scrollbar.value)*-1) + 550, v.z);
     }
     
     public void UpdateAlfa()
@@ -112,11 +115,9 @@ public class StrategyHUD : MonoBehaviour
     public void ButtonPressed(int index)
     {
         strategyController.SelectPrefab(buildings[index]);
-        if (toggled != null)
-        {
-            SetToggled(false);
-        }
 
+        SetToggled(false);
+        
         toggled = itemList[index].GetComponentInChildren<InteractableUI>();
         SetToggled(true);
         toggled.Toggled = true;
@@ -157,18 +158,32 @@ public class StrategyHUD : MonoBehaviour
         if (toggled == null)
             return;
 
-        if (toggled.Toggled && !b)
+        if (!b)
         {
-            toggled.mainGameObject.transform.localScale -= new Vector3(itemScaleOnToggle, itemScaleOnToggle, itemScaleOnToggle);
+            toggled.mainGameObject.transform.localScale /= itemScaleOnToggle;
             toggled.Toggled = b;
             toggled = null;
-        } else if (!toggled.Toggled && b)
+        }
+        else
         {
-            toggled.mainGameObject.transform.localScale += new Vector3(itemScaleOnToggle, itemScaleOnToggle, itemScaleOnToggle);
+            toggled.mainGameObject.transform.localScale *= itemScaleOnToggle;
             toggled.Toggled = b;
-        } else
+        }
+    }
+    public void ScrollUp()
+    {
+        scrollbar.value += 0.33f;
+        if (scrollbar.value > 1)
         {
-            toggled.Toggled = b;
+            scrollbar.value = 1;
+        }
+    }
+    public void ScrollDown()
+    {
+        scrollbar.value -= 0.33f;
+        if (scrollbar.value < 0)
+        {
+            scrollbar.value = 0;
         }
     }
 }

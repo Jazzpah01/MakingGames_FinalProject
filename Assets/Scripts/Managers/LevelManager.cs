@@ -8,7 +8,7 @@ public class LevelManager : MonoBehaviour
     public List<GameObject> levels;
     private int currentLevel;
     private GameObject level;
-    
+
     void Awake()
     {
         if (instance != null && instance != this)
@@ -22,17 +22,10 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         currentLevel = 0;
         loadFirstLevel();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     void loadFirstLevel()
@@ -43,10 +36,17 @@ public class LevelManager : MonoBehaviour
 
     public void loadNextLevel()
     {
-        Destroy(level);
-        GameObject lvl = Instantiate(levels[currentLevel+1]) as GameObject;
-        level = lvl;
+        if (currentLevel + 1 >= levels.Count)
+        {
+            Debug.Log("There are no more levels!");
+        }
+        else
+        {
+            Destroy(level);
+            GameObject lvl = Instantiate(levels[currentLevel + 1]) as GameObject;
+            level = lvl;
 
-        currentLevel += 1;
+            currentLevel += 1;
+        }
     }
 }

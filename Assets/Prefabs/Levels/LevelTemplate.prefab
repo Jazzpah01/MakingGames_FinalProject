@@ -597,7 +597,7 @@ MonoBehaviour:
   soundOn: 1
   musicOn: 1
   buildingTypes: {fileID: 11400000, guid: 1dd769dc9010f6f4790795d5fc1a5459, type: 2}
-  enemyTypes: {fileID: 11400000, guid: 4a503b5a67796034798d3ebc32d32d0e, type: 2}
+  enemyTypes: {fileID: 11400000, guid: a78ce7b5402e8264da4eab432e9ee96f, type: 2}
   gameController: {fileID: 8178444716690308236}
   spawnController: {fileID: 3756459245402022232}
   buildingController: {fileID: 7953258502569022335}
@@ -2395,8 +2395,6 @@ MonoBehaviour:
   - {fileID: 5426259652465888092}
   enemyParent: {fileID: 8178444715532291036}
   baseGO: {fileID: 8178444715087797868}
-  gameController: {fileID: 8178444716690308236}
-  levelManager: {fileID: 0}
 --- !u!1 &8955064277893087081
 GameObject:
   m_ObjectHideFlags: 0

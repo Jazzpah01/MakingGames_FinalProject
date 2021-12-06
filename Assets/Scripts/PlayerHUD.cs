@@ -8,17 +8,36 @@ public class PlayerHUD : MonoBehaviour
 {
     PlayerController playerController;
     GameManager gameManager;
+    Base baseController;
 
-    private Base baseController;
-    public Slider playerHealthBar;
-    public Slider baseHealthBar;
-    public Image baseHealthFill;
-    public Image playerHealthFill;
     public TextMeshProUGUI resourceCounter;
-    public float damageIndicatorTimer;
+    public Image playerHealthFill;
+    public Image baseHealthFill;
+    public float damageFlashDelay;
+    public Image playerHealthGlow;
+    public Image baseHealthGlow;
+    [Range(0, 100)]
+    [Header("The sum of all % damage taken to trigger glow effect (0-100% health)")]
+    public float playerTriggerGlowAmount;
+    [Range(0, 100)]
+    public float baseTriggerGlowAmount;
+    public float glowSpeedDelay;
+    public float glowCount;
 
-    private float oldBaseHealth;
     private float oldPlayerHealth;
+    private float oldBaseHealth;
+    private float playerDamageTaken;
+    private float baseDamageTaken;
+    private bool playerFlashCoroutine;
+    private bool baseFlashCoroutine;
+    private bool playerGlowCoroutine;
+    private bool baseGlowCoroutine;
+    private float playerGlowQueue;
+    private float baseGlowQueue;
+    private Coroutine playerFCoroutine;
+    private Coroutine baseFCoroutine;
+    private Coroutine playerGCoroutine;
+    private Coroutine baseGCoroutine;
 
     private void Start()
     {
@@ -27,42 +46,183 @@ public class PlayerHUD : MonoBehaviour
         baseController = GameController.instance.baseController;
         oldPlayerHealth = playerController.Health;
         oldBaseHealth = baseController.Health;
+        Color cp = playerHealthGlow.color;
+        cp.a = 0;
+        playerHealthGlow.color = cp;
+        Color cb = baseHealthGlow.color;
+        cb.a = 0;
+        baseHealthGlow.color = cb;
+        playerHealthFill.fillAmount = playerController.Health / playerController.MaxHealth;
+        baseHealthFill.fillAmount = baseController.Health / baseController.MaxHealth;
+    }
+
+    private void OnEnable()
+    {
+        Color cp = playerHealthGlow.color;
+        cp.a = 0;
+        playerHealthGlow.color = cp;
+        Color cb = baseHealthGlow.color;
+        cb.a = 0;
+        baseHealthGlow.color = cb;
     }
 
     private void Update()
     {
-        
-        // Update player values on the hud
-        if(oldPlayerHealth > playerController.Health)
+        // Update player UI
+        playerHealthFill.fillAmount = playerController.Health / playerController.MaxHealth;
+        if (oldPlayerHealth > playerController.Health)
         {
-            StartCoroutine(playerHealthBarDamageIndicator());
+            if (!playerFlashCoroutine)
+            {
+                playerFlashCoroutine = true;
+                playerFCoroutine = StartCoroutine(HealthBarFlashIndicator(playerHealthFill, false));
+            }
+            playerDamageTaken += (oldPlayerHealth - playerController.Health) / playerController.MaxHealth;
+            if (playerDamageTaken >= playerTriggerGlowAmount / 100)
+            {
+                if (!playerGlowCoroutine)
+                {
+                    playerGlowCoroutine = true;
+                    playerGCoroutine = StartCoroutine(HealthBarGlowIndicator(playerHealthGlow, false));
+                }
+                else
+                {
+                    playerGlowQueue++;
+                }
+            }
         }
-        playerHealthBar.value = playerController.Health / playerController.MaxHealth;
-        if(oldBaseHealth > baseController.Health)
-        {
-            StartCoroutine(baseHealthBarDamageIndicator());
-        }
-        baseHealthBar.value = baseController.Health / baseController.MaxHealth;
 
+        //Update base UI
+        baseHealthFill.fillAmount = baseController.Health / baseController.MaxHealth;
+        if (oldBaseHealth > baseController.Health)
+        {
+            if (!baseFlashCoroutine)
+            {
+                baseFlashCoroutine = true;
+                baseFCoroutine = StartCoroutine(HealthBarFlashIndicator(baseHealthFill, true));
+            }
+            baseDamageTaken += (oldBaseHealth - baseController.Health) / baseController.MaxHealth;
+            if (baseDamageTaken >= baseTriggerGlowAmount / 100)
+            {
+                if (!baseGlowCoroutine)
+                {
+                    baseGlowCoroutine = true;
+                    baseGCoroutine = StartCoroutine(HealthBarGlowIndicator(baseHealthGlow, true));
+                }
+                else
+                {
+                    baseGlowQueue++;
+                }
+            }
+        }
+
+        if (!playerGlowCoroutine && (playerGlowQueue > 0 || playerHealthFill.fillAmount < 0.2f))
+        {
+            playerGlowQueue--;
+            playerGlowCoroutine = true;
+            playerGCoroutine = StartCoroutine(HealthBarGlowIndicator(playerHealthGlow, false));
+        }
+        if (!baseGlowCoroutine && (baseGlowQueue > 0 || baseHealthFill.fillAmount < 0.2f))
+        {
+            baseGlowQueue--;
+            baseGlowCoroutine = true;
+            baseGCoroutine = StartCoroutine(HealthBarGlowIndicator(baseHealthGlow, true));
+        }
+
+        if (playerDamageTaken > 0 && playerDamageTaken < playerTriggerGlowAmount / 100)
+        {
+            playerDamageTaken -= Time.deltaTime * 0.01f;
+        }
+        else if (playerDamageTaken > playerTriggerGlowAmount / 100)
+        {
+            playerDamageTaken -= Time.deltaTime * 0.1f;
+        }
+
+        if (baseDamageTaken > 0 && baseDamageTaken < baseTriggerGlowAmount / 100)
+        {
+            baseDamageTaken -= Time.deltaTime * 0.01f;
+        }
+        else if (baseDamageTaken > baseTriggerGlowAmount / 100)
+        {
+            baseDamageTaken -= Time.deltaTime * 0.1f;
+        }
+
+        //resource text update
         resourceCounter.text = gameManager.currentResource.ToString();
 
-        oldBaseHealth = baseController.Health;
         oldPlayerHealth = playerController.Health;
+        oldBaseHealth = baseController.Health;
     }
 
-
-    
-    IEnumerator baseHealthBarDamageIndicator()
+    IEnumerator HealthBarFlashIndicator(Image healthbar, bool flagFalseIsPlayer)
     {
-        baseHealthFill.color = new Color32(255,0,0,255);
-        yield return new WaitForSeconds(damageIndicatorTimer);
-        baseHealthFill.color = new Color32(133,160,39,255);
+        Color c = healthbar.color;
+        healthbar.color = new Color32(255, 0, 0, 255);
+        yield return new WaitForSeconds(damageFlashDelay);
+        healthbar.color = c;
+        if (flagFalseIsPlayer)
+        {
+            baseFlashCoroutine = false;
+        }
+        else
+        {
+            playerFlashCoroutine = false;
+        }
     }
 
-    IEnumerator playerHealthBarDamageIndicator()
+    IEnumerator HealthBarGlowIndicator(Image glow, bool flagFalseIsPlayer)
     {
-        playerHealthFill.color = new Color32(255,0,0,255);
-        yield return new WaitForSeconds(damageIndicatorTimer);
-        playerHealthFill.color = new Color32(133,160,39,255);
+        Color c = glow.color;
+        bool direction = true;
+        float count = glowCount * 2;
+        while (true)
+        {
+            if (direction)
+                c.a += 0.01f;
+            else
+                c.a -= 0.01f;
+
+            glow.color = c;
+
+            if (glow.color.a >= 1 || glow.color.a <= 0)
+            {
+                direction = !direction;
+                count--;
+            }
+            if (count <= 0)
+            {
+                break;
+            }
+            yield return new WaitForSeconds(glowSpeedDelay);
+        }
+        c.a = 0;
+        glow.color = c;
+        if (flagFalseIsPlayer)
+        {
+            baseGlowCoroutine = false;
+        }
+        else
+        {
+            playerGlowCoroutine = false;
+        }
+    }
+    private void OnDisable()
+    {
+        if (playerFCoroutine != null)
+        {
+            StopCoroutine(playerFCoroutine);
+        }
+        if (baseFCoroutine != null)
+        {
+            StopCoroutine(baseFCoroutine);
+        }
+        if (playerGCoroutine != null)
+        {
+            StopCoroutine(playerGCoroutine);
+        }
+        if (baseGCoroutine != null)
+        {
+            StopCoroutine(baseGCoroutine);
+        }
     }
 }
