@@ -7,12 +7,13 @@ public class GameCursor : MonoBehaviour, IPointerEnterHandler
 {
     [Header("Cursor")]
     public Texture2D cursorTexture;
-    private CursorMode cursorMode = CursorMode.Auto;
+    public Vector2 offset;
+    private CursorMode cursorMode = CursorMode.ForceSoftware;
     private Vector2 hotSpot = Vector2.zero;
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
+        Cursor.SetCursor(cursorTexture, hotSpot + offset, cursorMode);
     }
 
     public void OnPointerExit()
