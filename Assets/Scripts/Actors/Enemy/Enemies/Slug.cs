@@ -12,6 +12,9 @@ public class Slug : AIStateMachine
     public CollisionObserver detectObstruction;
     public CollisionObserver detectAttack;
 
+    public Animator animator;
+    public GameObject model;
+
     private float range = 0;
 
     private void Start()
@@ -36,6 +39,8 @@ public class Slug : AIStateMachine
 
     private void Update()
     {
+            animator.SetTrigger("Walking");
+            model.transform.LookAt(Target.gameObject.transform, Vector3.up);
         if (currentState == data.directMove)
         {
             // Move state, data.move towards target

@@ -12,12 +12,12 @@ GameObject:
   - component: {fileID: 3207667558776173276}
   - component: {fileID: 6238878036510664774}
   m_Layer: 9
-  m_Name: Model
+  m_Name: Model(old)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8101417107238253837
 Transform:
   m_ObjectHideFlags: 0
@@ -30,7 +30,7 @@ Transform:
   m_LocalScale: {x: 4.1, y: 2.05, z: 4.1}
   m_Children: []
   m_Father: {fileID: 37723159699245344}
-  m_RootOrder: 0
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3207667558776173276
 MeshFilter:
@@ -113,10 +113,11 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 8101417107238253837}
+  - {fileID: 5494917170044118698}
   - {fileID: 5199958269474482671}
   - {fileID: 4946428553582093888}
   - {fileID: 1922102795844444260}
+  - {fileID: 8101417107238253837}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -135,8 +136,6 @@ MonoBehaviour:
   healthBar: {fileID: 7321637065923144998}
   deathEffect: {fileID: 192757836124602699, guid: f4dddb6fda5ba164eae37c20d9e8e544,
     type: 3}
-  maxHealth: 50
-  speed: 1
 --- !u!114 &8095194503222227595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,6 +152,8 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: 1d5b2e01b19b189498b8fdcdfb607891, type: 2}
   detectObstruction: {fileID: 1562670120480825331}
   detectAttack: {fileID: 6004581929075582031}
+  animator: {fileID: 7687309728775365276}
+  model: {fileID: 5118920011584175120}
 --- !u!136 &1380614552679334418
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -481,3 +482,118 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dac349888b7e8b49991417b443a98bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &5461572708012769601
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 37723159699245344}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: faf67a47cf7aa514682c2e1d669bd67b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: faf67a47cf7aa514682c2e1d669bd67b,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: faf67a47cf7aa514682c2e1d669bd67b,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: faf67a47cf7aa514682c2e1d669bd67b,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: faf67a47cf7aa514682c2e1d669bd67b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: faf67a47cf7aa514682c2e1d669bd67b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: faf67a47cf7aa514682c2e1d669bd67b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: faf67a47cf7aa514682c2e1d669bd67b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: faf67a47cf7aa514682c2e1d669bd67b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: faf67a47cf7aa514682c2e1d669bd67b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: faf67a47cf7aa514682c2e1d669bd67b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: faf67a47cf7aa514682c2e1d669bd67b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: faf67a47cf7aa514682c2e1d669bd67b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: faf67a47cf7aa514682c2e1d669bd67b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: faf67a47cf7aa514682c2e1d669bd67b,
+        type: 3}
+      propertyPath: m_Name
+      value: Model
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: faf67a47cf7aa514682c2e1d669bd67b, type: 3}
+--- !u!1 &5118920011584175120 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: faf67a47cf7aa514682c2e1d669bd67b,
+    type: 3}
+  m_PrefabInstance: {fileID: 5461572708012769601}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5494917170044118698 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: faf67a47cf7aa514682c2e1d669bd67b,
+    type: 3}
+  m_PrefabInstance: {fileID: 5461572708012769601}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &7687309728775365276
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5118920011584175120}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c94f8cfb43c5a9a48b3c992237c5fd7f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

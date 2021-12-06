@@ -9,6 +9,9 @@ public class Aphid : AIStateMachine
     public CollisionObserver detectCarrots;
     public CollisionObserver detectAttack;
 
+    public Animator animator;
+    public GameObject model;
+
     private bool inRange = false;
 
     protected void Start()
@@ -46,6 +49,8 @@ public class Aphid : AIStateMachine
 
     void Update()
     {
+            animator.SetTrigger("Walking");
+            model.transform.LookAt(Target.gameObject.transform, Vector3.up);
         if (Target.IsDestroyed())
         {
             inRange = false;

@@ -12,6 +12,7 @@ public class SlowingBuilding : MonoBehaviour, IBuildingBehavior
     Vector3 gasPosition;
 
     public GameObject slowGas;
+    public Animator animator;
 
     private GameManager gm;
 
@@ -36,6 +37,7 @@ public class SlowingBuilding : MonoBehaviour, IBuildingBehavior
         gastimer -= Time.deltaTime;
         if (walktimer > 0 && gm.gameController.state == GameController.GameState.Combat)
         {
+            animator.SetTrigger("Walking");
             walktimer -= Time.deltaTime;
             transform.Translate(Vector3.forward * (Time.deltaTime * data.speed));
         } else if (gm.gameController.state == GameController.GameState.Combat) {
