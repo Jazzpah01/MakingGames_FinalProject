@@ -594,7 +594,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialResource: 10
   roundResource: 10
-  soundOn: 1
+  sfxOn: 1
   musicOn: 1
   buildingTypes: {fileID: 11400000, guid: 1dd769dc9010f6f4790795d5fc1a5459, type: 2}
   enemyTypes: {fileID: 11400000, guid: a78ce7b5402e8264da4eab432e9ee96f, type: 2}
@@ -897,6 +897,14 @@ MonoBehaviour:
   strategyHUDPrefab: {fileID: 67306164153051362, guid: d5719cd863e7de34dbc76a41e98e2451,
     type: 3}
   levelDescriptionPrefab: {fileID: 230546139718779619, guid: 12ff4902b891c6a43ba5e7e65b057dff,
+    type: 3}
+  ingameMenuPrefab: {fileID: 6240392395814083437, guid: 023ac80f38a70ce459ad5f6a141a8008,
+    type: 3}
+  controlsPrefab: {fileID: 6240392395814083437, guid: 9602225339761934ca7b75519c531bba,
+    type: 3}
+  settingsPrefab: {fileID: 6240392395814083437, guid: 2284aed5c97f5ec499bb89dedbb1a61f,
+    type: 3}
+  creditsPrefab: {fileID: 6240392395814083437, guid: 58651f73cdba3cc4c851d0bdbfcf5ef3,
     type: 3}
 --- !u!222 &3868948587044871968
 CanvasRenderer:

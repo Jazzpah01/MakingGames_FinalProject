@@ -23,7 +23,6 @@ public class StrategyHUD : MonoBehaviour
     public GameObject scrollUpButton;
     public GameObject scrollDownButton;
     public BuildingDescription description;
-    public GameObject pauseMenu;
 
     private List<GameObject> itemList;
     private InteractableUI toggled;
@@ -39,14 +38,10 @@ public class StrategyHUD : MonoBehaviour
         gameManager = GameManager.instance;
         strategyController = gameManager.buildingController;
         buildings = gameManager.buildingTypes;
-        pauseMenu.SetActive(false);
 
 
         // Setup buttons
         defendButton.GetComponentInChildren<InteractableUI>().OnClicked += delegate { DefendButton(); };
-        menuButton.GetComponentInChildren<InteractableUI>().OnClicked += delegate { PauseButton(); };
-        scrollUpButton.GetComponentInChildren<InteractableUI>().OnClicked += delegate { ScrollUp(); };
-        scrollDownButton.GetComponentInChildren<InteractableUI>().OnClicked += delegate { ScrollDown(); };
 
         for (int i = 0; i < buildings.Count; i++)
         {
@@ -142,17 +137,12 @@ public class StrategyHUD : MonoBehaviour
         }
         GameController.instance.GoToBattle();
     }
-    public void PauseButton()
+
+    public void MenuButton()
     {
-        pauseMenu.SetActive(true);
-        Time.timeScale = 0;
+        GetComponentInParent<HUD>().IngameMenuButton();
     }
 
-    public void ResumeButton()
-    {
-        Time.timeScale = 1;
-        pauseMenu.SetActive(false);
-    }
     public void SetToggled(bool b)
     {
         if (toggled == null)

@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     [System.NonSerialized] public float currentResource;
 
     [Header("Sound")]
-    public bool soundOn = true;
+    public bool sfxOn = true;
     public bool musicOn = true;
 
     [Header("Level Data")]
