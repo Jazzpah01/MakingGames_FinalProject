@@ -32,6 +32,7 @@ public class PlayerCombat : MonoBehaviour
     public bool PrimaryAttack(RaycastHit hit, LayerMask mask)
     {
         primaryAttackCooldownHolder = data.primaryAttackCooldown;
+
         //if we left click on the actor mask
         if (primaryAttackObserver.Stay.Contains(hit.collider))
         {
@@ -45,6 +46,9 @@ public class PlayerCombat : MonoBehaviour
                     {
                         return;
                     }
+                    float h = actor.Health;
+                    float d = data.primaryAttackDamage;
+                    
                     actor.Health -= data.primaryAttackDamage;
 
                     Instantiate(data.primaryHitParticlePrefab, hit.point, Quaternion.identity);
