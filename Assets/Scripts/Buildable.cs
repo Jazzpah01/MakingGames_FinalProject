@@ -10,7 +10,6 @@ public class Buildable : MonoBehaviour, IActor, IBuildingCollider
     private string buildingName;
     private float maxHealth;
     private float speed = 0;
-    public ActorType setType;
 
     [Header("References")]
     public HealthBar healthbar;
@@ -26,7 +25,7 @@ public class Buildable : MonoBehaviour, IActor, IBuildingCollider
     private IBuildingRestrictions buildingRestrictions;
     private Rigidbody body;
 
-    public ActorType actorType => setType;
+    public ActorType actorType => data.actorType;
 
     public float Speed { get; set; }
     public float MaxHealth { get; set; }
@@ -106,7 +105,7 @@ public class Buildable : MonoBehaviour, IActor, IBuildingCollider
         {
             IgnoreInObject(ignoreOnBuild);
         }
-        if (body != null)
+        if (placementCollider != null)
         {
             body = placementCollider.gameObject.AddComponent<Rigidbody>();
             body.isKinematic = true;
@@ -212,8 +211,11 @@ public class Buildable : MonoBehaviour, IActor, IBuildingCollider
         {
             foreach (Collider collider in placementCollider.Stay)
             {
-                if (collider.gameObject.GetComponent<Buildable>() != null ||
-                    collider.gameObject.GetComponentInParent<Buildable>() != null)
+                Buildable colll = collider.gameObject.GetComponent<Buildable>();
+                Buildable parentcoll = collider.gameObject.GetComponentInParent<Buildable>();
+
+                if ((colll != null && colll.placementCollider.Collider == collider) ||
+                    (parentcoll != null && parentcoll.placementCollider.Collider == collider))
                 {
                     output.validPlacement = false;
                     break;

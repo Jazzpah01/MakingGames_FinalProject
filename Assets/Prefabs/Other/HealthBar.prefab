@@ -193,8 +193,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthbarWhite: {fileID: 2145726838508346206}
   healthbarRed: {fileID: 2723825508392442631}
-  smoothDelay: 0.00000001
-  smoothAmount: 0.0001
+  smoothDelay: 0.01
+  smoothAmount: 0.02
   textBox: {fileID: 6113590676959326265}
   heathImage: {fileID: 2723825508392442631}
 --- !u!1818360608 &420756184247553001

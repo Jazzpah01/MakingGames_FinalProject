@@ -7,7 +7,7 @@ public class BuildingWalkingInCircles : MonoBehaviour, IBuildingBehavior
 {
     double StartPos;
 
-    public float damage;
+    private float damage;
     public CollisionObserver detectionCollision;
     public CollisionObserver damagerCollision;
 

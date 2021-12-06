@@ -34,6 +34,13 @@ public class StaticTower : MonoBehaviour, IBuildingBehavior
         distanceToClosestEnemy = -1;
 
         GetComponentInChildren<Projector>().orthographicSize = data.range * 2 * 10 / 15;
+
+        
+    }
+
+    private void Start()
+    {
+        ((SphereCollider)detectionCollision.Collider).radius = data.range;
     }
 
     // Update is called once per frame

@@ -22,16 +22,14 @@ public class Enemy : MonoBehaviour, IEnemy
         get => health;
         set
         {
-            health = value;
-            //TODO: implement hiteffects
-            //PlayHitEffects();
-            if (health <= 0)
+            if (value <= 0)
             {
                 Instantiate(deathEffect, transform.position, Quaternion.identity);
                 Destroy(this.gameObject);
             }
-            else
+            else if (value != health)
             {
+                health = value;
                 healthBar.SetHealthbar(health / maxHealth);
             }
         }

@@ -40,6 +40,13 @@ public class Catapult : MonoBehaviour, IBuildingBehavior
         GetComponentInChildren<Projector>().orthographicSize = data.range * 2 * 10 / 15;
 
         distanceToClosestEnemy = -1;
+
+        
+    }
+
+    private void Start()
+    {
+        ((SphereCollider)detectionCollision.Collider).radius = data.range;
     }
 
     // Update is called once per frame

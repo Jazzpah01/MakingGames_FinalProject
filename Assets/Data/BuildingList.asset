@@ -72,6 +72,6 @@ MonoBehaviour:
       type: 3}
     containmentLayermask:
       serializedVersion: 2
-      m_Bits: 64
+      m_Bits: 1024
     description: big shooter
     icon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}

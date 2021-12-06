@@ -14,10 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 200
   speed: 5
+  range: 10
   pathMove:
     speedModifyer: 1
     stoppingDistance: 0.8
   instantAttack:
     damage: 5
     delay: 0.1
-    cooldown: 1
+    cooldown: 0.2

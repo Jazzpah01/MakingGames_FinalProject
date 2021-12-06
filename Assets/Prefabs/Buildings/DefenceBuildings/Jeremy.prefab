@@ -481,10 +481,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 641325662967931257}
+  - component: {fileID: 1936796131268378783}
   - component: {fileID: 641325662967931258}
   - component: {fileID: 641325662967931259}
   - component: {fileID: 641325662967931236}
-  - component: {fileID: 1936796131268378783}
   m_Layer: 9
   m_Name: Jeremy
   m_TagString: Untagged
@@ -510,9 +510,28 @@ Transform:
   - {fileID: 8287507953391518326}
   - {fileID: 641325662270382582}
   - {fileID: 641325663243885527}
+  - {fileID: 3966486807418213532}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1936796131268378783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 641325662967931237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cf6f44b9970b7c4d8f561050a107b58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: fcf147895377e4648a56a62b91a319ca, type: 2}
+  healthbar: {fileID: 1948593179552404295}
+  spotlight: {fileID: 2546444746254981868}
+  buildingProjections: {fileID: 2768994441708888399}
+  ignoreOnBuild: {fileID: 0}
+  placementCollider: {fileID: 7468060057193408285}
 --- !u!114 &641325662967931258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -525,7 +544,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dd1667fdf93433469494e2c97db1460, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
   detectionCollision: {fileID: 641325662270382576}
   damagerCollision: {fileID: 641325663243885521}
 --- !u!208 &641325662967931259
@@ -557,24 +575,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1936796131268378783
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 641325662967931237}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cf6f44b9970b7c4d8f561050a107b58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: fcf147895377e4648a56a62b91a319ca, type: 2}
-  healthbar: {fileID: 1948593179552404295}
-  spotlight: {fileID: 2546444746254981868}
-  setType: 2
-  buildingProjections: {fileID: 2768994441708888399}
-  ignoreOnBuild: {fileID: 0}
 --- !u!1 &641325663243885522
 GameObject:
   m_ObjectHideFlags: 0
@@ -632,6 +632,63 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &712593274797199013
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3966486807418213532}
+  - component: {fileID: 1543039019679205306}
+  - component: {fileID: 7468060057193408285}
+  m_Layer: 0
+  m_Name: PlacementCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3966486807418213532
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712593274797199013}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.3, y: 0.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 641325662967931257}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1543039019679205306
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712593274797199013}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 5.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7468060057193408285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712593274797199013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aca1a7eddd4d3fd46b9f72f76cc3ba8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4713820936187869756
 GameObject:
   m_ObjectHideFlags: 0
@@ -889,7 +946,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11939280, guid: 18a7c69b9cdd0de48b0b27a3d39afcb3, type: 3}
       propertyPath: m_OrthographicSize
-      value: 4
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18a7c69b9cdd0de48b0b27a3d39afcb3, type: 3}

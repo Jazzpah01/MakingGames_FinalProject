@@ -554,10 +554,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8063388511463166605}
+  - component: {fileID: 68957424773299569}
   - component: {fileID: 8063388511463166606}
   - component: {fileID: -3724557957165586548}
   - component: {fileID: 1206858166980829050}
-  - component: {fileID: 68957424773299569}
   m_Layer: 9
   m_Name: PlantResource
   m_TagString: Untagged
@@ -584,6 +584,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &68957424773299569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8063388511463166607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cf6f44b9970b7c4d8f561050a107b58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 416a97f82000d34479db223c943bcd75, type: 2}
+  healthbar: {fileID: 8520103144020020281}
+  spotlight: {fileID: 8565433613306034439}
+  buildingProjections: {fileID: 0}
+  ignoreOnBuild: {fileID: 0}
+  placementCollider: {fileID: 0}
 --- !u!114 &8063388511463166606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -627,24 +645,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 1, z: 0.5}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &68957424773299569
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8063388511463166607}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cf6f44b9970b7c4d8f561050a107b58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 416a97f82000d34479db223c943bcd75, type: 2}
-  healthbar: {fileID: 8520103144020020281}
-  spotlight: {fileID: 8565433613306034439}
-  setType: 2
-  buildingProjections: {fileID: 0}
-  ignoreOnBuild: {fileID: 0}
 --- !u!1 &8063388511527572908
 GameObject:
   m_ObjectHideFlags: 0
