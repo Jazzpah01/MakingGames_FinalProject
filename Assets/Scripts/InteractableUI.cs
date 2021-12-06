@@ -36,10 +36,13 @@ public class InteractableUI : MonoBehaviour, IPointerClickHandler, IPointerEnter
     public InteractableUIOptions options = InteractableUIOptions.None;
     [Tooltip("If this is a button, specify the mouse buttons to use.")]
     public MouseClickEvent mouseButton = MouseClickEvent.None;
+    public float scaleOnToggled;
 
     [Header("References")]
     [Tooltip("The main/parent GameObject of a UI element.")]
     public GameObject mainGameObject;
+
+    [Header("Optional")]
     public Image image;
     public GameObject highlightImage;
     public Image toggledImage;

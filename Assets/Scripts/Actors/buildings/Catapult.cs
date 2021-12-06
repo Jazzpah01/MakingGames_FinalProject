@@ -20,7 +20,7 @@ public class Catapult : MonoBehaviour, IBuildingBehavior
     private CatapultData data;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         buildable = GetComponent<Buildable>();
         data = (CatapultData)buildable.data;
@@ -36,6 +36,8 @@ public class Catapult : MonoBehaviour, IBuildingBehavior
         detectionCollision.Subscribe(Detection_Exit, CollisionObserver.CollisionType.Exit);
 
         animator = transform.GetChild(3).GetChild(0).GetComponent<Animator>();
+
+        GetComponentInChildren<Projector>().orthographicSize = data.range * 2 * 10 / 15;
 
         distanceToClosestEnemy = -1;
     }

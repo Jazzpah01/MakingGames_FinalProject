@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class BuildableData : ActorData
+public class PlacementCollider : IBuildingCollider
 {
-    public ActorType actorType;
+
 }

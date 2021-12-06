@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class BuildableData : ActorData
+public interface IBuildingCollider
 {
-    public ActorType actorType;
+
 }

@@ -17,7 +17,7 @@ public class StaticTower : MonoBehaviour, IBuildingBehavior
     private float timer;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         buildable = GetComponent<Buildable>();
 
@@ -32,6 +32,8 @@ public class StaticTower : MonoBehaviour, IBuildingBehavior
         detectionCollision.Subscribe(Detection_Exit, CollisionObserver.CollisionType.Exit);
 
         distanceToClosestEnemy = -1;
+
+        GetComponentInChildren<Projector>().orthographicSize = data.range * 2 * 10 / 15;
     }
 
     // Update is called once per frame

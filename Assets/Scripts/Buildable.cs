@@ -3,23 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Buildable : MonoBehaviour, IActor
+public class Buildable : MonoBehaviour, IActor, IBuildingCollider
 {
     public BuildableData data;
 
     private string buildingName;
     private float maxHealth;
     private float speed = 0;
-    public HealthBar healthbar;
-    public Light spotlight;
     public ActorType setType;
 
+    [Header("References")]
+    public HealthBar healthbar;
+    public Light spotlight;
 
+    [Header("Optional References")]
     public GameObject buildingProjections;
     public GameObject ignoreOnBuild;
+    public CollisionObserver placementCollider;
 
     private float currentHealth;
     private IBuildingBehavior buildingBehavior;
+    private IBuildingRestrictions buildingRestrictions;
+    private Rigidbody body;
 
     public ActorType actorType => setType;
 
@@ -46,10 +51,16 @@ public class Buildable : MonoBehaviour, IActor
     private void Awake()
     {
         buildingBehavior = GetComponent<IBuildingBehavior>();
+        buildingRestrictions = GetComponent<IBuildingRestrictions>();
+        if (placementCollider == null)
+            placementCollider = GetComponent<CollisionObserver>();
     }
 
     private void Start()
     {
+        if (placementCollider == null)
+            placementCollider = GetComponent<CollisionObserver>();
+
         MaxHealth = data.maxHealth;
         currentHealth = MaxHealth;
         Speed = data.speed;
@@ -95,6 +106,11 @@ public class Buildable : MonoBehaviour, IActor
         {
             IgnoreInObject(ignoreOnBuild);
         }
+        if (body != null)
+        {
+            body = placementCollider.gameObject.AddComponent<Rigidbody>();
+            body.isKinematic = true;
+        }
 
         buildingBehavior.enabled = true;
         healthbar.gameObject.SetActive(true);
@@ -112,6 +128,11 @@ public class Buildable : MonoBehaviour, IActor
     /// </summary>
     public void OnBuildingMode()
     {
+        if (placementCollider != null && placementCollider.gameObject != this.gameObject)
+        {
+            placementCollider.gameObject.SetActive(true);
+        }
+
         if (buildingProjections != null)
             buildingProjections.SetActive(true);
     }
@@ -121,6 +142,11 @@ public class Buildable : MonoBehaviour, IActor
     /// </summary>
     public void OnCombatMode()
     {
+        if (placementCollider != null && placementCollider.gameObject != this.gameObject)
+        {
+            placementCollider.gameObject.SetActive(false);
+        }
+
         if (buildingProjections != null)
             buildingProjections.SetActive(false);
     }
@@ -165,5 +191,40 @@ public class Buildable : MonoBehaviour, IActor
             ignoreParents.ignoreParentRotation = true;
             ignoreParents.ResetTransformValues();
         }
+    }
+
+    public PlacementOutput CheckPlacement()
+    {
+        PlacementOutput output = new PlacementOutput();
+        output.validPlacement = true;
+
+        if (placementCollider == null)
+        {
+            Debug.Log("No placement collider is set. Please set placement collider in Buildable of " + this.gameObject);
+            return output;
+        }
+
+        if (buildingRestrictions != null)
+        {
+            output = buildingRestrictions.CheckPlacement();
+        }
+        if (output.validPlacement && ((output.options & PlacementOptions.ReplaceDefaultRestrictions) == PlacementOptions.None))
+        {
+            foreach (Collider collider in placementCollider.Stay)
+            {
+                if (collider.gameObject.GetComponent<Buildable>() != null ||
+                    collider.gameObject.GetComponentInParent<Buildable>() != null)
+                {
+                    output.validPlacement = false;
+                    break;
+                }
+            }
+        }
+        return output;
+    }
+
+    public void SetValidPlacement(bool validity)
+    {
+        spotlight.gameObject.SetActive(!validity);
     }
 }

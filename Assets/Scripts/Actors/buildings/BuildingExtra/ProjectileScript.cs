@@ -52,7 +52,7 @@ public class ProjectileScript : MonoBehaviour
     public void setValue(float damage, float projectileSpeed)
     {
         this.damage = damage;
-        speed = projectileSpeed;
+        this.speed = projectileSpeed;
     }
     public void setTarget(GameObject t)
     {
