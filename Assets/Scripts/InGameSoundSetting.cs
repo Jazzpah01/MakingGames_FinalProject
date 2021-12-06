@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class InGameSoundSetting : MonoBehaviour
 {
-    public GameObject musicOn, musicOff, soundOn, soundOff;
+    public GameObject musicOn, musicOff, sfxOn, sfxOff;
     public Button musicButton, SFXButton;
 
     private GameManager gameManager;
@@ -17,8 +17,8 @@ public class InGameSoundSetting : MonoBehaviour
         gameManager = GameManager.instance;
         audioManager = AudioManager.instance;
 
-        soundOn.SetActive(gameManager.soundOn);
-        soundOff.SetActive(!gameManager.soundOn);
+        sfxOn.SetActive(gameManager.sfxOn);
+        sfxOff.SetActive(!gameManager.sfxOn);
         musicOn.SetActive(gameManager.musicOn);
         musicOff.SetActive(!gameManager.musicOn);
 
@@ -37,16 +37,16 @@ public class InGameSoundSetting : MonoBehaviour
         if (audioManager.GetSFXVolume()!=-80)
         {
             audioManager.SetSFXVolume(-80);
-            soundOn.SetActive(false);
-            soundOff.SetActive(true);
-            gameManager.soundOn = false;
+            sfxOn.SetActive(false);
+            sfxOff.SetActive(true);
+            gameManager.sfxOn = false;
         }
         else
         {
             audioManager.SetSFXVolume(0);
-            soundOn.SetActive(true);
-            soundOff.SetActive(false);
-            gameManager.soundOn = true;
+            sfxOn.SetActive(true);
+            sfxOff.SetActive(false);
+            gameManager.sfxOn = true;
         }
     }
 
