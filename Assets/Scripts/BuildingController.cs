@@ -84,11 +84,19 @@ public class BuildingController : MonoBehaviour, IState
                 }
                 else
                 {
+                    // Check placement conditions
+                    Buildable buildable = GO.GetComponent<Buildable>();
+                    PlacementOutput placement = buildable.CheckPlacement();
+                    if (!placement.validPlacement)
+                    {
+                        buildable.SetValidPlacement(false);
+                    }
+
                     //if the dummy-gameobject is within the containmentLayerMask
-                    if (Physics.Raycast(ray, out hit, 1000, containmentLayerMask))
+                    if (placement.validPlacement && Physics.Raycast(ray, out hit, 1000, containmentLayerMask))
                     {
                         //turn off spotlight
-                        GO.GetComponent<Buildable>().spotlight.enabled = false;
+                        buildable.SetValidPlacement(true);
 
                         // Transform dummy-gameobject to an actual building
                         if (Input.GetMouseButtonDown(0) && gameManager.currentResource >= currentCost)
@@ -105,7 +113,7 @@ public class BuildingController : MonoBehaviour, IState
                     else
                     {
                         //indication that GO cannot be placed here
-                        GO.GetComponent<Buildable>().spotlight.enabled = true;
+                        buildable.SetValidPlacement(false);
                     }
                 }
                 GO.transform.position = spawnpoint;
