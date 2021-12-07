@@ -9,9 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf8a98c26b8e5164d85969697351ab78, type: 3}
-  m_Name: Barricade
+  m_Script: {fileID: 11500000, guid: f13ff5bb856e72140bd802e3591619b1, type: 3}
+  m_Name: Spooder
   m_EditorClassIdentifier: 
-  maxHealth: 250
-  speed: 0
+  maxHealth: 100
+  speed: 3
   actorType: 4
+  speedModifyer: 0.53
+  damageModifyer: 0.54
+  webRadius: 5
+  damage: 10
+  attackCooldown: 1
+  attackDelay: 0.1

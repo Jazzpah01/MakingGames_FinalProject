@@ -9,11 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9044162582f8b6a43833fea0198c3a30, type: 3}
-  m_Name: Seed
+  m_Script: {fileID: 11500000, guid: a74149934aebb744b9f6883bf085657a, type: 3}
+  m_Name: Shooting Flower
   m_EditorClassIdentifier: 
   maxHealth: 100
   speed: 0
-  actorType: 16
-  resourceGain: 3
-  wavesToHarvest: 2
+  actorType: 4
+  damage: 20
+  range: 5
+  cooldown: 0.5
+  projectileSpeed: 9
+  projectilePrefab: {fileID: 2320750876935825114, guid: 171497534b7e3ea4e9e07e27cece2913,
+    type: 3}

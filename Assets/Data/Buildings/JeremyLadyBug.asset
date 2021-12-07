@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea729584ba282664a964b20428945b37, type: 3}
-  m_Name: CircleBuilding
+  m_Name: JeremyLadyBug
   m_EditorClassIdentifier: 
   maxHealth: 100
   speed: 4
