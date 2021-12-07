@@ -433,5 +433,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelManager
       objectReference: {fileID: 0}
+    - target: {fileID: 9173561768074434703, guid: 9e815b4cb1b334241927fcb9f008b2ca,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 08b5c95baeeddbe4dbc076918a026246, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e815b4cb1b334241927fcb9f008b2ca, type: 3}
