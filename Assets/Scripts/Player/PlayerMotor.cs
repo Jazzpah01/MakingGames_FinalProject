@@ -75,12 +75,6 @@ public class PlayerMotor : MonoBehaviour
 
     private void MovementKeyInput()
     {
-        //return if the pointer 
-        if (InteractableUI.OnUI)
-        {
-            return;
-        }
-
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             directionZ = -1;
