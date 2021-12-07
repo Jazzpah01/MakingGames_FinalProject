@@ -92,6 +92,7 @@ public class GameController : MBStateMachine
                 base.ChangeState(buildingController);
                 if (OnChangeToBuilding != null)
                     OnChangeToBuilding();
+                    gameManager.waveBuildingList.Clear();
                 break;
             default:
                 throw new System.Exception("Cannot have None state!");

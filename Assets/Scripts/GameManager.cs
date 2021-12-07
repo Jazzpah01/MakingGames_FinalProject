@@ -1,4 +1,4 @@
-using System.Collections;
+    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -29,10 +29,13 @@ public class GameManager : MonoBehaviour
     public BuildingController buildingController;
     public HUD hud;
 
+    public List<(GameObject GO, float Cost)> waveBuildingList;
+
 
     void Awake()
     {
         instance = this;
+        waveBuildingList = new List<(GameObject GO, float Cost)>();
     }
 
     private void Start()
