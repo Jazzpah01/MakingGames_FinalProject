@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class BuildingType
@@ -11,4 +12,5 @@ public class BuildingType
     public LayerMask containmentLayermask;
     public string description = "";
     public Sprite icon;
+    public Sprite descriptionItemImage;
 }
