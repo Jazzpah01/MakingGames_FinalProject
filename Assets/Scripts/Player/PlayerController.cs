@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour, IActor, IState
             health = value;
             if (health <= 0)
             {
+                animator.SetTrigger("dead");
                 gameController.GameOver();
             }
         }
