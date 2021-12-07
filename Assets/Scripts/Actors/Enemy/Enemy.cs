@@ -8,7 +8,6 @@ public class Enemy : MonoBehaviour, IEnemy
     public HealthBar healthBar;
     public GameObject deathEffect;
 
-    private float maxHealth;
     private float health;
 
     public EnemyType enemyType { get; set; }
@@ -30,7 +29,7 @@ public class Enemy : MonoBehaviour, IEnemy
             else if (value != health)
             {
                 health = value;
-                healthBar.SetHealthbar(health / maxHealth);
+                healthBar.SetHealthbar(health / MaxHealth);
             }
         }
     }
@@ -44,5 +43,10 @@ public class Enemy : MonoBehaviour, IEnemy
     public bool isActorType(ActorType type)
     {
         return (type & actorType) != ActorType.None;
+    }
+
+    private void Start()
+    {
+        healthBar.SetHealthImageColour(Color.red);
     }
 }
