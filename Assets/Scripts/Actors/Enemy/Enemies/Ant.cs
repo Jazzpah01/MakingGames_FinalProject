@@ -33,7 +33,7 @@ public class Ant : AIStateMachine
         if (currentState == data.pathMove)
         {
             animator.SetTrigger("Walking");
-            model.transform.LookAt(Target.gameObject.transform, Vector3.up);
+            this.transform.LookAt(Target.gameObject.transform, Vector3.up);
             if (targetDistance <= data.range)
             {
                 ChangeState(data.instantAttack);
@@ -42,7 +42,7 @@ public class Ant : AIStateMachine
         if (currentState == data.instantAttack)
         {
             animator.SetTrigger("Walking");
-            model.transform.LookAt(Target.gameObject.transform, Vector3.up);
+            this.transform.LookAt(Target.gameObject.transform, Vector3.up);
             if (data.instantAttack.status == AIState.StateStatus.Finished &&
                 targetDistance > data.range)
             {

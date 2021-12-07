@@ -35,7 +35,7 @@ public class SlowGas : MonoBehaviour
 
         if (actor.isActorType(ActorType.Enemy))
         {
-            actor.speedModifyer *= speedModifyer;
+            actor.speedModifyer = speedModifyer;
             //Utility.DelayedAbility(0.5f, delegate
             //{
             //    actor.speedModifyer /= speedModifyer;
@@ -51,7 +51,7 @@ public class SlowGas : MonoBehaviour
 
         if (actor.isActorType(ActorType.Enemy))
         {
-            actor.speedModifyer /= speedModifyer;
+            actor.speedModifyer = 1;
         }
     }
 
