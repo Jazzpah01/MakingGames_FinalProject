@@ -172,14 +172,6 @@ public class BuildingController : MonoBehaviour, IState
         }
     }
 
-    void Update()
-    {
-        if (Input.GetButtonDown("Undo"))
-        {
-            Undo();
-        }
-    }
-
     public void Undo()
     {
         int listSize = gameManager.waveBuildingList.Count;
