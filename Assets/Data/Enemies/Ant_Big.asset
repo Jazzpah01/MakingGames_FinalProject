@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3efdabea1c1870447a8d8960722664d9, type: 3}
-  m_Name: Ant 1
+  m_Name: Ant_Big
   m_EditorClassIdentifier: 
   maxHealth: 250
   speed: 6
