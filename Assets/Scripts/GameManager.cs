@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     public GameController gameController;
     public SpawnController spawnController;
     public BuildingController buildingController;
+    public HUD hud;
 
 
     void Awake()

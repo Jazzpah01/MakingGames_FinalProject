@@ -601,6 +601,7 @@ MonoBehaviour:
   gameController: {fileID: 8178444716690308236}
   spawnController: {fileID: 3756459245402022232}
   buildingController: {fileID: 7953258502569022335}
+  hud: {fileID: 700808372006470443}
 --- !u!1 &3435015025979312389
 GameObject:
   m_ObjectHideFlags: 0
@@ -854,8 +855,8 @@ GameObject:
   - component: {fileID: 3868948587044871970}
   - component: {fileID: 700808372006470443}
   - component: {fileID: 3868948587044871968}
-  - component: {fileID: 8306222174027330913}
   - component: {fileID: 3556229942685003506}
+  - component: {fileID: 669999993867383817}
   m_Layer: 5
   m_Name: HUD
   m_TagString: Untagged
@@ -908,6 +909,7 @@ MonoBehaviour:
     type: 3}
   creditsPrefab: {fileID: 6240392395814083437, guid: 58651f73cdba3cc4c851d0bdbfcf5ef3,
     type: 3}
+  mouseOver: 0
 --- !u!222 &3868948587044871968
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -916,7 +918,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3868948587044871965}
   m_CullTransparentMesh: 1
---- !u!114 &8306222174027330913
+--- !u!114 &3556229942685003506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3868948587044871965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba3a76a45974481468ddbee6b9860df9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorTexture: {fileID: 2800000, guid: 9425c38487d612e4880b266d0f7275c6, type: 3}
+  offset: {x: 20, y: 20}
+--- !u!114 &669999993867383817
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -946,20 +962,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3556229942685003506
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3868948587044871965}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba3a76a45974481468ddbee6b9860df9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cursorTexture: {fileID: 2800000, guid: 9425c38487d612e4880b266d0f7275c6, type: 3}
-  offset: {x: 20, y: 20}
 --- !u!1 &3964203082705723982
 GameObject:
   m_ObjectHideFlags: 0

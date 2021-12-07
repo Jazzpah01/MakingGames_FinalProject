@@ -29,7 +29,6 @@ public class GameController : MBStateMachine
     public float buildTimer = 9001;
     public GameObject gameOverScreen;
 
-    public HUD hUD;
     public bool InWave => spawnController.InWave;
     private bool oldInWave = false;
     private int nextWave = 0;
@@ -39,6 +38,7 @@ public class GameController : MBStateMachine
     private PlayerController playerController;
     private PlayerManager playerManager;
     private GameManager gameManager;
+    public HUD hud;
 
     public Base baseController;
 
@@ -55,6 +55,7 @@ public class GameController : MBStateMachine
         buildingController = gameManager.buildingController;
         player = playerManager.player;
         playerController = playerManager.playerController;
+        hud = gameManager.hud;
 
         ChangeState(GameState.Strategy);
     }
@@ -109,7 +110,7 @@ public class GameController : MBStateMachine
             if (InWave == false)
             {
                 ChangeState(GameState.Strategy);
-                hUD.UpdateHUD();
+                hud.UpdateHUD();
             }
         }
         else if (state == GameState.Strategy)
@@ -130,7 +131,7 @@ public class GameController : MBStateMachine
             oldInWave = true;
         }
         ChangeState(GameState.Combat);
-        hUD.UpdateHUD();
+        hud.UpdateHUD();
     }
 
     public int getNextWave()

@@ -23,6 +23,7 @@ public class StrategyHUD : MonoBehaviour
     public GameObject scrollUpButton;
     public GameObject scrollDownButton;
     public BuildingDescription description;
+    public Button sdfds;   
 
     private List<GameObject> itemList;
     private InteractableUI toggled;
@@ -76,7 +77,7 @@ public class StrategyHUD : MonoBehaviour
         }
         UpdateAlfa();
 
-        if (InteractableUI.OnUI)
+        if (GetComponentInParent<HUD>().mouseOver)
         {
            Scroll(Input.GetAxis("Mouse ScrollWheel"));
         }
