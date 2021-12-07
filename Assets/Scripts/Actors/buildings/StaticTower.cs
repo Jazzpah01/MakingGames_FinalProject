@@ -47,6 +47,10 @@ public class StaticTower : MonoBehaviour, IBuildingBehavior
     void Update()
     {
         timer += Time.deltaTime;
+        if(closestEnemy != null)
+        {
+            transform.LookAt(closestEnemy.transform);
+        }
     }
 
     void shoot()
