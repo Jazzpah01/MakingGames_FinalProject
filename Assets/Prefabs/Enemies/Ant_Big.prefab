@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
-  data: {fileID: 11400000, guid: 7652f37b6cfab3c4585988c309a76d8c, type: 2}
+  data: {fileID: 11400000, guid: a15cd3d4137c2ed4581f8b05607c43a1, type: 2}
   animator: {fileID: 2840825274711999822}
   model: {fileID: 5538551155886659121}
 --- !u!136 &1380614552679334418

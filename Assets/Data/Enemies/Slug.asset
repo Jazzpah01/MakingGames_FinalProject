@@ -18,6 +18,6 @@ MonoBehaviour:
     speedModifyer: 1
     stoppingDistance: 0.8
   instantAttack:
-    damage: 10
+    damage: 7
     delay: 0.4
     cooldown: 1

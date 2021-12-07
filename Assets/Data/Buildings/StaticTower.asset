@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   speed: 0
-  actorType: 0
+  actorType: 4
   damage: 20
   range: 5
   cooldown: 0.5

@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   speed: 0
+  actorType: 16
   resourceGain: 3
   wavesToHarvest: 2

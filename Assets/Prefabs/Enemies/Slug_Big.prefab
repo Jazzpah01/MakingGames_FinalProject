@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
-  data: {fileID: 11400000, guid: 1d5b2e01b19b189498b8fdcdfb607891, type: 2}
+  data: {fileID: 11400000, guid: d5154a3aa95a7614188696cca8a8cea1, type: 2}
   detectObstruction: {fileID: 1562670120480825331}
   detectAttack: {fileID: 6004581929075582031}
   animator: {fileID: 7687309728775365276}
