@@ -157,6 +157,7 @@ public class BuildingController : MonoBehaviour, IState
     private void SpawnPrefab()
     {
         gameManager.currentResource -= currentCost;
+        gameManager.waveBuildingList.Add((GO.gameObject, currentCost));
         GO.GetComponent<Buildable>().OnBuild();
         ChangeGOAlfa(1);
         GO = null;
@@ -168,6 +169,22 @@ public class BuildingController : MonoBehaviour, IState
         {
             Destroy(GO);
             GO = null;
+        }
+    }
+
+    public void Undo()
+    {
+        int listSize = gameManager.waveBuildingList.Count;
+        if(listSize > 0)
+        {  
+            var element = gameManager.waveBuildingList[listSize - 1];
+
+            gameManager.currentResource += element.Cost;
+            
+            element.GO.IsDestroyed();
+            Destroy(element.GO);
+
+            gameManager.waveBuildingList.Remove(element);
         }
     }
 
@@ -186,4 +203,6 @@ public class BuildingController : MonoBehaviour, IState
         isBuilding = false;
         RemoveDummy();
     }
+
+
 }

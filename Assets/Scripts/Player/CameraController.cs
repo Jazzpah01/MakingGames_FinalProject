@@ -14,10 +14,13 @@ public class CameraController : MonoBehaviour
 
     private float currentZoom = 10f;
 
+    HUD hud;
+
     private void Start()
     {
         currentZoom = startZoom;
         target = PlayerManager.instance.player.transform;
+        hud = GameManager.instance.hud;
     }
 
     void LateUpdate()
@@ -27,7 +30,10 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        currentZoom -= Input.GetAxis("Mouse ScrollWheel")*zoomSpeed;
-        currentZoom = Mathf.Clamp(currentZoom,minZoom,maxZoom);
+        if (!hud.mouseOver)
+        {
+            currentZoom -= Input.GetAxis("Mouse ScrollWheel")*zoomSpeed;
+            currentZoom = Mathf.Clamp(currentZoom,minZoom,maxZoom);
+        }
     }
 }

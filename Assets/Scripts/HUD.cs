@@ -21,6 +21,8 @@ public class HUD : MonoBehaviour
     private GameObject settingsUI;
     private GameObject creditsUI;
 
+    [HideInInspector]
+    public bool mouseOver; 
 
     GameManager gameManager;
 

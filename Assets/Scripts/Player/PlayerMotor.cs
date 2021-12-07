@@ -36,14 +36,12 @@ public class PlayerMotor : MonoBehaviour
     void Start()
     {
         playerManager = PlayerManager.instance;
-        controller = GetComponent<PlayerController>();
-
+        controller = playerManager.playerController;
         data = controller.data;
-
         agent = GetComponent<NavMeshAgent>();
         cam = playerManager.cam;
-        movementMask = GetComponent<PlayerController>().movementMask;
-        actorMask = GetComponent<PlayerController>().actorMask;
+        movementMask = controller.movementMask;
+        actorMask = controller.actorMask;
     }
 
     private void FixedUpdate()
@@ -53,18 +51,12 @@ public class PlayerMotor : MonoBehaviour
 
         isMoving = false;
 
-        //return if the pointer 
-        if (InteractableUI.OnUI)
-        {
-            return;
-        }
-
         //reset direction variables so we return to standing still
         directionX = 0;
         directionZ = 0;
 
         //dash or move
-        if (Input.GetKey(KeyCode.Space) && 0 >= dashTimer && !dashing && !attacking)
+        if (Input.GetKey(KeyCode.Space) && 0 >= dashTimer && !dashing && !attacking && !InteractableUI.OnUI)
         {
             animator.SetTrigger("dash");
             //reset dash cooldown
@@ -83,12 +75,6 @@ public class PlayerMotor : MonoBehaviour
 
     private void MovementKeyInput()
     {
-        //return if the pointer 
-        if (InteractableUI.OnUI)
-        {
-            return;
-        }
-
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             directionZ = -1;

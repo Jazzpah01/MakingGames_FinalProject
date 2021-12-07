@@ -76,6 +76,10 @@ public class StrategyHUD : MonoBehaviour
         }
         UpdateAlfa();
 
+        if (GetComponentInParent<HUD>().mouseOver)
+        {
+           Scroll(Input.GetAxis("Mouse ScrollWheel"));
+        }
         Vector3 v = contentRT.transform.position;
         //TODO: find the best values here
         float scrollSize = 90*itemList.Count;
@@ -162,18 +166,23 @@ public class StrategyHUD : MonoBehaviour
     }
     public void ScrollUp()
     {
-        scrollbar.value += 0.33f;
-        if (scrollbar.value > 1)
-        {
-            scrollbar.value = 1;
-        }
+        Scroll(0.33f);
     }
     public void ScrollDown()
     {
-        scrollbar.value -= 0.33f;
+        Scroll(-0.33f);
+    }
+
+    public void Scroll(float value)
+    {
+        scrollbar.value += value;
         if (scrollbar.value < 0)
         {
             scrollbar.value = 0;
+        }
+        if (scrollbar.value > 1)
+        {
+            scrollbar.value = 1;
         }
     }
 }
