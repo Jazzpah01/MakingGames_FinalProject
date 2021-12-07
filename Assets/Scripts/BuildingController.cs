@@ -86,10 +86,15 @@ public class BuildingController : MonoBehaviour, IState
                 {
                     // Check placement conditions
                     Buildable buildable = GO.GetComponent<Buildable>();
-                    PlacementOutput placement = buildable.CheckPlacement();
+                    PlacementOutput placement = buildable.CheckPlacement(ray);
                     if (!placement.validPlacement)
                     {
                         buildable.SetValidPlacement(false);
+                    }
+
+                    if ((placement.options & PlacementOptions.OverridePosition) != PlacementOptions.None)
+                    {
+                        GO.transform.position = placement.position;
                     }
 
                     //if the dummy-gameobject is within the containmentLayerMask

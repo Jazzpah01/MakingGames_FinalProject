@@ -192,7 +192,7 @@ public class Buildable : MonoBehaviour, IActor, IBuildingCollider
         }
     }
 
-    public PlacementOutput CheckPlacement()
+    public PlacementOutput CheckPlacement(Ray ray)
     {
         PlacementOutput output = new PlacementOutput();
         output.validPlacement = true;
@@ -205,7 +205,7 @@ public class Buildable : MonoBehaviour, IActor, IBuildingCollider
 
         if (buildingRestrictions != null)
         {
-            output = buildingRestrictions.CheckPlacement();
+            output = buildingRestrictions.CheckPlacement(ray);
         }
         if (output.validPlacement && ((output.options & PlacementOptions.ReplaceDefaultRestrictions) == PlacementOptions.None))
         {
