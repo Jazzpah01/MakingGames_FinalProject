@@ -9,6 +9,7 @@ public class UIBuildingItem : MonoBehaviour
     [Header("References")]
     [SerializeField] private TextMeshProUGUI name;
     [SerializeField] private TextMeshProUGUI cost;
+    public Image icon;
 
     private BuildingType type;
     public BuildingType Type { get => type;
@@ -18,7 +19,8 @@ public class UIBuildingItem : MonoBehaviour
 
             name.text = type.name;
             cost.text = type.cost.ToString();
-            //icon.sprite = type.icon;
+            icon.sprite = type.icon;
         }
     }
+
 }
