@@ -27,7 +27,10 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        currentZoom -= Input.GetAxis("Mouse ScrollWheel")*zoomSpeed;
-        currentZoom = Mathf.Clamp(currentZoom,minZoom,maxZoom);
+        if (!InteractableUI.OnUI)
+        {
+            currentZoom -= Input.GetAxis("Mouse ScrollWheel")*zoomSpeed;
+            currentZoom = Mathf.Clamp(currentZoom,minZoom,maxZoom);
+        }
     }
 }
