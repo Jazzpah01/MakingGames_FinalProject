@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour, IActor, IState
         get => health; set
         {
             health = value;
+            animator.SetTrigger("damaged");
             if (health <= 0)
             {
                 animator.SetTrigger("dead");
