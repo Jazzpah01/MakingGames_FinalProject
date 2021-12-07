@@ -52,6 +52,7 @@ public class PlayerCombat : MonoBehaviour
                     actor.Health -= data.primaryAttackDamage;
 
                     Instantiate(data.primaryHitParticlePrefab, hit.point, Quaternion.identity);
+                    return;
                 }));
                 return true;
             }

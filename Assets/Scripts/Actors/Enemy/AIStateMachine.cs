@@ -54,6 +54,8 @@ public abstract class AIStateMachine : MBStateMachine
         controller = GetComponent<IActor>();
         agent = GetComponent<NavMeshAgent>();
 
+        print("" + data.maxHealth);
+
         controller.MaxHealth = data.maxHealth;
         controller.Health = data.maxHealth;
         controller.Speed = data.speed;
