@@ -164,7 +164,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 2.12
+  m_Radius: 2.6
   m_Height: 2.57
   m_Direction: 1
   m_Center: {x: 0, y: 1.27, z: 0}
@@ -177,7 +177,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 797109595003254403}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 1
+  m_Radius: 2.6
   m_Speed: 7
   m_Acceleration: 8
   avoidancePriority: 50
@@ -339,18 +339,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 420756184247553001, guid: 6547b7794ac741e4d884918d5e16c1b4,
         type: 3}
+      propertyPath: m_TranslationAtRest.x
+      value: 0.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 420756184247553001, guid: 6547b7794ac741e4d884918d5e16c1b4,
+        type: 3}
       propertyPath: m_TranslationAtRest.y
-      value: 4.3
+      value: 3.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 420756184247553001, guid: 6547b7794ac741e4d884918d5e16c1b4,
+        type: 3}
+      propertyPath: m_TranslationAtRest.z
+      value: -1.19
       objectReference: {fileID: 0}
     - target: {fileID: 420756184247553001, guid: 6547b7794ac741e4d884918d5e16c1b4,
         type: 3}
       propertyPath: m_TranslationOffset.x
-      value: 0
+      value: 0.03147287
       objectReference: {fileID: 0}
     - target: {fileID: 420756184247553001, guid: 6547b7794ac741e4d884918d5e16c1b4,
         type: 3}
       propertyPath: m_TranslationOffset.y
-      value: 4.3
+      value: 1.1809301
+      objectReference: {fileID: 0}
+    - target: {fileID: 420756184247553001, guid: 6547b7794ac741e4d884918d5e16c1b4,
+        type: 3}
+      propertyPath: m_TranslationOffset.z
+      value: -0.047294497
       objectReference: {fileID: 0}
     - target: {fileID: 453667417665990411, guid: 6547b7794ac741e4d884918d5e16c1b4,
         type: 3}
@@ -420,7 +435,7 @@ PrefabInstance:
     - target: {fileID: 6412512043429981398, guid: 6547b7794ac741e4d884918d5e16c1b4,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1.19
       objectReference: {fileID: 0}
     - target: {fileID: 6412512043429981398, guid: 6547b7794ac741e4d884918d5e16c1b4,
         type: 3}
@@ -445,12 +460,12 @@ PrefabInstance:
     - target: {fileID: 6412512043429981398, guid: 6547b7794ac741e4d884918d5e16c1b4,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 0.14
       objectReference: {fileID: 0}
     - target: {fileID: 6412512043429981398, guid: 6547b7794ac741e4d884918d5e16c1b4,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 4.3
+      value: 3.46
       objectReference: {fileID: 0}
     - target: {fileID: 6412512043429981398, guid: 6547b7794ac741e4d884918d5e16c1b4,
         type: 3}

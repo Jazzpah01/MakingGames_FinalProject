@@ -69,6 +69,7 @@ public class Buildable : MonoBehaviour, IActor, IBuildingCollider
 
     private void Start()
     {
+        healthbar.gameObject.SetActive(false);
         buildingRestrictions = GetComponent<IBuildingRestrictions>();
 
         crossProjector = Instantiate(crossProjectorPrefab,transform);

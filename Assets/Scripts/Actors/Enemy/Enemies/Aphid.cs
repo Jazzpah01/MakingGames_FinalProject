@@ -44,6 +44,8 @@ public class Aphid : AIStateMachine
         detectAttack.Subscribe(detectAttack_Enter, CollisionObserver.CollisionType.Enter);
         detectAttack.Subscribe(detectAttack_Exit, CollisionObserver.CollisionType.Exit);
 
+        agent.updateRotation = false;
+
         ChangeState(data.pathMove);
     }
 
@@ -64,7 +66,6 @@ public class Aphid : AIStateMachine
             }
 
             animator.SetTrigger("Walking");
-            this.transform.LookAt(Target.gameObject.transform, Vector3.up);
 
             if (inRange)
             {
