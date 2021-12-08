@@ -4,15 +4,14 @@ using UnityEngine;
 public class Sound
 {
     public string name;
-
     public AudioClip clip;
     public AudioMixerGroup audioMixerGroup;
+    public bool mute;
+    public bool loop;
     [Range(0f,1f)]
     public float volume;
-    [Range(.1f, 3f)]
+    [Range(-3f, 3f)]
     public float pitch;
-    public bool loop;
-
     [HideInInspector]
     public AudioSource source;
 }

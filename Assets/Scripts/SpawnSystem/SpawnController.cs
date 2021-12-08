@@ -81,7 +81,7 @@ public class SpawnController : MonoBehaviour
                 count++;
             }
         }
-        print(count);
+        //print(count);
     }
 
     private void Update()
