@@ -12,7 +12,7 @@ public class Buildable : MonoBehaviour, IActor, IBuildingCollider
     [Header("References")]
     public HealthBar healthbar;
     public Light spotlight;
-    public GameObject crossProjector;
+    public GameObject crossProjectorPrefab;
 
     [Header("Optional References")]
     public GameObject buildingProjections;
@@ -23,6 +23,7 @@ public class Buildable : MonoBehaviour, IActor, IBuildingCollider
     private IBuildingBehavior buildingBehavior;
     private IBuildingRestrictions buildingRestrictions;
     private Rigidbody body;
+    private GameObject crossProjector;
 
     GameManager gameManager;
 
@@ -58,6 +59,7 @@ public class Buildable : MonoBehaviour, IActor, IBuildingCollider
 
     private void Start()
     {
+        crossProjector = Instantiate(crossProjectorPrefab,transform);
         gameManager = GameManager.instance;
         if (placementCollider == null)
             placementCollider = GetComponent<CollisionObserver>();
@@ -231,6 +233,6 @@ public class Buildable : MonoBehaviour, IActor, IBuildingCollider
     {
         gameManager.gameCursor.setCrossCursor(!validity);
         spotlight.gameObject.SetActive(!validity);
-        //crossProjector.gameObject.SetActive(!validity);
+        crossProjector.gameObject.SetActive(!validity);
     }
 }
