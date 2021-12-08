@@ -89,7 +89,7 @@ MonoBehaviour:
       type: 3}
     containmentLayermask:
       serializedVersion: 2
-      m_Bits: 64
+      m_Bits: 1024
     description: Spooder's invisible spiderlings operate this great and mighty machine.
       It makes coffee rain, multiple buggers will feel the pain. Make sure to place
       it next to a Coffee Pile.
