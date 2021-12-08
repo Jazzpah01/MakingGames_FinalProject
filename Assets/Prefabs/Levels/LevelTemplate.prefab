@@ -1752,7 +1752,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6d364be15a163a48ad93d39d4393086, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds: []
+  sounds:
+  - name: click
+    clip: {fileID: 8300000, guid: b56f39e6b8216c64faf6cad89ec5061c, type: 3}
+    audioMixerGroup: {fileID: -8790982342731916639, guid: 50da94960432a7e408fde7334303ab69,
+      type: 2}
+    volume: 0.5
+    pitch: 1.5
+    loop: 0
+    source: {fileID: 0}
+  - name: hover
+    clip: {fileID: 8300000, guid: af955ae904a8645478fb218cac5199e4, type: 3}
+    audioMixerGroup: {fileID: -8790982342731916639, guid: 50da94960432a7e408fde7334303ab69,
+      type: 2}
+    volume: 0.5
+    pitch: 1.5
+    loop: 0
+    source: {fileID: 0}
+  - name: whack
+    clip: {fileID: 8300000, guid: 64589c247dc3a2b4c809974bd659c3eb, type: 3}
+    audioMixerGroup: {fileID: -8790982342731916639, guid: 50da94960432a7e408fde7334303ab69,
+      type: 2}
+    volume: 0.5
+    pitch: 1.5
+    loop: 0
+    source: {fileID: 0}
+  - name: whoosh
+    clip: {fileID: 8300000, guid: d9c41df71174a74419dacfcffe055785, type: 3}
+    audioMixerGroup: {fileID: -8790982342731916639, guid: 50da94960432a7e408fde7334303ab69,
+      type: 2}
+    volume: 0.5
+    pitch: 1.5
+    loop: 0
+    source: {fileID: 0}
   audioMixer: {fileID: 24100000, guid: 50da94960432a7e408fde7334303ab69, type: 2}
 --- !u!1 &8104522961854208764
 GameObject:
