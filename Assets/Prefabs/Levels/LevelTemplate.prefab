@@ -1757,33 +1757,103 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: b56f39e6b8216c64faf6cad89ec5061c, type: 3}
     audioMixerGroup: {fileID: -8790982342731916639, guid: 50da94960432a7e408fde7334303ab69,
       type: 2}
+    mute: 0
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    playOnAwake: 1
+    loop: 0
+    priority: 143
     volume: 1
     pitch: 1.5
-    loop: 0
+    stereoPan: 0
+    spatialBlend: 0
+    reverbZoneMix: 1
     source: {fileID: 0}
   - name: hover
     clip: {fileID: 8300000, guid: af955ae904a8645478fb218cac5199e4, type: 3}
     audioMixerGroup: {fileID: -8790982342731916639, guid: 50da94960432a7e408fde7334303ab69,
       type: 2}
+    mute: 0
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    playOnAwake: 0
+    loop: 0
+    priority: 0
     volume: 1
     pitch: 1.5
-    loop: 0
+    stereoPan: 0
+    spatialBlend: 0
+    reverbZoneMix: 0
     source: {fileID: 0}
   - name: whack
     clip: {fileID: 8300000, guid: 64589c247dc3a2b4c809974bd659c3eb, type: 3}
     audioMixerGroup: {fileID: -8790982342731916639, guid: 50da94960432a7e408fde7334303ab69,
       type: 2}
+    mute: 0
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    playOnAwake: 0
+    loop: 0
+    priority: 0
     volume: 1
     pitch: 1.5
-    loop: 0
+    stereoPan: 0
+    spatialBlend: 0
+    reverbZoneMix: 0
     source: {fileID: 0}
   - name: whoosh
     clip: {fileID: 8300000, guid: d9c41df71174a74419dacfcffe055785, type: 3}
     audioMixerGroup: {fileID: -8790982342731916639, guid: 50da94960432a7e408fde7334303ab69,
       type: 2}
+    mute: 0
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    playOnAwake: 0
+    loop: 0
+    priority: 0
     volume: 1
     pitch: 1.5
-    loop: 0
+    stereoPan: 0
+    spatialBlend: 0
+    reverbZoneMix: 0
+    source: {fileID: 0}
+  - name: combat
+    clip: {fileID: 8300000, guid: bf1738cb710072c44b60d1b704a33209, type: 3}
+    audioMixerGroup: {fileID: 2162512689851441523, guid: 50da94960432a7e408fde7334303ab69,
+      type: 2}
+    mute: 0
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    playOnAwake: 0
+    loop: 1
+    priority: 0
+    volume: 1
+    pitch: 1.5
+    stereoPan: 0
+    spatialBlend: 0
+    reverbZoneMix: 0
+    source: {fileID: 0}
+  - name: strategy
+    clip: {fileID: 8300000, guid: 7fe374dd88a5ae54c8a24ac4da50dc50, type: 3}
+    audioMixerGroup: {fileID: 2162512689851441523, guid: 50da94960432a7e408fde7334303ab69,
+      type: 2}
+    mute: 0
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    playOnAwake: 0
+    loop: 1
+    priority: 0
+    volume: 1
+    pitch: 1.5
+    stereoPan: 0
+    spatialBlend: 0
+    reverbZoneMix: 0
     source: {fileID: 0}
   audioMixer: {fileID: 24100000, guid: 50da94960432a7e408fde7334303ab69, type: 2}
 --- !u!1 &8104522961854208764

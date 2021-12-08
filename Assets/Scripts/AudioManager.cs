@@ -14,26 +14,18 @@ public class AudioManager : MonoBehaviour {
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else if (instance != this)
-        {
-            Destroy(gameObject);
-            //DontDestroyOnLoad(gameObject);
-
         }
 
         foreach (Sound s in sounds)
         {
             s.source = gameObject.AddComponent<AudioSource>();
-            s.source.outputAudioMixerGroup = s.audioMixerGroup;
             s.source.clip = s.clip;
+            s.source.outputAudioMixerGroup = s.audioMixerGroup;
+            s.source.mute = s.mute;
+            s.source.loop = s.loop;
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
-            s.source.loop = s.loop;
         }
-        instance.Play("Soundtrack2");
-        instance.Stop("Move");
     }
 
     public void Play(string name)
