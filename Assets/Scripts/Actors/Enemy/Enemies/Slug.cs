@@ -35,6 +35,8 @@ public class Slug : AIStateMachine
         // Setup collision observers
         detectObstruction.Subscribe(detectObstruction_Enter, CollisionObserver.CollisionType.Enter);
 
+        agent.updateRotation = false;
+
         // Change state
         ChangeState(data.pathMove);
     }
@@ -44,7 +46,12 @@ public class Slug : AIStateMachine
         animator.SetTrigger("Walking");
         if (currentState == data.pathMove)
         {
-            model.transform.LookAt(this.transform.position + agent.velocity, Vector3.up);
+            if (Target.IsDestroyed())
+            {
+                Target = GameController.instance.player.GetComponent<IActor>();
+                return;
+            }
+
             // Move state, data.move towards target
             if ((transform.position - GameController.instance.player.transform.position).magnitude <=
             (transform.position - Target.gameObject.transform.position).magnitude)
@@ -65,9 +72,6 @@ public class Slug : AIStateMachine
         }
         else if (currentState == data.instantAttack)
         {
-            
-            this.transform.LookAt(Target.gameObject.transform, Vector3.up);
-            transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
             // Attack state, deal damage to target
             if (Target.IsDestroyed())
             {
