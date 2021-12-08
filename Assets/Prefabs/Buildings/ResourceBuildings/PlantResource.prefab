@@ -576,7 +576,7 @@ Transform:
   m_GameObject: {fileID: 8063388511463166607}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -18.61052, y: 1.53, z: -3.1619854}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 924210402008015313}
   - {fileID: 8128856370599099121}
@@ -603,6 +603,9 @@ MonoBehaviour:
   spotlight: {fileID: 8565433613306034439}
   crossProjectorPrefab: {fileID: 1797307579947872393, guid: dd48b7e0715f34446aaeac5073e817fb,
     type: 3}
+  hasProjector: 0
+  projectorMaterialGreen: {fileID: 0}
+  projectorMaterialRed: {fileID: 0}
   buildingProjections: {fileID: 0}
   ignoreOnBuild: {fileID: 0}
   placementCollionObserver: {fileID: 6719655436703305722}

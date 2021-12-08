@@ -64,7 +64,7 @@ public class Aphid : AIStateMachine
             }
 
             animator.SetTrigger("Walking");
-            model.transform.LookAt(Target.gameObject.transform, Vector3.up);
+            this.transform.LookAt(Target.gameObject.transform, Vector3.up);
 
             if (inRange)
             {
