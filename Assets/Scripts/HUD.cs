@@ -39,7 +39,6 @@ public class HUD : MonoBehaviour
 
         gameManager = GameManager.instance;
 
-        levelDescription.SetActive(false);
         playerHUD.gameObject.SetActive(false);
         ingameMenu.gameObject.SetActive(false);
         controlsUI.gameObject.SetActive(false);
