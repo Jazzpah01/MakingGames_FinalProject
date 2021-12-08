@@ -49,10 +49,6 @@ public class PlayerController : MonoBehaviour, IActor, IState
     public float damageModifyer { get; set; }
     public float speedModifyer { get; set; }
 
-    private void Awake()
-    {
-        
-    }
 
     private void Start()
     {
@@ -108,6 +104,7 @@ public class PlayerController : MonoBehaviour, IActor, IState
                 {
                     animator.SetBool("moving", false);
                     animator.SetTrigger("attack");
+                    AudioManager.instance.Play("whack");
                     motor.blockMoving = true;
                     StartCoroutine(DelayedAbility(data.primaryDelay, delegate
                     {
@@ -128,6 +125,7 @@ public class PlayerController : MonoBehaviour, IActor, IState
 
             animator.SetBool("moving", false);
             animator.SetTrigger("slash");
+            AudioManager.instance.Play("whoosh");
             motor.blockMoving = true;
 
             if (Physics.Raycast(ray, out hit, 1000, movementMask))
