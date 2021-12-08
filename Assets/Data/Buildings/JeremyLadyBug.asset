@@ -9,15 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a74149934aebb744b9f6883bf085657a, type: 3}
-  m_Name: StaticTower
+  m_Script: {fileID: 11500000, guid: ea729584ba282664a964b20428945b37, type: 3}
+  m_Name: JeremyLadyBug
   m_EditorClassIdentifier: 
   maxHealth: 100
-  speed: 0
-  actorType: 0
-  damage: 20
-  range: 5
-  cooldown: 0.5
-  projectileSpeed: 9
-  projectilePrefab: {fileID: 2320750876935825114, guid: 171497534b7e3ea4e9e07e27cece2913,
-    type: 3}
+  speed: 5
+  actorType: 4
+  damage: 75

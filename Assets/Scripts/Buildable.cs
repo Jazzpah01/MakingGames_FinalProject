@@ -42,11 +42,13 @@ public class Buildable : MonoBehaviour, IActor, IBuildingCollider
         get => currentHealth;
         set
         {
-            currentHealth = value;
-            healthbar.SetHealthbar(currentHealth / MaxHealth);
             if (currentHealth <= 0f)
             {
                 Die();
+            } else
+            {
+                currentHealth = value;
+                healthbar.SetHealthbar(currentHealth / MaxHealth);
             }
         }
     }
@@ -60,13 +62,15 @@ public class Buildable : MonoBehaviour, IActor, IBuildingCollider
     private void Awake()
     {
         buildingBehavior = GetComponent<IBuildingBehavior>();
-        buildingRestrictions = GetComponent<IBuildingRestrictions>();
+
         if (placementCollionObserver == null)
             placementCollionObserver = GetComponent<CollisionObserver>();
     }
 
     private void Start()
     {
+        buildingRestrictions = GetComponent<IBuildingRestrictions>();
+
         crossProjector = Instantiate(crossProjectorPrefab,transform);
         gameManager = GameManager.instance;
 
@@ -78,8 +82,8 @@ public class Buildable : MonoBehaviour, IActor, IBuildingCollider
 
         healthbar.textBox.text = buildingName;
         healthbar.SetHealthImageColour(Color.green);
-        projector = buildingProjections.GetComponent<Projector>();
-
+        if (buildingProjections != null)
+            projector = buildingProjections.GetComponent<Projector>();
     }
 
     public bool isActorType(ActorType type)

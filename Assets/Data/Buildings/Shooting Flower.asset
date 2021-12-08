@@ -9,12 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f559a827148064448987f8e209473bdf, type: 3}
-  m_Name: LineSpider
+  m_Script: {fileID: 11500000, guid: a74149934aebb744b9f6883bf085657a, type: 3}
+  m_Name: Shooting Flower
   m_EditorClassIdentifier: 
   maxHealth: 100
-  speed: 2
-  speedModifyer: 0.1
-  slowObjectLifeTime: 5
-  slowObjectEveryXSecond: 0.2
-  walkingDistance: 5
+  speed: 0
+  actorType: 4
+  damage: 20
+  range: 5
+  cooldown: 0.5
+  projectileSpeed: 9
+  projectilePrefab: {fileID: 2320750876935825114, guid: 171497534b7e3ea4e9e07e27cece2913,
+    type: 3}

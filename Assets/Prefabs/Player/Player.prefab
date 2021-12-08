@@ -578,6 +578,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5074512353664290214, guid: 071ae081b08e63e42949edf2029011b0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 915d51bb9000f2c4f97742043d7462a0, type: 2}
+    - target: {fileID: 5074512353664290214, guid: 071ae081b08e63e42949edf2029011b0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 944eeb49177c9da4792a605078bc3001, type: 2}
+    - target: {fileID: 7603786706384944740, guid: 071ae081b08e63e42949edf2029011b0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: fb92046203139cf4d9094c06679020b2, type: 2}
+    - target: {fileID: 7603786706384944740, guid: 071ae081b08e63e42949edf2029011b0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6f602886ffc9bbf44b20277d04ba355e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 071ae081b08e63e42949edf2029011b0, type: 3}
 --- !u!1 &8214736452777488433 stripped

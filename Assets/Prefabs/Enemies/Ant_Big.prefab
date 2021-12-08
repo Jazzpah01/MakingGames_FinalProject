@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
-  data: {fileID: 11400000, guid: 7652f37b6cfab3c4585988c309a76d8c, type: 2}
+  data: {fileID: 11400000, guid: a15cd3d4137c2ed4581f8b05607c43a1, type: 2}
   animator: {fileID: 2840825274711999822}
   model: {fileID: 5538551155886659121}
 --- !u!136 &1380614552679334418
@@ -279,6 +279,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8659668357184395777, guid: 21b4f7146d8d5f649a869032f9164910,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7808a89122be31341babb10030c7d79e, type: 2}
     - target: {fileID: 919132149155446097, guid: 21b4f7146d8d5f649a869032f9164910,
         type: 3}
       propertyPath: m_Name
@@ -337,22 +342,17 @@ PrefabInstance:
     - target: {fileID: 420756184247553001, guid: 6547b7794ac741e4d884918d5e16c1b4,
         type: 3}
       propertyPath: m_TranslationAtRest.y
-      value: 3.02
+      value: 4.4
       objectReference: {fileID: 0}
     - target: {fileID: 420756184247553001, guid: 6547b7794ac741e4d884918d5e16c1b4,
         type: 3}
       propertyPath: m_TranslationOffset.x
-      value: 0.06186511
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 420756184247553001, guid: 6547b7794ac741e4d884918d5e16c1b4,
         type: 3}
       propertyPath: m_TranslationOffset.y
-      value: 2.1991904
-      objectReference: {fileID: 0}
-    - target: {fileID: 420756184247553001, guid: 6547b7794ac741e4d884918d5e16c1b4,
-        type: 3}
-      propertyPath: m_TranslationOffset.z
-      value: -0.036839142
+      value: 4.4
       objectReference: {fileID: 0}
     - target: {fileID: 453667417665990411, guid: 6547b7794ac741e4d884918d5e16c1b4,
         type: 3}
@@ -447,7 +447,7 @@ PrefabInstance:
     - target: {fileID: 6412512043429981398, guid: 6547b7794ac741e4d884918d5e16c1b4,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 3.02
+      value: 4.4
       objectReference: {fileID: 0}
     - target: {fileID: 6412512043429981398, guid: 6547b7794ac741e4d884918d5e16c1b4,
         type: 3}

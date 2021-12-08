@@ -656,10 +656,11 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: f91fd1c2ead33c244be4d591a062a26f, type: 2}
   healthbar: {fileID: 5239637589751290106}
   spotlight: {fileID: 7006261208530420386}
-  crossProjector: {fileID: 1181830007882907420}
+  crossProjectorPrefab: {fileID: 1797307579947872393, guid: dd48b7e0715f34446aaeac5073e817fb,
+    type: 3}
   buildingProjections: {fileID: 1309791049706921081}
   ignoreOnBuild: {fileID: 0}
-  placementCollider: {fileID: 0}
+  placementCollionObserver: {fileID: 0}
 --- !u!114 &8487136533381545894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -880,12 +881,6 @@ PrefabInstance:
 --- !u!4 &1181830007883106172 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 422170, guid: 18a7c69b9cdd0de48b0b27a3d39afcb3,
-    type: 3}
-  m_PrefabInstance: {fileID: 1181830007883003494}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1181830007882907420 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 166266, guid: 18a7c69b9cdd0de48b0b27a3d39afcb3,
     type: 3}
   m_PrefabInstance: {fileID: 1181830007883003494}
   m_PrefabAsset: {fileID: 0}
