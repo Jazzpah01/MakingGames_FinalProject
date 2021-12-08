@@ -202,14 +202,14 @@ public class BuildingController : MonoBehaviour, IState
 
     public void EnterState()
     {
-        AudioManager.instance.Stop("combat");
         AudioManager.instance.Play("strategy");
+        AudioManager.instance.Stop("combat");
     }
 
     public void ExitState()
     {
-        AudioManager.instance.Stop("strategy");
         AudioManager.instance.Play("combat");
+        AudioManager.instance.Stop("strategy");
         isBuilding = false;
         RemoveDummy();
     }
