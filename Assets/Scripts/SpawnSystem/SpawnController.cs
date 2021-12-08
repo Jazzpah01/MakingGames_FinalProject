@@ -11,7 +11,8 @@ public class SpawnController : MonoBehaviour
     private EnemyList enemyList;
     public List<WaveData> waves;
 
-    public Transform[] spawnPoints;
+    public Transform spawnPointParent;
+    private List<Transform> spawnPoints;
 
     [Header("References")]
     public GameObject enemyParent;
@@ -67,6 +68,20 @@ public class SpawnController : MonoBehaviour
         CurrentWave = 0;
         toSpawn = new List<EnemyType>();
         projectorController = GetComponentInChildren<Projector>();
+
+        spawnPoints = new List<Transform>();
+
+        int count = 0;
+        foreach (Transform child in spawnPointParent)
+        {
+            // If statement added to make sure child is added is not a grandchild
+            if (child.parent == spawnPointParent.transform)
+            {
+                spawnPoints.Add(child);
+                count++;
+            }
+        }
+        print(count);
     }
 
     private void Update()
@@ -92,7 +107,7 @@ public class SpawnController : MonoBehaviour
 
             enemy.enemyType = toSpawn[0];
 
-            GameObject spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length - 1)].gameObject;
+            GameObject spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Count - 1)].gameObject;
 
             go.transform.position = spawnPoint.transform.position;
             go.transform.parent = enemyParent.transform;
