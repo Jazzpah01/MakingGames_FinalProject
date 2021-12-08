@@ -65,7 +65,6 @@ public class Aphid : AIStateMachine
 
             animator.SetTrigger("Walking");
             this.transform.LookAt(Target.gameObject.transform, Vector3.up);
-            transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
 
             if (inRange)
             {

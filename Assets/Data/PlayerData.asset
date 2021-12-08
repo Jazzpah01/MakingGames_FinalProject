@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 872ea4200b2ca3749917d7ab433ce2de, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  maxHealth: 200
+  maxHealth: 20000
   speed: 10
   dashCooldown: 2
   dashLength: 7
