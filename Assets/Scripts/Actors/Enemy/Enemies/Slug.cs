@@ -17,6 +17,8 @@ public class Slug : AIStateMachine
 
     private float range = 0;
 
+    private Vector3 oldPos;
+
     private void Start()
     {
         // Initialize data
@@ -24,7 +26,7 @@ public class Slug : AIStateMachine
 
         // Initialize
         Initialize(data);
-        data.directMove.Initialize(this);
+        data.pathMove.Initialize(this);
         data.instantAttack.Initialize(this);
 
         // Set target to base initially
@@ -34,15 +36,15 @@ public class Slug : AIStateMachine
         detectObstruction.Subscribe(detectObstruction_Enter, CollisionObserver.CollisionType.Enter);
 
         // Change state
-        ChangeState(data.directMove);
+        ChangeState(data.pathMove);
     }
 
     private void Update()
     {
-            animator.SetTrigger("Walking");
-            model.transform.LookAt(Target.gameObject.transform, Vector3.up);
-        if (currentState == data.directMove)
+        animator.SetTrigger("Walking");
+        if (currentState == data.pathMove)
         {
+            model.transform.LookAt(this.transform.position + agent.velocity, Vector3.up);
             // Move state, data.move towards target
             if ((transform.position - GameController.instance.player.transform.position).magnitude <=
             (transform.position - Target.gameObject.transform.position).magnitude)
@@ -60,19 +62,23 @@ public class Slug : AIStateMachine
             {
                 ChangeState(data.instantAttack);
             }
-        } else if (currentState == data.instantAttack)
+        }
+        else if (currentState == data.instantAttack)
         {
+            
+            this.transform.LookAt(Target.gameObject.transform, Vector3.up);
+            transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
             // Attack state, deal damage to target
             if (Target.IsDestroyed())
             {
                 Target = GameController.instance.player.GetComponent<IActor>();
-                ChangeState(data.directMove);
+                ChangeState(data.pathMove);
                 return;
             }
 
             if (detectAttack.Exit.Contains(Target.gameObject.GetComponent<Collider>()))
             {
-                ChangeState(data.directMove);
+                ChangeState(data.pathMove);
             }
         }
 
@@ -91,7 +97,7 @@ public class Slug : AIStateMachine
             (otherActor.isActorType(ActorType.Obstacle)))
         {
             Target = otherActor;
-            ChangeState(data.directMove);
+            ChangeState(data.pathMove);
         }
     }
 }
