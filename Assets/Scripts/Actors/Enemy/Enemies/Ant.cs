@@ -33,7 +33,7 @@ public class Ant : AIStateMachine
         if (currentState == data.pathMove)
         {
             animator.SetTrigger("Walking");
-            this.transform.LookAt(Target.gameObject.transform, Vector3.up);
+            model.transform.LookAt(this.transform.position + agent.velocity, Vector3.up);
             if (targetDistance <= data.range)
             {
                 ChangeState(data.instantAttack);
@@ -42,7 +42,10 @@ public class Ant : AIStateMachine
         if (currentState == data.instantAttack)
         {
             animator.SetTrigger("Walking");
+
             this.transform.LookAt(Target.gameObject.transform, Vector3.up);
+            transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
+
             if (data.instantAttack.status == AIState.StateStatus.Finished &&
                 targetDistance > data.range)
             {
