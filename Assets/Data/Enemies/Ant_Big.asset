@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 250
   speed: 6
-  range: 10
+  range: 2
   pathMove:
     speedModifyer: 1
     stoppingDistance: 0.8
