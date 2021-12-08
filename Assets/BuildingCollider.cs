@@ -1,18 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
-public class BuildingCollider : MonoBehaviour
+public class BuildingCollider : MonoBehaviour, IBuildingCollider
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    Collider collider;
 
-    // Update is called once per frame
-    void Update()
+    public Collider placementCollider => collider;
+
+    private void Start()
     {
-        
+        collider = GetComponent<Collider>();
     }
 }

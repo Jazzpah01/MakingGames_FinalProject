@@ -9,10 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9044162582f8b6a43833fea0198c3a30, type: 3}
-  m_Name: Seed
+  m_Script: {fileID: 11500000, guid: 875254cfc3b0f6145b17824410e9797a, type: 3}
+  m_Name: Slug_Big
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  speed: 0
-  resourceGain: 3
-  wavesToHarvest: 2
+  maxHealth: 750
+  speed: 4
+  directMove:
+    speedModifyer: 1
+    stoppingDistance: 0.8
+  instantAttack:
+    damage: 10
+    delay: 0.4
+    cooldown: 1

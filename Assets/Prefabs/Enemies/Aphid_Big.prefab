@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
-  data: {fileID: 11400000, guid: ad001d12162ea9f40aa78bed1df89030, type: 2}
+  data: {fileID: 11400000, guid: acc152165657c854195d0776208172a3, type: 2}
   detectCarrots: {fileID: 1562670120480825331}
   detectAttack: {fileID: 6004581929075582031}
   animator: {fileID: 6696875889771216445}
@@ -559,6 +559,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -539730700131108166, guid: b7d7e8ab0c2d0ff44ae51ea10cb5e9c6,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e4c3e72f6f764e242a889a3d0f296435, type: 2}
     - target: {fileID: 919132149155446097, guid: b7d7e8ab0c2d0ff44ae51ea10cb5e9c6,
         type: 3}
       propertyPath: m_Name

@@ -9,14 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13ff5bb856e72140bd802e3591619b1, type: 3}
-  m_Name: AreaSpider
+  m_Script: {fileID: 11500000, guid: 3efdabea1c1870447a8d8960722664d9, type: 3}
+  m_Name: Ant_Big
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  speed: 3
-  speedModifyer: 0.53
-  damageModifyer: 0.54
-  webRadius: 5
-  damage: 10
-  attackCooldown: 1
-  attackDelay: 0.1
+  maxHealth: 250
+  speed: 6
+  range: 2
+  pathMove:
+    speedModifyer: 1
+    stoppingDistance: 0.8
+  instantAttack:
+    damage: 5
+    delay: 0.1
+    cooldown: 0.2

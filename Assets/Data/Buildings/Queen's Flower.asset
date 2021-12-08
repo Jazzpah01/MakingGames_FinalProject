@@ -9,8 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf8a98c26b8e5164d85969697351ab78, type: 3}
-  m_Name: Barricade
+  m_Script: {fileID: 11500000, guid: 9044162582f8b6a43833fea0198c3a30, type: 3}
+  m_Name: Queen's Flower
   m_EditorClassIdentifier: 
-  maxHealth: 250
+  maxHealth: 75
   speed: 0
+  actorType: 16
+  resourceGain: 3
+  wavesToHarvest: 2

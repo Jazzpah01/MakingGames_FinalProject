@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   speed: 0
+  actorType: 4
   damage: 50
+  range: 0
   projectileSpeed: 20
   cooldown: 2
   projectilePrefab: {fileID: 2320750876935825114, guid: a39f8d0ce142fd34cbe6d03b639cb451,

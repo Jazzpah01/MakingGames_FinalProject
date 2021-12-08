@@ -9,15 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ef07566d5fee864cb2e84ea82642d5f, type: 3}
-  m_Name: Aphid 1
+  m_Script: {fileID: 11500000, guid: cf8a98c26b8e5164d85969697351ab78, type: 3}
+  m_Name: CoffeePile
   m_EditorClassIdentifier: 
   maxHealth: 150
-  speed: 6
-  pathMove:
-    speedModifyer: 1
-    stoppingDistance: 0.8
-  instantAttack:
-    damage: 4
-    delay: 0.1
-    cooldown: 1
+  speed: 0
+  actorType: 4
