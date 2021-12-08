@@ -19,9 +19,10 @@ public class PathMove : AIState
         if (parent.IsDestroyed())
             return;
 
-        parent.agent.SetDestination(parent.TargetTransform.position);
+        parent.agent.updatePosition = false;
+        parent.agent.Warp(parent.transform.position);
+        parent.agent.speed = 0;
         parent.agent.isStopped = false;
-        parent.agent.speed = parent.controller.Speed * speedModifyer * parent.controller.speedModifyer;
         parent.agent.stoppingDistance = stoppingDistance;
         parent.agent.updateRotation = true;
     }
@@ -49,16 +50,8 @@ public class PathMove : AIState
             return;
         }
 
-        //if (Vector3.Distance(parent.transform.position, parent.TargetTransform.position) > stoppingDistance)
-        //{
-        //    parent.agent.updatePosition = false;
-        //    parent.transform.LookAt(parent.transform.position + parent.agent.velocity, Vector3.up);
-        //} else
-        //{
-        //    parent.agent.updatePosition = true;
-        //}
-            
         parent.agent.SetDestination(parent.TargetTransform.position);
+        parent.agent.updatePosition = true;
         parent.agent.isStopped = false;
         parent.agent.speed = parent.controller.Speed * speedModifyer * parent.controller.speedModifyer;
     }
