@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IBuildingCollider
 {
-
+    Collider placementCollider { get; }
 }

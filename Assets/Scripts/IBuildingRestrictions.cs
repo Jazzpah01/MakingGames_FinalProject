@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IBuildingRestrictions
 {
-    PlacementOutput CheckPlacement();
+    PlacementOutput CheckPlacement(Ray ray);
 }

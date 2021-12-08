@@ -148,7 +148,7 @@ public class PlayerHUD : MonoBehaviour
         }
 
         //resource text update
-        resourceCounter.text = gameManager.currentResource.ToString();
+        resourceCounter.text = "Nectar Essence: " + gameManager.currentResource.ToString();
 
         oldPlayerHealth = playerController.Health;
         oldBaseHealth = baseController.Health;
