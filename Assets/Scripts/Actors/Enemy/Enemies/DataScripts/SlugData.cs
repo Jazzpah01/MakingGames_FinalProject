@@ -5,6 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Assets/Actor/Enemy/Slug")]
 public class SlugData : ActorData
 {
-    public DirectMove directMove;
+    public PathMove pathMove;
     public InstantAttack instantAttack;
 }

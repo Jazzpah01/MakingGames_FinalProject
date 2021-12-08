@@ -19,6 +19,14 @@ public class DirectMove : AIState
             return;
         }
 
+        if (parent.agent.velocity.magnitude < 0.001f)
+        {
+            status = StateStatus.None;
+        } else
+        {
+            status = StateStatus.Executing;
+        }
+
         Vector3 difference = (parent.TargetTransform.position - parent.transform.position);
 
         if (difference.magnitude <= stoppingDistance)

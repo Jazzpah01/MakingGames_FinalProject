@@ -53,18 +53,23 @@ public class InteractableUI : MonoBehaviour, IPointerClickHandler, IPointerEnter
     private Image[] images;
 
     // Use this for player controllers.
-    public static bool OnUI { 
-        get {
+    public static bool OnUI
+    {
+        get
+        {
             return (onUICount > 0);
-        } 
+        }
     }
     private static int onUICount = 0;
 
     private bool interactable = true;
     private bool toggled = false;
 
-    public bool Interactable { get => interactable; 
-        set {
+    public bool Interactable
+    {
+        get => interactable;
+        set
+        {
             if (value == interactable)
                 return;
 
@@ -81,7 +86,8 @@ public class InteractableUI : MonoBehaviour, IPointerClickHandler, IPointerEnter
                 }
 
                 interactable = value;
-            } else
+            }
+            else
             {
                 SetHighlighted(false);
 
@@ -99,7 +105,7 @@ public class InteractableUI : MonoBehaviour, IPointerClickHandler, IPointerEnter
 
                 interactable = value;
             }
-        } 
+        }
     }
 
     public bool Toggled
@@ -117,9 +123,10 @@ public class InteractableUI : MonoBehaviour, IPointerClickHandler, IPointerEnter
             {
                 if (options.HasFlag(InteractableUIOptions.RemoveHighlightOnToggle) && Highlighted)
                 {
-                        highlightImage.gameObject.SetActive(false);
+                    highlightImage.gameObject.SetActive(false);
                 }
-            } else
+            }
+            else
             {
                 if (inside && !Highlighted)
                 {
@@ -149,6 +156,7 @@ public class InteractableUI : MonoBehaviour, IPointerClickHandler, IPointerEnter
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        AudioManager.instance.Play("click");
         if (Interactable && inside)
         {
             if (OnClicked != null &&
@@ -206,12 +214,15 @@ public class InteractableUI : MonoBehaviour, IPointerClickHandler, IPointerEnter
         if (highlightImage == null)
             return;
 
-            highlightImage.gameObject.SetActive(highlight);
+        highlightImage.gameObject.SetActive(highlight);
+        if(highlight)
+        AudioManager.instance.Play("hover");
+
 
         if (options.HasFlag(InteractableUIOptions.RemoveImageOnHighlight))
             image.gameObject.SetActive(!highlight);
         if (options.HasFlag(InteractableUIOptions.RemoveHighlightOnToggle) && Toggled)
-                highlightImage.gameObject.SetActive(false);
+            highlightImage.gameObject.SetActive(false);
     }
 
     private void OnDisable()
@@ -221,7 +232,7 @@ public class InteractableUI : MonoBehaviour, IPointerClickHandler, IPointerEnter
             onUICount--;
             inside = false;
         }
-            
+
 
         toggled = false;
 
