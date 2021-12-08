@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10168c1909ea30d43a15345a4f5e70f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  size: 0
 --- !u!119 &11939280
 Projector:
   m_ObjectHideFlags: 0
@@ -62,4 +63,4 @@ Projector:
   m_Material: {fileID: 2100000, guid: 0eba8a9160e330e4bb32540ce2bd8f9a, type: 2}
   m_IgnoreLayers:
     serializedVersion: 2
-    m_Bits: 4294967039
+    m_Bits: 0
