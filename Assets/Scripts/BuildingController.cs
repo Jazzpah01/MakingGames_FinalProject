@@ -39,7 +39,7 @@ public class BuildingController : MonoBehaviour, IState
         if (InteractableUI.OnUI)
         {
             RemoveDummy();
-
+            gameManager.gameCursor.setCrossCursor(false);
             return;
         }
         // Cancel placement of building
@@ -47,7 +47,7 @@ public class BuildingController : MonoBehaviour, IState
             Input.GetMouseButtonDown(1))
         {
             isBuilding = false;
-
+            gameManager.gameCursor.setCrossCursor(false);
             RemoveDummy();
         }
 
