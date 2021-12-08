@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9044162582f8b6a43833fea0198c3a30, type: 3}
   m_Name: Queen's Flower
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 75
   speed: 0
   actorType: 16
   resourceGain: 3

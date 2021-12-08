@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: JeremyLadyBug
   m_EditorClassIdentifier: 
   maxHealth: 100
-  speed: 4
+  speed: 5
   actorType: 4
-  damage: 50
+  damage: 75
