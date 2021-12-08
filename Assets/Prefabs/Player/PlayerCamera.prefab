@@ -62,7 +62,7 @@ Camera:
   field of view: 30
   orthographic: 0
   orthographic size: 5
-  m_Depth: -1
+  m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -100,8 +100,8 @@ MonoBehaviour:
   target: {fileID: 0}
   offset: {x: -1, y: -1, z: -1}
   zoomSpeed: 20
-  minZoom: 10
-  maxZoom: 100
+  minZoom: 20
+  maxZoom: 50
   startZoom: 50
 --- !u!114 &7025214644380035780
 MonoBehaviour:

@@ -14,6 +14,9 @@ public class Buildable : MonoBehaviour, IActor, IBuildingCollider
     public Light spotlight;
     public GameObject crossProjectorPrefab;
 
+    public bool hasProjector;
+    public Material projectorMaterialGreen;
+    public Material projectorMaterialRed;
     [Header("Optional References")]
     public GameObject buildingProjections;
     public GameObject ignoreOnBuild;
@@ -24,6 +27,9 @@ public class Buildable : MonoBehaviour, IActor, IBuildingCollider
     private IBuildingRestrictions buildingRestrictions;
     private Rigidbody body;
     private GameObject crossProjector;
+    private Projector projector;
+    //private float f = 0;
+    //private float time;
 
     GameManager gameManager;
 
@@ -72,17 +78,58 @@ public class Buildable : MonoBehaviour, IActor, IBuildingCollider
 
         healthbar.textBox.text = buildingName;
         healthbar.SetHealthImageColour(Color.green);
-    }
+        projector = buildingProjections.GetComponent<Projector>();
 
-    private void Update()
-    {
-        
     }
 
     public bool isActorType(ActorType type)
     {
         return (type & actorType) != ActorType.None;
     }
+
+    //private void Update()
+    //{
+    //    time -= Time.deltaTime;
+    //    Material m = projectorMaterial;
+    //    if (f == 0)
+    //    {
+    //        m.color = Color.white;
+    //    }
+    //    if (f == 1)
+    //    {
+    //        m.color = Color.green;
+    //    }
+    //    if (f == 2)
+    //    {
+    //        m.color = Color.blue;
+    //    }
+    //    if (f == 3)
+    //    {
+    //        m.color = Color.grey;
+    //    }
+    //    if (f == 4)
+    //    {
+    //        m.color = Color.red;
+    //    }
+    //    if (f == 5)
+    //    {
+    //        m.color = Color.yellow;
+    //    }
+    //    if (f == 6)
+    //    {
+    //        m.color = Color.cyan;
+    //    }
+    //    projectorMaterial = m;
+
+    //    if(time < 0)
+    //    {
+    //    f++;
+    //        time += 0.2f;
+    //    }
+
+    //    if (f > 6)
+    //        f = 0;
+    //}
 
     /// <summary>
     /// Call as this building is being placed. Before it is places.
@@ -234,5 +281,20 @@ public class Buildable : MonoBehaviour, IActor, IBuildingCollider
         gameManager.gameCursor.setCrossCursor(!validity);
         spotlight.gameObject.SetActive(!validity);
         crossProjector.gameObject.SetActive(!validity);
+        if (hasProjector)
+            setProjectorColor(!validity);
     }
+
+    private void setProjectorColor(bool b)
+    {
+        if (b)
+        {
+            projector.material = projectorMaterialRed;
+        }
+        else
+        {
+            projector.material = projectorMaterialGreen;
+        }
+    }
+
 }
