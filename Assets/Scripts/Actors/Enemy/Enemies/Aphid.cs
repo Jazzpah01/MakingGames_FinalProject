@@ -49,8 +49,6 @@ public class Aphid : AIStateMachine
 
     void Update()
     {
-            animator.SetTrigger("Walking");
-            model.transform.LookAt(Target.gameObject.transform, Vector3.up);
         if (Target.IsDestroyed())
         {
             inRange = false;
@@ -65,11 +63,15 @@ public class Aphid : AIStateMachine
                 Target = GameController.instance.baseController;
             }
 
+            animator.SetTrigger("Walking");
+            model.transform.LookAt(Target.gameObject.transform, Vector3.up);
+
             if (inRange)
             {
                 ChangeState(data.instantAttack);
             }
-        } else if (currentState == data.instantAttack)
+        }
+        else if (currentState == data.instantAttack)
         {
             // In state data.attack. Attack target
             if (Target.IsDestroyed())
@@ -89,17 +91,14 @@ public class Aphid : AIStateMachine
 
     void SetCarrotTarget()
     {
-        foreach (Collider other in detectCarrots.Stay)
+        // Find a crops to follow
+        IActor[] crops = GameManager.instance.buildingController.buildablesParent.gameObject.GetComponentsInChildren<IActor>();
+
+        foreach (IActor item in crops)
         {
-            if (other == null)
-                continue;
-
-            IActor a = other.gameObject.GetComponent<IActor>();
-
-            if (a != null && a.isActorType(ActorType.Crops))
+            if (item.isActorType(ActorType.Crops))
             {
-                Target = a;
-                break;
+                Target = item;
             }
         }
     }
