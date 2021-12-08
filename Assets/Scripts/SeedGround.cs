@@ -12,19 +12,13 @@ public class SeedGround : MonoBehaviour
         occupied = go;
     }
 
-    public bool IsFree()
+    public bool IsFree(GameObject go)
     {
-        return (occupied == null) ? true : false;
+        return (occupied == null || occupied == go) ? true : false;
     }
 
     public Vector3 GetCenter()
     {
-        if (occupied == null)
-        {
-            return point.transform.position;
-        } else
-        {
-            return point.transform.position;
-        }
+        return point.transform.position;
     }
 }

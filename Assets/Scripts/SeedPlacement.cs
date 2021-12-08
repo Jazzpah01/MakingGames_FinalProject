@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,28 +6,29 @@ using UnityEngine;
 public class SeedPlacement : MonoBehaviour, IBuildingRestrictions
 {
     public LayerMask layerMask;
+    GameObject holder = null;
     public PlacementOutput CheckPlacement(Ray ray)
     {
-        PlacementOutput retval = new PlacementOutput();
-        retval.validPlacement = false;
+        PlacementOutput retval = new PlacementOutput(false);
 
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, layerMask))
+        if (Physics.Raycast(ray, out hit, 1000, layerMask))
         {
             SeedGround ground = hit.collider.gameObject.GetComponent<SeedGround>();
 
-            if (ground != null && ground.IsFree())
+            if (ground != null && ground.IsFree(this.gameObject))
             {
-                Vector3 newPos = ground.GetCenter();
-                retval.validPlacement = true;
-                retval.position = newPos;
-                retval.options = PlacementOptions.OverridePosition;
+                retval = new PlacementOutput(true, 
+                    PlacementOptions.OverridePosition, 
+                    ground.GetCenter(), 
+                    delegate { ground.SetObject(gameObject); });
             }
-        } else
-        {
-            retval.validPlacement = false;
         }
-
         return retval;
+    }
+
+    private void Start()
+    {
+        
     }
 }

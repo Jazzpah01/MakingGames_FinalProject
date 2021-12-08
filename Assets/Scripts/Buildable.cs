@@ -18,7 +18,7 @@ public class Buildable : MonoBehaviour, IActor, IBuildingCollider
     [Header("Optional References")]
     public GameObject buildingProjections;
     public GameObject ignoreOnBuild;
-    public CollisionObserver placementCollider;
+    public CollisionObserver placementCollionObserver;
 
     private float currentHealth;
     private IBuildingBehavior buildingBehavior;
@@ -47,18 +47,20 @@ public class Buildable : MonoBehaviour, IActor, IBuildingCollider
     public float damageModifyer { get; set; }
     public float speedModifyer { get; set; }
 
+    public Collider placementCollider => placementCollionObserver.Collider;
+
     private void Awake()
     {
         buildingBehavior = GetComponent<IBuildingBehavior>();
         buildingRestrictions = GetComponent<IBuildingRestrictions>();
-        if (placementCollider == null)
-            placementCollider = GetComponent<CollisionObserver>();
+        if (placementCollionObserver == null)
+            placementCollionObserver = GetComponent<CollisionObserver>();
     }
 
     private void Start()
     {
-        if (placementCollider == null)
-            placementCollider = GetComponent<CollisionObserver>();
+        if (placementCollionObserver == null)
+            placementCollionObserver = GetComponent<CollisionObserver>();
 
         MaxHealth = data.maxHealth;
         currentHealth = MaxHealth;
@@ -105,9 +107,9 @@ public class Buildable : MonoBehaviour, IActor, IBuildingCollider
         {
             IgnoreInObject(ignoreOnBuild);
         }
-        if (placementCollider != null)
+        if (placementCollionObserver != null)
         {
-            body = placementCollider.gameObject.AddComponent<Rigidbody>();
+            body = placementCollionObserver.gameObject.AddComponent<Rigidbody>();
             body.isKinematic = true;
         }
 
@@ -127,9 +129,9 @@ public class Buildable : MonoBehaviour, IActor, IBuildingCollider
     /// </summary>
     public void OnBuildingMode()
     {
-        if (placementCollider != null && placementCollider.gameObject != this.gameObject)
+        if (placementCollionObserver != null && placementCollionObserver.gameObject != this.gameObject)
         {
-            placementCollider.gameObject.SetActive(true);
+            placementCollionObserver.gameObject.SetActive(true);
         }
 
         if (buildingProjections != null)
@@ -141,9 +143,9 @@ public class Buildable : MonoBehaviour, IActor, IBuildingCollider
     /// </summary>
     public void OnCombatMode()
     {
-        if (placementCollider != null && placementCollider.gameObject != this.gameObject)
+        if (placementCollionObserver != null && placementCollionObserver.gameObject != this.gameObject)
         {
-            placementCollider.gameObject.SetActive(false);
+            placementCollionObserver.gameObject.SetActive(false);
         }
 
         if (buildingProjections != null)
@@ -194,10 +196,9 @@ public class Buildable : MonoBehaviour, IActor, IBuildingCollider
 
     public PlacementOutput CheckPlacement(Ray ray)
     {
-        PlacementOutput output = new PlacementOutput();
-        output.validPlacement = true;
+        PlacementOutput output = new PlacementOutput(true);
 
-        if (placementCollider == null)
+        if (placementCollionObserver == null)
         {
             Debug.Log("No placement collider is set. Please set placement collider in Buildable of " + this.gameObject);
             return output;
@@ -209,15 +210,16 @@ public class Buildable : MonoBehaviour, IActor, IBuildingCollider
         }
         if (output.validPlacement && ((output.options & PlacementOptions.ReplaceDefaultRestrictions) == PlacementOptions.None))
         {
-            foreach (Collider collider in placementCollider.Stay)
+            foreach (Collider collider in placementCollionObserver.Stay)
             {
-                Buildable colll = collider.gameObject.GetComponent<Buildable>();
-                Buildable parentcoll = collider.gameObject.GetComponentInParent<Buildable>();
+                IBuildingCollider colll = collider.gameObject.GetComponent<IBuildingCollider>();
 
-                if ((colll != null && colll.placementCollider.Collider == collider) ||
-                    (parentcoll != null && parentcoll.placementCollider.Collider == collider))
+                if (colll == null)
+                    colll = collider.gameObject.GetComponentInParent<IBuildingCollider>();
+
+                if (colll != null && colll.placementCollider != this.placementCollionObserver)
                 {
-                    output.validPlacement = false;
+                    output = new PlacementOutput(false);
                     break;
                 }
             }

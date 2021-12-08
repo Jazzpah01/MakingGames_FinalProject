@@ -94,7 +94,7 @@ public class BuildingController : MonoBehaviour, IState
 
                     if ((placement.options & PlacementOptions.OverridePosition) != PlacementOptions.None)
                     {
-                        GO.transform.position = placement.position;
+                        spawnpoint = new Vector3(placement.position.x, spawnpoint.y, placement.position.z);
                     }
 
                     //if the dummy-gameobject is within the containmentLayerMask
@@ -106,6 +106,8 @@ public class BuildingController : MonoBehaviour, IState
                         // Transform dummy-gameobject to an actual building
                         if (Input.GetMouseButtonDown(0) && gameManager.currentResource >= currentCost)
                         {
+                            if (placement.onPlaced != null)
+                                placement.onPlaced();
                             SpawnPrefab();
                             // Make it so the player can place multiple buildings
                             if (gameManager.currentResource < currentCost)
