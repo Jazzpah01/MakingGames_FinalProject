@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
     public SpawnController spawnController;
     public BuildingController buildingController;
     public HUD hud;
+    [HideInInspector]
+    public GameCursor gameCursor;
 
     public List<(GameObject GO, float Cost)> waveBuildingList;
 
@@ -36,6 +38,7 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
         waveBuildingList = new List<(GameObject GO, float Cost)>();
+        gameCursor = hud.gameObject.GetComponent<GameCursor>();
     }
 
     private void Start()

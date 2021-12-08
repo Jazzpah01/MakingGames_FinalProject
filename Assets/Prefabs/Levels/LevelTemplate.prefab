@@ -506,6 +506,7 @@ MonoBehaviour:
   spawnController: {fileID: 3756459245402022232}
   buildingController: {fileID: 7953258502569022335}
   hud: {fileID: 700808372006470443}
+  gameCursor: {fileID: 0}
 --- !u!1 &3435015025979312389
 GameObject:
   m_ObjectHideFlags: 0
@@ -835,6 +836,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cursorTexture: {fileID: 2800000, guid: 9425c38487d612e4880b266d0f7275c6, type: 3}
+  cursorCrossTexture: {fileID: 2800000, guid: 103edc2a25ce0dd4ea1702841d130d00, type: 3}
   offset: {x: 20, y: 20}
 --- !u!114 &669999993867383817
 MonoBehaviour:

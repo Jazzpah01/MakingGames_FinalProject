@@ -8,12 +8,11 @@ public class Buildable : MonoBehaviour, IActor, IBuildingCollider
     public BuildableData data;
 
     private string buildingName;
-    private float maxHealth;
-    private float speed = 0;
 
     [Header("References")]
     public HealthBar healthbar;
     public Light spotlight;
+    public GameObject crossProjector;
 
     [Header("Optional References")]
     public GameObject buildingProjections;
@@ -25,6 +24,8 @@ public class Buildable : MonoBehaviour, IActor, IBuildingCollider
     private IBuildingRestrictions buildingRestrictions;
     private Rigidbody body;
 
+    GameManager gameManager;
+
     public ActorType actorType => data.actorType;
 
     public float Speed { get; set; }
@@ -35,7 +36,7 @@ public class Buildable : MonoBehaviour, IActor, IBuildingCollider
         set
         {
             currentHealth = value;
-            healthbar.SetHealthbar(currentHealth / maxHealth);
+            healthbar.SetHealthbar(currentHealth / MaxHealth);
             if (currentHealth <= 0f)
             {
                 Die();
@@ -57,6 +58,7 @@ public class Buildable : MonoBehaviour, IActor, IBuildingCollider
 
     private void Start()
     {
+        gameManager = GameManager.instance;
         if (placementCollider == null)
             placementCollider = GetComponent<CollisionObserver>();
 
@@ -227,6 +229,8 @@ public class Buildable : MonoBehaviour, IActor, IBuildingCollider
 
     public void SetValidPlacement(bool validity)
     {
+        gameManager.gameCursor.setCrossCursor(!validity);
         spotlight.gameObject.SetActive(!validity);
+        //crossProjector.gameObject.SetActive(!validity);
     }
 }
