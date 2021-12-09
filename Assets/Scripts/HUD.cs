@@ -13,9 +13,6 @@ public class HUD : MonoBehaviour
     public GameObject settingsPrefab;
     public GameObject creditsPrefab;
 
-    [HideInInspector]
-    public bool isLevelDescriptionActive;
-
     private PlayerHUD playerHUD;
     private StrategyHUD strategyHUD;
     private GameObject levelDescription;
