@@ -658,8 +658,10 @@ MonoBehaviour:
   crossProjectorPrefab: {fileID: 1797307579947872393, guid: dd48b7e0715f34446aaeac5073e817fb,
     type: 3}
   hasProjector: 1
-  projectorMaterialGreen: {fileID: 0}
-  projectorMaterialRed: {fileID: 0}
+  projectorMaterialGreen: {fileID: 2100000, guid: bf58182762462084da8e7ffd8a682fa1,
+    type: 2}
+  projectorMaterialRed: {fileID: 2100000, guid: 506287c546876c14f9fe7592e47461d1,
+    type: 2}
   buildingProjections: {fileID: 1309791049706921081}
   ignoreOnBuild: {fileID: 0}
   placementCollionObserver: {fileID: 0}
