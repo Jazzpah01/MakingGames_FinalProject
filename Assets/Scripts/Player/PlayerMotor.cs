@@ -5,7 +5,6 @@ using UnityEngine.AI;
 
 public class PlayerMotor : MonoBehaviour
 {
-    Transform target;
     NavMeshAgent agent;
     PlayerManager playerManager;
     PlayerController controller;
@@ -31,7 +30,7 @@ public class PlayerMotor : MonoBehaviour
     [System.NonSerialized] public bool isMoving = false;
     [System.NonSerialized] public bool blockMoving = false;
 
-    
+
 
     void Start()
     {
@@ -55,21 +54,27 @@ public class PlayerMotor : MonoBehaviour
         directionX = 0;
         directionZ = 0;
 
+
+
         //dash or move
-        if (Input.GetKey(KeyCode.Space) && 0 >= dashTimer && !dashing && !attacking && !InteractableUI.OnUI)
+        if (!dashing && !attacking && !GameManager.instance.hud.isLevelDescriptionActive)
         {
-            animator.SetTrigger("dash");
-            //reset dash cooldown
-            dashTimer = data.dashCooldown;
-            //dash
-            Dash(data.dashSpeed, data.dashLength);
-        }
-        else if (!dashing && !attacking && !blockMoving)
-        {
-            //read input keys
-            MovementKeyInput();
-            //move the player
-            Move();
+
+            if (Input.GetKeyDown(KeyCode.Space) && 0 >= dashTimer && !InteractableUI.OnUI)
+            {
+                animator.SetTrigger("dash");
+                //reset dash cooldown
+                dashTimer = data.dashCooldown;
+                //dash
+                Dash(data.dashSpeed, data.dashLength);
+            }
+            else if (!blockMoving)
+            {
+                //read input keys
+                MovementKeyInput();
+                //move the player
+                Move();
+            }
         }
     }
 
@@ -168,6 +173,6 @@ public class PlayerMotor : MonoBehaviour
     public void TurnTowardsTarget(Vector3 target)
     {
         agent.updateRotation = false;
-        transform.rotation = Quaternion.LookRotation(new Vector3(target.x,0,target.z) - transform.position);
+        transform.rotation = Quaternion.LookRotation(new Vector3(target.x, 0, target.z) - transform.position);
     }
 }

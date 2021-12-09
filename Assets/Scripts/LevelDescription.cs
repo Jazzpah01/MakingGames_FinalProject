@@ -7,10 +7,12 @@ public class LevelDescription : MonoBehaviour
 {
     [NonSerialized] private List<GameObject> contents = new List<GameObject>();
     private int index = 0;
+    private HUD hud;
 
     private void Start()
     {
-        //Debug.Log(contents.Count);
+        hud = GetComponentInParent<HUD>();
+        hud.isLevelDescriptionActive = true;
         foreach (Transform child in transform)
         {
             if (!contents.Contains(child.gameObject))
@@ -33,11 +35,13 @@ public class LevelDescription : MonoBehaviour
             }
             else
             {
+                hud.isLevelDescriptionActive = false;
                 gameObject.SetActive(false);
             }
         }
         if (Input.GetKey(KeyCode.Escape))
         {
+            hud.isLevelDescriptionActive = false;
             gameObject.SetActive(false);
         }
     }

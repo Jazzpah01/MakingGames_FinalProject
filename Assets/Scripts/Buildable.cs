@@ -268,10 +268,7 @@ public class Buildable : MonoBehaviour, IActor, IBuildingCollider
             {
                 IBuildingCollider colll = collider.gameObject.GetComponent<IBuildingCollider>();
 
-                if (colll == null)
-                    colll = collider.gameObject.GetComponentInParent<IBuildingCollider>();
-
-                if (colll != null && colll.placementCollider != this.placementCollionObserver)
+                if (colll != null && colll.placementCollider.transform.parent != this.transform)
                 {
                     output = new PlacementOutput(false);
                     break;

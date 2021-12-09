@@ -11,14 +11,22 @@ public class BuildingWalkingInCircles : MonoBehaviour, IBuildingBehavior
     public CollisionObserver detectionCollision;
     public CollisionObserver damagerCollision;
 
+    public Transform center;
+    private float centerDistance;
+
     private float currentHealth;
-    private float rotation = 0.7f;
+    private float rotation = 40;
     private float speed;
 
     GameManager gameManager;
 
     private Buildable buildable;
     private CircleBuildingData data;
+
+    private void Awake()
+    {
+        centerDistance = (transform.position - center.position).magnitude;
+    }
 
     void Start()
     {
@@ -32,13 +40,15 @@ public class BuildingWalkingInCircles : MonoBehaviour, IBuildingBehavior
         detectionCollision.Subscribe(Detection_Exit, CollisionObserver.CollisionType.Exit);
     }
 
-    void FixedUpdate()
+    void Update()
     {
         if (gameManager.gameController.state == GameController.GameState.Combat)
         {
             transform.Translate(Vector3.forward * (Time.deltaTime * speed));
-            transform.Rotate(0.0f, rotation, 0.0f, Space.Self);
+            transform.Rotate(0.0f, rotation * Time.deltaTime, 0.0f, Space.Self);
         }
+
+        transform.position = center.position + (transform.position - center.position).normalized * centerDistance;
     }
 
     private void Detection_Enter(Collider other)
