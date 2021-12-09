@@ -43,10 +43,10 @@ public class PlayerMotor : MonoBehaviour
         actorMask = controller.actorMask;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         //dash cooldown
-        dashTimer -= Time.fixedDeltaTime;
+        dashTimer -= Time.deltaTime;
 
         isMoving = false;
 
@@ -54,13 +54,15 @@ public class PlayerMotor : MonoBehaviour
         directionX = 0;
         directionZ = 0;
 
-
+        //print(dashTimer);
+        if (GameManager.instance.hud.isLevelDescriptionActive)
+            print("Oh no");
 
         //dash or move
         if (!dashing && !attacking && !GameManager.instance.hud.isLevelDescriptionActive)
         {
-
-            if (Input.GetKeyDown(KeyCode.Space) && 0 >= dashTimer && !InteractableUI.OnUI)
+            print(dashTimer);
+            if (Input.GetKeyDown(KeyCode.Space) && 0 >= dashTimer)
             {
                 animator.SetTrigger("dash");
                 //reset dash cooldown

@@ -138,7 +138,7 @@ public class InteractableUI : MonoBehaviour, IPointerClickHandler, IPointerEnter
 
     private bool Highlighted => (highlightImage != null && highlightImage.gameObject.activeSelf);
 
-    private void Start()
+    private void Awake()
     {
         if (image != null)
             initialImageColor = image.color;

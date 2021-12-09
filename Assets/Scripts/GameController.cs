@@ -83,10 +83,10 @@ public class GameController : MBStateMachine
                     OnChangeToCombat();
                 break;
             case GameState.Strategy:
-                if (state == GameState.None)
-                {
-                    gameManager.currentResource = gameManager.roundResource;
-                }
+                //if (state == GameState.None)
+                //{
+                //    gameManager.currentResource = gameManager.roundResource;
+                //}
                 if (!playerManager.buildWhileCombat)
                     player.SetActive(false);
                 base.ChangeState(buildingController);
