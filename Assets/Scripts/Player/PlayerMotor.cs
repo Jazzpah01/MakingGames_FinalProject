@@ -54,14 +54,9 @@ public class PlayerMotor : MonoBehaviour
         directionX = 0;
         directionZ = 0;
 
-        //print(dashTimer);
-        if (GameManager.instance.hud.isLevelDescriptionActive)
-            print("Oh no");
-
         //dash or move
         if (!dashing && !attacking && !GameManager.instance.hud.isLevelDescriptionActive)
         {
-            print(dashTimer);
             if (Input.GetKeyDown(KeyCode.Space) && 0 >= dashTimer)
             {
                 animator.SetTrigger("dash");

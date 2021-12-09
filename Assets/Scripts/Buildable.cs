@@ -28,8 +28,6 @@ public class Buildable : MonoBehaviour, IActor, IBuildingCollider
     private Rigidbody body;
     private GameObject crossProjector;
     private Projector projector;
-    //private float f = 0;
-    //private float time;
 
     GameManager gameManager;
 
@@ -74,6 +72,8 @@ public class Buildable : MonoBehaviour, IActor, IBuildingCollider
 
         crossProjector = Instantiate(crossProjectorPrefab,transform);
         gameManager = GameManager.instance;
+
+        data = Instantiate(data);
 
         MaxHealth = data.maxHealth;
         currentHealth = MaxHealth;

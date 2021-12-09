@@ -10,7 +10,7 @@ public class Spider : MonoBehaviour, IBuildingBehavior
     public CollisionObserver damageCollision;
     public Animator animator;
 
-    public List<GameObject> enemies;
+    public List<IActor> enemies = new List<IActor>();
     
     private float timer;
 
@@ -38,13 +38,13 @@ public class Spider : MonoBehaviour, IBuildingBehavior
     private void Detection_Enter(Collider other)
     {
         IActor actor = other.GetComponent<IActor>();
-        if (actor == null)
+        if (actor.IsDestroyed())
             return;
 
         if (actor.isActorType(ActorType.Enemy))
         {
 
-            enemies.Add(actor.gameObject);
+            enemies.Add(actor);
             actor.damageModifyer *= data.damageModifyer;
             actor.speedModifyer *= data.speedModifyer;
         }
@@ -53,44 +53,55 @@ public class Spider : MonoBehaviour, IBuildingBehavior
     private void Detection_Exit(Collider other)
     {
         IActor actor = other.GetComponent<IActor>();
-        if (actor == null)
+        if (actor.IsDestroyed())
             return;
 
         if (actor.isActorType(ActorType.Enemy))
         {
             actor.damageModifyer /= data.damageModifyer;
             actor.speedModifyer  /= data.speedModifyer;
-            enemies.Remove(actor.gameObject);
+            enemies.Remove(actor);
         }
     }
 
     private void Detection_Stay(Collider other)
     {
         IActor actor = other.GetComponent<IActor>();
-        if(actor == null)
+        if(actor.IsDestroyed())
             return;
 
         if (actor.isActorType(ActorType.Enemy))
         {
+            if (actor.IsDestroyed())
+            {
+                enemies.Remove(actor);
+            }
             if (timer > data.attackCooldown)
             {
                 actor.Health -= data.damage;
                 timer = 0;
-            }
-            if (actor.Health == 0)
-            {
-                enemies.Remove(actor.gameObject);
             }
         }
     }
 
     private void moveToEnemy()
     {
-        if(enemies.Count > 0 && enemies[0] != null)
+        while (enemies.Count > 0 && enemies[0].IsDestroyed())
+        {
+            enemies.Remove(enemies[0]);
+        }
+
+        if (enemies.Count > 0)
         {
             animator.SetTrigger("Walking"); 
-            model.transform.LookAt(new Vector3(enemies[0].transform.position.x, model.transform.position.y, enemies[0].transform.position.z), Vector3.up);
-            model.transform.position = Vector3.MoveTowards(model.transform.position, new Vector3(enemies[0].transform.position.x, model.transform.position.y, enemies[0].transform.position.z), data.speed * Time.fixedDeltaTime);
+            model.transform.LookAt(new Vector3(enemies[0].gameObject.transform.position.x, model.transform.position.y, enemies[0].gameObject.transform.position.z), Vector3.up);
+            model.transform.position = Vector3.MoveTowards(model.transform.position, new Vector3(enemies[0].gameObject.transform.position.x, model.transform.position.y, enemies[0].gameObject.transform.position.z), data.speed * Time.deltaTime);
+
+            if (timer > data.attackCooldown)
+            {
+                enemies[0].Health -= data.damage;
+                timer = 0;
+            }
         } else if (model.transform.position != this.transform.position) {
             animator.SetTrigger("Walking"); 
             model.transform.LookAt(this.transform.position);
