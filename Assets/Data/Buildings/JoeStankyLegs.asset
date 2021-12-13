@@ -15,7 +15,7 @@ MonoBehaviour:
   maxHealth: 100
   speed: 2
   actorType: 4
-  speedModifyer: 0.1
+  speedModifyer: 0.3
   slowObjectLifeTime: 5
   slowObjectEveryXSecond: 0.2
   walkingDistance: 5
