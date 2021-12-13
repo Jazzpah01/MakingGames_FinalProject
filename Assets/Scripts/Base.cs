@@ -36,6 +36,10 @@ public class Base : MonoBehaviour, IActor
     {
         gameController = GameManager.instance.gameController;
         blockDamage = false;
+        if (health == 0)
+        {
+            health = 500;
+        }
         MaxHealth = health;
         Health = MaxHealth;
     }
