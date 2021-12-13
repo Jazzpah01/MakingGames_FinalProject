@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class SeedGround : MonoBehaviour
 {
-    public GameObject point;
-    GameObject occupied;
+    [Tooltip("The point at which the flower building should be places.")] public GameObject point;
+    [Tooltip("The flower building currently occupying this plant zone.")] public GameObject occupied;
+
+    private void Start()
+    {
+        if (occupied != null)
+            occupied.transform.position = point.transform.position;
+    }
 
     public void SetObject(GameObject go)
     {

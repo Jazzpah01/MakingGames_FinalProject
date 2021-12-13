@@ -39,7 +39,7 @@ public class GrowingResource : MonoBehaviour, IBuildingBehavior
     void Update()
     {
         if(gameManager.gameController.state == GameController.GameState.Strategy && 
-            plantedWave + data.wavesToHarvest < gameManager.gameController.getNextWave())
+            plantedWave + data.wavesToHarvest <= gameManager.gameController.getNextWave())
         {
             harvest();
         }
