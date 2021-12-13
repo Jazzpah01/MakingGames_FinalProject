@@ -102,7 +102,7 @@ MonoBehaviour:
   zoomSpeed: 20
   minZoom: 20
   maxZoom: 50
-  startZoom: 50
+  startZoom: 30
 --- !u!114 &7025214644380035780
 MonoBehaviour:
   m_ObjectHideFlags: 0
