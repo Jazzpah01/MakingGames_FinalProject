@@ -85,7 +85,7 @@ public class StrategyHUD : MonoBehaviour
 
         //first constant adjusts the length of the list, higher = more whitespace at the bottom
         //second constant adjusts the start position, lower = more whitespace at the top
-        float y = (itemScrollSize + (itemScrollSize * scrollbar.value) * -1) * 0.4f + Screen.height * 0.45f;
+        float y = (itemScrollSize + (itemScrollSize * scrollbar.value) * -1) * 0.5f + Screen.height * 0.45f;
         contentRT.transform.position = new Vector3(v.x, y, v.z);
     }
     
