@@ -96,6 +96,8 @@ public class PlayerMotor : MonoBehaviour
     }
     private void Move()
     {
+        //print(agent.velocity);
+
         agent.updateRotation = true;
 
         Vector3 targetVelocity = new Vector3(directionX, 0, directionZ).normalized;
@@ -139,6 +141,8 @@ public class PlayerMotor : MonoBehaviour
         }
     }
 
+    Vector3 oldpos;
+
     private IEnumerator DashE(Vector3 dashPoint, float dashSpeed, float dashLength)
     {
         // turn the player to look at the point
@@ -154,6 +158,8 @@ public class PlayerMotor : MonoBehaviour
         distance = d;
         while (d > 1)
         {
+            oldpos = agent.transform.position;
+
             d = Vector3.Distance(position, transform.position);
             if (d > distance)
             {
@@ -163,6 +169,11 @@ public class PlayerMotor : MonoBehaviour
             agent.velocity = moveTo * Mathf.Min(d, dashSpeed);
 
             yield return new WaitForSeconds(0.01f);
+
+            if (agent.transform.position == oldpos)
+            {
+                break;
+            }
         }
         dashing = false;
     }
