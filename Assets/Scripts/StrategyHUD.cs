@@ -9,8 +9,6 @@ public class StrategyHUD : MonoBehaviour
 {
     GameManager gameManager;
 
-    public float offset = -10;
-    public float contentChunkSize = 400;
     public float itemScaleOnToggle;
 
     [Header("References")]
@@ -30,6 +28,7 @@ public class StrategyHUD : MonoBehaviour
     private BuildingList buildings;
     private float resource;
     private RectTransform contentRT;
+    private float itemScrollSize;
 
     private void Start()
     {
@@ -66,6 +65,8 @@ public class StrategyHUD : MonoBehaviour
             //add the item to itemList
             itemList.Add(newItem);
         }
+        //total height of the instantiated list
+        itemScrollSize = (initialItemPrefab.GetComponent<RectTransform>().rect.height + contentGO.GetComponent<VerticalLayoutGroup>().spacing) * itemList.Count;
     }
 
     private void Update()
@@ -81,9 +82,11 @@ public class StrategyHUD : MonoBehaviour
            Scroll(Input.GetAxis("Mouse ScrollWheel"));
         }
         Vector3 v = contentRT.transform.position;
-        //TODO: find the best values here
-        float scrollSize = 90*itemList.Count;
-        contentRT.transform.position = new Vector3(v.x,(scrollSize + (scrollSize*scrollbar.value)*-1) + 550, v.z);
+
+        //first constant adjusts the length of the list, higher = more whitespace at the bottom
+        //second constant adjusts the start position, lower = more whitespace at the top
+        float y = (itemScrollSize + (itemScrollSize * scrollbar.value) * -1) * 0.4f + Screen.height * 0.45f;
+        contentRT.transform.position = new Vector3(v.x, y, v.z);
     }
     
     public void UpdateAlfa()
