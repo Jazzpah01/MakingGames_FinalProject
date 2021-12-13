@@ -42,6 +42,11 @@ public class PlayerController : MonoBehaviour, IActor, IState
                 animator.SetTrigger("dead");
                 gameController.GameOver();
             }
+            else if (health > MaxHealth)
+            {
+                health = MaxHealth;
+                Debug.Log("Health flowover in " + gameObject.name);
+            }
         }
     }
 

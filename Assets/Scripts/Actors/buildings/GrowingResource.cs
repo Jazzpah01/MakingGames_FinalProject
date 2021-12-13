@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class GrowingResource : MonoBehaviour, IBuildingBehavior
 {
-    public float growthTime = 0.5f;
-    public float harvestTimer = 0.5f;
 
     private int plantedWave;
     private GameManager gameManager;
@@ -22,11 +20,9 @@ public class GrowingResource : MonoBehaviour, IBuildingBehavior
 
         gameManager = GameManager.instance;
         plantedWave = gameManager.gameController.currentWave;
-
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         text = calculateResourcesGained() + " nectar in " + (data.wavesToHarvest - (gameManager.gameController.currentWave - plantedWave)) + " waves";
         buildable.healthbar.textBox.text = text;
@@ -37,7 +33,7 @@ public class GrowingResource : MonoBehaviour, IBuildingBehavior
         }
     }
 
-    void harvest()
+    private void harvest()
     {
             gameManager.currentResource += calculateResourcesGained();
             Destroy(gameObject);
