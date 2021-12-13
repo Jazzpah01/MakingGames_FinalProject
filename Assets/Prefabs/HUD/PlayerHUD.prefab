@@ -1086,7 +1086,7 @@ MonoBehaviour:
   baseHealthGlow: {fileID: 8233244671506569129}
   playerTriggerGlowAmount: 10
   baseTriggerGlowAmount: 10
-  glowSpeedDelay: 0.001
+  glowSpeedDelay: 0.01
   glowCount: 1
 --- !u!222 &6724336916840386959
 CanvasRenderer:
