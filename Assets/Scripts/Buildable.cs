@@ -7,7 +7,6 @@ public class Buildable : MonoBehaviour, IActor, IBuildingCollider
 {
     public BuildableData data;
 
-    private string buildingName;
 
     [Header("References")]
     public HealthBar healthbar;
@@ -28,6 +27,7 @@ public class Buildable : MonoBehaviour, IActor, IBuildingCollider
     private Rigidbody body;
     private GameObject crossProjector;
     private Projector projector;
+    private GrowingResource GR;
 
     GameManager gameManager;
 
@@ -83,7 +83,6 @@ public class Buildable : MonoBehaviour, IActor, IBuildingCollider
 
         blockDamage = false;
 
-        healthbar.textBox.text = buildingName;
         healthbar.SetHealthImageColour(Color.green);
         if (buildingProjections != null)
             projector = buildingProjections.GetComponent<Projector>();
@@ -170,15 +169,6 @@ public class Buildable : MonoBehaviour, IActor, IBuildingCollider
 
         if (buildingProjections != null)
             buildingProjections.SetActive(false);
-    }
-
-    /// <summary>
-    /// Set building type to update name.
-    /// </summary>
-    /// <param name="buildingType">Type of building.</param>
-    public void SetBuildingType(BuildingType buildingType)
-    {
-        buildingName = buildingType.name;
     }
 
     private void Die()
