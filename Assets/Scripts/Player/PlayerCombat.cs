@@ -9,6 +9,8 @@ public class PlayerCombat : MonoBehaviour
     public CollisionObserver primaryAttackObserver;
     public CollisionObserver secondaryObserver;
 
+    public float hitEffectDestroyTimer = 1;
+
     private float primaryAttackCooldownHolder;
     private float secondaryAttackCooldownHolder;
 
@@ -51,7 +53,7 @@ public class PlayerCombat : MonoBehaviour
                     
                     actor.Health -= data.primaryAttackDamage;
 
-                    Instantiate(data.primaryHitParticlePrefab, hit.point, Quaternion.identity);
+                    Destroy(Instantiate(data.primaryHitParticlePrefab, hit.point, Quaternion.identity), hitEffectDestroyTimer);
                     return;
                 }));
                 return true;
@@ -82,7 +84,7 @@ public class PlayerCombat : MonoBehaviour
                     RaycastHit hit;
                     if (Physics.Raycast(ray, out hit, 1000, actor.gameObject.layer))
                     {
-                        Instantiate(data.secondaryHitParticlePrefab, hit.point, Quaternion.identity);
+                        Destroy(Instantiate(data.secondaryHitParticlePrefab, hit.point, Quaternion.identity), hitEffectDestroyTimer);
                     }
                 }));
             }

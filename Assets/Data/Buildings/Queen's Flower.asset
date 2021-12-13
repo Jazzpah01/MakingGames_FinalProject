@@ -15,5 +15,5 @@ MonoBehaviour:
   maxHealth: 75
   speed: 0
   actorType: 16
-  resourceGain: 3
-  wavesToHarvest: 2
+  resourceGain: 5
+  wavesToHarvest: 1

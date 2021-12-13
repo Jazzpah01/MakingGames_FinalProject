@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour, IEnemy
 {
     public HealthBar healthBar;
     public GameObject deathEffect;
+    public float deathEffectDestroyTimer = 1;
 
     private float health;
 
@@ -23,8 +24,8 @@ public class Enemy : MonoBehaviour, IEnemy
         {
             if (value <= 0)
             {
-                Instantiate(deathEffect, transform.position, Quaternion.identity);
-                Destroy(this.gameObject);
+                Destroy(Instantiate(deathEffect, transform.position, Quaternion.identity), deathEffectDestroyTimer);
+                Destroy(gameObject);
             }
             else if (value != health)
             {
