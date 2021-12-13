@@ -33,6 +33,8 @@ public class Buildable : MonoBehaviour, IActor, IBuildingCollider
 
     public ActorType actorType => data.actorType;
 
+    [SerializeField] private bool preBuilt = false;
+
     public float Speed { get; set; }
     public float MaxHealth { get; set; }
     public float Health
@@ -85,56 +87,20 @@ public class Buildable : MonoBehaviour, IActor, IBuildingCollider
         healthbar.SetHealthImageColour(Color.green);
         if (buildingProjections != null)
             projector = buildingProjections.GetComponent<Projector>();
+
+        if (preBuilt)
+        {
+            OnPlacing();
+            SetValidPlacement(true);
+            OnBuild();
+        }
+            
     }
 
     public bool isActorType(ActorType type)
     {
         return (type & actorType) != ActorType.None;
     }
-
-    //private void Update()
-    //{
-    //    time -= Time.deltaTime;
-    //    Material m = projectorMaterial;
-    //    if (f == 0)
-    //    {
-    //        m.color = Color.white;
-    //    }
-    //    if (f == 1)
-    //    {
-    //        m.color = Color.green;
-    //    }
-    //    if (f == 2)
-    //    {
-    //        m.color = Color.blue;
-    //    }
-    //    if (f == 3)
-    //    {
-    //        m.color = Color.grey;
-    //    }
-    //    if (f == 4)
-    //    {
-    //        m.color = Color.red;
-    //    }
-    //    if (f == 5)
-    //    {
-    //        m.color = Color.yellow;
-    //    }
-    //    if (f == 6)
-    //    {
-    //        m.color = Color.cyan;
-    //    }
-    //    projectorMaterial = m;
-
-    //    if(time < 0)
-    //    {
-    //    f++;
-    //        time += 0.2f;
-    //    }
-
-    //    if (f > 6)
-    //        f = 0;
-    //}
 
     /// <summary>
     /// Call as this building is being placed. Before it is places.

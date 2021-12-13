@@ -91,7 +91,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 206466988996339500}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5000001
   m_Height: 2
   m_Direction: 1
@@ -572,7 +572,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 1226215689506174728}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5000001
   m_Height: 2
   m_Direction: 1
@@ -668,7 +668,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 1292653812767102504}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5000001
   m_Height: 2
   m_Direction: 1
@@ -892,7 +892,7 @@ SphereCollider:
   m_GameObject: {fileID: 2424817749568281477}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -1082,7 +1082,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 3862035755251117258}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5000001
   m_Height: 2
   m_Direction: 1
@@ -1383,7 +1383,6 @@ GameObject:
   - component: {fileID: 3140981328321082181}
   - component: {fileID: 5578580010214080540}
   - component: {fileID: 2865802226254062278}
-  - component: {fileID: 9182319209031491160}
   m_Layer: 9
   m_Name: Mr. StankyLegs
   m_TagString: Untagged
@@ -1450,22 +1449,6 @@ MonoBehaviour:
   walkDistance: 13
   slowGas: {fileID: 4287681875827543527, guid: 537f37cfbc5976c4b97ed821df4ad6e6, type: 3}
   animator: {fileID: 3707393607830519619}
---- !u!208 &9182319209031491160
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5355251333915570780}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!1 &5489908528202503743
 GameObject:
   m_ObjectHideFlags: 0
@@ -1557,7 +1540,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 5489908528202503743}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5000001
   m_Height: 2
   m_Direction: 1
@@ -1819,7 +1802,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 6941053339079260181}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5000001
   m_Height: 2
   m_Direction: 1
