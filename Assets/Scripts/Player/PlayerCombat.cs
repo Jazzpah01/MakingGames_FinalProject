@@ -11,8 +11,8 @@ public class PlayerCombat : MonoBehaviour
 
     public float hitEffectDestroyTimer = 1;
 
-    private float primaryAttackCooldownHolder;
-    private float secondaryAttackCooldownHolder;
+    [NonSerialized] public float primaryAttackCooldownHolder;
+    [NonSerialized] public float secondaryAttackCooldownHolder;
 
     private PlayerController controller;
     private PlayerData data;
@@ -58,6 +58,7 @@ public class PlayerCombat : MonoBehaviour
                 }));
                 return true;
             }
+            
         }
         return false;
     }
