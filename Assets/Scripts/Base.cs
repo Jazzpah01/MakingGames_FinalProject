@@ -6,12 +6,9 @@ using UnityEngine.SceneManagement;
 public class Base : MonoBehaviour, IActor
 {
     GameController gameController;
-    public float maxHealth = 500;
-    private float health;
+    public float health = 500;
 
     public ActorType actorType => ActorType.Obstacle;
-
-    private float speed = 0;
     public float Speed { get; set; }
     public float MaxHealth { get; set; }
 
@@ -23,6 +20,10 @@ public class Base : MonoBehaviour, IActor
             if (health <= 0)
             {
                 gameController.GameOver();
+            }else if (health > MaxHealth)
+            {
+                health = MaxHealth;
+                Debug.Log("Health flowover in " + gameObject.name);
             }
         }
     }
@@ -33,10 +34,14 @@ public class Base : MonoBehaviour, IActor
 
     private void Start()
     {
-        MaxHealth = maxHealth;
-        Health = MaxHealth;
         gameController = GameManager.instance.gameController;
         blockDamage = false;
+        if (health == 0)
+        {
+            health = 500;
+        }
+        MaxHealth = health;
+        Health = MaxHealth;
     }
 
     public bool isActorType(ActorType type)

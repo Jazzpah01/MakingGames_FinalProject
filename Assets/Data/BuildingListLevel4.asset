@@ -25,6 +25,18 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: bbd4ed69cfb57d2428e801332bc32fea, type: 3}
     descriptionItemImage: {fileID: 21300000, guid: bbd4ed69cfb57d2428e801332bc32fea,
       type: 3}
+  - name: King's Flower
+    cost: 3
+    prefab: {fileID: 8063388511463166607, guid: 8e6999ef61c55b848a7cf242ddc25fb0,
+      type: 3}
+    containmentLayermask:
+      serializedVersion: 2
+      m_Bits: 128
+    description: This plants rejuvenating powers gives life to both fairies and their
+      home.
+    icon: {fileID: 21300000, guid: 2e9c2c7b4f9617a4a9cb138501737e3b, type: 3}
+    descriptionItemImage: {fileID: 21300000, guid: 2e9c2c7b4f9617a4a9cb138501737e3b,
+      type: 3}
   - name: Shooting Flower
     cost: 4
     prefab: {fileID: 9202268415749759745, guid: be7dd906ca4f9c347aa3479e652d84e6,

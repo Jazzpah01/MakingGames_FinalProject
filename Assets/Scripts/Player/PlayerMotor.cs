@@ -53,14 +53,13 @@ public class PlayerMotor : MonoBehaviour
         //reset direction variables so we return to standing still
         directionX = 0;
         directionZ = 0;
+        MovementKeyInput();
 
         //dash or move
         if (!dashing && !attacking && !GameManager.instance.hud.isLevelDescriptionActive)
         {
-            if (Input.GetKeyDown(KeyCode.Space) && 0 >= dashTimer)
+            if (Input.GetKeyDown(KeyCode.Space) && 0 >= dashTimer && (directionX != 0 || directionZ != 0))
             {
-                MovementKeyInput();
-
                 // Set animation trigger
                 animator.SetTrigger("dash");
 
@@ -80,15 +79,10 @@ public class PlayerMotor : MonoBehaviour
 
                 Vector3 target = rotaMatrix.MultiplyPoint3x4(targetVelocity) + agent.transform.position;
 
-                GameObject go = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                go.transform.position = target;
-
                 Coroutine c = StartCoroutine(DashE(target, data.dashSpeed, data.dashLength));
             }
             else if (!blockMoving)
             {
-                //read input keys
-                MovementKeyInput();
                 //move the player
                 Move();
             }
@@ -116,8 +110,6 @@ public class PlayerMotor : MonoBehaviour
     }
     private void Move()
     {
-        //print(agent.velocity);
-
         agent.updateRotation = true;
 
         Vector3 targetVelocity = new Vector3(directionX, 0, directionZ).normalized;

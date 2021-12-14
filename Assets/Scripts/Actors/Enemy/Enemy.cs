@@ -30,7 +30,7 @@ public class Enemy : MonoBehaviour, IEnemy
             else if (value != health)
             {
                 health = value;
-                healthBar.SetHealthbar(health / MaxHealth);
+                healthBar.SetHealthbar(value / MaxHealth);
             }
         }
     }

@@ -38,6 +38,7 @@ public class PlayerHUD : MonoBehaviour
     private Coroutine baseFCoroutine;
     private Coroutine playerGCoroutine;
     private Coroutine baseGCoroutine;
+    private Color basic = new Color(255,255,255,255);
 
     private void Start()
     {
@@ -64,6 +65,9 @@ public class PlayerHUD : MonoBehaviour
         Color cb = baseHealthGlow.color;
         cb.a = 0;
         baseHealthGlow.color = cb;
+
+        playerHealthFill.color = basic;
+        baseHealthFill.color = basic;
     }
 
     private void Update()
@@ -178,9 +182,9 @@ public class PlayerHUD : MonoBehaviour
         while (true)
         {
             if (direction)
-                c.a += 0.01f;
+                c.a += 0.07f;
             else
-                c.a -= 0.01f;
+                c.a -= 0.07f;
 
             glow.color = c;
 

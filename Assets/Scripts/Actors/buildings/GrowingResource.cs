@@ -4,18 +4,13 @@ using UnityEngine;
 
 public class GrowingResource : MonoBehaviour, IBuildingBehavior
 {
-    public float growthTime = 0.5f;
-    public float harvestTimer = 0.5f;
 
-    private Vector3 growth = new Vector3(0.1f,0.1f,0.1f);
-
-    private int currentResourcesGained;
     private int plantedWave;
     private GameManager gameManager;
-    private GameObject model;
 
     private Buildable buildable;
     private ResourceBuildingData data;
+    private string text;
 
     // Start is called before the first frame update
     void Start()
@@ -24,38 +19,30 @@ public class GrowingResource : MonoBehaviour, IBuildingBehavior
         data = (ResourceBuildingData) buildable.data;
 
         gameManager = GameManager.instance;
-        plantedWave = gameManager.gameController.getNextWave();
-        foreach(Transform child in transform)
-        {
-            if(child.name == "Model")
-            {
-                model = child.gameObject;
-            }
-        }
-        
+        plantedWave = gameManager.gameController.currentWave;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
+        text = calculateResourcesGained() + " nectar in " + (data.wavesToHarvest - (gameManager.gameController.currentWave - plantedWave)) + " waves";
+        buildable.healthbar.textBox.text = text;
         if(gameManager.gameController.state == GameController.GameState.Strategy && 
-            plantedWave + data.wavesToHarvest <= gameManager.gameController.getNextWave())
+            plantedWave + data.wavesToHarvest <= gameManager.gameController.currentWave)
         {
             harvest();
         }
     }
 
-    void harvest()
+    private void harvest()
     {
-            calculateResourcesGained();
-            gameManager.currentResource += currentResourcesGained;
-            Destroy(this.gameObject);
+            gameManager.currentResource += calculateResourcesGained();
+            Destroy(gameObject);
     }
 
-    void calculateResourcesGained()
+    public int calculateResourcesGained()
     {
         float percentageLifeRemaining = (buildable.Health/buildable.MaxHealth);
         int resourceValue = (int)(data.resourceGain * percentageLifeRemaining);
-        currentResourcesGained = resourceValue;
+        return resourceValue;
     }
 }

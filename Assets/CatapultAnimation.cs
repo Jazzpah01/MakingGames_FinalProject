@@ -12,7 +12,6 @@ public class CatapultAnimation : MonoBehaviour
     void Start()
     {
         animator = transform.GetComponent<Animator>();
-        shootReady = true;
     }
 
     // Update is called once per frame
@@ -23,16 +22,14 @@ public class CatapultAnimation : MonoBehaviour
 
     public void testShoot()
     {
-        //Debug.Log("Shoot called from animation");
         if(parent.GetComponent<Catapult>().getEnemies().Count > 0)
         {
             parent.GetComponent<Catapult>().shoot();
-            shootReady = false;
         }
     }
 
-    public void readyShot()
+    public void pauseAnimation()
     {
-        shootReady = true;
+       animator.speed = 0;
     }
 }

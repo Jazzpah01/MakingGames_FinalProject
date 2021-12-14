@@ -32,6 +32,8 @@ public class GameController : MBStateMachine
     public bool InWave => spawnController.InWave;
     private bool oldInWave = false;
     private int nextWave = 0;
+    [HideInInspector]
+    public int currentWave = 0;
 
     private float buildTime;
     private BuildingController buildingController;
@@ -107,6 +109,7 @@ public class GameController : MBStateMachine
             if (InWave == false)
             {
                 ChangeState(GameState.Strategy);
+                currentWave++;
                 hud.UpdateHUD();
             }
         }
