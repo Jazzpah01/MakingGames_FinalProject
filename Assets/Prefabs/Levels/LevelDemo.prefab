@@ -104829,12 +104829,12 @@ PrefabInstance:
     - target: {fileID: 70216101307096129, guid: 137a44a12193a954cae6178df1d2bf23,
         type: 3}
       propertyPath: roundResource
-      value: 100
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 70216101307096129, guid: 137a44a12193a954cae6178df1d2bf23,
         type: 3}
       propertyPath: initialResource
-      value: 100
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 561731304202653657, guid: 137a44a12193a954cae6178df1d2bf23,
         type: 3}
