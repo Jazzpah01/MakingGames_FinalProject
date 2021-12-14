@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcbd5e9c16d021d41ac1a62f67e18d59, type: 3}
+  m_Name: BuildingListLevel_3
+  m_EditorClassIdentifier: 
+  buildings:
+  - name: Coffee Pile
+    cost: 1
+    prefab: {fileID: 2782804534701062994, guid: 03892feb8bb90f248bbc0aed8527ac48,
+      type: 3}
+    containmentLayermask:
+      serializedVersion: 2
+      m_Bits: 64
+    description: The strong aroma repels the Aphids and Ants and forces them to go
+      around it.
+    icon: {fileID: 21300000, guid: 584ae9d4b497ed740b81020f18da61e3, type: 3}
+    descriptionItemImage: {fileID: 21300000, guid: d642392a4f6e51a419f47867082de58a,
+      type: 3}
+  - name: Mentor Spooder
+    cost: 6
+    prefab: {fileID: 4962991376061601507, guid: 5690637f5aae53e4c879e3d15a177737,
+      type: 3}
+    containmentLayermask:
+      serializedVersion: 2
+      m_Bits: 64
+    description: Spooder takes care of things while a new Little One tries to save
+      the Queen. Spooder materilizes a sticky net to disarm and eat the buggers.
+    icon: {fileID: 21300000, guid: 626d41b8917c5c945aa502166caf52ef, type: 3}
+    descriptionItemImage: {fileID: 21300000, guid: 87773e12df0de3f478374408fa4955ed,
+      type: 3}
+  - name: Coffee Catapult
+    cost: 7
+    prefab: {fileID: 9202268415749759745, guid: 6e7eb57f8fd5a6c49b86644ac703ae2d,
+      type: 3}
+    containmentLayermask:
+      serializedVersion: 2
+      m_Bits: 64
+    description: Spooder's invisible spiderlings operate this great and mighty machine.
+      Its slow but it hits really hard.  Make sure to place it next to a Coffee Pile.
+    icon: {fileID: 21300000, guid: aecf4112bf735744693917c481dd5f49, type: 3}
+    descriptionItemImage: {fileID: 21300000, guid: 572f7b0648eb3ff48bc2a6a21c62dad6,
+      type: 3}
