@@ -15,6 +15,6 @@ MonoBehaviour:
   maxHealth: 75
   speed: 0
   actorType: 16
-  baseHealthGain: 20
-  playerHealthGain: 20
-  wavesToHarvest: 1
+  baseHealthGain: 100
+  playerHealthGain: 50
+  wavesToHarvest: 2
