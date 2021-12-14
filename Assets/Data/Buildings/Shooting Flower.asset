@@ -16,8 +16,8 @@ MonoBehaviour:
   speed: 0
   actorType: 4
   damage: 20
-  range: 7
-  cooldown: 0.5
+  range: 10
+  cooldown: 1
   projectileSpeed: 9
   projectilePrefab: {fileID: 2320750876935825114, guid: 171497534b7e3ea4e9e07e27cece2913,
     type: 3}

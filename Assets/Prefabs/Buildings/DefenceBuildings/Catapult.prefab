@@ -618,7 +618,7 @@ MonoBehaviour:
   enemies: []
   distanceToClosestEnemy: 0
   closestEnemy: {fileID: 0}
-  detectionCollision: {fileID: 4590136453097063781}
+  detectionCollision: {fileID: 2834692135045452658}
   shootCooldown: 2
 --- !u!208 &8443509432160686943
 NavMeshObstacle:
