@@ -99,6 +99,7 @@ public class PlayerController : MonoBehaviour, IActor, IState
         {
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
+            AudioManager.instance.Play("whoosh");
 
             if (Physics.Raycast(ray, out hit, 1000, actorMask))
             {
@@ -119,6 +120,19 @@ public class PlayerController : MonoBehaviour, IActor, IState
                         motor.blockMoving = false;
                     }));
                 }
+            }
+            else
+            {
+                combat.primaryAttackCooldownHolder = data.primaryAttackCooldown;
+                animator.SetTrigger("attack");
+                motor.blockMoving = true;
+                StartCoroutine(Utility.DelayedAbility(data.primaryDelay, delegate
+                {
+                    motor.Dash(data.primaryAttackDashSpeed,
+                        Mathf.Min(data.primaryAttackDashLength, Vector3.Distance(transform.position, hit.point)));
+                    motor.blockMoving = false;
+                }
+                ));
             }
         }
 
