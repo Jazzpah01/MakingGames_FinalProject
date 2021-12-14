@@ -9099,6 +9099,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   point: {fileID: 794735096363062921}
+  occupied: {fileID: 0}
 --- !u!1 &798457215789833573
 GameObject:
   m_ObjectHideFlags: 0
@@ -19252,6 +19253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   point: {fileID: 1744301592444479127}
+  occupied: {fileID: 0}
 --- !u!1 &1756240787142357316
 GameObject:
   m_ObjectHideFlags: 0
@@ -29206,6 +29208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   point: {fileID: 2573491178266031254}
+  occupied: {fileID: 0}
 --- !u!1 &2589695461552067874
 GameObject:
   m_ObjectHideFlags: 0
@@ -30428,6 +30431,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   point: {fileID: 2700804676574119200}
+  occupied: {fileID: 0}
 --- !u!1 &2718734966116736840
 GameObject:
   m_ObjectHideFlags: 0
@@ -43161,6 +43165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   point: {fileID: 3938595354581552591}
+  occupied: {fileID: 0}
 --- !u!1 &3945772711115742036
 GameObject:
   m_ObjectHideFlags: 0
@@ -43434,6 +43439,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   point: {fileID: 3949774621026608473}
+  occupied: {fileID: 0}
 --- !u!1 &3955828206639561337
 GameObject:
   m_ObjectHideFlags: 0
@@ -66150,6 +66156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   point: {fileID: 5797380374304787636}
+  occupied: {fileID: 0}
 --- !u!1 &5797964412861987344
 GameObject:
   m_ObjectHideFlags: 0
@@ -73451,6 +73458,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   point: {fileID: 6463809538292639566}
+  occupied: {fileID: 0}
 --- !u!1 &6476250559241246741
 GameObject:
   m_ObjectHideFlags: 0
@@ -80485,6 +80493,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   point: {fileID: 7135281472903842318}
+  occupied: {fileID: 0}
 --- !u!1 &7138944174997319478
 GameObject:
   m_ObjectHideFlags: 0
@@ -98378,6 +98387,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   point: {fileID: 8776027002609878473}
+  occupied: {fileID: 0}
 --- !u!1 &8780009846193712008
 GameObject:
   m_ObjectHideFlags: 0
@@ -104819,12 +104829,12 @@ PrefabInstance:
     - target: {fileID: 70216101307096129, guid: 137a44a12193a954cae6178df1d2bf23,
         type: 3}
       propertyPath: roundResource
-      value: 3
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 70216101307096129, guid: 137a44a12193a954cae6178df1d2bf23,
         type: 3}
       propertyPath: initialResource
-      value: 12
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 561731304202653657, guid: 137a44a12193a954cae6178df1d2bf23,
         type: 3}
