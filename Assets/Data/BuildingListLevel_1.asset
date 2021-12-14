@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fcbd5e9c16d021d41ac1a62f67e18d59, type: 3}
-  m_Name: BuildingListLevel4
+  m_Name: BuildingListLevel_1
   m_EditorClassIdentifier: 
   buildings:
   - name: Gossypium Pecunia
