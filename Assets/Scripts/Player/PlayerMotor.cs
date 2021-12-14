@@ -59,11 +59,31 @@ public class PlayerMotor : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space) && 0 >= dashTimer)
             {
+                MovementKeyInput();
+
+                // Set animation trigger
                 animator.SetTrigger("dash");
+
                 //reset dash cooldown
                 dashTimer = data.dashCooldown;
+
                 //dash
-                Dash(data.dashSpeed, data.dashLength);
+                dashing = true;
+
+                Vector3 targetVelocity = new Vector3(directionX, 0, directionZ).normalized * data.dashLength;
+
+                print(data.dashLength);
+                print(targetVelocity.magnitude);
+
+                Quaternion rotation = Quaternion.Euler(0, isoAngle, 0);
+                Matrix4x4 rotaMatrix = Matrix4x4.Rotate(rotation);
+
+                Vector3 target = rotaMatrix.MultiplyPoint3x4(targetVelocity) + agent.transform.position;
+
+                GameObject go = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                go.transform.position = target;
+
+                Coroutine c = StartCoroutine(DashE(target, data.dashSpeed, data.dashLength));
             }
             else if (!blockMoving)
             {
