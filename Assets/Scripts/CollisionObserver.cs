@@ -16,6 +16,12 @@ public class CollisionObserver : MonoBehaviour
     private Collider collider;
 
     /// <summary>
+    /// Add colliders as child colliders for this to observe.
+    /// </summary>
+    [Tooltip("Use only if you need to observe multiple colliders. Can be a performance hit.")]
+    public List<CollisionObserver> children = new List<CollisionObserver>();
+
+    /// <summary>
     /// Get all collisions that entered this frame.
     /// </summary>
     public List<Collider> Enter => enter;
@@ -45,6 +51,13 @@ public class CollisionObserver : MonoBehaviour
         exit = new List<Collider>();
         stay = new List<Collider>();
         collider = GetComponent<Collider>();
+
+        foreach (CollisionObserver child in children)
+        {
+            child.Subscribe(OnTriggerEnter, CollisionType.Enter);
+            child.Subscribe(OnTriggerExit, CollisionType.Exit);
+            child.Subscribe(OnTriggerStay, CollisionType.Stay);
+        }
     }
 
     private void OnTriggerEnter(Collider other)

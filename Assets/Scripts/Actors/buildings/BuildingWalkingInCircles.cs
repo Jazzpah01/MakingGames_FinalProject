@@ -44,11 +44,14 @@ public class BuildingWalkingInCircles : MonoBehaviour, IBuildingBehavior
     {
         if (gameManager.gameController.state == GameController.GameState.Combat)
         {
+            Vector3 centerOut = (transform.position - center.position).normalized;
+
             transform.Translate(Vector3.forward * (Time.deltaTime * speed));
-            transform.Rotate(0.0f, rotation * Time.deltaTime, 0.0f, Space.Self);
+            transform.position = center.position + centerOut * centerDistance;
+
+            transform.forward = new Vector3(centerOut.z, 0, -centerOut.x);
         }
 
-        transform.position = center.position + (transform.position - center.position).normalized * centerDistance;
     }
 
     private void Detection_Enter(Collider other)
