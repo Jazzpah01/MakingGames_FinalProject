@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ef07566d5fee864cb2e84ea82642d5f, type: 3}
   m_Name: Aphid_Big
   m_EditorClassIdentifier: 
-  maxHealth: 150
+  maxHealth: 175
   speed: 4
   pathMove:
     speedModifyer: 1

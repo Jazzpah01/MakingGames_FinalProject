@@ -25,9 +25,9 @@ MonoBehaviour:
   - prefab: {fileID: 797109595003254403, guid: f0f0ef6a9f5056544a0310b63fd4b79e, type: 3}
     value: 4
     identifyer: 2
-  - prefab: {fileID: 797109595003254403, guid: ca3611a94cd6bd847b9a7f55f32cc0fb, type: 3}
+  - prefab: {fileID: 797109595003254403, guid: 99164ef08878d6440be0b9377448def9, type: 3}
     value: 5
     identifyer: 2
-  - prefab: {fileID: 797109595003254403, guid: e870ed59b2265b14aa1cfe8b344cc8e3, type: 3}
+  - prefab: {fileID: 797109595003254403, guid: c11a74f3fbc065b478266302a9169572, type: 3}
     value: 7
     identifyer: 2

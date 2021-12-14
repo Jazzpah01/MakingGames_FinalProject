@@ -111,7 +111,7 @@ Transform:
   m_GameObject: {fileID: 797109595003254403}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.44, z: 0}
-  m_LocalScale: {x: 1.5465, y: 1.5465, z: 1.5465}
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
   m_Children:
   - {fileID: 5604920119014446437}
   - {fileID: 5199958269474482671}
@@ -136,6 +136,7 @@ MonoBehaviour:
   healthBar: {fileID: 4181097153804717211}
   deathEffect: {fileID: 192757836124602699, guid: f4dddb6fda5ba164eae37c20d9e8e544,
     type: 3}
+  deathEffectDestroyTimer: 1
 --- !u!114 &8335485817116311813
 MonoBehaviour:
   m_ObjectHideFlags: 0

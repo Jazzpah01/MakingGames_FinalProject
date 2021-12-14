@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf8a98c26b8e5164d85969697351ab78, type: 3}
   m_Name: CoffeePile
   m_EditorClassIdentifier: 
-  maxHealth: 150
+  maxHealth: 100
   speed: 0
   actorType: 4

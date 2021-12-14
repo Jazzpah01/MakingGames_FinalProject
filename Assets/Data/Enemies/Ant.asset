@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Ant
   m_EditorClassIdentifier: 
   maxHealth: 200
-  speed: 5
+  speed: 6
   range: 3
   pathMove:
     speedModifyer: 1
@@ -21,4 +21,4 @@ MonoBehaviour:
   instantAttack:
     damage: 4
     delay: 0.1
-    cooldown: 0.2
+    cooldown: 1
