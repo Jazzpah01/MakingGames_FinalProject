@@ -7,10 +7,12 @@ using TMPro;
 public class PlayerHUD : MonoBehaviour
 {
     PlayerController playerController;
+    GameController gameController;
     GameManager gameManager;
     Base baseController;
 
     public TextMeshProUGUI resourceCounter;
+    public TextMeshProUGUI waveCounter;
     public Image playerHealthFill;
     public Image baseHealthFill;
     public float damageFlashDelay;
@@ -44,6 +46,7 @@ public class PlayerHUD : MonoBehaviour
     {
         playerController = PlayerManager.instance.playerController;
         gameManager = GameManager.instance;
+        gameController = GameController.instance;
         baseController = GameController.instance.baseController;
         oldPlayerHealth = playerController.Health;
         oldBaseHealth = baseController.Health;
@@ -153,6 +156,9 @@ public class PlayerHUD : MonoBehaviour
 
         //resource text update
         resourceCounter.text = "Nectar Essence: " + gameManager.currentResource.ToString();
+
+        //wave text update
+        waveCounter.text = "Wave " + (gameController.currentWave + 1).ToString() + " of " + FindObjectOfType<SpawnController>().waves.Count.ToString();
 
         oldPlayerHealth = playerController.Health;
         oldBaseHealth = baseController.Health;
