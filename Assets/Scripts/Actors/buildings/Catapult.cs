@@ -52,20 +52,27 @@ public class Catapult : MonoBehaviour, IBuildingBehavior
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("Enemy count " + enemies.Count);
         timer += Time.deltaTime;
         if(closestEnemy != null)
         {
             this.transform.GetChild(3).transform.LookAt(closestEnemy.transform, Vector3.up);
         }
+        if(timer > shootCooldown)
+        {
+            animator.speed = 1;
+            //Debug.Log("Animation speed resat");
+        }
     }
 
     public void shoot()
     {
-        timer = shootCooldown;
+        timer = 0;
         GameObject newProjectile = Instantiate(projectile) as GameObject;
         newProjectile.transform.position = peak.transform.position;
         newProjectile.GetComponent<CatapultProjectileScript>().setValues(data.damage, data.projectileSpeed);
         newProjectile.GetComponent<CatapultProjectileScript>().setTarget(closestEnemy);
+        //Debug.Log("projectile fired");
     }
 
     public void setValues(float d, float cooldown)
@@ -110,9 +117,11 @@ public class Catapult : MonoBehaviour, IBuildingBehavior
     {
         distanceToClosestEnemy = -1;
         closestEnemy = null;
-        if(enemies.Count > 0 )
+        if(enemies.Count > 0)
         {   
-            animator.SetTrigger("Shooting"); 
+            animator.SetBool("Shooting", true); 
+        } else {
+            animator.SetBool("Shooting", false);
         }
         if(enemies.Count == 1 && enemies[0] != null)
         {
