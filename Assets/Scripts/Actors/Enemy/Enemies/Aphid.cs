@@ -17,15 +17,7 @@ public class Aphid : AIStateMachine
     protected void Start()
     {
         // Find a crops to follow
-        IActor[] crops = GameManager.instance.buildingController.buildablesParent.gameObject.GetComponentsInChildren<IActor>();
-
-        foreach (IActor item in crops)
-        {
-            if (item.isActorType(ActorType.Crops))
-            {
-                Target = item;
-            }
-        }
+        SetCarrotTarget();
 
         // If crops doesn't exit: remove this
         if (Target.IsDestroyed())
@@ -59,7 +51,7 @@ public class Aphid : AIStateMachine
 
         if (currentState == data.pathMove)
         {
-            // Move state. Move to a crops actor
+            // Move state. Move to a crops or base
             if (Target.IsDestroyed())
             {
                 Target = GameController.instance.baseController;
@@ -95,12 +87,24 @@ public class Aphid : AIStateMachine
         // Find a crops to follow
         IActor[] crops = GameManager.instance.buildingController.buildablesParent.gameObject.GetComponentsInChildren<IActor>();
 
+        IActor closest = null;
+        float currentDistance = float.MaxValue;
+
         foreach (IActor item in crops)
         {
-            if (item.isActorType(ActorType.Crops))
+            float distance = Vector3.Distance(item.gameObject.transform.position, transform.position);
+            if (!item.IsDestroyed() &&
+                item.isActorType(ActorType.Crops) &&
+                distance < currentDistance)
             {
-                Target = item;
+                closest = item;
+                currentDistance = distance;
             }
+        }
+
+        if (!closest.IsDestroyed())
+        {
+            Target = closest;
         }
     }
 
