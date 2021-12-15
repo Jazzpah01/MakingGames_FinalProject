@@ -64,10 +64,8 @@ public class GameController : MBStateMachine
 
     internal void GameOver()
     {
-        //TODO: something else than just showing a game over screen
-        gameOverScreen.SetActive(true);
-        //pause the time;
         Time.timeScale = 0;
+        hud.GameOver();
     }
 
     public void ChangeState(GameState newState)
