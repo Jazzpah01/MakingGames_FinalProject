@@ -7,22 +7,28 @@ public class HUD : MonoBehaviour
 {
     public GameObject playerHUDPrefab;
     public GameObject strategyHUDPrefab;
+    public GameObject startMenuPrefab;
     public GameObject levelDescriptionPrefab;
     public GameObject ingameMenuPrefab;
     public GameObject controlsPrefab;
     public GameObject settingsPrefab;
     public GameObject creditsPrefab;
+    public GameObject gameoverPrefab;
 
     [HideInInspector]
     public bool isLevelDescriptionActive;
 
     private PlayerHUD playerHUD;
     private StrategyHUD strategyHUD;
+    private GameObject startMenuUI;
     private GameObject levelDescription;
     private GameObject ingameMenu;
     private GameObject controlsUI;
     private GameObject settingsUI;
     private GameObject creditsUI;
+    private GameObject gameOverUI;
+
+    private GameObject backButtonUI;
 
     [HideInInspector]
     public bool mouseOver; 
@@ -31,27 +37,36 @@ public class HUD : MonoBehaviour
 
     private void Start()
     {
+        gameManager = GameManager.instance;
+
         //Instantiate the HUD Prefabs
         playerHUD = Instantiate(playerHUDPrefab,transform).GetComponent<PlayerHUD>();
         strategyHUD = Instantiate(strategyHUDPrefab,transform).GetComponent<StrategyHUD>();
+        startMenuUI = Instantiate(levelDescriptionPrefab, transform);
         levelDescription = Instantiate(levelDescriptionPrefab, transform);
         ingameMenu = Instantiate(ingameMenuPrefab, transform);
         controlsUI = Instantiate(controlsPrefab, transform);
         settingsUI = Instantiate(settingsPrefab, transform);
         creditsUI = Instantiate(creditsPrefab, transform);
+        gameOverUI = Instantiate(gameoverPrefab, transform);
 
-        gameManager = GameManager.instance;
-
+        levelDescription.gameObject.SetActive(false);
         playerHUD.gameObject.SetActive(false);
         ingameMenu.gameObject.SetActive(false);
         controlsUI.gameObject.SetActive(false);
         settingsUI.gameObject.SetActive(false);
         creditsUI.gameObject.SetActive(false);
+        gameOverUI.gameObject.SetActive(false);
     }
     public void UpdateHUD()
     {
         strategyHUD.gameObject.SetActive(gameManager.gameController.state == GameController.GameState.Strategy);
         playerHUD.gameObject.SetActive(gameManager.gameController.state == GameController.GameState.Combat);
+    }
+
+    public void GameOver()
+    {
+        gameOverUI.gameObject.SetActive(true);
     }
 
     public void IngameMenuButton()
@@ -93,5 +108,28 @@ public class HUD : MonoBehaviour
     {
         creditsUI.SetActive(false);
         ingameMenu.SetActive(true);
+    }
+
+    public void StartMenuPlayButton()
+    {
+        levelDescription.gameObject.SetActive(true);
+        startMenuUI.gameObject.SetActive(false);
+    }
+
+    public void StartMenuControlsButton()
+    {
+        controlsUI.gameObject.SetActive(true);
+        startMenuUI.gameObject.SetActive(false);
+    }
+
+    public void StartMenuCreditsButton()
+    {
+        creditsUI.gameObject.SetActive(true);
+        startMenuUI.gameObject.SetActive(false);
+    }
+
+    public void QuitButton()
+    {
+        Application.Quit();
     }
 }

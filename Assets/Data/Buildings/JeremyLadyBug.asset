@@ -16,3 +16,4 @@ MonoBehaviour:
   speed: 4
   actorType: 4
   damage: 75
+  grabbedTime: 2
