@@ -95,9 +95,9 @@ public class StrategyHUD : MonoBehaviour
         //wave text update
         if((gameController.currentWave + 1) > FindObjectOfType<SpawnController>().waves.Count)
         {
-            waveCounter.text = "Level finished";
+            waveCounter.text = "Level\nfinished";
         } else {
-            waveCounter.text = "Wave " + (gameController.currentWave + 1).ToString() + " of " + FindObjectOfType<SpawnController>().waves.Count.ToString();
+            waveCounter.text = "Wave \n" + (gameController.currentWave + 1).ToString() + " of " + FindObjectOfType<SpawnController>().waves.Count.ToString();
         }
     }
     

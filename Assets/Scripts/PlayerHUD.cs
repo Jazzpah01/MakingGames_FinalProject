@@ -158,7 +158,7 @@ public class PlayerHUD : MonoBehaviour
         resourceCounter.text = "Nectar Essence: " + gameManager.currentResource.ToString();
 
         //wave text update
-        waveCounter.text = "Wave " + (gameController.currentWave + 1).ToString() + " of " + FindObjectOfType<SpawnController>().waves.Count.ToString();
+        waveCounter.text = "Wave\n" +  (gameController.currentWave + 1).ToString() + " of " + FindObjectOfType<SpawnController>().waves.Count.ToString();
 
         oldPlayerHealth = playerController.Health;
         oldBaseHealth = baseController.Health;
