@@ -71,15 +71,6 @@ MonoBehaviour:
     volume: 1
     pitch: 1.5
     source: {fileID: 0}
-  - name: whoosh
-    clip: {fileID: 8300000, guid: d9c41df71174a74419dacfcffe055785, type: 3}
-    audioMixerGroup: {fileID: -8790982342731916639, guid: 50da94960432a7e408fde7334303ab69,
-      type: 2}
-    mute: 0
-    loop: 0
-    volume: 1
-    pitch: 1.5
-    source: {fileID: 0}
   - name: combat
     clip: {fileID: 8300000, guid: bf1738cb710072c44b60d1b704a33209, type: 3}
     audioMixerGroup: {fileID: 2162512689851441523, guid: 50da94960432a7e408fde7334303ab69,
@@ -96,6 +87,24 @@ MonoBehaviour:
     mute: 0
     loop: 1
     volume: 1
+    pitch: 1.5
+    source: {fileID: 0}
+  - name: whoosh
+    clip: {fileID: 8300000, guid: d9c41df71174a74419dacfcffe055785, type: 3}
+    audioMixerGroup: {fileID: -8790982342731916639, guid: 50da94960432a7e408fde7334303ab69,
+      type: 2}
+    mute: 0
+    loop: 0
+    volume: 1
+    pitch: 1.5
+    source: {fileID: 0}
+  - name: whoosh
+    clip: {fileID: 8300000, guid: d9c41df71174a74419dacfcffe055785, type: 3}
+    audioMixerGroup: {fileID: -8790982342731916639, guid: 50da94960432a7e408fde7334303ab69,
+      type: 2}
+    mute: 0
+    loop: 0
+    volume: 0.5
     pitch: 1.5
     source: {fileID: 0}
   audioMixer: {fileID: 24100000, guid: 50da94960432a7e408fde7334303ab69, type: 2}
