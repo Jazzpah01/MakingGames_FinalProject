@@ -17,4 +17,4 @@ MonoBehaviour:
   actorType: 16
   baseHealthGain: 100
   playerHealthGain: 50
-  wavesToHarvest: 2
+  wavesToHarvest: 1
