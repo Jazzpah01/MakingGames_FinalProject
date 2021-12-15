@@ -18,9 +18,4 @@ public class ScrollOnMouseover : MonoBehaviour, IPointerEnterHandler,IPointerExi
     {
         gameManager.hud.mouseOver = false;
     }
-
-    private void OnDisable()
-    {
-        gameManager.hud.mouseOver = false;
-    }
 }

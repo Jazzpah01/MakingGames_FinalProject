@@ -64,6 +64,7 @@ MonoBehaviour:
   scrollStart: 540
   scrollEnd: 540
   defendButton: {fileID: 3826565906558758238}
+  defendButtonText: {fileID: 4516085849612520883}
   menuButton: {fileID: 6933517505627090975}
   scrollUpButton: {fileID: 1981173443598914226}
   scrollDownButton: {fileID: 2160735918493774246}
@@ -913,7 +914,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: -70
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0

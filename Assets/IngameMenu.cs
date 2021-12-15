@@ -25,4 +25,8 @@ public class IngameMenu : MonoBehaviour
     {
         hud.IngameMenuCreditsButton();
     }
+    public void RestartButton()
+    {
+        hud.IngameMenuStartMenuButton();
+    }
 }
