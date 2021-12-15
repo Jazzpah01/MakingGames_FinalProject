@@ -31,7 +31,7 @@ public class HUD : MonoBehaviour
     private bool gameStarted;
 
     [HideInInspector]
-    public bool mouseOver; 
+    public bool mouseOver;
 
     GameManager gameManager;
 
@@ -40,8 +40,8 @@ public class HUD : MonoBehaviour
         gameManager = GameManager.instance;
 
         //Instantiate the HUD Prefabs
-        playerHUD = Instantiate(playerHUDPrefab,transform).GetComponent<PlayerHUD>();
-        strategyHUD = Instantiate(strategyHUDPrefab,transform).GetComponent<StrategyHUD>();
+        playerHUD = Instantiate(playerHUDPrefab, transform).GetComponent<PlayerHUD>();
+        strategyHUD = Instantiate(strategyHUDPrefab, transform).GetComponent<StrategyHUD>();
         startMenuUI = Instantiate(startMenuPrefab, transform);
         levelDescriptionUI = Instantiate(levelDescriptionPrefab, transform);
         ingameMenu = Instantiate(ingameMenuPrefab, transform);
@@ -50,14 +50,22 @@ public class HUD : MonoBehaviour
         creditsUI = Instantiate(creditsPrefab, transform);
         gameOverUI = Instantiate(gameoverPrefab, transform);
 
-        strategyHUD.gameObject.SetActive(false);
-        levelDescriptionUI.gameObject.SetActive(false);
         playerHUD.gameObject.SetActive(false);
-        ingameMenu.gameObject.SetActive(false);
-        controlsUI.gameObject.SetActive(false);
-        settingsUI.gameObject.SetActive(false);
-        creditsUI.gameObject.SetActive(false);
-        gameOverUI.gameObject.SetActive(false);
+        levelDescriptionUI.SetActive(false);
+        startMenuUI.SetActive(false);
+        ingameMenu.SetActive(false);
+        controlsUI.SetActive(false);
+        settingsUI.SetActive(false);
+        creditsUI.SetActive(false);
+        gameOverUI.SetActive(false);
+
+        if (LevelManager.instance.getCurrentLevel() == 1)
+        {
+            startMenuUI.SetActive(true);
+            strategyHUD.gameObject.SetActive(false);
+        }
+
+
     }
     public void UpdateHUD()
     {
