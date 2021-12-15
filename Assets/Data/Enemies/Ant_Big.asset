@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Ant_Big
   m_EditorClassIdentifier: 
   maxHealth: 300
-  speed: 6
-  range: 6
+  speed: 7
+  range: 5
   pathMove:
     speedModifyer: 1
     stoppingDistance: 0.8
