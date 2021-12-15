@@ -58,16 +58,13 @@ public class GameController : MBStateMachine
         player = playerManager.player;
         playerController = playerManager.playerController;
         hud = gameManager.hud;
-
         ChangeState(GameState.Strategy);
     }
 
     internal void GameOver()
     {
-        //TODO: something else than just showing a game over screen
-        gameOverScreen.SetActive(true);
-        //pause the time;
         Time.timeScale = 0;
+        hud.GameOver();
     }
 
     public void ChangeState(GameState newState)
@@ -126,6 +123,7 @@ public class GameController : MBStateMachine
         if (oldInWave == false)
         {
             // Start wave
+            gameManager.hud.mouseOver = false;
             spawnController.StartWave(nextWave);
             nextWave++;
             oldInWave = true;

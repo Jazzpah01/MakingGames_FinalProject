@@ -1,0 +1,110 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8879477769170486615
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 934244550410353442}
+  - component: {fileID: 7139228218997738311}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &934244550410353442
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8879477769170486615}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7139228218997738311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8879477769170486615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6d364be15a163a48ad93d39d4393086, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: click
+    clip: {fileID: 8300000, guid: b56f39e6b8216c64faf6cad89ec5061c, type: 3}
+    audioMixerGroup: {fileID: -8790982342731916639, guid: 50da94960432a7e408fde7334303ab69,
+      type: 2}
+    mute: 0
+    loop: 0
+    volume: 1
+    pitch: 1.5
+    source: {fileID: 0}
+  - name: hover
+    clip: {fileID: 8300000, guid: af955ae904a8645478fb218cac5199e4, type: 3}
+    audioMixerGroup: {fileID: -8790982342731916639, guid: 50da94960432a7e408fde7334303ab69,
+      type: 2}
+    mute: 0
+    loop: 0
+    volume: 1
+    pitch: 1.5
+    source: {fileID: 0}
+  - name: whack
+    clip: {fileID: 8300000, guid: 64589c247dc3a2b4c809974bd659c3eb, type: 3}
+    audioMixerGroup: {fileID: -8790982342731916639, guid: 50da94960432a7e408fde7334303ab69,
+      type: 2}
+    mute: 0
+    loop: 0
+    volume: 1
+    pitch: 1.5
+    source: {fileID: 0}
+  - name: combat
+    clip: {fileID: 8300000, guid: bf1738cb710072c44b60d1b704a33209, type: 3}
+    audioMixerGroup: {fileID: 2162512689851441523, guid: 50da94960432a7e408fde7334303ab69,
+      type: 2}
+    mute: 0
+    loop: 1
+    volume: 1
+    pitch: 1.5
+    source: {fileID: 0}
+  - name: strategy
+    clip: {fileID: 8300000, guid: 7fe374dd88a5ae54c8a24ac4da50dc50, type: 3}
+    audioMixerGroup: {fileID: 2162512689851441523, guid: 50da94960432a7e408fde7334303ab69,
+      type: 2}
+    mute: 0
+    loop: 1
+    volume: 1
+    pitch: 1.5
+    source: {fileID: 0}
+  - name: whoosh
+    clip: {fileID: 8300000, guid: d9c41df71174a74419dacfcffe055785, type: 3}
+    audioMixerGroup: {fileID: -8790982342731916639, guid: 50da94960432a7e408fde7334303ab69,
+      type: 2}
+    mute: 0
+    loop: 0
+    volume: 1
+    pitch: 1.5
+    source: {fileID: 0}
+  - name: whoosh
+    clip: {fileID: 8300000, guid: d9c41df71174a74419dacfcffe055785, type: 3}
+    audioMixerGroup: {fileID: -8790982342731916639, guid: 50da94960432a7e408fde7334303ab69,
+      type: 2}
+    mute: 0
+    loop: 0
+    volume: 0.5
+    pitch: 1.5
+    source: {fileID: 0}
+  audioMixer: {fileID: 24100000, guid: 50da94960432a7e408fde7334303ab69, type: 2}

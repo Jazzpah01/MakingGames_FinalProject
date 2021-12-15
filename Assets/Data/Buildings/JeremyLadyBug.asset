@@ -27,3 +27,4 @@ MonoBehaviour:
   descriptionItemImage: {fileID: 21300000, guid: ca37d841b66c2e04a88a8824bd3d7203,
     type: 3}
   damage: 75
+  grabbedTime: 2

@@ -18,6 +18,7 @@ public class StrategyHUD : MonoBehaviour
     public Scrollbar scrollbar;
     public float scrollStart, scrollEnd;
     public GameObject defendButton;
+    public TextMeshProUGUI defendButtonText;
     public GameObject menuButton;
     public GameObject scrollUpButton;
     public GameObject scrollDownButton;
@@ -31,6 +32,7 @@ public class StrategyHUD : MonoBehaviour
     private float resource;
     private RectTransform contentRT;
     private float itemScrollSize;
+    private float waveCounterTextSize;
 
     private void Start()
     {
@@ -40,6 +42,7 @@ public class StrategyHUD : MonoBehaviour
         gameController = GameController.instance;
         strategyController = gameManager.buildingController;
         buildings = gameManager.buildingTypes;
+        waveCounterTextSize = waveCounter.fontSize;
 
 
         // Setup buttons
@@ -93,7 +96,15 @@ public class StrategyHUD : MonoBehaviour
 
         
         //wave text update
-        waveCounter.text = "Wave " + (gameController.currentWave + 1).ToString() + " of " + FindObjectOfType<SpawnController>().waves.Count.ToString();
+        if((gameController.currentWave + 1) > FindObjectOfType<SpawnController>().waves.Count)
+        {
+            waveCounter.fontSize = waveCounterTextSize - 3;
+            waveCounter.text = "Level\nfinished";
+            defendButtonText.text = "Next\nLevel";
+        } else {
+            waveCounter.fontSize = waveCounterTextSize;
+            waveCounter.text = "Wave \n" + (gameController.currentWave + 1).ToString() + " of " + FindObjectOfType<SpawnController>().waves.Count.ToString();
+        }
     }
     
     public void UpdateAlfa()

@@ -7,4 +7,5 @@ public class CircleBuildingData : BuildableData
 {
     [Header("Jeremy Data")]
     public float damage;
+    public float grabbedTime;
 }

@@ -16,6 +16,7 @@ public class PlayerCombat : MonoBehaviour
 
     private PlayerController controller;
     private PlayerData data;
+    public bool inAction = false;
 
     private void Start()
     {
@@ -66,19 +67,26 @@ public class PlayerCombat : MonoBehaviour
     public bool SecondaryAttack()
     {
         secondaryAttackCooldownHolder = data.secondaryAttackCooldown;
-        Collider[] collisions = secondaryObserver.Stay.ToArray();
-        for (int i = 0; i < collisions.Length; i++)
+        
+        StartCoroutine(Utility.DelayedAbility(data.secondaryDelay, delegate
         {
-            IActor actor = collisions[i].GetComponent<IActor>();
-            if (actor != null && actor.isActorType(ActorType.Enemy))
+            // Find collisions
+            Collider[] collisions = secondaryObserver.Stay.ToArray();
+
+            bool hitsomth = false;
+
+            for (int i = 0; i < collisions.Length; i++)
             {
-                StartCoroutine(Utility.DelayedAbility(data.secondaryDelay, delegate
+                IActor actor = collisions[i].GetComponent<IActor>();
+                if (actor != null && actor.isActorType(ActorType.Enemy))
                 {
                     if (actor.IsDestroyed())
                     {
                         return;
                     }
                     actor.Health -= data.secondaryAttackDamage;
+
+                    hitsomth = true;
 
                     Ray ray = new Ray(transform.position, actor.gameObject.transform.position - transform.position);
                     Debug.DrawRay(transform.position, actor.gameObject.transform.position - transform.position, Color.red, 10);
@@ -87,15 +95,24 @@ public class PlayerCombat : MonoBehaviour
                     {
                         Destroy(Instantiate(data.secondaryHitParticlePrefab, hit.point, Quaternion.identity), hitEffectDestroyTimer);
                     }
-                }));
+                }
             }
-        }
+
+            // Play sound, depending on hit
+            if (hitsomth)
+            {
+                AudioManager.instance.Play("whoosh");
+            } else
+            {
+                AudioManager.instance.Play("whooshlow");
+            }
+        }));
         return true;
     }
 
     public bool PrimaryAttackReady()
     {
-        if (0 >= primaryAttackCooldownHolder)
+        if (0 >= primaryAttackCooldownHolder && !inAction && secondaryAttackCooldownHolder <= 0)
             return true;
         else
             return false;
@@ -103,7 +120,7 @@ public class PlayerCombat : MonoBehaviour
 
     public bool SecondaryAttackReady()
     {
-        if (0 >= secondaryAttackCooldownHolder)
+        if (0 >= secondaryAttackCooldownHolder && !inAction)
             return true;
         else
             return false;
