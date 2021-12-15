@@ -6,4 +6,5 @@ using UnityEngine;
 public class CircleBuildingData : BuildableData
 {
     public float damage;
+    public float grabbedTime;
 }
