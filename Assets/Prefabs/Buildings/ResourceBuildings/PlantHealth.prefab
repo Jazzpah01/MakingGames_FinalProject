@@ -1220,11 +1220,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5385142785274563605, guid: d0704c4fbca137642bd908433e1b088f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dc798cc943bf59243b5b55cd6ab4b031, type: 2}
+    - target: {fileID: -516917337368376366, guid: d0704c4fbca137642bd908433e1b088f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 37a71da7425459345af4518af1a69cf9, type: 2}
     - target: {fileID: 919132149155446097, guid: d0704c4fbca137642bd908433e1b088f,
         type: 3}
       propertyPath: m_Name
       value: HealthPlant
       objectReference: {fileID: 0}
+    - target: {fileID: 3219882101630006985, guid: d0704c4fbca137642bd908433e1b088f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dc798cc943bf59243b5b55cd6ab4b031, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0704c4fbca137642bd908433e1b088f, type: 3}
 --- !u!4 &2524626626227481946 stripped
