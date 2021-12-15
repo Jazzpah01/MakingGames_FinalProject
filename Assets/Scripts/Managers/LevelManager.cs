@@ -22,7 +22,7 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    private void Start()
+    private void OnEnable()
     {
         RestartAllLevels();
     }
@@ -37,6 +37,11 @@ public class LevelManager : MonoBehaviour
     {
         currentLevel--;
         loadLevel();
+    }
+
+    public int getCurrentLevel()
+    {
+        return currentLevel;
     }
 
     public void loadLevel()
