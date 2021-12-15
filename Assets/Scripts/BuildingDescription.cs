@@ -12,8 +12,8 @@ public class BuildingDescription : MonoBehaviour
     public Image descriptionItemImage;
     public void UpdateItemDescription(BuildingType type)
     {
-        title.text = type.name;
-        description.text = type.description;
-        descriptionItemImage.sprite = type.descriptionItemImage;
+        title.text = type.data.name;
+        description.text = type.data.description;
+        descriptionItemImage.sprite = type.data.descriptionItemImage;
 }
 }

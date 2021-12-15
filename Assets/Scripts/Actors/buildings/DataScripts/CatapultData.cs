@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName ="Assets/Actor/Building/Catapult")]
 public class CatapultData : BuildableData
 {
+    [Header("Catapult Data")]
     public float damage;
     public float range;
     public float projectileSpeed;

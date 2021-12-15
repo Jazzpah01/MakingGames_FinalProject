@@ -6,6 +6,8 @@ using UnityEngine;
 public class ActorData : ScriptableObject
 {
     [Header("Standard Values")]
+    public GameObject actorPrefab;
+    public string name = "";
     public float maxHealth;
     public float speed;
 }

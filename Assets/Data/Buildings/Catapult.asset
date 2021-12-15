@@ -12,9 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c7fa997ec4c1724c913b1cc3ee9e7b1, type: 3}
   m_Name: Catapult
   m_EditorClassIdentifier: 
+  actorPrefab: {fileID: 9202268415749759745, guid: 6e7eb57f8fd5a6c49b86644ac703ae2d,
+    type: 3}
+  name: Coffee Catapult
   maxHealth: 100
   speed: 0
   actorType: 4
+  containmentLayermask:
+    serializedVersion: 2
+    m_Bits: 64
+  description: Spooder's invisible spiderlings operate this great and mighty machine.
+    Its slow but it hits really hard.  Make sure to place it next to a Coffee Pile.
+  icon: {fileID: 21300000, guid: aecf4112bf735744693917c481dd5f49, type: 3}
+  descriptionItemImage: {fileID: 21300000, guid: 572f7b0648eb3ff48bc2a6a21c62dad6,
+    type: 3}
   damage: 35
   range: 18
   projectileSpeed: 10

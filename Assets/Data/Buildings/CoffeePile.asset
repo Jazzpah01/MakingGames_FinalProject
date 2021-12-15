@@ -12,6 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf8a98c26b8e5164d85969697351ab78, type: 3}
   m_Name: CoffeePile
   m_EditorClassIdentifier: 
+  actorPrefab: {fileID: 2782804534701062994, guid: 03892feb8bb90f248bbc0aed8527ac48,
+    type: 3}
+  name: Coffee Pile
   maxHealth: 100
   speed: 0
-  actorType: 4
+  actorType: 12
+  containmentLayermask:
+    serializedVersion: 2
+    m_Bits: 64
+  description: The strong aroma repels the Aphids and Ants and forces them to go
+    around it.
+  icon: {fileID: 21300000, guid: 584ae9d4b497ed740b81020f18da61e3, type: 3}
+  descriptionItemImage: {fileID: 21300000, guid: d642392a4f6e51a419f47867082de58a,
+    type: 3}

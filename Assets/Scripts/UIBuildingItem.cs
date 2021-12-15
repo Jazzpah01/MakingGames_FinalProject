@@ -17,9 +17,9 @@ public class UIBuildingItem : MonoBehaviour
         {
             type = value;
 
-            name.text = type.name;
+            name.text = type.data.name;
             cost.text = type.cost.ToString();
-            icon.sprite = type.icon;
+            icon.sprite = type.data.icon;
         }
     }
 

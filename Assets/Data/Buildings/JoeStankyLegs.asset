@@ -12,9 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f559a827148064448987f8e209473bdf, type: 3}
   m_Name: JoeStankyLegs
   m_EditorClassIdentifier: 
+  actorPrefab: {fileID: 5355251333915570780, guid: 45757f1371f45fb4b9970af133564347,
+    type: 3}
+  name: Little Spider Joe
   maxHealth: 100
   speed: 2
   actorType: 4
+  containmentLayermask:
+    serializedVersion: 2
+    m_Bits: 64
+  description: 'Joe walks forth and back out of worry- but he also materializes a
+    net to slow the buggers down. '
+  icon: {fileID: 21300000, guid: 583bcbbb0fc95964cb62681846f99773, type: 3}
+  descriptionItemImage: {fileID: 21300000, guid: 456ee8a5be634814495a9dff043c5b66,
+    type: 3}
   speedModifyer: 0.3
   slowObjectLifeTime: 5
   slowObjectEveryXSecond: 0.2

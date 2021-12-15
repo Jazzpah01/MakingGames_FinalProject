@@ -12,7 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea729584ba282664a964b20428945b37, type: 3}
   m_Name: JeremyLadyBug
   m_EditorClassIdentifier: 
+  actorPrefab: {fileID: 641325662967931237, guid: 8f13fa425de3cf9478dd05d29c5ba94c,
+    type: 3}
+  name: Jeremy
   maxHealth: 100
   speed: 4
   actorType: 4
+  containmentLayermask:
+    serializedVersion: 2
+    m_Bits: 64
+  description: Jeremy is a fiesty Lady Bug one. It walks in circles and jews on anything
+    on its path.
+  icon: {fileID: 21300000, guid: 65978168922281c409c4035715cdc4db, type: 3}
+  descriptionItemImage: {fileID: 21300000, guid: ca37d841b66c2e04a88a8824bd3d7203,
+    type: 3}
   damage: 75

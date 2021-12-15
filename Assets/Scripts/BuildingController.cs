@@ -144,8 +144,8 @@ public class BuildingController : MonoBehaviour, IState
             // Code for when you don't have enough resources
             return;
         }
-        this.prefab = type.prefab;
-        this.containmentLayerMask = type.containmentLayermask;
+        this.prefab = type.data.actorPrefab;
+        this.containmentLayerMask = type.data.containmentLayermask;
         this.currentCost = type.cost;
         isBuilding = true;
     }
