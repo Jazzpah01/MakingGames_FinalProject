@@ -25,13 +25,18 @@ MonoBehaviour:
     description: 'First, take a look at yourself. Awareness is the first step.   '
     image: {fileID: 21300000, guid: 373651d90c8027240a1e0237682e978a, type: 3}
   - title: Controls
-    description: 'Action is the second, the third and well you get it. Take a close
-      look at what you CAN do. Now, wake up. Your friends are eager to talk to you.  '
-    image: {fileID: 21300000, guid: 0b140d9c45fca33409413acef61b9d46, type: 3}
+    description: "Place the flowers or other \u201CDefensives\u201D. You can cancel
+      and also undo anything you have placed."
+    image: {fileID: 21300000, guid: 32d1429111b5cbe4f878a0ed1ae41cff, type: 3}
   - title: Controls
-    description: 'Action is the second, the third and well you get it. Take a close
-      look at what you CAN do. Now, wake up. Your friends are eager to talk to you.  '
-    image: {fileID: 21300000, guid: 0b140d9c45fca33409413acef61b9d46, type: 3}
+    description: 'To attack the Buggers, you can choose between a classy swoosh hurting
+      all Buggers in front of you, or you can concentrate your attack on one especially
+      annoying Bugger! '
+    image: {fileID: 21300000, guid: 9f2d650036517ac4aae4d855c8ff8b63, type: 3}
+  - title: Controls
+    description: 'Sometimes the Buggers will try to manoeuvre you! Dash quickly into
+      the direction you are facing to respond fast. '
+    image: {fileID: 21300000, guid: f2bc9b40980b30c42ab593e9614ea1ed, type: 3}
   - title: Joe
     description: 'Psst, Psssst! You finally came to your senses Little One! The Aphids
       are coming for our Nectar Essence! Now take a look- I took that picture from
@@ -58,4 +63,9 @@ MonoBehaviour:
   - title: Joe
     description: 'Make sure to defend them well. If harmed the flowers will grant
       you less then what was initially promised to you. '
+    image: {fileID: 21300000, guid: d195780fd598cbe40b0f010a9aac6a16, type: 3}
+  - title: Joe
+    description: 'Ohh one last thing Little One! After each battle, some Nectar is
+      gathered from the Aphids and other Buggers you will face. It''s not much but
+      it can help you in dire situations.  '
     image: {fileID: 21300000, guid: d195780fd598cbe40b0f010a9aac6a16, type: 3}

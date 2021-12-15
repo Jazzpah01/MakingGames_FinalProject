@@ -15,7 +15,7 @@ MonoBehaviour:
   actorPrefab: {fileID: 9202268415749759745, guid: 6e7eb57f8fd5a6c49b86644ac703ae2d,
     type: 3}
   name: Coffee Catapult
-  maxHealth: 100
+  maxHealth: 150
   speed: 0
   actorType: 4
   containmentLayermask:

@@ -31,5 +31,6 @@ MonoBehaviour:
     image: {fileID: 21300000, guid: ecdfe9e94a920f7419139f57578324f3, type: 3}
   - title: The Mentor
     description: "Don\u2019t hesitate to use my powers, Little One!  I will entrap
-      them and eat them whole!  "
+      them and eat them whole!  If that is not enough- I also scare them so they
+      will harm you a lot less."
     image: {fileID: 21300000, guid: 87773e12df0de3f478374408fa4955ed, type: 3}
