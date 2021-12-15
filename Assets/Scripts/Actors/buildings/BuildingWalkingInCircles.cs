@@ -86,11 +86,11 @@ public class BuildingWalkingInCircles : MonoBehaviour, IBuildingBehavior
 
         if (actor.isActorType(ActorType.Enemy))
         {
-            if (grabbedEnemy != null)
-            {
-                LetEmGo();
-            }
-            GrabEm(actor.gameObject.transform);
+            //if (grabbedEnemy != null)
+            //{
+            //    LetEmGo();
+            //}
+            //GrabEm(actor.gameObject.transform);
 
             actor.Health -= data.damage;
         }
