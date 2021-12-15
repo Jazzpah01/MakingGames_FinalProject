@@ -97,10 +97,7 @@ public class HUD : MonoBehaviour
     }
     public void IngameMenuStartMenuButton()
     {
-        ingameMenu.SetActive(false);
-        strategyHUD.gameObject.SetActive(false);
-        startMenuUI.SetActive(true);
-        gameStarted = false;
+        LevelManager.instance.RestartLevel();
     }
     public void ControlsBackButton()
     {
