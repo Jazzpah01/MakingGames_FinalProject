@@ -13,61 +13,13 @@ MonoBehaviour:
   m_Name: BuildingListLevel_2.5
   m_EditorClassIdentifier: 
   buildings:
-  - name: Gossypium Pecunia
+  - data: {fileID: 11400000, guid: 416a97f82000d34479db223c943bcd75, type: 2}
     cost: 2
-    prefab: {fileID: 8063388511463166607, guid: df1ab6f0658de7a458a76a80eef4f5f0,
-      type: 3}
-    containmentLayermask:
-      serializedVersion: 2
-      m_Bits: 128
-    description: 'Rich with nectar, this plant was rumored to be closely associated
-      with cotton and its economic ventures. '
-    icon: {fileID: 21300000, guid: bbd4ed69cfb57d2428e801332bc32fea, type: 3}
-    descriptionItemImage: {fileID: 21300000, guid: bbd4ed69cfb57d2428e801332bc32fea,
-      type: 3}
-  - name: Aloe Vita
+  - data: {fileID: 11400000, guid: 297ea980268bbfb4fa31a10bb67d5bf5, type: 2}
     cost: 2
-    prefab: {fileID: 8063388511463166607, guid: 8e6999ef61c55b848a7cf242ddc25fb0,
-      type: 3}
-    containmentLayermask:
-      serializedVersion: 2
-      m_Bits: 128
-    description: This plants rejuvenating power gives life to both fairies and the
-      fairie's home.
-    icon: {fileID: 21300000, guid: 2e9c2c7b4f9617a4a9cb138501737e3b, type: 3}
-    descriptionItemImage: {fileID: 21300000, guid: 2e9c2c7b4f9617a4a9cb138501737e3b,
-      type: 3}
-  - name: Droseraceae Proiectum
+  - data: {fileID: 11400000, guid: f91fd1c2ead33c244be4d591a062a26f, type: 2}
     cost: 4
-    prefab: {fileID: 9202268415749759745, guid: be7dd906ca4f9c347aa3479e652d84e6,
-      type: 3}
-    containmentLayermask:
-      serializedVersion: 2
-      m_Bits: 64
-    description: '"Pew, Pew, Pew" said the flower before eating the buggers.'
-    icon: {fileID: 21300000, guid: bbe744529b210cc4a9da10607bba2204, type: 3}
-    descriptionItemImage: {fileID: 21300000, guid: 6da984fde715b2b4ea9ec124341c40d5,
-      type: 3}
-  - name: Jeremy
+  - data: {fileID: 11400000, guid: fcf147895377e4648a56a62b91a319ca, type: 2}
     cost: 3
-    prefab: {fileID: 641325662967931237, guid: 8f13fa425de3cf9478dd05d29c5ba94c, type: 3}
-    containmentLayermask:
-      serializedVersion: 2
-      m_Bits: 64
-    description: Jeremy is a fiesty Lady Bug one. It walks in circles and jews on
-      anything on its path.
-    icon: {fileID: 21300000, guid: 65978168922281c409c4035715cdc4db, type: 3}
-    descriptionItemImage: {fileID: 21300000, guid: ca37d841b66c2e04a88a8824bd3d7203,
-      type: 3}
-  - name: Little Spider Joe
+  - data: {fileID: 11400000, guid: 3462bb82f973cd94cbc90e05698f2da8, type: 2}
     cost: 4
-    prefab: {fileID: 5355251333915570780, guid: 45757f1371f45fb4b9970af133564347,
-      type: 3}
-    containmentLayermask:
-      serializedVersion: 2
-      m_Bits: 64
-    description: 'Joe walks forth and back out of worry- but he also materializes
-      a net to slow the buggers down. '
-    icon: {fileID: 21300000, guid: 583bcbbb0fc95964cb62681846f99773, type: 3}
-    descriptionItemImage: {fileID: 21300000, guid: 456ee8a5be634814495a9dff043c5b66,
-      type: 3}
