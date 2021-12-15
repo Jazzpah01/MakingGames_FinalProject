@@ -12,4 +12,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b328ba95d43ce6e4a9ca365049350e3d, type: 3}
   m_Name: Level_1
   m_EditorClassIdentifier: 
-  descriptions: []
+  descriptions:
+  - title: 'Home, Sweet Nectar '
+    description: "Home, Nothing like it- Don\u2019t you agree? You feel safe there
+      until of course a swarm of Buggers decide that your home belongs to them. YOUR
+      PLANTS now belong to them. But no matter\u2026 You have done that before, you
+      will do it again. Protect your home and DO NOT let them have it their way.
+      Don\u2019t use poison though, not cool, not cool. Use some organic methods.
+      Ahhhh you will get it, don't worry."
+    image: {fileID: 21300000, guid: 5ebd7c61a1f997b4b82cb9a641b41417, type: 3}
+  - title: 'Home, Sweet Nectar '
+    description: 'First, take a look at yourself. Awareness is the first step.   '
+    image: {fileID: 21300000, guid: 373651d90c8027240a1e0237682e978a, type: 3}
+  - title: Controls
+    description: 'Action is the second, the third and well you get it. Take a close
+      look at what you CAN do. Now, wake up. Your friends are eager to talk to you.  '
+    image: {fileID: 21300000, guid: 0b140d9c45fca33409413acef61b9d46, type: 3}
+  - title: Controls
+    description: 'Action is the second, the third and well you get it. Take a close
+      look at what you CAN do. Now, wake up. Your friends are eager to talk to you.  '
+    image: {fileID: 21300000, guid: 0b140d9c45fca33409413acef61b9d46, type: 3}
+  - title: Joe
+    description: 'Psst, Psssst! You finally came to your senses Little One! The Aphids
+      are coming for our Nectar Essence! Now take a look- I took that picture from
+      the last season. '
+    image: {fileID: 21300000, guid: d195780fd598cbe40b0f010a9aac6a16, type: 3}
+  - title: 'Aphid '
+    description: "These little Buggers are after our precious flowers! What\u2019s
+      worse is if there are no flowers they will be drawn to your home! It's because
+      they can smell the Seeds you store inside!"
+    image: {fileID: 21300000, guid: c2ce8de7c0ef618458907b5b7c46e164, type: 3}
+  - title: 'Fertile Soil '
+    description: 'Now before I tell you all about the flowers. Let me warn you Little
+      One! You can only plant these two flowers on fertile soil. '
+    image: {fileID: 21300000, guid: 54be12555f20cdd44855d97f29d30a48, type: 3}
+  - title: 'Gossypium Pecunia '
+    description: 'The first flower, Gossypium Pecunia is known to be rich with Nectar
+      Essence. '
+    image: {fileID: 21300000, guid: bde07c092c82d144cb031cfffae732d1, type: 3}
+  - title: Aloe Vita
+    description: 'The second flower, Aloe Vita, is the one that rejuvenates your
+      home and yourself. Both Flowers hold great magical properties and they are
+      essential to your survival.  '
+    image: {fileID: 21300000, guid: 1e057ec0eb067964689187bbf9cb9b5d, type: 3}
+  - title: Joe
+    description: 'Make sure to defend them well. If harmed the flowers will grant
+      you less then what was initially promised to you. '
+    image: {fileID: 21300000, guid: d195780fd598cbe40b0f010a9aac6a16, type: 3}

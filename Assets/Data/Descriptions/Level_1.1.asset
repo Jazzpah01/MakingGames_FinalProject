@@ -12,4 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b328ba95d43ce6e4a9ca365049350e3d, type: 3}
   m_Name: Level_1.1
   m_EditorClassIdentifier: 
-  descriptions: []
+  descriptions:
+  - title: 'Droseraceae Projectum  '
+    description: 'Jeremy approaches you after the intense battle.  '
+    image: {fileID: 21300000, guid: 5ebd7c61a1f997b4b82cb9a641b41417, type: 3}
+  - title: 'Jeremy '
+    description: 'Nicely done Little One!  The Aphids will know their place! This
+      is our home! Now, Joe forgot to tell you that there is another flower. There
+      are lots of flowers here ye know. But this one can be of help.  '
+    image: {fileID: 21300000, guid: 727978ef32f7661499be104e3e6858d2, type: 3}
+  - title: 'Droseraceae Projectum '
+    description: "It shoots magical Nectar! The problem is it cannot reach all of
+      them. Also, it's a wild one so you don't need to place it in fertile soil,
+      in fact let\u2019s agree you just don\u2019t do it- these flowers will frighten
+      the others. "
+    image: {fileID: 21300000, guid: 6da984fde715b2b4ea9ec124341c40d5, type: 3}
+  - title: Environment
+    description: "See these rivers and rocks? We need to keep out of there. Put your
+      \u201CDefences\u201D on solid ground.  "
+    image: {fileID: 21300000, guid: a90a3f2911407774da8a86c93590e3f0, type: 3}
+  - title: 'Jeremy '
+    description: 'Last thing Little One! Beware of the big Aphids! They are like
+      the normal Aphids but more dangerous. Good Luck! '
+    image: {fileID: 21300000, guid: 727978ef32f7661499be104e3e6858d2, type: 3}

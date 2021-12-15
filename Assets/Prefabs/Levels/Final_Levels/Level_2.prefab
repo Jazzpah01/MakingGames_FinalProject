@@ -101951,6 +101951,12 @@ PrefabInstance:
       propertyPath: initialResource
       value: 16
       objectReference: {fileID: 0}
+    - target: {fileID: 70216101307096129, guid: 137a44a12193a954cae6178df1d2bf23,
+        type: 3}
+      propertyPath: levelDescriptionData
+      value: 
+      objectReference: {fileID: 11400000, guid: 651d1f8d46188624d9c16d3b0cf2d3a8,
+        type: 2}
     - target: {fileID: 561731304202653657, guid: 137a44a12193a954cae6178df1d2bf23,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

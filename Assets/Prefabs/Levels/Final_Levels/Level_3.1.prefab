@@ -137496,7 +137496,7 @@ PrefabInstance:
         type: 3}
       propertyPath: buildingTypes
       value: 
-      objectReference: {fileID: 11400000, guid: 7d214a28d910eb84cbb792017260e0a8,
+      objectReference: {fileID: 11400000, guid: f0445e90c79c6974a8292e0992ce41b8,
         type: 2}
     - target: {fileID: 70216101307096129, guid: 137a44a12193a954cae6178df1d2bf23,
         type: 3}
@@ -137512,7 +137512,7 @@ PrefabInstance:
         type: 3}
       propertyPath: levelDescriptionData
       value: 
-      objectReference: {fileID: 11400000, guid: 6d43a4b67e192544e894c81ae747b4ca,
+      objectReference: {fileID: 11400000, guid: fdee7d1973d65e0439671eb900fa6155,
         type: 2}
     - target: {fileID: 561731304202653657, guid: 137a44a12193a954cae6178df1d2bf23,
         type: 3}
@@ -138383,7 +138383,7 @@ PrefabInstance:
     - target: {fileID: 8178444715990651465, guid: 137a44a12193a954cae6178df1d2bf23,
         type: 3}
       propertyPath: m_Name
-      value: Level_3
+      value: Level_3.1
       objectReference: {fileID: 0}
     - target: {fileID: 8178444715990651470, guid: 137a44a12193a954cae6178df1d2bf23,
         type: 3}

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fcbd5e9c16d021d41ac1a62f67e18d59, type: 3}
-  m_Name: BuildingListLevel_1.5
+  m_Name: BuildingListLevel_2.1
   m_EditorClassIdentifier: 
   buildings:
   - data: {fileID: 11400000, guid: 416a97f82000d34479db223c943bcd75, type: 2}
@@ -18,4 +18,8 @@ MonoBehaviour:
   - data: {fileID: 11400000, guid: 297ea980268bbfb4fa31a10bb67d5bf5, type: 2}
     cost: 2
   - data: {fileID: 11400000, guid: f91fd1c2ead33c244be4d591a062a26f, type: 2}
+    cost: 4
+  - data: {fileID: 11400000, guid: fcf147895377e4648a56a62b91a319ca, type: 2}
+    cost: 3
+  - data: {fileID: 11400000, guid: 3462bb82f973cd94cbc90e05698f2da8, type: 2}
     cost: 4

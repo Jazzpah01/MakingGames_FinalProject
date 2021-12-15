@@ -12,4 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b328ba95d43ce6e4a9ca365049350e3d, type: 3}
   m_Name: Level_3
   m_EditorClassIdentifier: 
-  descriptions: []
+  descriptions:
+  - title: 'The Mentor  '
+    description: 'A big figure is lurking in the bushes. '
+    image: {fileID: 21300000, guid: 5ebd7c61a1f997b4b82cb9a641b41417, type: 3}
+  - title: 'Joe '
+    description: "No matter what we do, they keep on coming. I am afraid it won\u2019t
+      be enough. Unless\u2026"
+    image: {fileID: 21300000, guid: d195780fd598cbe40b0f010a9aac6a16, type: 3}
+  - title: Spooder
+    description: 'Halloyyy Joe! Halloyyy Little One! JEREMY.  '
+    image: {fileID: 21300000, guid: ecdfe9e94a920f7419139f57578324f3, type: 3}
+  - title: You
+    description: O__o  Wha? Was that the thing that was lurking?
+    image: {fileID: 21300000, guid: 373651d90c8027240a1e0237682e978a, type: 3}
+  - title: Spooder
+    description: 'So are we gonna have a feast today or what?   '
+    image: {fileID: 21300000, guid: ecdfe9e94a920f7419139f57578324f3, type: 3}
+  - title: The Mentor
+    description: "Don\u2019t hesitate to use my powers, Little One!  I will entrap
+      them and eat them whole!  "
+    image: {fileID: 21300000, guid: 87773e12df0de3f478374408fa4955ed, type: 3}

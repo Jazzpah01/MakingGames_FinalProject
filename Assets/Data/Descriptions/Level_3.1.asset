@@ -12,4 +12,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b328ba95d43ce6e4a9ca365049350e3d, type: 3}
   m_Name: Level_3.1
   m_EditorClassIdentifier: 
-  descriptions: []
+  descriptions:
+  - title: 'The Black Substance '
+    description: "A strong aroma loomed high above you in the skies. Now it found
+      its way to your home. Maybe it can be used somehow\u2026"
+    image: {fileID: 21300000, guid: 5ebd7c61a1f997b4b82cb9a641b41417, type: 3}
+  - title: 'Joe '
+    description: "\u201CAhh\u2026 right... Can you smell that little one?\u201D *Sniff,
+      Sniff \u201CThe giants\u2026 the freaky giants\u2026 They have this obsession
+      with black substances.  "
+    image: {fileID: 21300000, guid: d195780fd598cbe40b0f010a9aac6a16, type: 3}
+  - title: Spooder
+    description: 'Let me explain, Joe. Have you ever heard of Coffee, Little One?
+      It smells really bad and the Ants and Aphids hate it.  '
+    image: {fileID: 21300000, guid: ecdfe9e94a920f7419139f57578324f3, type: 3}
+  - title: Coffee Pile
+    description: 'Use the Coffee Pile to block the path of the Buggers!  '
+    image: {fileID: 21300000, guid: d642392a4f6e51a419f47867082de58a, type: 3}
+  - title: Spooder
+    description: 'But that is not all, a new foul Bugger is approaching! '
+    image: {fileID: 21300000, guid: ecdfe9e94a920f7419139f57578324f3, type: 3}
+  - title: Slug
+    description: 'The Slugs will stop at nothing to reach your home. They have a
+      particular interest in it. Nothing and no one is safe from it.  '
+    image: {fileID: 21300000, guid: 4dd3d32926d9ba04d8eabfebef931dd5, type: 3}
+  - title: Spooder
+    description: 'But I have one last gift for you, Little One. '
+    image: {fileID: 21300000, guid: ecdfe9e94a920f7419139f57578324f3, type: 3}
+  - title: Catapult
+    description: 'I have constructed a machine capable of throwing coffee! It must
+      be placed next to a pile of coffee. It harms anyone who dares to get close
+      and it has a pretty long range.  '
+    image: {fileID: 21300000, guid: 572f7b0648eb3ff48bc2a6a21c62dad6, type: 3}
+  - title: Joe
+    description: 'A machine, throwing coffee? '
+    image: {fileID: 21300000, guid: d195780fd598cbe40b0f010a9aac6a16, type: 3}
+  - title: 'Spooder '
+    description: "My invisible spiderlings will aid you, so don\u2019t you go about
+      wondering how it operates. It is thanks to my little babies. "
+    image: {fileID: 21300000, guid: ecdfe9e94a920f7419139f57578324f3, type: 3}
+  - title: Jeremy
+    description: "You couldn't come up with something better? \u201CInvisible spiderlings\u2026\u201D "
+    image: {fileID: 21300000, guid: 727978ef32f7661499be104e3e6858d2, type: 3}

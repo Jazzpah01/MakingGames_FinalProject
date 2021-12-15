@@ -12,4 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b328ba95d43ce6e4a9ca365049350e3d, type: 3}
   m_Name: Level_2.1
   m_EditorClassIdentifier: 
-  descriptions: []
+  descriptions:
+  - title: 'The Angry Ants!  '
+    description: Jeremy approaches you.
+    image: {fileID: 21300000, guid: 5ebd7c61a1f997b4b82cb9a641b41417, type: 3}
+  - title: Jeremy
+    description: "Now Let\u2019s see if you learned something here. The next attacks
+      are going to be tough, use everything you can to fend them off! The Angry Ants
+      are coming and they are a lot faster than the normal Ants. Make good use of
+      our help Little One, good luck.  "
+    image: {fileID: 21300000, guid: 727978ef32f7661499be104e3e6858d2, type: 3}
