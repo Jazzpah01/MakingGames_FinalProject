@@ -272,7 +272,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4593290804116237204}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8181925877892528591}
+        m_TargetAssemblyTypeName: GameOverUI, Assembly-CSharp
+        m_MethodName: MainMenuButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6514263810372368056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -590,8 +602,7 @@ GameObject:
   - component: {fileID: 6240392395814083436}
   - component: {fileID: 6240392395814083433}
   - component: {fileID: 6240392395814083438}
-  - component: {fileID: 6692945553629805325}
-  - component: {fileID: 3333103410591334072}
+  - component: {fileID: 8181925877892528591}
   m_Layer: 5
   m_Name: GameOver
   m_TagString: Untagged
@@ -660,7 +671,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6692945553629805325
+--- !u!114 &8181925877892528591
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -669,25 +680,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6240392395814083437}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41852cd22362b7843ba50a9e951f6f74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  musicOn: {fileID: 0}
-  musicOff: {fileID: 0}
-  sfxOn: {fileID: 0}
-  sfxOff: {fileID: 0}
-  musicButton: {fileID: 0}
-  SFXButton: {fileID: 0}
---- !u!114 &3333103410591334072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6240392395814083437}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d0036c3cdff0794094875adc7d3c72f, type: 3}
+  m_Script: {fileID: 11500000, guid: 7e75d3ec00beca2419ce1c2e340e21a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6516415696502936563
@@ -755,7 +748,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Quit
+  m_text: Menu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8efc3785d6acd504ebcdc5a780cd9f17, type: 2}
   m_sharedMaterial: {fileID: -1288340143137922963, guid: 8efc3785d6acd504ebcdc5a780cd9f17,
@@ -1082,7 +1075,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6849874788145879867}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8181925877892528591}
+        m_TargetAssemblyTypeName: GameOverUI, Assembly-CSharp
+        m_MethodName: RestartButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3229395468385259344
 MonoBehaviour:
   m_ObjectHideFlags: 0

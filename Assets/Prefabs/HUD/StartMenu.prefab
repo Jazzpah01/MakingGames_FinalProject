@@ -1149,8 +1149,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: IngameMenu, Assembly-CSharp
+      - m_Target: {fileID: 2850837889670676800}
+        m_TargetAssemblyTypeName: StratMenuUI, Assembly-CSharp
         m_MethodName: ControlsButton
         m_Mode: 1
         m_Arguments:
@@ -1512,8 +1512,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: IngameMenu, Assembly-CSharp
+      - m_Target: {fileID: 2850837889670676800}
+        m_TargetAssemblyTypeName: StratMenuUI, Assembly-CSharp
         m_MethodName: CreditsButton
         m_Mode: 1
         m_Arguments:
@@ -1803,9 +1803,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: IngameMenu, Assembly-CSharp
-        m_MethodName: CreditsButton
+      - m_Target: {fileID: 2850837889670676800}
+        m_TargetAssemblyTypeName: StratMenuUI, Assembly-CSharp
+        m_MethodName: QuitButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1920,8 +1920,7 @@ GameObject:
   - component: {fileID: 6240392395814083436}
   - component: {fileID: 6240392395814083433}
   - component: {fileID: 6240392395814083438}
-  - component: {fileID: 6692945553629805325}
-  - component: {fileID: 3333103410591334072}
+  - component: {fileID: 2850837889670676800}
   m_Layer: 5
   m_Name: StartMenu
   m_TagString: Untagged
@@ -1990,7 +1989,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6692945553629805325
+--- !u!114 &2850837889670676800
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1999,25 +1998,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6240392395814083437}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41852cd22362b7843ba50a9e951f6f74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  musicOn: {fileID: 0}
-  musicOff: {fileID: 0}
-  sfxOn: {fileID: 0}
-  sfxOff: {fileID: 0}
-  musicButton: {fileID: 0}
-  SFXButton: {fileID: 0}
---- !u!114 &3333103410591334072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6240392395814083437}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d0036c3cdff0794094875adc7d3c72f, type: 3}
+  m_Script: {fileID: 11500000, guid: 1e84b7b103ebcad47bf1cf960b23b275, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6849874787122574162
@@ -2278,9 +2259,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3333103410591334072}
-        m_TargetAssemblyTypeName: SettingsUI, Assembly-CSharp
-        m_MethodName: BackButton
+      - m_Target: {fileID: 2850837889670676800}
+        m_TargetAssemblyTypeName: StratMenuUI, Assembly-CSharp
+        m_MethodName: StartButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

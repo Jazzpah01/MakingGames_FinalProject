@@ -91,7 +91,7 @@ public class SpawnController : MonoBehaviour
 
         if(LevelManager.instance != null && gameController.getNextWave() > waves.Count)
         {
-            levelManager.loadNextLevel();
+            levelManager.loadLevel();
         }
         Spawn();
     }

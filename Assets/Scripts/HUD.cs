@@ -21,14 +21,14 @@ public class HUD : MonoBehaviour
     private PlayerHUD playerHUD;
     private StrategyHUD strategyHUD;
     private GameObject startMenuUI;
-    private GameObject levelDescription;
+    private GameObject levelDescriptionUI;
     private GameObject ingameMenu;
     private GameObject controlsUI;
     private GameObject settingsUI;
     private GameObject creditsUI;
     private GameObject gameOverUI;
 
-    private GameObject backButtonUI;
+    private bool gameStarted;
 
     [HideInInspector]
     public bool mouseOver; 
@@ -42,15 +42,16 @@ public class HUD : MonoBehaviour
         //Instantiate the HUD Prefabs
         playerHUD = Instantiate(playerHUDPrefab,transform).GetComponent<PlayerHUD>();
         strategyHUD = Instantiate(strategyHUDPrefab,transform).GetComponent<StrategyHUD>();
-        startMenuUI = Instantiate(levelDescriptionPrefab, transform);
-        levelDescription = Instantiate(levelDescriptionPrefab, transform);
+        startMenuUI = Instantiate(startMenuPrefab, transform);
+        levelDescriptionUI = Instantiate(levelDescriptionPrefab, transform);
         ingameMenu = Instantiate(ingameMenuPrefab, transform);
         controlsUI = Instantiate(controlsPrefab, transform);
         settingsUI = Instantiate(settingsPrefab, transform);
         creditsUI = Instantiate(creditsPrefab, transform);
         gameOverUI = Instantiate(gameoverPrefab, transform);
 
-        levelDescription.gameObject.SetActive(false);
+        strategyHUD.gameObject.SetActive(false);
+        levelDescriptionUI.gameObject.SetActive(false);
         playerHUD.gameObject.SetActive(false);
         ingameMenu.gameObject.SetActive(false);
         controlsUI.gameObject.SetActive(false);
@@ -94,10 +95,20 @@ public class HUD : MonoBehaviour
         ingameMenu.SetActive(false);
         creditsUI.SetActive(true);
     }
+    public void IngameMenuStartMenuButton()
+    {
+        ingameMenu.SetActive(false);
+        strategyHUD.gameObject.SetActive(false);
+        startMenuUI.SetActive(true);
+        gameStarted = false;
+    }
     public void ControlsBackButton()
     {
         controlsUI.SetActive(false);
-        ingameMenu.SetActive(true);
+        if (gameStarted)
+            ingameMenu.SetActive(true);
+        else
+            startMenuUI.SetActive(true);
     }
     public void SettingsBackButton()
     {
@@ -107,25 +118,41 @@ public class HUD : MonoBehaviour
     public void CreditsBackButton()
     {
         creditsUI.SetActive(false);
-        ingameMenu.SetActive(true);
+        if (gameStarted)
+            ingameMenu.SetActive(true);
+        else
+            startMenuUI.SetActive(true);
     }
 
-    public void StartMenuPlayButton()
+    public void StartMenuStartButton()
     {
-        levelDescription.gameObject.SetActive(true);
-        startMenuUI.gameObject.SetActive(false);
+        Time.timeScale = 1;
+        gameStarted = true;
+        levelDescriptionUI.SetActive(true);
+        strategyHUD.gameObject.SetActive(true);
+        startMenuUI.SetActive(false);
     }
 
     public void StartMenuControlsButton()
     {
-        controlsUI.gameObject.SetActive(true);
-        startMenuUI.gameObject.SetActive(false);
+        controlsUI.SetActive(true);
+        startMenuUI.SetActive(false);
     }
 
     public void StartMenuCreditsButton()
     {
-        creditsUI.gameObject.SetActive(true);
-        startMenuUI.gameObject.SetActive(false);
+        creditsUI.SetActive(true);
+        startMenuUI.SetActive(false);
+    }
+
+    public void GameOverMenuRetry()
+    {
+        LevelManager.instance.RestartLevel();
+    }
+
+    public void GameOverMenuMainMenu()
+    {
+        LevelManager.instance.RestartAllLevels();
     }
 
     public void QuitButton()

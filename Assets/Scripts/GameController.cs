@@ -58,7 +58,6 @@ public class GameController : MBStateMachine
         player = playerManager.player;
         playerController = playerManager.playerController;
         hud = gameManager.hud;
-
         ChangeState(GameState.Strategy);
     }
 
@@ -124,6 +123,7 @@ public class GameController : MBStateMachine
         if (oldInWave == false)
         {
             // Start wave
+            gameManager.hud.mouseOver = false;
             spawnController.StartWave(nextWave);
             nextWave++;
             oldInWave = true;

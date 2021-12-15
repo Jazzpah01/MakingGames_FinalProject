@@ -6,7 +6,7 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance;
     public List<GameObject> levels;
-    private int currentLevel;
+    private int currentLevel = 0;
     private GameObject level;
 
     void Awake()
@@ -22,31 +22,35 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    void Start()
+    private void Start()
+    {
+        RestartAllLevels();
+    }
+
+    public void RestartAllLevels()
     {
         currentLevel = 0;
-        loadFirstLevel();
+        loadLevel();
     }
 
-    void loadFirstLevel()
+    public void RestartLevel()
     {
-        GameObject lvl = Instantiate(levels[currentLevel]) as GameObject;
-        level = lvl;
+        currentLevel--;
+        loadLevel();
     }
 
-    public void loadNextLevel()
+    public void loadLevel()
     {
-        if (currentLevel + 1 >= levels.Count)
+        if (currentLevel >= levels.Count)
         {
             Debug.Log("There are no more levels!");
         }
         else
         {
+            if(level != null)
             Destroy(level);
-            GameObject lvl = Instantiate(levels[currentLevel + 1]) as GameObject;
-            level = lvl;
-
-            currentLevel += 1;
+            level = Instantiate(levels[currentLevel]);
+            currentLevel++;
         }
     }
 }
