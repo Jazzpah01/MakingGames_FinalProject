@@ -24,6 +24,7 @@ public class LevelDescription : MonoBehaviour
 
         if (data == null || data.descriptions == null || data.descriptions.Count == 0)
         {
+            gameObject.SetActive(false);
             return;
         }
 
