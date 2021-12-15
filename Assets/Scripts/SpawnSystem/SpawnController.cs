@@ -75,13 +75,13 @@ public class SpawnController : MonoBehaviour
         foreach (Transform child in spawnPointParent)
         {
             // If statement added to make sure child is added is not a grandchild
-            if (child.parent == spawnPointParent.transform)
+            if (child.gameObject.activeInHierarchy && child.parent == spawnPointParent.transform)
             {
                 spawnPoints.Add(child);
                 count++;
             }
         }
-        //print(count);
+        print(count);
     }
 
     private void Update()
@@ -109,9 +109,9 @@ public class SpawnController : MonoBehaviour
 
             GameObject spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Count - 1)].gameObject;
 
-            go.transform.position = spawnPoint.transform.position;
             go.transform.parent = enemyParent.transform;
-            enemy.spawnPoint = spawnPoint;
+            go.transform.position = spawnPoint.transform.position;
+            enemy.spawnPoint = spawnPoint.transform.position;
 
             toSpawn.RemoveAt(0);
         }

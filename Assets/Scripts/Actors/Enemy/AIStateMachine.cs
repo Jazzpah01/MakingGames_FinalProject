@@ -53,6 +53,7 @@ public abstract class AIStateMachine : MBStateMachine
     {
         controller = GetComponent<IActor>();
         agent = GetComponent<NavMeshAgent>();
+        agent.Warp(((IEnemy)controller).spawnPoint);
 
         //print("" + data.maxHealth);
 
@@ -80,5 +81,10 @@ public abstract class AIStateMachine : MBStateMachine
         yield return new WaitForSeconds(seconds);
 
         method();
+    }
+
+    private void Awake()
+    {
+        
     }
 }
