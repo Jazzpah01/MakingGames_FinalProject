@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     [Header("Level Data")]
     public BuildingList buildingTypes;
     public EnemyList enemyTypes;
+    public LevelDescriptionList levelDescriptionData;
 
     [Header("Controller References")]
     public GameController gameController;

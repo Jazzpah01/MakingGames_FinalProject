@@ -15,5 +15,5 @@ public class BuildingDescription : MonoBehaviour
         title.text = type.data.name;
         description.text = type.data.description;
         descriptionItemImage.sprite = type.data.descriptionItemImage;
-}
+    }
 }
