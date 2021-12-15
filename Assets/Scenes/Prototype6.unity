@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43598595, g: 0.553596, b: 0.54303765, a: 1}
+  m_IndirectSpecularColor: {r: 0.43658394, g: 0.5542363, b: 0.54339486, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -184,6 +184,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139228218997738311, guid: e0a2d59ab47343a42bdccb4494683cf9,
+        type: 3}
+      propertyPath: sounds.Array.data[6].name
+      value: whooshlow
       objectReference: {fileID: 0}
     - target: {fileID: 8879477769170486615, guid: e0a2d59ab47343a42bdccb4494683cf9,
         type: 3}
