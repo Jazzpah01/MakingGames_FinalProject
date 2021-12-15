@@ -38,7 +38,7 @@ public class Enemy : MonoBehaviour, IEnemy
     public bool blockDamage { get; set; }
     public float damageModifyer { get; set; }
 
-    public GameObject spawnPoint { get; set; }
+    public Vector3 spawnPoint { get; set; }
     public float speedModifyer { get; set; }
 
     public bool isActorType(ActorType type)
