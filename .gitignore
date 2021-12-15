@@ -74,3 +74,6 @@ Thumbs.db.meta
 # Additional new stuff
 UserSettings/
 Logs/
+
+# This one was missing
+FR2.csproj
