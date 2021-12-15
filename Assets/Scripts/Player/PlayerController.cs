@@ -99,7 +99,6 @@ public class PlayerController : MonoBehaviour, IActor, IState
         {
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            AudioManager.instance.Play("whoosh");
 
             if (Physics.Raycast(ray, out hit, 1000, actorMask))
             {
@@ -110,14 +109,16 @@ public class PlayerController : MonoBehaviour, IActor, IState
                 {
                     animator.SetBool("moving", false);
                     animator.SetTrigger("attack");
-                    AudioManager.instance.Play("whack");
                     motor.blockMoving = true;
+                    combat.inAction = true;
                     StartCoroutine(DelayedAbility(data.primaryDelay, delegate
                     {
                         //if attack is successful, dash
                         motor.Dash(data.primaryAttackDashSpeed,
-                            Mathf.Min(data.primaryAttackDashLength, Vector3.Distance(transform.position, hit.point)));
+                            Mathf.Min(data.primaryAttackDashLength, Vector3.Distance(transform.position, hit.point)/2));
+                        AudioManager.instance.Play("whack");
                         motor.blockMoving = false;
+                        combat.inAction = false;
                     }));
                 }
             }
@@ -131,6 +132,7 @@ public class PlayerController : MonoBehaviour, IActor, IState
                     motor.Dash(data.primaryAttackDashSpeed,
                         Mathf.Min(data.primaryAttackDashLength, Vector3.Distance(transform.position, hit.point)));
                     motor.blockMoving = false;
+                    combat.inAction = false;
                 }
                 ));
             }
@@ -144,13 +146,13 @@ public class PlayerController : MonoBehaviour, IActor, IState
 
             animator.SetBool("moving", false);
             animator.SetTrigger("slash");
-            AudioManager.instance.Play("whoosh");
             motor.blockMoving = true;
 
             if (Physics.Raycast(ray, out hit, 1000, movementMask))
             {
                 //prepare to attack by turning to look at this direction
                 motor.TurnTowardsTarget(hit.point);
+                combat.inAction = true;
                 //attempt to do the attack
                 if (combat.SecondaryAttack())
                 {
@@ -161,7 +163,11 @@ public class PlayerController : MonoBehaviour, IActor, IState
                         //    Mathf.Min(combat.SecondaryAttackDashLength, Vector3.Distance(transform.position, hit.point)));
                         motor.Dash(data.SecondaryAttackDashSpeed, data.SecondaryAttackDashLength);
                         motor.blockMoving = false;
+                        combat.inAction = false;
                     }));
+                } else
+                {
+                    combat.inAction = false;
                 }
             }
         }
