@@ -12,13 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 872ea4200b2ca3749917d7ab433ce2de, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
+  actorPrefab: {fileID: 0}
+  name: 
   maxHealth: 200
   speed: 10
   dashCooldown: 2
   dashLength: 15
   dashSpeed: 4
   primaryAttackDamage: 20
-  primaryAttackCooldown: 0.5
+  primaryAttackCooldown: 0.6
   primaryAttackRange: 3
   primaryAttackDashLength: 2
   primaryAttackDashSpeed: 5

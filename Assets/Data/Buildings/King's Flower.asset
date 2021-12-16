@@ -26,6 +26,6 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: a30276d1413320f4ca8370c6b68b3163, type: 3}
   descriptionItemImage: {fileID: 21300000, guid: 1e057ec0eb067964689187bbf9cb9b5d,
     type: 3}
-  baseHealthGain: 100
-  playerHealthGain: 50
+  baseHealthGain: 25
+  playerHealthGain: 25
   wavesToHarvest: 1
