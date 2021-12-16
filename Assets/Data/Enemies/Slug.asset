@@ -12,12 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 875254cfc3b0f6145b17824410e9797a, type: 3}
   m_Name: Slug
   m_EditorClassIdentifier: 
+  actorPrefab: {fileID: 0}
+  name: 
   maxHealth: 500
   speed: 3
-  directMove:
+  pathMove:
     speedModifyer: 1
     stoppingDistance: 0.8
   instantAttack:
     damage: 7
     delay: 0.4
     cooldown: 1
+    turningSpeed: 2

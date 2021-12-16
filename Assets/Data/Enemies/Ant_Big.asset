@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3efdabea1c1870447a8d8960722664d9, type: 3}
   m_Name: Ant_Big
   m_EditorClassIdentifier: 
+  actorPrefab: {fileID: 0}
+  name: 
   maxHealth: 300
   speed: 7
   range: 5
@@ -22,3 +24,4 @@ MonoBehaviour:
     damage: 5
     delay: 0.1
     cooldown: 1
+    turningSpeed: 2

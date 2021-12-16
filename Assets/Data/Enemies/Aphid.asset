@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ef07566d5fee864cb2e84ea82642d5f, type: 3}
   m_Name: Aphid
   m_EditorClassIdentifier: 
+  actorPrefab: {fileID: 0}
+  name: 
   maxHealth: 100
   speed: 4
   pathMove:
@@ -21,3 +23,4 @@ MonoBehaviour:
     damage: 2
     delay: 0.1
     cooldown: 1
+    turningSpeed: 2
