@@ -22,7 +22,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   description: 'Joe walks forth and back out of worry- but he also materializes a
-    net to slow the buggers down. '
+    net to slow the Buggers down. '
   icon: {fileID: 21300000, guid: 583bcbbb0fc95964cb62681846f99773, type: 3}
   descriptionItemImage: {fileID: 21300000, guid: 456ee8a5be634814495a9dff043c5b66,
     type: 3}

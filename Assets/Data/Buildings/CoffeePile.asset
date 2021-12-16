@@ -21,8 +21,7 @@ MonoBehaviour:
   containmentLayermask:
     serializedVersion: 2
     m_Bits: 64
-  description: The strong aroma repels the Aphids and Ants and forces them to go
-    around it.
+  description: The strong aroma repels the Aphids and Ants.
   icon: {fileID: 21300000, guid: 584ae9d4b497ed740b81020f18da61e3, type: 3}
   descriptionItemImage: {fileID: 21300000, guid: d642392a4f6e51a419f47867082de58a,
     type: 3}

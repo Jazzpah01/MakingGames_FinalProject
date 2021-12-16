@@ -20,14 +20,14 @@ MonoBehaviour:
   actorType: 4
   containmentLayermask:
     serializedVersion: 2
-    m_Bits: 64
-  description: Spooder's invisible spiderlings operate this great and mighty machine.
-    Its slow but it hits really hard.  Make sure to place it next to a Coffee Pile.
+    m_Bits: 1088
+  description: Spooder's invisible spiderlings operate this mighty machine. Its slow
+    but it hits  hard.  Make sure to place it next to a Coffee Pile.
   icon: {fileID: 21300000, guid: aecf4112bf735744693917c481dd5f49, type: 3}
   descriptionItemImage: {fileID: 21300000, guid: 572f7b0648eb3ff48bc2a6a21c62dad6,
     type: 3}
-  damage: 35
-  range: 18
+  damage: 55
+  range: 20
   projectileSpeed: 10
   cooldown: 3
   projectilePrefab: {fileID: 2320750876935825114, guid: a39f8d0ce142fd34cbe6d03b639cb451,

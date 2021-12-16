@@ -21,8 +21,8 @@ MonoBehaviour:
   containmentLayermask:
     serializedVersion: 2
     m_Bits: 64
-  description: Jeremy is a fiesty Lady Bug one. It walks in circles and jews on anything
-    on its path.
+  description: Jeremy is a fiesty bug. It walks in circles and chews on any Buggers
+    to meet its path.
   icon: {fileID: 21300000, guid: 65978168922281c409c4035715cdc4db, type: 3}
   descriptionItemImage: {fileID: 21300000, guid: ca37d841b66c2e04a88a8824bd3d7203,
     type: 3}

@@ -21,8 +21,8 @@ MonoBehaviour:
   containmentLayermask:
     serializedVersion: 2
     m_Bits: 64
-  description: Spooder takes care of things while a new Little One tries to save
-    the Queen. Spooder materilizes a sticky net to disarm and eat the buggers.
+  description: 'Sticky net, weakening the Buggers and dealing heavy damage are some
+    of Spooder''s best qualities. It can also tell quite unbelievable lies. '
   icon: {fileID: 21300000, guid: 626d41b8917c5c945aa502166caf52ef, type: 3}
   descriptionItemImage: {fileID: 21300000, guid: 87773e12df0de3f478374408fa4955ed,
     type: 3}

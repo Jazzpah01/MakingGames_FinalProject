@@ -21,8 +21,8 @@ MonoBehaviour:
   containmentLayermask:
     serializedVersion: 2
     m_Bits: 64
-  description: 'Rich with nectar, this plant was rumored to be closely associated
-    with cotton and its economic ventures. '
+  description: Rich with nectar, this flower will grant you a hefty sum of Nectar
+    Essence as long as you keep it safe from harm.
   icon: {fileID: 21300000, guid: 01a5f99f0d896bd458acedac88275085, type: 3}
   descriptionItemImage: {fileID: 21300000, guid: bde07c092c82d144cb031cfffae732d1,
     type: 3}
