@@ -7,20 +7,19 @@ using UnityEngine;
 /// </summary>
 public class NewSlug : AIStateMachine
 {
-    public SlugData data;
+    GameManager gameManager;
+    PlayerManager playerManager;
 
+    public SlugData data;
     public CollisionObserver detectObstruction;
     public CollisionObserver detectAttack;
-
     public Animator animator;
     public GameObject model;
 
-    private float range = 0;
-
-    private Vector3 oldPos;
-
     private void Start()
     {
+        gameManager = GameManager.instance;
+        playerManager = PlayerManager.instance;
         // Initialize data
         data = Instantiate(data);
 
@@ -30,7 +29,7 @@ public class NewSlug : AIStateMachine
         data.instantAttack.Initialize(this);
 
         // Set target to base initially
-        Target = GameController.instance.baseController;
+        Target = gameManager.baseController;
 
         // Setup collision observers
         detectObstruction.Subscribe(detectObstruction_Enter, CollisionObserver.CollisionType.Enter);
@@ -48,14 +47,14 @@ public class NewSlug : AIStateMachine
         {
             if (Target.IsDestroyed())
             {
-                Target = GameController.instance.player.GetComponent<IActor>();
+                Target = playerManager.player.GetComponent<IActor>();
                 return;
             }
 
-            if ((transform.position - GameController.instance.baseController.transform.position).magnitude <=
+            if ((transform.position - gameManager.baseController.transform.position).magnitude <=
             (transform.position - Target.gameObject.transform.position).magnitude)
             {
-                Target = GameController.instance.baseController;
+                Target = gameManager.baseController;
             }
 
             if (detectAttack.Stay.Contains(Target.gameObject.GetComponent<Collider>()))
@@ -68,7 +67,7 @@ public class NewSlug : AIStateMachine
             // Attack state, deal damage to target
             if (Target.IsDestroyed())
             {
-                Target = GameController.instance.player.GetComponent<IActor>();
+                Target = playerManager.player.GetComponent<IActor>();
                 ChangeState(data.pathMove);
                 return;
             }
@@ -76,7 +75,7 @@ public class NewSlug : AIStateMachine
             // Moves out of range
             if (detectAttack.Exit.Contains(Target.gameObject.GetComponent<Collider>()))
             {
-                Target = GameController.instance.baseController;
+                Target = gameManager.baseController;
                 ChangeState(data.pathMove);
             }
         }

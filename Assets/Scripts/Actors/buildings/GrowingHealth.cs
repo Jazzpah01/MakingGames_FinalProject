@@ -35,7 +35,7 @@ public class GrowingHealth : MonoBehaviour, IBuildingBehavior
     private void harvest()
     {
         PlayerManager.instance.player.GetComponent<PlayerController>().Health += PlayerManager.instance.player.GetComponent<PlayerController>().MaxHealth * calculatePlayerHealthGained() * 0.01f; ;
-        gameManager.gameController.baseController.Health += gameManager.gameController.baseController.MaxHealth * calculateBaseHealthGained() * 0.01f;
+        gameManager.baseController.Health += gameManager.baseController.MaxHealth * calculateBaseHealthGained() * 0.01f;
         Destroy(gameObject);
     }
 

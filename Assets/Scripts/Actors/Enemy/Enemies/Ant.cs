@@ -20,7 +20,7 @@ public class Ant : AIStateMachine
         data.pathMove.Initialize(this);
         data.instantAttack.Initialize(this);
 
-        Target = GameController.instance.player.GetComponent<IActor>();
+        Target = PlayerManager.instance.player.GetComponent<IActor>();
 
         agent.updateRotation = false;
 

@@ -22,12 +22,12 @@ public class Cheat : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.L))
             {
-                GameManager.instance.gameController.baseController.Health = GameManager.instance.gameController.baseController.MaxHealth * 0.1f;
+                GameManager.instance.baseController.Health = GameManager.instance.baseController.MaxHealth * 0.1f;
                 PlayerManager.instance.playerController.Health = PlayerManager.instance.playerController.MaxHealth * 0.1f;
             }
             if (Input.GetKeyDown(KeyCode.H))
             {
-                GameManager.instance.gameController.baseController.Health = GameManager.instance.gameController.baseController.MaxHealth;
+                GameManager.instance.baseController.Health = GameManager.instance.baseController.MaxHealth;
                 PlayerManager.instance.playerController.Health = PlayerManager.instance.playerController.MaxHealth;
             }
             if (Input.GetKeyDown(KeyCode.R))

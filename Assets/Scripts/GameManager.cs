@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     public LevelDescriptionList levelDescriptionData;
 
     [Header("Controller References")]
+    public Base baseController;
     public GameController gameController;
     public SpawnController spawnController;
     public BuildingController buildingController;
