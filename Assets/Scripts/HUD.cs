@@ -17,12 +17,14 @@ public class HUD : MonoBehaviour
 
     [HideInInspector]
     public bool isLevelDescriptionActive;
+    [HideInInspector]
+    public bool isStartMenuActive;
 
     private PlayerHUD playerHUD;
     private StrategyHUD strategyHUD;
     private GameObject startMenuUI;
-    private GameObject levelDescriptionUI;
-    private GameObject ingameMenu;
+    protected GameObject levelDescriptionUI;
+    private GameObject ingameMenuUI;
     private GameObject controlsUI;
     private GameObject settingsUI;
     private GameObject creditsUI;
@@ -44,7 +46,7 @@ public class HUD : MonoBehaviour
         strategyHUD = Instantiate(strategyHUDPrefab, transform).GetComponent<StrategyHUD>();
         startMenuUI = Instantiate(startMenuPrefab, transform);
         levelDescriptionUI = Instantiate(levelDescriptionPrefab, transform);
-        ingameMenu = Instantiate(ingameMenuPrefab, transform);
+        ingameMenuUI = Instantiate(ingameMenuPrefab, transform);
         controlsUI = Instantiate(controlsPrefab, transform);
         settingsUI = Instantiate(settingsPrefab, transform);
         creditsUI = Instantiate(creditsPrefab, transform);
@@ -52,20 +54,39 @@ public class HUD : MonoBehaviour
 
         playerHUD.gameObject.SetActive(false);
         startMenuUI.SetActive(false);
-        ingameMenu.SetActive(false);
+        isStartMenuActive = false;
+        ingameMenuUI.SetActive(false);
         controlsUI.SetActive(false);
         settingsUI.SetActive(false);
         creditsUI.SetActive(false);
         gameOverUI.SetActive(false);
+        isLevelDescriptionActive = true;
 
         if (LevelManager.instance.getCurrentLevel() == 1)
         {
+            isStartMenuActive = true;
             startMenuUI.SetActive(true);
             levelDescriptionUI.SetActive(false);
+            isLevelDescriptionActive = false;
             strategyHUD.gameObject.SetActive(false);
         }
+    }
 
-
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) 
+            && strategyHUD.gameObject.activeSelf 
+            && !playerHUD.gameObject.activeSelf 
+            && !startMenuUI.activeSelf 
+            && !levelDescriptionUI.activeSelf 
+            && !ingameMenuUI.activeSelf
+            && !controlsUI.activeSelf
+            && !settingsUI.activeSelf
+            && !creditsUI.activeSelf
+            && !gameOverUI.activeSelf)
+        {
+            IngameMenuButton();
+        }
     }
     public void UpdateHUD()
     {
@@ -80,27 +101,27 @@ public class HUD : MonoBehaviour
 
     public void IngameMenuButton()
     {
-        ingameMenu.SetActive(true);
+        ingameMenuUI.SetActive(true);
         Time.timeScale = 0;
     }
     public void IngameMenuResumeButton()
     {
-        ingameMenu.SetActive(false);
+        ingameMenuUI.SetActive(false);
         Time.timeScale = 1;
     }
     public void IngameMenuControlsButton()
     {
-        ingameMenu.SetActive(false);
+        ingameMenuUI.SetActive(false);
         controlsUI.SetActive(true);
     }
     public void IngameMenuSettingsButton()
     {
-        ingameMenu.SetActive(false);
+        ingameMenuUI.SetActive(false);
         settingsUI.SetActive(true);
     }
     public void IngameMenuCreditsButton()
     {
-        ingameMenu.SetActive(false);
+        ingameMenuUI.SetActive(false);
         creditsUI.SetActive(true);
     }
     public void IngameMenuStartMenuButton()
@@ -111,22 +132,32 @@ public class HUD : MonoBehaviour
     {
         controlsUI.SetActive(false);
         if (gameStarted)
-            ingameMenu.SetActive(true);
+        {
+            ingameMenuUI.SetActive(true);
+        }
         else
-            startMenuUI.SetActive(true);
+        {
+        startMenuUI.SetActive(true);
+        isStartMenuActive = true;
+        }
     }
     public void SettingsBackButton()
     {
         settingsUI.SetActive(false);
-        ingameMenu.SetActive(true);
+        ingameMenuUI.SetActive(true);
     }
     public void CreditsBackButton()
     {
         creditsUI.SetActive(false);
         if (gameStarted)
-            ingameMenu.SetActive(true);
+        {
+            ingameMenuUI.SetActive(true);
+        }
         else
+        {
             startMenuUI.SetActive(true);
+            isStartMenuActive = true;
+        }
     }
 
     public void StartMenuStartButton()
@@ -134,8 +165,10 @@ public class HUD : MonoBehaviour
         Time.timeScale = 1;
         gameStarted = true;
         levelDescriptionUI.SetActive(true);
+        isLevelDescriptionActive = true;
         strategyHUD.gameObject.SetActive(true);
         startMenuUI.SetActive(false);
+        isStartMenuActive = false;
     }
 
     public void StartMenuControlsButton()
@@ -163,5 +196,11 @@ public class HUD : MonoBehaviour
     public void QuitButton()
     {
         Application.Quit();
+    }
+
+    public void CloseLevelDescription()
+    {
+        levelDescriptionUI.SetActive(false);
+        isLevelDescriptionActive = false;
     }
 }
