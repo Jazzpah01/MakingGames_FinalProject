@@ -12,6 +12,7 @@ public class InstantAttack : AIState
     public float damage;
     public float delay;
     public float cooldown;
+    public float turningSpeed = 2;
 
     private float delayTimer = 0;
     private bool ready = true;
@@ -52,7 +53,7 @@ public class InstantAttack : AIState
         transform = parent.transform;
         targetTransform = parent.Target.gameObject.transform;
         Vector3 targetDirection = targetTransform.position - transform.position;
-        Vector3 direction = Vector3.RotateTowards(transform.forward, targetDirection, Time.deltaTime, 0f);
+        Vector3 direction = Vector3.RotateTowards(transform.forward, targetDirection, turningSpeed * Time.deltaTime, 0f);
         parent.gameObject.transform.rotation = Quaternion.LookRotation(direction);
     }
 
