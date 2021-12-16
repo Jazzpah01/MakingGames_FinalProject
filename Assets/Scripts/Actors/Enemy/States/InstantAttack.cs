@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,11 +18,17 @@ public class InstantAttack : AIState
 
     protected override void EnterAIState()
     {
+        parent.agent.updateRotation = false;
         delayTimer = 0;
     }
 
+    protected override void ExitAIState()
+    {
+        parent.agent.updateRotation = true;
+    }
     protected override void UpdateAIState()
     {
+        LookAtTarget();
         if (!ready)
             return;
 
@@ -37,6 +44,16 @@ public class InstantAttack : AIState
             ready = false;
             parent.CallInSeconds(Cooldown, cooldown);
         }
+    }
+
+    private void LookAtTarget()
+    {
+        Transform transform, targetTransform;
+        transform = parent.transform;
+        targetTransform = parent.Target.gameObject.transform;
+        Vector3 targetDirection = targetTransform.position - transform.position;
+        Vector3 direction = Vector3.RotateTowards(transform.forward, targetDirection, Time.deltaTime, 0f);
+        parent.gameObject.transform.rotation = Quaternion.LookRotation(direction);
     }
 
     void Cooldown()

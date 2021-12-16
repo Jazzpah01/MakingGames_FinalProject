@@ -134,6 +134,7 @@ MonoBehaviour:
   healthBar: {fileID: 7016897219840272751}
   deathEffect: {fileID: 192757836124602699, guid: f4dddb6fda5ba164eae37c20d9e8e544,
     type: 3}
+  deathEffectDestroyTimer: 1
 --- !u!114 &2760495144896973161
 MonoBehaviour:
   m_ObjectHideFlags: 0
