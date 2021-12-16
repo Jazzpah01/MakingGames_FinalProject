@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43598595, g: 0.553596, b: 0.54303765, a: 1}
+  m_IndirectSpecularColor: {r: 0.43658394, g: 0.5542363, b: 0.54339486, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -229,7 +229,7 @@ PrefabInstance:
         type: 3}
       propertyPath: sounds.Array.data[5].clip
       value: 
-      objectReference: {fileID: 8300000, guid: bf1738cb710072c44b60d1b704a33209, type: 3}
+      objectReference: {fileID: 8300000, guid: a643438b2a203aa42828df63d7f65dc6, type: 3}
     - target: {fileID: 7139228218997738311, guid: e0a2d59ab47343a42bdccb4494683cf9,
         type: 3}
       propertyPath: sounds.Array.data[5].loop
@@ -244,7 +244,7 @@ PrefabInstance:
         type: 3}
       propertyPath: sounds.Array.data[6].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 7fe374dd88a5ae54c8a24ac4da50dc50, type: 3}
+      objectReference: {fileID: 8300000, guid: 6b9de5b3e29bcc94a9f269ca5d9c88ce, type: 3}
     - target: {fileID: 7139228218997738311, guid: e0a2d59ab47343a42bdccb4494683cf9,
         type: 3}
       propertyPath: sounds.Array.data[6].loop
@@ -254,6 +254,16 @@ PrefabInstance:
         type: 3}
       propertyPath: sounds.Array.data[6].name
       value: strategy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139228218997738311, guid: e0a2d59ab47343a42bdccb4494683cf9,
+        type: 3}
+      propertyPath: sounds.Array.data[5].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139228218997738311, guid: e0a2d59ab47343a42bdccb4494683cf9,
+        type: 3}
+      propertyPath: sounds.Array.data[6].pitch
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7139228218997738311, guid: e0a2d59ab47343a42bdccb4494683cf9,
         type: 3}
@@ -268,13 +278,23 @@ PrefabInstance:
     - target: {fileID: 7139228218997738311, guid: e0a2d59ab47343a42bdccb4494683cf9,
         type: 3}
       propertyPath: sounds.Array.data[5].volume
-      value: 0.1
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 7139228218997738311, guid: e0a2d59ab47343a42bdccb4494683cf9,
         type: 3}
       propertyPath: sounds.Array.data[6].volume
-      value: 0.1
+      value: 0.7
       objectReference: {fileID: 0}
+    - target: {fileID: 7139228218997738311, guid: e0a2d59ab47343a42bdccb4494683cf9,
+        type: 3}
+      propertyPath: sounds.Array.data[5].loopClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 12b0aa0ccaf05314c906eaa4d5fee4d2, type: 3}
+    - target: {fileID: 7139228218997738311, guid: e0a2d59ab47343a42bdccb4494683cf9,
+        type: 3}
+      propertyPath: sounds.Array.data[6].loopClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6f5888b91a1844647b7e6506cb417dc2, type: 3}
     - target: {fileID: 7139228218997738311, guid: e0a2d59ab47343a42bdccb4494683cf9,
         type: 3}
       propertyPath: sounds.Array.data[3].audioMixerGroup

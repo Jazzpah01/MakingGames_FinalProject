@@ -9,7 +9,7 @@ public class Sound
     public AudioMixerGroup audioMixerGroup;
     public bool mute;
     [System.NonSerialized]
-    public bool loop;
+    public bool loop = false;
     [Range(0f,1f)]
     public float volume;
     [Range(-3f, 3f)]

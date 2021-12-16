@@ -35,13 +35,26 @@ public class AudioManager : MonoBehaviour {
 
     private void Update()
     {
-        foreach (Sound sound in sounds)
+        //foreach (Sound sound in sounds)
+        //{
+        //    if (!sound.source.isPlaying && sound.loop)
+        //    {
+        //        sound.source.clip = sound.loopClip;
+        //        sound.source.Play();
+        //    }
+        //}
+    }
+
+    public void ScheduleLoop(Sound s)
+    {
+        if (s.loop)
         {
-            if (!sound.source.isPlaying && sound.loop)
-            {
-                sound.source.clip = sound.loopClip;
-                sound.source.Play();
-            }
+            s.source.PlayScheduled(AudioSettings.dspTime + s.loopClip.length);
+            s.source.loop = true;
+        }
+        else
+        {
+            s.source.Stop();
         }
     }
 
@@ -54,10 +67,19 @@ public class AudioManager : MonoBehaviour {
             return;
         }
 
+        s.source.loop = false;
+        s.source.Stop();
+        s.source.PlayOneShot(s.source.clip);
+
         if (s.loopClip != null)
+        {
             s.loop = true;
-        s.source.clip = s.clip;
-        s.source.Play();
+            s.source.clip = s.loopClip;
+            ScheduleLoop(s);
+        } else
+        {
+            s.loop = false;
+        }
     }
     public void Stop(string name)
     {
@@ -69,6 +91,7 @@ public class AudioManager : MonoBehaviour {
         }
 
         s.loop = false;
+        s.source.loop = false;
         s.source.Stop();
     }
 
