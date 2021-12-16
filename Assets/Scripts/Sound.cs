@@ -5,8 +5,10 @@ public class Sound
 {
     public string name;
     public AudioClip clip;
+    public AudioClip loopClip;
     public AudioMixerGroup audioMixerGroup;
     public bool mute;
+    [System.NonSerialized]
     public bool loop;
     [Range(0f,1f)]
     public float volume;

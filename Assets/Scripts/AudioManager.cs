@@ -27,9 +27,21 @@ public class AudioManager : MonoBehaviour {
             s.source.clip = s.clip;
             s.source.outputAudioMixerGroup = s.audioMixerGroup;
             s.source.mute = s.mute;
-            s.source.loop = s.loop;
+            s.source.loop = false;
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
+        }
+    }
+
+    private void Update()
+    {
+        foreach (Sound sound in sounds)
+        {
+            if (!sound.source.isPlaying && sound.loop)
+            {
+                sound.source.clip = sound.loopClip;
+                sound.source.Play();
+            }
         }
     }
 
@@ -42,6 +54,9 @@ public class AudioManager : MonoBehaviour {
             return;
         }
 
+        if (s.loopClip != null)
+            s.loop = true;
+        s.source.clip = s.clip;
         s.source.Play();
     }
     public void Stop(string name)
@@ -53,6 +68,7 @@ public class AudioManager : MonoBehaviour {
             return;
         }
 
+        s.loop = false;
         s.source.Stop();
     }
 
