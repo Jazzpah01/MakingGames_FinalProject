@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Aphid : AIStateMachine
 {
+    GameManager gameManager;
+
     public AphidData data;
 
     public CollisionObserver detectCarrots;
@@ -16,13 +18,14 @@ public class Aphid : AIStateMachine
 
     protected void Start()
     {
+        gameManager = GameManager.instance;
         // Find a crops to follow
         SetCarrotTarget();
 
         // If crops doesn't exit: remove this
         if (Target.IsDestroyed())
         {
-            Target = GameController.instance.baseController;
+            Target = gameManager.baseController;
         }
 
         data = Instantiate(data);
@@ -54,7 +57,7 @@ public class Aphid : AIStateMachine
             // Move state. Move to a crops or base
             if (Target.IsDestroyed())
             {
-                Target = GameController.instance.baseController;
+                Target = gameManager.baseController;
             }
 
             animator.SetTrigger("Walking");
@@ -69,7 +72,7 @@ public class Aphid : AIStateMachine
             // In state data.attack. Attack target
             if (Target.IsDestroyed())
             {
-                Target = GameController.instance.baseController;
+                Target = gameManager.baseController;
                 ChangeState(data.pathMove);
             }
 
@@ -85,7 +88,7 @@ public class Aphid : AIStateMachine
     void SetCarrotTarget()
     {
         // Find a crops to follow
-        IActor[] crops = GameManager.instance.buildingController.buildablesParent.gameObject.GetComponentsInChildren<IActor>();
+        IActor[] crops = gameManager.buildingController.buildablesParent.gameObject.GetComponentsInChildren<IActor>();
 
         IActor closest = null;
         float currentDistance = float.MaxValue;

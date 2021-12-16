@@ -7,6 +7,9 @@ using UnityEngine;
 /// </summary>
 public class Slug : AIStateMachine
 {
+    GameManager gameManager;
+    PlayerManager playerManager;
+
     public SlugData data;
 
     public CollisionObserver detectObstruction;
@@ -21,6 +24,8 @@ public class Slug : AIStateMachine
 
     private void Start()
     {
+        gameManager = GameManager.instance;
+        playerManager = PlayerManager.instance;
         // Initialize data
         data = Instantiate(data);
 
@@ -30,7 +35,7 @@ public class Slug : AIStateMachine
         data.instantAttack.Initialize(this);
 
         // Set target to base initially
-        Target = GameController.instance.baseController;
+        Target = gameManager.baseController;
 
         // Setup collision observers
         detectObstruction.Subscribe(detectObstruction_Enter, CollisionObserver.CollisionType.Enter);
@@ -48,21 +53,21 @@ public class Slug : AIStateMachine
         {
             if (Target.IsDestroyed())
             {
-                Target = GameController.instance.player.GetComponent<IActor>();
+                Target = playerManager.player.GetComponent<IActor>();
                 return;
             }
 
             // Move state, data.move towards target
-            if ((transform.position - GameController.instance.player.transform.position).magnitude <=
+            if ((transform.position - playerManager.player.transform.position).magnitude <=
             (transform.position - Target.gameObject.transform.position).magnitude)
             {
-                Target = GameController.instance.player.GetComponent<IActor>();
+                Target = playerManager.player.GetComponent<IActor>();
             }
 
-            if ((transform.position - GameController.instance.baseController.transform.position).magnitude <=
+            if ((transform.position - gameManager.baseController.transform.position).magnitude <=
             (transform.position - Target.gameObject.transform.position).magnitude)
             {
-                Target = GameController.instance.baseController;
+                Target = gameManager.baseController;
             }
 
             if (detectAttack.Stay.Contains(Target.gameObject.GetComponent<Collider>()))
@@ -75,7 +80,7 @@ public class Slug : AIStateMachine
             // Attack state, deal damage to target
             if (Target.IsDestroyed())
             {
-                Target = GameController.instance.player.GetComponent<IActor>();
+                Target = playerManager.player.GetComponent<IActor>();
                 ChangeState(data.pathMove);
                 return;
             }

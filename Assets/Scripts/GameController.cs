@@ -20,9 +20,6 @@ public class GameController : MBStateMachine
 
     public SpawnController spawnController;
 
-    [HideInInspector]
-    public GameObject player;
-
     public bool keyboardControl = false;
     [System.NonSerialized] public GameState state = GameState.None;
     public GameObject enemyParent;
@@ -40,9 +37,8 @@ public class GameController : MBStateMachine
     private PlayerController playerController;
     private PlayerManager playerManager;
     private GameManager gameManager;
-    public HUD hud;
-
-    public Base baseController;
+    private HUD hud;
+    private GameObject player;
 
     void Awake()
     {
@@ -75,15 +71,11 @@ public class GameController : MBStateMachine
         switch (newState)
         {
             case GameState.Combat:
-                if (!playerManager.buildWhileCombat)
-                    player.SetActive(true);
                 base.ChangeState(playerController);
                 if (OnChangeToCombat != null)
                     OnChangeToCombat();
                 break;
             case GameState.Strategy:
-                if (!playerManager.buildWhileCombat)
-                    player.SetActive(false);
                 base.ChangeState(buildingController);
                 if (OnChangeToBuilding != null)
                     OnChangeToBuilding();

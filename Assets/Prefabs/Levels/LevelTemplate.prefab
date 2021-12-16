@@ -398,14 +398,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnController: {fileID: 3756459245402022232}
-  player: {fileID: 0}
   keyboardControl: 1
   enemyParent: {fileID: 8178444715532291036}
   buildTimer: 9001
   gameOverScreen: {fileID: 3964203082705723982}
   currentWave: 0
-  hud: {fileID: 0}
-  baseController: {fileID: 8178444715087797846}
 --- !u!1 &3321916614226425514
 GameObject:
   m_ObjectHideFlags: 0
@@ -449,8 +446,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6f0f7aa1a7845c438120cf8e18d9e90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyboardControl: 1
-  buildWhileCombat: 1
   player: {fileID: 1737285443989528489}
   cam: {fileID: 7442249870901698382}
   playerController: {fileID: 1737285443989528486}
@@ -504,6 +499,7 @@ MonoBehaviour:
   buildingTypes: {fileID: 11400000, guid: 1dd769dc9010f6f4790795d5fc1a5459, type: 2}
   enemyTypes: {fileID: 11400000, guid: a78ce7b5402e8264da4eab432e9ee96f, type: 2}
   levelDescriptionData: {fileID: 0}
+  baseController: {fileID: 8178444715087797846}
   gameController: {fileID: 8178444716690308236}
   spawnController: {fileID: 3756459245402022232}
   buildingController: {fileID: 7953258502569022335}
@@ -1542,7 +1538,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &55391089506286928
 Transform:
@@ -2334,7 +2330,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &8759756788922812913
 Transform:
@@ -2361,6 +2357,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Base
+      objectReference: {fileID: 0}
+    - target: {fileID: 5941971051626243147, guid: 18a03cea09cb77c4cac8f1626dcc7331,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 5941971051626243191, guid: 18a03cea09cb77c4cac8f1626dcc7331,
         type: 3}
@@ -2417,6 +2418,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6469155087612078903, guid: 18a03cea09cb77c4cac8f1626dcc7331,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18a03cea09cb77c4cac8f1626dcc7331, type: 3}
 --- !u!114 &8178444715087797846 stripped
@@ -2454,6 +2460,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Lighting
+      objectReference: {fileID: 0}
+    - target: {fileID: 2158931903472176383, guid: 9bb2b5db9dd8d0a489e13aae4cce1245,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 4345529360090531627, guid: 9bb2b5db9dd8d0a489e13aae4cce1245,
         type: 3}
@@ -2510,6 +2521,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5738869042077223676, guid: 9bb2b5db9dd8d0a489e13aae4cce1245,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 5738869042383144993, guid: 9bb2b5db9dd8d0a489e13aae4cce1245,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9bb2b5db9dd8d0a489e13aae4cce1245, type: 3}
 --- !u!4 &186135440586474063 stripped
@@ -2525,10 +2546,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8178444716460121607}
     m_Modifications:
+    - target: {fileID: 6653713836122817484, guid: 193d51f5678a7d145b188b1931ba332c,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 6949886162434197949, guid: 193d51f5678a7d145b188b1931ba332c,
         type: 3}
       propertyPath: m_Name
       value: PlantZone
+      objectReference: {fileID: 0}
+    - target: {fileID: 6949886162434197949, guid: 193d51f5678a7d145b188b1931ba332c,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 7946265950558554130, guid: 193d51f5678a7d145b188b1931ba332c,
         type: 3}

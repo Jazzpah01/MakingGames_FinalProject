@@ -8,6 +8,7 @@ public class LevelManager : MonoBehaviour
     public List<GameObject> levels;
     private int currentLevel = 0;
     private GameObject level;
+    public bool cheatsActive;
 
     void Awake()
     {
