@@ -17,11 +17,13 @@ public class HUD : MonoBehaviour
 
     [HideInInspector]
     public bool isLevelDescriptionActive;
+    [HideInInspector]
+    public bool isStartMenuActive;
 
     private PlayerHUD playerHUD;
     private StrategyHUD strategyHUD;
     private GameObject startMenuUI;
-    private GameObject levelDescriptionUI;
+    protected GameObject levelDescriptionUI;
     private GameObject ingameMenu;
     private GameObject controlsUI;
     private GameObject settingsUI;
@@ -52,16 +54,20 @@ public class HUD : MonoBehaviour
 
         playerHUD.gameObject.SetActive(false);
         startMenuUI.SetActive(false);
+        isStartMenuActive = false;
         ingameMenu.SetActive(false);
         controlsUI.SetActive(false);
         settingsUI.SetActive(false);
         creditsUI.SetActive(false);
         gameOverUI.SetActive(false);
+        isLevelDescriptionActive = true;
 
         if (LevelManager.instance.getCurrentLevel() == 1)
         {
+            isStartMenuActive = true;
             startMenuUI.SetActive(true);
             levelDescriptionUI.SetActive(false);
+            isLevelDescriptionActive = false;
             strategyHUD.gameObject.SetActive(false);
         }
 
@@ -111,9 +117,14 @@ public class HUD : MonoBehaviour
     {
         controlsUI.SetActive(false);
         if (gameStarted)
+        {
             ingameMenu.SetActive(true);
+        }
         else
-            startMenuUI.SetActive(true);
+        {
+        startMenuUI.SetActive(true);
+        isStartMenuActive = true;
+        }
     }
     public void SettingsBackButton()
     {
@@ -124,9 +135,14 @@ public class HUD : MonoBehaviour
     {
         creditsUI.SetActive(false);
         if (gameStarted)
+        {
             ingameMenu.SetActive(true);
+        }
         else
+        {
             startMenuUI.SetActive(true);
+            isStartMenuActive = true;
+        }
     }
 
     public void StartMenuStartButton()
@@ -134,8 +150,10 @@ public class HUD : MonoBehaviour
         Time.timeScale = 1;
         gameStarted = true;
         levelDescriptionUI.SetActive(true);
+        isLevelDescriptionActive = true;
         strategyHUD.gameObject.SetActive(true);
         startMenuUI.SetActive(false);
+        isStartMenuActive = false;
     }
 
     public void StartMenuControlsButton()
@@ -163,5 +181,11 @@ public class HUD : MonoBehaviour
     public void QuitButton()
     {
         Application.Quit();
+    }
+
+    public void CloseLevelDescription()
+    {
+        levelDescriptionUI.SetActive(false);
+        isLevelDescriptionActive = false;
     }
 }

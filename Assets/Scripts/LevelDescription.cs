@@ -6,25 +6,19 @@ using System;
 public class LevelDescription : MonoBehaviour
 {
     public GameObject descriptionPrefab;
+    HUD hud;
 
     [NonSerialized] private List<GameObject> contents = new List<GameObject>();
     private int index = 0;
-    private HUD hud;
-
-    public static LevelDescription instance;
-
-    private void Awake()
-    {
-        instance = this;
-    }
 
     private void Start()
     {
+        hud = GetComponentInParent<HUD>();
         LevelDescriptionList data = GameManager.instance.levelDescriptionData;
 
         if (data == null || data.descriptions == null || data.descriptions.Count == 0)
         {
-            gameObject.SetActive(false);
+            hud.CloseLevelDescription();
             return;
         }
 
@@ -39,8 +33,6 @@ public class LevelDescription : MonoBehaviour
             content.image.sprite = data.descriptions[i].image;
         }
 
-        hud = GetComponentInParent<HUD>();
-        hud.isLevelDescriptionActive = true;
         foreach (Transform child in transform)
         {
             child.gameObject.SetActive(false);
@@ -59,19 +51,12 @@ public class LevelDescription : MonoBehaviour
             }
             else
             {
-                hud.isLevelDescriptionActive = false;
-                gameObject.SetActive(false);
+                hud.CloseLevelDescription();
             }
         }
         if (Input.GetKey(KeyCode.Escape))
         {
-            hud.isLevelDescriptionActive = false;
-            gameObject.SetActive(false);
+            hud.CloseLevelDescription();
         }
-    }
-
-    private void SetDescriptionValues(DescriptionData data)
-    {
-
     }
 }
