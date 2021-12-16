@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName ="Assets/Actor/Building/SeedHealth")]
 public class HealthBuildingData : BuildableData
 {
-    [Header("Health Regen Building")]
+    [Header("% Health healed after wave")]
     [Range(0,100)]
     public int baseHealthGain;
     [Range(0, 100)]
