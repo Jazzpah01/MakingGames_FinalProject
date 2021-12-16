@@ -24,7 +24,7 @@ public class HUD : MonoBehaviour
     private StrategyHUD strategyHUD;
     private GameObject startMenuUI;
     protected GameObject levelDescriptionUI;
-    private GameObject ingameMenu;
+    private GameObject ingameMenuUI;
     private GameObject controlsUI;
     private GameObject settingsUI;
     private GameObject creditsUI;
@@ -46,7 +46,7 @@ public class HUD : MonoBehaviour
         strategyHUD = Instantiate(strategyHUDPrefab, transform).GetComponent<StrategyHUD>();
         startMenuUI = Instantiate(startMenuPrefab, transform);
         levelDescriptionUI = Instantiate(levelDescriptionPrefab, transform);
-        ingameMenu = Instantiate(ingameMenuPrefab, transform);
+        ingameMenuUI = Instantiate(ingameMenuPrefab, transform);
         controlsUI = Instantiate(controlsPrefab, transform);
         settingsUI = Instantiate(settingsPrefab, transform);
         creditsUI = Instantiate(creditsPrefab, transform);
@@ -55,7 +55,7 @@ public class HUD : MonoBehaviour
         playerHUD.gameObject.SetActive(false);
         startMenuUI.SetActive(false);
         isStartMenuActive = false;
-        ingameMenu.SetActive(false);
+        ingameMenuUI.SetActive(false);
         controlsUI.SetActive(false);
         settingsUI.SetActive(false);
         creditsUI.SetActive(false);
@@ -70,8 +70,23 @@ public class HUD : MonoBehaviour
             isLevelDescriptionActive = false;
             strategyHUD.gameObject.SetActive(false);
         }
+    }
 
-
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) 
+            && strategyHUD.gameObject.activeSelf 
+            && !playerHUD.gameObject.activeSelf 
+            && !startMenuUI.activeSelf 
+            && !levelDescriptionUI.activeSelf 
+            && !ingameMenuUI.activeSelf
+            && !controlsUI.activeSelf
+            && !settingsUI.activeSelf
+            && !creditsUI.activeSelf
+            && !gameOverUI.activeSelf)
+        {
+            IngameMenuButton();
+        }
     }
     public void UpdateHUD()
     {
@@ -86,27 +101,27 @@ public class HUD : MonoBehaviour
 
     public void IngameMenuButton()
     {
-        ingameMenu.SetActive(true);
+        ingameMenuUI.SetActive(true);
         Time.timeScale = 0;
     }
     public void IngameMenuResumeButton()
     {
-        ingameMenu.SetActive(false);
+        ingameMenuUI.SetActive(false);
         Time.timeScale = 1;
     }
     public void IngameMenuControlsButton()
     {
-        ingameMenu.SetActive(false);
+        ingameMenuUI.SetActive(false);
         controlsUI.SetActive(true);
     }
     public void IngameMenuSettingsButton()
     {
-        ingameMenu.SetActive(false);
+        ingameMenuUI.SetActive(false);
         settingsUI.SetActive(true);
     }
     public void IngameMenuCreditsButton()
     {
-        ingameMenu.SetActive(false);
+        ingameMenuUI.SetActive(false);
         creditsUI.SetActive(true);
     }
     public void IngameMenuStartMenuButton()
@@ -118,7 +133,7 @@ public class HUD : MonoBehaviour
         controlsUI.SetActive(false);
         if (gameStarted)
         {
-            ingameMenu.SetActive(true);
+            ingameMenuUI.SetActive(true);
         }
         else
         {
@@ -129,14 +144,14 @@ public class HUD : MonoBehaviour
     public void SettingsBackButton()
     {
         settingsUI.SetActive(false);
-        ingameMenu.SetActive(true);
+        ingameMenuUI.SetActive(true);
     }
     public void CreditsBackButton()
     {
         creditsUI.SetActive(false);
         if (gameStarted)
         {
-            ingameMenu.SetActive(true);
+            ingameMenuUI.SetActive(true);
         }
         else
         {
