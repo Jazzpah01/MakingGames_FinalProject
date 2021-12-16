@@ -51,7 +51,6 @@ public class HUD : MonoBehaviour
         gameOverUI = Instantiate(gameoverPrefab, transform);
 
         playerHUD.gameObject.SetActive(false);
-        levelDescriptionUI.SetActive(false);
         startMenuUI.SetActive(false);
         ingameMenu.SetActive(false);
         controlsUI.SetActive(false);
@@ -62,6 +61,7 @@ public class HUD : MonoBehaviour
         if (LevelManager.instance.getCurrentLevel() == 1)
         {
             startMenuUI.SetActive(true);
+            levelDescriptionUI.SetActive(false);
             strategyHUD.gameObject.SetActive(false);
         }
 
