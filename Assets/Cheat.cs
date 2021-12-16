@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class Cheat : MonoBehaviour
 {
-    private bool cheatActive;
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.F1))
         {
-            cheatActive = true;
+            LevelManager.instance.cheatsActive = true;
         }
-        if (cheatActive)
+        if (LevelManager.instance.cheatsActive)
         {
             if (Input.GetKeyDown(KeyCode.K))
             {

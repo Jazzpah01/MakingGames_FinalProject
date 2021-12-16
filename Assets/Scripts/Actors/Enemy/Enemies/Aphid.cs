@@ -18,6 +18,7 @@ public class Aphid : AIStateMachine
 
     protected void Start()
     {
+        gameManager = GameManager.instance;
         // Find a crops to follow
         SetCarrotTarget();
 
