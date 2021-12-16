@@ -503,6 +503,7 @@ MonoBehaviour:
   musicOn: 1
   buildingTypes: {fileID: 11400000, guid: 1dd769dc9010f6f4790795d5fc1a5459, type: 2}
   enemyTypes: {fileID: 11400000, guid: a78ce7b5402e8264da4eab432e9ee96f, type: 2}
+  levelDescriptionData: {fileID: 0}
   gameController: {fileID: 8178444716690308236}
   spawnController: {fileID: 3756459245402022232}
   buildingController: {fileID: 7953258502569022335}
@@ -1984,6 +1985,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8178444715532291037}
+  - component: {fileID: 7797410418270356176}
   m_Layer: 0
   m_Name: EnemyParent
   m_TagString: Untagged
@@ -2005,6 +2007,18 @@ Transform:
   m_Father: {fileID: 8178444715719634210}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7797410418270356176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8178444715532291036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74d8ace4af9e6ce4cad345033abc22ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8178444715719634237
 GameObject:
   m_ObjectHideFlags: 0

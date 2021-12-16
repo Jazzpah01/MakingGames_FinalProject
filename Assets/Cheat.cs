@@ -4,20 +4,36 @@ using UnityEngine;
 
 public class Cheat : MonoBehaviour
 {
-
+    private bool cheatActive;
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.K))
+        if (Input.GetKeyDown(KeyCode.F1))
         {
-            foreach(Enemy e in GetComponentsInChildren<Enemy>())
-            {
-                e.Health = 0;
-            }
+            cheatActive = true;
         }
-        if (Input.GetKeyDown(KeyCode.L))
+        if (cheatActive)
         {
-            GameManager.instance.gameController.baseController.Health = GameManager.instance.gameController.baseController.MaxHealth * 0.2f;
-            PlayerManager.instance.playerController.Health = PlayerManager.instance.playerController.MaxHealth * 0.2f;
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                foreach (Enemy e in GetComponentsInChildren<Enemy>())
+                {
+                    e.Health = 0;
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                GameManager.instance.gameController.baseController.Health = GameManager.instance.gameController.baseController.MaxHealth * 0.1f;
+                PlayerManager.instance.playerController.Health = PlayerManager.instance.playerController.MaxHealth * 0.1f;
+            }
+            if (Input.GetKeyDown(KeyCode.H))
+            {
+                GameManager.instance.gameController.baseController.Health = GameManager.instance.gameController.baseController.MaxHealth;
+                PlayerManager.instance.playerController.Health = PlayerManager.instance.playerController.MaxHealth;
+            }
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                GameManager.instance.currentResource += 10f;
+            }
         }
     }
 }
