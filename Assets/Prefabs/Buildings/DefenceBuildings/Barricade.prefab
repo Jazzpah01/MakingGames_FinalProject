@@ -205,7 +205,7 @@ Transform:
   m_GameObject: {fileID: 2782804534701062994}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -16.1, y: 0.5, z: 3.07}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1.5}
   m_Children:
   - {fileID: 4809382029761375809}
   - {fileID: 494535791286033747}
@@ -242,6 +242,7 @@ MonoBehaviour:
   buildingProjections: {fileID: 0}
   ignoreOnBuild: {fileID: 0}
   placementCollionObserver: {fileID: 0}
+  preBuilt: 0
 --- !u!114 &2782804534701062996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -303,6 +304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aca1a7eddd4d3fd46b9f72f76cc3ba8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  children: []
 --- !u!1 &2883257046259061764
 GameObject:
   m_ObjectHideFlags: 0
