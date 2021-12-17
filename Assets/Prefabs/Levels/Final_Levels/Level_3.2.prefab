@@ -139438,17 +139438,17 @@ PrefabInstance:
     - target: {fileID: 3756459245402022232, guid: 137a44a12193a954cae6178df1d2bf23,
         type: 3}
       propertyPath: waves.Array.data[1].combatValue
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3756459245402022232, guid: 137a44a12193a954cae6178df1d2bf23,
         type: 3}
       propertyPath: waves.Array.data[2].combatValue
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3756459245402022232, guid: 137a44a12193a954cae6178df1d2bf23,
         type: 3}
       propertyPath: waves.Array.data[3].combatValue
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3756459245402022232, guid: 137a44a12193a954cae6178df1d2bf23,
         type: 3}

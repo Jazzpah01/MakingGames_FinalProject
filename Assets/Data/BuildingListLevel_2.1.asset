@@ -22,4 +22,4 @@ MonoBehaviour:
   - data: {fileID: 11400000, guid: fcf147895377e4648a56a62b91a319ca, type: 2}
     cost: 3
   - data: {fileID: 11400000, guid: 3462bb82f973cd94cbc90e05698f2da8, type: 2}
-    cost: 4
+    cost: 3
