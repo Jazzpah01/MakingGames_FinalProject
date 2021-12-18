@@ -62,7 +62,7 @@ MonoBehaviour:
     image: {fileID: 21300000, guid: 1e057ec0eb067964689187bbf9cb9b5d, type: 3}
   - title: Joe
     description: 'Make sure to defend them well. If harmed the flowers will grant
-      you less then what was initially promised to you. '
+      you less than what was initially promised to you. '
     image: {fileID: 21300000, guid: d195780fd598cbe40b0f010a9aac6a16, type: 3}
   - title: Joe
     description: 'Ohh one last thing Little One! After each battle, some Nectar is

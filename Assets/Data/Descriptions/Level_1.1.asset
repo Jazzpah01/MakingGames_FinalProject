@@ -24,8 +24,7 @@ MonoBehaviour:
   - title: 'Droseraceae Projectum '
     description: "It shoots magical Nectar! The problem is it cannot reach all of
       them. Also, it's a wild one so you don't need to place it in fertile soil,
-      in fact let\u2019s agree you just don\u2019t do it- these flowers will frighten
-      the others. "
+      in fact let\u2019s agree you just don\u2019t do it."
     image: {fileID: 21300000, guid: 6da984fde715b2b4ea9ec124341c40d5, type: 3}
   - title: Environment
     description: "See these rivers and rocks? We need to keep out of there. Put your

@@ -44,9 +44,9 @@ MonoBehaviour:
       to the task at hand.  '
     image: {fileID: 21300000, guid: 727978ef32f7661499be104e3e6858d2, type: 3}
   - title: 'Ants '
-    description: 'Because you hurt their prey the Ants will hurt you now. They will
-      chase you wherever you go. Joe took that picture for you as well. He is living
-      on the edge, that one.  '
+    description: 'Because you hurt their live stock the Ants will hurt you now. They
+      will chase you wherever you go. Joe took that picture for you as well. He is
+      living on the edge, that one.  '
     image: {fileID: 21300000, guid: c155e074fbb33254ea23caf24b9500a4, type: 3}
   - title: Joe
     description: 'Do not despair Little One! I will help you. I can slow them down
