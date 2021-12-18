@@ -33,24 +33,18 @@ public class AudioManager : MonoBehaviour {
         }
     }
 
-    private void Update()
-    {
-        //foreach (Sound sound in sounds)
-        //{
-        //    if (!sound.source.isPlaying && sound.loop)
-        //    {
-        //        sound.source.clip = sound.loopClip;
-        //        sound.source.Play();
-        //    }
-        //}
-    }
-
     public void ScheduleLoop(Sound s)
     {
         if (s.loop)
         {
             s.source.PlayScheduled(AudioSettings.dspTime + s.loopClip.length);
-            s.source.loop = true;
+            StartCoroutine(Utility.DelayedAbility(s.loopClip.length - 0.0001f, delegate
+            {
+                if (s.loop)
+                {
+                    s.source.loop = true;
+                }
+            }));
         }
         else
         {
@@ -69,7 +63,7 @@ public class AudioManager : MonoBehaviour {
 
         s.source.loop = false;
         s.source.Stop();
-        s.source.PlayOneShot(s.source.clip);
+        s.source.PlayOneShot(s.clip);
 
         if (s.loopClip != null)
         {
@@ -81,6 +75,7 @@ public class AudioManager : MonoBehaviour {
             s.loop = false;
         }
     }
+
     public void Stop(string name)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
@@ -90,9 +85,9 @@ public class AudioManager : MonoBehaviour {
             return;
         }
 
+        s.source.Stop();
         s.loop = false;
         s.source.loop = false;
-        s.source.Stop();
     }
 
     public void SetMusicVolume(float volume)
