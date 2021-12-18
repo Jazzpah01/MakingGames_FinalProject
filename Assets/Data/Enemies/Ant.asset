@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actorPrefab: {fileID: 0}
   name: 
-  maxHealth: 150
-  speed: 7
+  maxHealth: 200
+  speed: 9
   range: 3
   pathMove:
     speedModifyer: 1
     stoppingDistance: 0.8
   instantAttack:
-    damage: 4
+    damage: 5
     delay: 0.1
     cooldown: 1
     turningSpeed: 2

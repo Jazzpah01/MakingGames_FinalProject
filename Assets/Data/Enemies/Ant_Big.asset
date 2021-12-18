@@ -15,13 +15,13 @@ MonoBehaviour:
   actorPrefab: {fileID: 0}
   name: 
   maxHealth: 250
-  speed: 8.5
+  speed: 11
   range: 5
   pathMove:
     speedModifyer: 1
     stoppingDistance: 0.8
   instantAttack:
-    damage: 5
+    damage: 6
     delay: 0.1
     cooldown: 1
     turningSpeed: 2

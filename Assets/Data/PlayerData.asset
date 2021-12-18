@@ -17,9 +17,9 @@ MonoBehaviour:
   maxHealth: 200
   speed: 10
   dashCooldown: 2
-  dashLength: 15
+  dashLength: 12
   dashSpeed: 4
-  primaryAttackDamage: 20
+  primaryAttackDamage: 50
   primaryAttackCooldown: 0.6
   primaryAttackRange: 3
   primaryAttackDashLength: 2

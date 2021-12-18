@@ -15,7 +15,7 @@ MonoBehaviour:
   actorPrefab: {fileID: 0}
   name: 
   maxHealth: 500
-  speed: 3
+  speed: 4
   pathMove:
     speedModifyer: 1
     stoppingDistance: 0.8
