@@ -15,22 +15,17 @@ public class HUD : MonoBehaviour
     public GameObject creditsPrefab;
     public GameObject gameoverPrefab;
 
-    [HideInInspector]
-    public bool isLevelDescriptionActive;
-    [HideInInspector]
-    public bool isStartMenuActive;
-
     private PlayerHUD playerHUD;
     private StrategyHUD strategyHUD;
-    private GameObject startMenuUI;
-    protected GameObject levelDescriptionUI;
+    [HideInInspector]
+    public GameObject startMenuUI;
+    [HideInInspector]
+    public GameObject levelDescriptionUI;
     private GameObject ingameMenuUI;
     private GameObject controlsUI;
     private GameObject settingsUI;
     private GameObject creditsUI;
     private GameObject gameOverUI;
-
-    private bool gameStarted;
 
     [HideInInspector]
     public bool mouseOver;
@@ -54,20 +49,16 @@ public class HUD : MonoBehaviour
 
         playerHUD.gameObject.SetActive(false);
         startMenuUI.SetActive(false);
-        isStartMenuActive = false;
         ingameMenuUI.SetActive(false);
         controlsUI.SetActive(false);
         settingsUI.SetActive(false);
         creditsUI.SetActive(false);
         gameOverUI.SetActive(false);
-        isLevelDescriptionActive = true;
 
         if (LevelManager.instance.getCurrentLevel() == 1)
         {
-            isStartMenuActive = true;
             startMenuUI.SetActive(true);
             levelDescriptionUI.SetActive(false);
-            isLevelDescriptionActive = false;
             strategyHUD.gameObject.SetActive(false);
         }
     }
@@ -125,9 +116,7 @@ public class HUD : MonoBehaviour
     public void ControlsBackButton()
     {
         controlsUI.SetActive(false);
-        startMenuUI.SetActive(true);
-        isStartMenuActive = true;
-        
+        startMenuUI.SetActive(true);        
     }
     public void SettingsBackButton()
     {
@@ -144,7 +133,6 @@ public class HUD : MonoBehaviour
     {
         Time.timeScale = 1;
         levelDescriptionUI.SetActive(true);
-        isLevelDescriptionActive = true;
         strategyHUD.gameObject.SetActive(true);
         startMenuUI.SetActive(false);
     }
@@ -179,6 +167,5 @@ public class HUD : MonoBehaviour
     public void CloseLevelDescription()
     {
         levelDescriptionUI.SetActive(false);
-        isLevelDescriptionActive = false;
     }
 }

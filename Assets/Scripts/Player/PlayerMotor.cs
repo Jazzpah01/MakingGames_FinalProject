@@ -56,7 +56,7 @@ public class PlayerMotor : MonoBehaviour
         MovementKeyInput();
 
         //dash or move
-        if (!dashing && !attacking && !GameManager.instance.hud.isLevelDescriptionActive && !GameManager.instance.hud.isStartMenuActive)
+        if (!dashing && !attacking && !GameManager.instance.hud.levelDescriptionUI.activeSelf && !GameManager.instance.hud.startMenuUI.activeSelf)
         {
             if (Input.GetKeyDown(KeyCode.Space) && 0 >= dashTimer && (directionX != 0 || directionZ != 0))
             {
