@@ -13,20 +13,17 @@ public class IngameMenu : MonoBehaviour
     {
         hud.IngameMenuResumeButton();
     }
-    public void ControlsButton()
-    {
-        hud.IngameMenuControlsButton();
-    }
     public void SettingsButton()
     {
         hud.IngameMenuSettingsButton();
     }
-    public void CreditsButton()
-    {
-        hud.IngameMenuCreditsButton();
-    }
     public void RestartButton()
     {
-        hud.IngameMenuStartMenuButton();
+        hud.IngameMenuRestartMenuButton();
     }
+    public void QuitButton()
+    {
+        hud.IngameMenuQuitButton();
+    }
+
 }

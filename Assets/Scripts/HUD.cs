@@ -109,37 +109,25 @@ public class HUD : MonoBehaviour
         ingameMenuUI.SetActive(false);
         Time.timeScale = 1;
     }
-    public void IngameMenuControlsButton()
-    {
-        ingameMenuUI.SetActive(false);
-        controlsUI.SetActive(true);
-    }
     public void IngameMenuSettingsButton()
     {
         ingameMenuUI.SetActive(false);
         settingsUI.SetActive(true);
     }
-    public void IngameMenuCreditsButton()
+    public void IngameMenuQuitButton()
     {
-        ingameMenuUI.SetActive(false);
-        creditsUI.SetActive(true);
+        LevelManager.instance.RestartAllLevels();
     }
-    public void IngameMenuStartMenuButton()
+    public void IngameMenuRestartMenuButton()
     {
         LevelManager.instance.RestartLevel();
     }
     public void ControlsBackButton()
     {
         controlsUI.SetActive(false);
-        if (gameStarted)
-        {
-            ingameMenuUI.SetActive(true);
-        }
-        else
-        {
         startMenuUI.SetActive(true);
         isStartMenuActive = true;
-        }
+        
     }
     public void SettingsBackButton()
     {
@@ -149,26 +137,16 @@ public class HUD : MonoBehaviour
     public void CreditsBackButton()
     {
         creditsUI.SetActive(false);
-        if (gameStarted)
-        {
-            ingameMenuUI.SetActive(true);
-        }
-        else
-        {
-            startMenuUI.SetActive(true);
-            isStartMenuActive = true;
-        }
+        startMenuUI.SetActive(true);        
     }
 
     public void StartMenuStartButton()
     {
         Time.timeScale = 1;
-        gameStarted = true;
         levelDescriptionUI.SetActive(true);
         isLevelDescriptionActive = true;
         strategyHUD.gameObject.SetActive(true);
         startMenuUI.SetActive(false);
-        isStartMenuActive = false;
     }
 
     public void StartMenuControlsButton()
