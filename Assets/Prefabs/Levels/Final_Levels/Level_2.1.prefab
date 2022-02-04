@@ -96379,8 +96379,7 @@ PrefabInstance:
         type: 3}
       propertyPath: levelDescriptionData
       value: 
-      objectReference: {fileID: 11400000, guid: bf61069aa8067c14b834a5cb6ec47af2,
-        type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 295684787203183701, guid: 137a44a12193a954cae6178df1d2bf23,
         type: 3}
       propertyPath: m_StaticEditorFlags
