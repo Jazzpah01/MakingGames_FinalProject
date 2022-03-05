@@ -613,6 +613,7 @@ GameObject:
   - component: {fileID: 8443509432160686943}
   - component: {fileID: 6183669311951482142}
   - component: {fileID: 6479267333491743582}
+  - component: {fileID: 7233364702026684355}
   m_Layer: 9
   m_Name: StaticTower
   m_TagString: Untagged
@@ -727,6 +728,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   children: []
+--- !u!114 &7233364702026684355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9202268415749759745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91817ad609369a948991e2202f6f2d7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  wavePlaced: 0
+  waveDestroyed: 0
+  IsDestroyed: 0
 --- !u!1001 &173506617180876765
 PrefabInstance:
   m_ObjectHideFlags: 0

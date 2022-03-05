@@ -156,10 +156,17 @@ public class StrategyHUD : MonoBehaviour
 
     public void DefendButton()
     {
+       
         if (toggled != null)
         {
             SetToggled(false);
+        } 
+        foreach(var GO in gameManager.waveBuildingList)
+        {
+            GO.GO.GetComponent<BuildingData>().wavePlaced = LevelManager.instance.getCurrentLevel();
+            gameManager.placedBuildings.Add(GO.GO);
         }
+        gameManager.collectData();
         GameController.instance.GoToBattle();
     }
 

@@ -560,6 +560,7 @@ GameObject:
   - component: {fileID: 1206858166980829050}
   - component: {fileID: 3005076630291011807}
   - component: {fileID: 6719655436703305722}
+  - component: {fileID: 4235259591313320797}
   m_Layer: 9
   m_Name: PlantResource
   m_TagString: Untagged
@@ -679,6 +680,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   children: []
+--- !u!114 &4235259591313320797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8063388511463166607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91817ad609369a948991e2202f6f2d7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  wavePlaced: 0
+  waveDestroyed: 0
+  IsDestroyed: 0
 --- !u!1 &8063388511527572908
 GameObject:
   m_ObjectHideFlags: 0
@@ -1476,6 +1493,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6547b7794ac741e4d884918d5e16c1b4, type: 3}
+--- !u!224 &651470511669887355 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6412512043429981398, guid: 6547b7794ac741e4d884918d5e16c1b4,
+    type: 3}
+  m_PrefabInstance: {fileID: 5906379926964481453}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &8520103144020020281 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2867334920193679764, guid: 6547b7794ac741e4d884918d5e16c1b4,
@@ -1488,12 +1511,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dac349888b7e8b49991417b443a98bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &651470511669887355 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 6412512043429981398, guid: 6547b7794ac741e4d884918d5e16c1b4,
-    type: 3}
-  m_PrefabInstance: {fileID: 5906379926964481453}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8128856370599201771
 PrefabInstance:
   m_ObjectHideFlags: 0
