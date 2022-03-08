@@ -1,9 +1,9 @@
     using System.Collections;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Threading;
-using UnityEngine;
-using UnityEngine.Networking;
+    using System.Collections.Generic;
+    using System.Globalization;
+    using System.Threading;
+    using UnityEngine;
+    using UnityEngine.Networking;
 
 public class GameManager : MonoBehaviour
 {
@@ -85,25 +85,25 @@ public class GameManager : MonoBehaviour
 
     public void collectData()
     {
-        foreach(var GO in waveBuildingList)
+        foreach(var GO in placedBuildings)
         {
             LevelData data = new LevelData
             {
             playerID = SessionManager.instance.playerId,
             GameSessionId = SessionManager.instance.GameSessionId,
             levelSessionID = -1,
-            type = GO.GO.name,
+            type = GO.name,
             data = "what",
             level = LevelManager.instance.getCurrentLevel(),
-            damage = GO.GO.GetComponent<BuildingData>().damage,
-            IsDestroyed = GO.GO.GetComponent<BuildingData>().IsDestroyed,
-            wavePlaced = GO.GO.GetComponent<BuildingData>().wavePlaced,
-            waveDestroyed = GO.GO.GetComponent<BuildingData>().waveDestroyed,
-            cost = GO.Cost,
-            lifeTime = GO.GO.GetComponent<BuildingData>().waveDestroyed - GO.GO.GetComponent<BuildingData>().wavePlaced
+            damage = GO.GetComponent<BuildingData>().damage,
+            IsDestroyed = GO.GetComponent<BuildingData>().IsDestroyed,
+            wavePlaced = GO.GetComponent<BuildingData>().wavePlaced,
+            waveDestroyed = GO.GetComponent<BuildingData>().waveDestroyed,
+            cost = GO.GetComponent<BuildingData>().cost,
+            lifeTime = GO.GetComponent<BuildingData>().waveDestroyed - GO.GetComponent<BuildingData>().wavePlaced
             };
-
-            sendData(data);
+            print("sending data");
+            StartCoroutine(sendData(data));
         }
         
     }

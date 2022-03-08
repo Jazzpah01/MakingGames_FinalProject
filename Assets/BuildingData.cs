@@ -8,6 +8,7 @@ public class BuildingData : MonoBehaviour
     public int wavePlaced;
     public int waveDestroyed;
     public bool IsDestroyed;
+    public float cost;
     // Start is called before the first frame update
     void Start()
     {

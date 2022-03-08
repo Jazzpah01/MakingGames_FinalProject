@@ -161,8 +161,10 @@ public class StrategyHUD : MonoBehaviour
         {
             SetToggled(false);
         } 
+        print("Pressed defed");
         foreach(var GO in gameManager.waveBuildingList)
         {
+            print("in data loop");
             GO.GO.GetComponent<BuildingData>().wavePlaced = LevelManager.instance.getCurrentLevel();
             gameManager.placedBuildings.Add(GO.GO);
         }

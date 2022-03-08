@@ -165,6 +165,7 @@ public class BuildingController : MonoBehaviour, IState
     {
         gameManager.currentResource -= currentCost;
         gameManager.waveBuildingList.Add((GO.gameObject, currentCost));
+        GO.GetComponent<BuildingData>().cost = currentCost;
         GO.GetComponent<Buildable>().OnBuild();
         ChangeGOAlfa(1);
         GO = null;
