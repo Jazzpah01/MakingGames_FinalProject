@@ -168,7 +168,6 @@ public class StrategyHUD : MonoBehaviour
             GO.GO.GetComponent<BuildingData>().wavePlaced = LevelManager.instance.getCurrentLevel();
             gameManager.placedBuildings.Add(GO.GO);
         }
-        gameManager.collectData();
         GameController.instance.GoToBattle();
     }
 
