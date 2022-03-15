@@ -29,6 +29,10 @@ public class Buildable : MonoBehaviour, IActor, IBuildingCollider
     private Projector projector;
     private GrowingResource GR;
 
+    //[System.NonSerialized] public float lifetime;
+    //[System.NonSerialized] public int wavePlayed;
+    //[System.NonSerialized] public int waveDestroyed;
+
     GameManager gameManager;
 
     public ActorType actorType => data.actorType;
@@ -44,6 +48,10 @@ public class Buildable : MonoBehaviour, IActor, IBuildingCollider
         {
             if (currentHealth <= 0f)
             {
+                if (GameEvents.ActorKilled != null)
+                {
+                    GameEvents.ActorKilled(this);
+                }
                 Die();
             } else
             {

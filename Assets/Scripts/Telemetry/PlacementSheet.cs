@@ -2,20 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public struct PlacementSheet
+public class PlacementSheet
 {
     public int playerID;
     public int gameSessionID;
     public int levelSessionID;
-    public string type;
-    public string data;
+    public string type = "";
+    public string data = "";
     public int levelID;
-    public float damage;
-    public bool isDestroyed;
-    public int wavePlaced;
-    public int waveDestroyed;
-    public float cost;
-    public int lifeTime;
+    public float damage = 0;
+    public bool isDestroyed = false;
+    public int wavePlaced = 0;
+    public int waveDestroyed = 0;
+    public float cost = 0;
+    public float lifeTime = 0;
 
     public const string url = "https://docs.google.com/forms/d/e/1FAIpQLSdCiBthYndKGuRt82xpBR_nIHBV4n1CbiZO44WurpEagw4STw/";
     public const string url_viewform = "https://docs.google.com/forms/d/e/1FAIpQLSdCiBthYndKGuRt82xpBR_nIHBV4n1CbiZO44WurpEagw4STw/viewform?usp=sf_link";

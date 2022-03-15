@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public struct LevelSheet
+public class LevelSheet
 {
     public int playerID;
     public int gameSessionID;
     public int levelSessionID;
     public int levelID;
-    public float damage;
-    public int failedAttemptsToPlace;
-    public int numberOfUndos;
+    public float damage = 0;
+    public int failedAttemptsToPlace = 0;
+    public int numberOfUndos = 0;
 
     public const string url = "https://docs.google.com/forms/d/e/1FAIpQLSdheL4fZf8IAcD3q6ZXI2MqhgnHkWFTK6cayFnjvKm8v6C0sA/";
     public const string url_viewform = "https://docs.google.com/forms/d/e/1FAIpQLSdheL4fZf8IAcD3q6ZXI2MqhgnHkWFTK6cayFnjvKm8v6C0sA/viewform?usp=sf_link";

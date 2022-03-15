@@ -12,5 +12,18 @@ public class BuildingList : ScriptableObject
         get => buildings[key];
     }
 
+    public BuildingType ElementOf(BuildableData data)
+    {
+        foreach (BuildingType type in buildings)
+        {
+            if (type.data == data)
+            {
+                return type;
+            }
+        }
+
+        throw new System.Exception("Could not find building type of that data.");
+    }
+
     public int Count => buildings.Count;
 }

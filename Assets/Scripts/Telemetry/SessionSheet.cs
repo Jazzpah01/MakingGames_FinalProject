@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public struct SessionSheet
+public class SessionSheet
 {
     public int playerID;
     public int gameSessionID;

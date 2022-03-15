@@ -4,44 +4,15 @@ using UnityEngine;
 
 public class GameEvents : MonoBehaviour
 {
-    public static GameEvents instance;
+    public delegate void GameEventOfType<T>(T data);
+    public delegate void GameEvent();
 
-    public delegate void GameEvent(object data);
-    public Dictionary<string, GameEvent> gameEvents;
-
-    private void Awake()
-    {
-        instance = this;
-    }
-
-    public void Subscribe(GameEvent function, string eventName)
-    {
-        if (gameEvents.ContainsKey(eventName))
-        {
-            gameEvents[eventName] += function;
-        } else
-        {
-            gameEvents.Add(eventName, function);
-        }
-    }
-
-    public void UnSubscribe(GameEvent function, string eventName)
-    {
-        if (gameEvents.ContainsKey(eventName))
-        {
-            gameEvents[eventName] -= function;
-        }
-        else
-        {
-            throw new System.Exception("Cannot unsubscribe from an unexisting game event.");
-        }
-    }
-
-    public void TriggerGameEvent(string eventName, object data)
-    {
-        if (!gameEvents.ContainsKey(eventName))
-            throw new System.Exception("Event doesnt exist!");
-
-        gameEvents[eventName](data);
-    }
+    public static GameEventOfType<int> LevelChanged = null; // Index of new level
+    public static GameEventOfType<(IActor, IActor, float)> DamageDealt = null; // Source, target, amount
+    public static GameEventOfType<IActor> ActorKilled; // Actor died
+    public static GameEventOfType<IActor> ActorDestroyed; // Actor destroyed
+    public static GameEventOfType<(Buildable, bool)> BuildablePlacement; // Buildable placed, Is Success
+    public static GameEvent GameClosed;
+    public static GameEventOfType<Buildable> UndoPlacement; // Buildable that has been undone
+    public static GameEventOfType<int> WaveFinished; // Wave that is finished
 }

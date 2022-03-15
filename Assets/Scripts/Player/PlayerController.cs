@@ -40,6 +40,10 @@ public class PlayerController : MonoBehaviour, IActor, IState
             if (health <= 0)
             {
                 animator.SetTrigger("dead");
+                if (GameEvents.ActorKilled != null)
+                {
+                    GameEvents.ActorKilled(this);
+                }
                 gameController.GameOver();
             }
             else if (health > MaxHealth)
