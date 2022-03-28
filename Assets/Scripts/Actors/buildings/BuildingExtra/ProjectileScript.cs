@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ProjectileScript : MonoBehaviour
 {
+    public IActor parent;
     public GameObject Target;   
     public CollisionObserver detectionCollision;
     public CollisionObserver damagerCollision;
@@ -38,6 +39,10 @@ public class ProjectileScript : MonoBehaviour
         if(actor.actorType == ActorType.Enemy && actor.gameObject == Target.gameObject)
         {
             actor.Health -= damage;
+            if (GameEvents.DamageDealt != null)
+            {
+                GameEvents.DamageDealt((parent, actor, damage));
+            }
             Destroy(this.gameObject);
         }
     }
@@ -49,8 +54,9 @@ public class ProjectileScript : MonoBehaviour
             return;
     }
 
-    public void setValue(float damage, float projectileSpeed)
+    public void setValue(IActor parent, float damage, float projectileSpeed)
     {
+        this.parent = parent;
         this.damage = damage;
         this.speed = projectileSpeed;
     }

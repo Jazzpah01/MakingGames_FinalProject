@@ -53,6 +53,10 @@ public class PlayerCombat : MonoBehaviour
                     float d = data.primaryAttackDamage;
                     
                     actor.Health -= data.primaryAttackDamage;
+                    if (GameEvents.DamageDealt != null)
+                    {
+                        GameEvents.DamageDealt((controller, actor, data.primaryAttackDamage));
+                    }
 
                     Destroy(Instantiate(data.primaryHitParticlePrefab, hit.point, Quaternion.identity), hitEffectDestroyTimer);
                     return;

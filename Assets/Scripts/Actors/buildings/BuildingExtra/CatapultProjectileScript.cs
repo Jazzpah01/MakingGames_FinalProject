@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CatapultProjectileScript : MonoBehaviour
 {
+    public IActor parent;
     public GameObject Target;   
     public CollisionObserver detectionCollision;
     public CollisionObserver damagerCollision;
@@ -44,6 +45,10 @@ public class CatapultProjectileScript : MonoBehaviour
             foreach(GameObject obj in EnemiesInAoE)
             {
                 obj.GetComponent<IActor>().Health -= damage;
+                if (GameEvents.DamageDealt != null)
+                {
+                    GameEvents.DamageDealt((parent, actor, damage));
+                }
             }
             Destroy(this.gameObject);
         }
@@ -80,10 +85,11 @@ public class CatapultProjectileScript : MonoBehaviour
         }
     }
 
-    public void setValues(float d, float s)
+    public void setValues(IActor parent, float d, float s)
     {
         damage = d;
         speed = s;
+        this.parent = parent;
     }
     public void setTarget(GameObject t)
     {

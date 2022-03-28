@@ -70,7 +70,7 @@ public class Catapult : MonoBehaviour, IBuildingBehavior
         timer = 0;
         GameObject newProjectile = Instantiate(projectile) as GameObject;
         newProjectile.transform.position = peak.transform.position;
-        newProjectile.GetComponent<CatapultProjectileScript>().setValues(data.damage, data.projectileSpeed);
+        newProjectile.GetComponent<CatapultProjectileScript>().setValues(buildable, data.damage, data.projectileSpeed);
         newProjectile.GetComponent<CatapultProjectileScript>().setTarget(closestEnemy);
         //Debug.Log("projectile fired");
     }

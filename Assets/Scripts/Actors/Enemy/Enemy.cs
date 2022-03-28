@@ -24,6 +24,10 @@ public class Enemy : MonoBehaviour, IEnemy
         {
             if (value <= 0)
             {
+                if (GameEvents.ActorKilled != null)
+                {
+                    GameEvents.ActorKilled(this);
+                }
                 Destroy(Instantiate(deathEffect, transform.position, Quaternion.identity), deathEffectDestroyTimer);
                 Destroy(gameObject);
             }

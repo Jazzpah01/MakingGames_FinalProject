@@ -186,6 +186,7 @@ public class BuildingController : MonoBehaviour, IState
         if(listSize > 0)
         {  
             var element = gameManager.waveBuildingList[listSize - 1];
+            GameEvents.UndoPlacement(element.GO.GetComponent<Buildable>());
 
             gameManager.currentResource += element.Cost;
             

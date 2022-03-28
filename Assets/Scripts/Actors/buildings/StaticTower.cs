@@ -58,7 +58,7 @@ public class StaticTower : MonoBehaviour, IBuildingBehavior
         timer = 0.0f;
         GameObject newProjectile = Instantiate(data.projectilePrefab) as GameObject;
         newProjectile.transform.position = peak.transform.position;
-        newProjectile.GetComponent<ProjectileScript>().setValue(data.damage, data.projectileSpeed);
+        newProjectile.GetComponent<ProjectileScript>().setValue(buildable, data.damage, data.projectileSpeed);
         newProjectile.GetComponent<ProjectileScript>().setTarget(closestEnemy);
     }
 

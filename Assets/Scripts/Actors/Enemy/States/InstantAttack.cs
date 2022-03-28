@@ -41,6 +41,10 @@ public class InstantAttack : AIState
         {
             delayTimer = 0;
             parent.Target.Health -= damage * parent.controller.damageModifyer;
+            if (GameEvents.DamageDealt != null)
+            {
+                GameEvents.DamageDealt((parent.controller, parent.Target, damage));
+            }
             status = StateStatus.Finished;
             ready = false;
             parent.CallInSeconds(Cooldown, cooldown);

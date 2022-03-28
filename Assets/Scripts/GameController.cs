@@ -79,7 +79,7 @@ public class GameController : MBStateMachine
                 base.ChangeState(buildingController);
                 if (OnChangeToBuilding != null)
                     OnChangeToBuilding();
-                    gameManager.waveBuildingList.Clear();
+                gameManager.waveBuildingList.Clear();
                 break;
             default:
                 throw new System.Exception("Cannot have None state!");
@@ -97,6 +97,7 @@ public class GameController : MBStateMachine
         {
             if (InWave == false)
             {
+                GameEvents.WaveFinished(currentWave);
                 ChangeState(GameState.Strategy);
                 currentWave++;
                 hud.UpdateHUD();
