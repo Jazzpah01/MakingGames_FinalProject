@@ -22,7 +22,7 @@ public class BuildingList : ScriptableObject
             }
         }
 
-        throw new System.Exception("Could not find building type of that data.");
+        throw new System.Exception($"Could not find building type of {data} data.");
     }
 
     public int Count => buildings.Count;

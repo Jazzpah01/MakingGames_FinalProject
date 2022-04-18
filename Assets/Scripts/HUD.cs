@@ -107,6 +107,8 @@ public class HUD : MonoBehaviour
     }
     public void IngameMenuQuitButton()
     {
+        if (GameEvents.GameClosed != null)
+            GameEvents.GameClosed();
         LevelManager.instance.RestartAllLevels();
     }
     public void IngameMenuRestartMenuButton()
@@ -156,6 +158,8 @@ public class HUD : MonoBehaviour
 
     public void GameOverMenuMainMenu()
     {
+        if (GameEvents.GameClosed != null)
+            GameEvents.GameClosed();
         LevelManager.instance.RestartAllLevels();
     }
 

@@ -165,7 +165,12 @@ public class BuildingController : MonoBehaviour, IState
     {
         gameManager.currentResource -= currentCost;
         gameManager.waveBuildingList.Add((GO.gameObject, currentCost));
-        GO.GetComponent<BuildingData>().cost = currentCost;
+
+        Buildable buildable = GO.GetComponent<Buildable>();
+        if (buildable == null)
+            buildable = GO.GetComponentInChildren<Buildable>();
+
+        //GO.GetComponent<BuildingData>().cost = currentCost;
         GO.GetComponent<Buildable>().OnBuild();
         ChangeGOAlfa(1);
         GO = null;
@@ -186,7 +191,9 @@ public class BuildingController : MonoBehaviour, IState
         if(listSize > 0)
         {  
             var element = gameManager.waveBuildingList[listSize - 1];
-            GameEvents.UndoPlacement(element.GO.GetComponent<Buildable>());
+
+            if (GameEvents.UndoPlacement != null)
+                GameEvents.UndoPlacement(element.GO.GetComponent<Buildable>());
 
             gameManager.currentResource += element.Cost;
             

@@ -81,6 +81,9 @@ public class PlayerCombat : MonoBehaviour
 
             for (int i = 0; i < collisions.Length; i++)
             {
+                if (collisions[i] == null)
+                    continue;
+
                 IActor actor = collisions[i].GetComponent<IActor>();
                 if (actor != null && actor.isActorType(ActorType.Enemy))
                 {

@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class Buildable : MonoBehaviour, IActor, IBuildingCollider
 {
     public BuildableData data;
+    public bool wasPlaced = false;
 
 
     [Header("References")]
@@ -16,6 +17,7 @@ public class Buildable : MonoBehaviour, IActor, IBuildingCollider
     public bool hasProjector;
     public Material projectorMaterialGreen;
     public Material projectorMaterialRed;
+
     [Header("Optional References")]
     public GameObject buildingProjections;
     public GameObject ignoreOnBuild;
@@ -67,6 +69,12 @@ public class Buildable : MonoBehaviour, IActor, IBuildingCollider
 
     public Collider placementCollider => placementCollionObserver.Collider;
 
+    private void OnDestroy()
+    {
+        if(GameEvents.ActorDestroyed != null)
+            GameEvents.ActorDestroyed(this);
+    }
+
     private void Awake()
     {
         buildingBehavior = GetComponent<IBuildingBehavior>();
@@ -83,7 +91,7 @@ public class Buildable : MonoBehaviour, IActor, IBuildingCollider
         crossProjector = Instantiate(crossProjectorPrefab,transform);
         gameManager = GameManager.instance;
 
-        data = Instantiate(data);
+        //data = Instantiate(data);
 
         MaxHealth = data.maxHealth;
         currentHealth = MaxHealth;
@@ -149,6 +157,11 @@ public class Buildable : MonoBehaviour, IActor, IBuildingCollider
 
         GameController.instance.OnChangeToBuilding += OnBuildingMode;
         GameController.instance.OnChangeToCombat += OnCombatMode;
+
+        wasPlaced = true;
+
+        if (GameEvents.BuildablePlacement != null)
+            GameEvents.BuildablePlacement((this, true));
     }
 
     /// <summary>

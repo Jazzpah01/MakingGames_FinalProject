@@ -58,6 +58,10 @@ public class PlayerController : MonoBehaviour, IActor, IState
     public float damageModifyer { get; set; }
     public float speedModifyer { get; set; }
 
+    private void OnDestroy()
+    {
+        GameEvents.ActorDestroyed(this);
+    }
 
     private void Start()
     {

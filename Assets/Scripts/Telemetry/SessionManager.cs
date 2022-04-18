@@ -8,7 +8,7 @@ using System.Threading;
 public class SessionManager : MonoBehaviour
 {
     public static SessionManager instance;
-    public int playerId;
+    public int playerId = 0;
     public int GameSessionId;
     public int levelSessionID;
     public int levelID;
@@ -17,7 +17,7 @@ public class SessionManager : MonoBehaviour
     public LevelSheet currentLevelSheet;
     public SessionSheet currentSessionSheet;
 
-    public Dictionary<Buildable, PlacementSheet> placementSheets;
+    public Dictionary<Buildable, PlacementSheet> placementSheets = new Dictionary<Buildable, PlacementSheet>();
 
     public IActor lastDamagingActor;
 
@@ -26,8 +26,9 @@ public class SessionManager : MonoBehaviour
     void Awake()
     {
         instance = this;
-        playerId = Random.Range(1, 50000);
-        GameSessionId = playerId;
+        if (playerId == 0)
+            playerId = Random.Range(1, 1000000);
+        GameSessionId = Random.Range(1, 1000000);
         levelSessionID = Random.Range(50001, 1000000);
         waveID = 0;
         levelID = 0;
@@ -35,6 +36,15 @@ public class SessionManager : MonoBehaviour
         currentSessionSheet = new SessionSheet();
         currentSessionSheet.gameSessionID = GameSessionId;
         currentSessionSheet.playerID = playerId;
+
+        currentLevelSheet = new LevelSheet();
+        currentLevelSheet.levelID = 0;
+        currentLevelSheet.gameSessionID = GameSessionId;
+        currentLevelSheet.playerID = playerId;
+        currentLevelSheet.levelSessionID = levelSessionID;
+
+        levelStartTime = Time.time;
+
     }
 
     private void Start()
@@ -129,18 +139,25 @@ public class SessionManager : MonoBehaviour
         PlayerController player = actor as PlayerController;
         Base basec = actor as Base;
 
-        if (buildable != null)
+        if (actor is Buildable && buildable.wasPlaced)
         {
+            print("Building destroyed!");
+
             placementSheets[buildable].waveDestroyed = waveID;
 
             PlacementSheet retval = placementSheets[buildable];
             placementSheets.Remove(buildable);
+
+            StartCoroutine(SendData(retval));
+
             return;
         }
     }
 
     public void LevelChanged(int newLevelID)
     {
+        Debug.Log("Changed level!");
+
         bool newLevel = (newLevelID > levelID);
 
         if (newLevel)
@@ -161,7 +178,7 @@ public class SessionManager : MonoBehaviour
 
         if (currentLevelSheet != null)
         {
-            SendData(currentLevelSheet);
+            StartCoroutine( SendData(currentLevelSheet));
         }
 
         levelID = newLevelID;
@@ -190,24 +207,10 @@ public class SessionManager : MonoBehaviour
     public void GameClose()
     {
         if (currentSessionSheet != null)
-            SendData(currentSessionSheet);
-    }
+            StartCoroutine(SendData(currentSessionSheet));
 
-    //public struct LevelData
-    //{
-    //    public int playerID;
-    //    public int GameSessionId;
-    //    public int levelSessionID;
-    //    public string type;
-    //    public string data;
-    //    public int level;
-    //    public float damage;
-    //    public bool IsDestroyed;
-    //    public int wavePlaced;
-    //    public int waveDestroyed;
-    //    public float cost;
-    //    public int lifeTime;
-    //}
+        Awake();
+    }
 
     //Telemetry setup
 
@@ -223,10 +226,6 @@ public class SessionManager : MonoBehaviour
 
     }
 
-    void SendData(object data) {
-
-    }
-
     public void AddPlacementData()
     {
 
@@ -234,6 +233,8 @@ public class SessionManager : MonoBehaviour
 
     IEnumerator SendData(PlacementSheet data)
     {
+        print("Placement Data starting...");
+
         CultureInfo ci = CultureInfo.GetCultureInfo("en-GB");
         Thread.CurrentThread.CurrentCulture = ci;
 
@@ -265,6 +266,8 @@ public class SessionManager : MonoBehaviour
 
     IEnumerator SendData(LevelSheet data)
     {
+        print("Level Data starting...");
+
         CultureInfo ci = CultureInfo.GetCultureInfo("en-GB");
         Thread.CurrentThread.CurrentCulture = ci;
 
@@ -291,6 +294,8 @@ public class SessionManager : MonoBehaviour
 
     IEnumerator SendData(SessionSheet data)
     {
+        print("Session Data starting...");
+
         CultureInfo ci = CultureInfo.GetCultureInfo("en-GB");
         Thread.CurrentThread.CurrentCulture = ci;
 

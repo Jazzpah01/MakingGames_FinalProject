@@ -57,7 +57,8 @@ public class LevelManager : MonoBehaviour
             Destroy(level);
             level = Instantiate(levels[currentLevel]);
             currentLevel++;
-            GameEvents.LevelChanged(currentLevel);
+            if (GameEvents.LevelChanged != null)
+                GameEvents.LevelChanged(currentLevel);
         }
     }
 }
