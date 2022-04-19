@@ -97,7 +97,8 @@ public class GameController : MBStateMachine
         {
             if (InWave == false)
             {
-                GameEvents.WaveFinished(currentWave);
+                if (GameEvents.WaveFinished != null)
+                    GameEvents.WaveFinished(currentWave);
                 ChangeState(GameState.Strategy);
                 currentWave++;
                 hud.UpdateHUD();

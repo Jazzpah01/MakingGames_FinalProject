@@ -65,6 +65,13 @@ public class SessionManager : MonoBehaviour
         foreach (PlacementSheet sheet in placementSheets.Values)
         {
             sheet.lifeTime += Time.deltaTime;
+
+            if (currentLevelSheet != null)
+            {
+                // Send player data
+                PlayerController player = PlayerManager.instance.playerController;
+                //player.transform.position
+            }
         }
     }
 
@@ -121,13 +128,13 @@ public class SessionManager : MonoBehaviour
             // If player or base is killed, they failed and we increment losses
             switch (levelID)
             {
-                case 0:
+                case 1:
                     currentSessionSheet.lvl1Loss++;
                     break;
-                case 1:
+                case 2:
                     currentSessionSheet.lvl2Loss++;
                     break;
-                case 2:
+                case 3:
                     currentSessionSheet.lvl3Loss++;
                     break;
             }
@@ -161,6 +168,11 @@ public class SessionManager : MonoBehaviour
         {
             Awake();
             return;
+        }
+
+        foreach (PlacementSheet item in placementSheets.Values)
+        {
+            item.waveDestroyed = waveID;
         }
 
         bool newLevel = (newLevelID > levelID);
@@ -201,6 +213,7 @@ public class SessionManager : MonoBehaviour
 
     public void WaveFinished(int finishedID)
     {
+        print("Wave finished");
         waveID++;
     }
 
@@ -238,6 +251,8 @@ public class SessionManager : MonoBehaviour
             currentLevelSheet = null;
         }
     }
+
+
 
     //Telemetry setup
 

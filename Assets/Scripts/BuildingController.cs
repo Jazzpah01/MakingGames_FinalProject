@@ -97,6 +97,11 @@ public class BuildingController : MonoBehaviour, IState
                         spawnpoint = new Vector3(placement.position.x, spawnpoint.y, placement.position.z);
                     }
 
+                    if (Input.GetMouseButtonDown(0) && !placement.validPlacement)
+                    {
+                        GameEvents.BuildablePlacement((buildable, false));
+                    }
+
                     //if the dummy-gameobject is within the containmentLayerMask
                     if (placement.validPlacement && Physics.Raycast(ray, out hit, 1000, containmentLayerMask))
                     {
