@@ -156,13 +156,14 @@ public class SessionManager : MonoBehaviour
 
     public void LevelChanged(int newLevelID)
     {
-        Debug.Log("Changed level!");
+        if (currentLevelSheet == null)
+            return;
 
         bool newLevel = (newLevelID > levelID);
 
         if (newLevel)
         {
-            switch (newLevelID)
+            switch (levelID)
             {
                 case 0:
                     currentSessionSheet.lvl1CompletionTime = Time.time - levelStartTime;
