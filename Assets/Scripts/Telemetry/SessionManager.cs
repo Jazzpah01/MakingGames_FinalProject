@@ -178,7 +178,7 @@ public class SessionManager : MonoBehaviour
 
         if (currentLevelSheet != null)
         {
-            StartCoroutine( SendData(currentLevelSheet));
+            StartCoroutine( SendData(currentLevelSheet) );
         }
 
         levelID = newLevelID;
@@ -207,7 +207,16 @@ public class SessionManager : MonoBehaviour
     public void GameClose()
     {
         if (currentSessionSheet != null)
+        {
             StartCoroutine(SendData(currentSessionSheet));
+            currentSessionSheet = null;
+        }
+        if (currentLevelSheet != null)
+        {
+            StartCoroutine(SendData(currentLevelSheet));
+            currentLevelSheet = null;
+        }
+            
 
         Awake();
     }
