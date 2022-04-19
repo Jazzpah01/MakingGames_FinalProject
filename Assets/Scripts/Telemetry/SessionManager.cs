@@ -23,6 +23,10 @@ public class SessionManager : MonoBehaviour
 
     public float levelStartTime = 0;
 
+    public float positionInterval = 2f;
+    public float positionTime = 0f;
+    public bool sendingPosition = false;
+
     void Awake()
     {
         instance = this;
@@ -65,13 +69,27 @@ public class SessionManager : MonoBehaviour
         foreach (PlacementSheet sheet in placementSheets.Values)
         {
             sheet.lifeTime += Time.deltaTime;
+        }
 
-            if (currentLevelSheet != null)
-            {
-                // Send player data
-                PlayerController player = PlayerManager.instance.playerController;
-                //player.transform.position
-            }
+        positionTime += Time.deltaTime;
+
+        if (currentLevelSheet != null && positionTime > positionInterval && !sendingPosition && GameController.instance.state == GameController.GameState.Combat)
+        {
+            // Send player data
+            print("Position tel");
+            positionTime = 0;
+            PlayerController player = PlayerManager.instance.playerController;
+            PlayerPositionSheet data = new PlayerPositionSheet();
+            data.xPosition = player.transform.position.x;
+            data.zPosition = player.transform.position.z;
+            data.playerID = playerId;
+            data.levelID = levelID;
+            data.levelSessionID = levelSessionID;
+            data.gameSessionID = GameSessionId;
+
+            sendingPosition = true;
+
+            StartCoroutine(SendData(data));
         }
     }
 
@@ -361,6 +379,34 @@ public class SessionManager : MonoBehaviour
 
             yield return null;
             print("Requeust sent");
+        }
+    }
+
+    IEnumerator SendData(PlayerPositionSheet data)
+    {
+        print("Position Data starting...");
+
+        CultureInfo ci = CultureInfo.GetCultureInfo("en-GB");
+        Thread.CurrentThread.CurrentCulture = ci;
+
+        string urlGoogleFormResponse = PlayerPositionSheet.url + "formResponse";
+
+        WWWForm form = new WWWForm();
+
+        form.AddField(PlayerPositionSheet.form_playerID, data.playerID.ToString());
+        form.AddField(PlayerPositionSheet.form_gameSessionID, data.gameSessionID.ToString());
+        form.AddField(PlayerPositionSheet.form_levelSessionID, data.levelSessionID.ToString());
+        form.AddField(PlayerPositionSheet.form_levelID, data.levelID.ToString());
+        form.AddField(PlayerPositionSheet.form_xPosition, data.xPosition.ToString());
+        form.AddField(PlayerPositionSheet.form_zPosition, data.zPosition.ToString());
+
+        using (UnityWebRequest www = UnityWebRequest.Post(urlGoogleFormResponse, form))
+        {
+            yield return www.SendWebRequest();
+
+            yield return null;
+            print("Requeust sent");
+            sendingPosition = false;
         }
     }
 }
