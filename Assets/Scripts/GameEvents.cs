@@ -15,4 +15,5 @@ public class GameEvents : MonoBehaviour
     public static GameEvent GameClosed;
     public static GameEventOfType<Buildable> UndoPlacement; // Buildable that has been undone
     public static GameEventOfType<int> WaveFinished; // Wave that is finished
+    public static GameEvent GameCompleted; // Call when game completed
 }

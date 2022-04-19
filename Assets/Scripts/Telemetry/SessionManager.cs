@@ -31,14 +31,14 @@ public class SessionManager : MonoBehaviour
         GameSessionId = Random.Range(1, 1000000);
         levelSessionID = Random.Range(50001, 1000000);
         waveID = 0;
-        levelID = 0;
+        levelID = 1;
 
         currentSessionSheet = new SessionSheet();
         currentSessionSheet.gameSessionID = GameSessionId;
         currentSessionSheet.playerID = playerId;
 
         currentLevelSheet = new LevelSheet();
-        currentLevelSheet.levelID = 0;
+        currentLevelSheet.levelID = levelID;
         currentLevelSheet.gameSessionID = GameSessionId;
         currentLevelSheet.playerID = playerId;
         currentLevelSheet.levelSessionID = levelSessionID;
@@ -57,6 +57,7 @@ public class SessionManager : MonoBehaviour
         GameEvents.WaveFinished += WaveFinished;
         GameEvents.UndoPlacement += PlacementUndo;
         GameEvents.GameClosed += GameClose;
+        GameEvents.GameCompleted += GameCompleted;
     }
 
     private void Update()
@@ -157,7 +158,10 @@ public class SessionManager : MonoBehaviour
     public void LevelChanged(int newLevelID)
     {
         if (currentLevelSheet == null)
+        {
+            Awake();
             return;
+        }
 
         bool newLevel = (newLevelID > levelID);
 
@@ -165,13 +169,13 @@ public class SessionManager : MonoBehaviour
         {
             switch (levelID)
             {
-                case 0:
+                case 1:
                     currentSessionSheet.lvl1CompletionTime = Time.time - levelStartTime;
                     break;
-                case 1:
+                case 2:
                     currentSessionSheet.lvl2CompletionTime = Time.time - levelStartTime;
                     break;
-                case 2:
+                case 3:
                     currentSessionSheet.lvl3CompletionTime = Time.time - levelStartTime;
                     break;
             }
@@ -217,9 +221,22 @@ public class SessionManager : MonoBehaviour
             StartCoroutine(SendData(currentLevelSheet));
             currentLevelSheet = null;
         }
-            
+    }
 
-        Awake();
+    public void GameCompleted()
+    {
+        if (currentSessionSheet != null)
+        {
+            currentSessionSheet.completed = true;
+            currentSessionSheet.lvl3CompletionTime = Time.time - levelStartTime;
+            StartCoroutine(SendData(currentSessionSheet));
+            currentSessionSheet = null;
+        }
+        if (currentLevelSheet != null)
+        {
+            StartCoroutine(SendData(currentLevelSheet));
+            currentLevelSheet = null;
+        }
     }
 
     //Telemetry setup

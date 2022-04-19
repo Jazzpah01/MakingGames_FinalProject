@@ -50,6 +50,11 @@ public class LevelManager : MonoBehaviour
         if (currentLevel >= levels.Count)
         {
             Debug.Log("There are no more levels!");
+            if (GameEvents.GameCompleted != null)
+                GameEvents.GameCompleted();
+            if (GameEvents.GameClosed != null)
+                GameEvents.GameClosed();
+            LevelManager.instance.RestartAllLevels();
         }
         else
         {
