@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actorPrefab: {fileID: 0}
   name: 
-  maxHealth: 200
+  maxHealth: 215
   speed: 9
   range: 3
   pathMove:
