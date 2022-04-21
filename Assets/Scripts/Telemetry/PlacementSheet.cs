@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlacementSheet
 {
+    public string gameVersion;
     public int playerID;
     public int gameSessionID;
     public int levelSessionID;
@@ -19,6 +20,7 @@ public class PlacementSheet
 
     public const string url = "https://docs.google.com/forms/d/e/1FAIpQLSdCiBthYndKGuRt82xpBR_nIHBV4n1CbiZO44WurpEagw4STw/";
     public const string url_viewform = "https://docs.google.com/forms/d/e/1FAIpQLSdCiBthYndKGuRt82xpBR_nIHBV4n1CbiZO44WurpEagw4STw/viewform?usp=sf_link";
+    public const string form_gameVersion = "entry.656015506";
     public const string form_playerID = "entry.175486278";
     public const string form_gameSessionID = "entry.152759416";
     public const string form_levelSessionID = "entry.309323523";

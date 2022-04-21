@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SessionSheet
 {
+    public string gameVersion;
     public int playerID;
     public int gameSessionID;
     public bool completed;
@@ -16,6 +17,7 @@ public class SessionSheet
 
     public const string url = "https://docs.google.com/forms/d/e/1FAIpQLSd10m2X0FPLRKzaHPffMNzFeCSeeQdK_8tfIjMk--P7Ujurdg/";
     public const string url_viewform = "https://docs.google.com/forms/d/e/1FAIpQLSd10m2X0FPLRKzaHPffMNzFeCSeeQdK_8tfIjMk--P7Ujurdg/viewform?usp=sf_link";
+    public const string form_gameVersion = "entry.170461038";
     public const string form_playerID= "entry.1864009900";
     public const string form_gameSessionID= "entry.887693786";
     public const string form_completed= "entry.87416968";
