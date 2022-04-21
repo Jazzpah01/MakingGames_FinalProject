@@ -83,6 +83,8 @@ public class SessionManager : MonoBehaviour
             placementSheets[buildable].type = buildable.data.name;
             placementSheets[buildable].cost = GameManager.instance.buildingTypes.ElementOf(buildable.data).cost;
             placementSheets[buildable].wavePlaced = waveID;
+            placementSheets[buildable].xPosition = buildable.gameObject.transform.position.x;
+            placementSheets[buildable].zPosition = buildable.gameObject.transform.position.z;
             //placementSheet.data; ???
         }
         else
@@ -283,6 +285,8 @@ public class SessionManager : MonoBehaviour
         form.AddField(PlacementSheet.form_waveDestroyed, data.waveDestroyed);
         form.AddField(PlacementSheet.form_cost, data.cost.ToString());
         form.AddField(PlacementSheet.form_lifeTime, data.lifeTime.ToString());
+        form.AddField(PlacementSheet.form_xPosition, data.xPosition.ToString());
+        form.AddField(PlacementSheet.form_zPosition, data.zPosition.ToString());
 
         using (UnityWebRequest www = UnityWebRequest.Post(urlGoogleFormResponse, form))
         {
