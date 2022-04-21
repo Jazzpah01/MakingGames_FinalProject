@@ -67028,7 +67028,8 @@ PrefabInstance:
         type: 3}
       propertyPath: levelDescriptionData
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 841ce78d18347ae439555ce06ae82062,
+        type: 2}
     - target: {fileID: 561731304202653657, guid: 137a44a12193a954cae6178df1d2bf23,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

@@ -15,14 +15,14 @@ MonoBehaviour:
   actorPrefab: {fileID: 8063388511463166607, guid: 8e6999ef61c55b848a7cf242ddc25fb0,
     type: 3}
   name: Aloe Vita
-  maxHealth: 100
+  maxHealth: 150
   speed: 0
   actorType: 20
   containmentLayermask:
     serializedVersion: 2
     m_Bits: 64
-  description: This plants rejuvenating power gives life to both fairies and the
-    fairie's home.
+  description: Use the extra fertile soil. This plants rejuvenating power gives life
+    to both fairies and the fairie's home.
   icon: {fileID: 21300000, guid: a30276d1413320f4ca8370c6b68b3163, type: 3}
   descriptionItemImage: {fileID: 21300000, guid: 1e057ec0eb067964689187bbf9cb9b5d,
     type: 3}
