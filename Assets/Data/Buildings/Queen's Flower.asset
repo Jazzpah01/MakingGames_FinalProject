@@ -15,14 +15,14 @@ MonoBehaviour:
   actorPrefab: {fileID: 8063388511463166607, guid: df1ab6f0658de7a458a76a80eef4f5f0,
     type: 3}
   name: Gossypium Pecunia
-  maxHealth: 130
+  maxHealth: 150
   speed: 0
   actorType: 16
   containmentLayermask:
     serializedVersion: 2
     m_Bits: 64
-  description: Rich with nectar, this flower will grant you a hefty sum of Nectar
-    Essence as long as you keep it safe from harm.
+  description: Use the extra fertile soil. Rich with nectar, this flower will grant
+    you a hefty sum of Nectar Essence as long as you keep it safe from harm.
   icon: {fileID: 21300000, guid: 01a5f99f0d896bd458acedac88275085, type: 3}
   descriptionItemImage: {fileID: 21300000, guid: bde07c092c82d144cb031cfffae732d1,
     type: 3}

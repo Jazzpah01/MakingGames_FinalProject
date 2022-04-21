@@ -189,6 +189,7 @@ GameObject:
   - component: {fileID: 2782804534701062992}
   - component: {fileID: 2782804534701062997}
   - component: {fileID: 204467252409292936}
+  - component: {fileID: 6579015715223680344}
   m_Layer: 9
   m_Name: Barricade
   m_TagString: Untagged
@@ -232,6 +233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 83e7602242a5b5e4db9c26bbee44b71a, type: 2}
+  wasPlaced: 0
   healthbar: {fileID: 4106165504943000003}
   spotlight: {fileID: 6420362992458343380}
   crossProjectorPrefab: {fileID: 1797307579947872393, guid: dd48b7e0715f34446aaeac5073e817fb,
@@ -305,6 +307,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   children: []
+--- !u!114 &6579015715223680344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2782804534701062994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91817ad609369a948991e2202f6f2d7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  wavePlaced: 0
+  waveDestroyed: 0
+  IsDestroyed: 0
+  cost: 0
 --- !u!1 &2883257046259061764
 GameObject:
   m_ObjectHideFlags: 0

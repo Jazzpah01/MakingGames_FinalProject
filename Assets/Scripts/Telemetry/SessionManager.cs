@@ -9,6 +9,7 @@ public class SessionManager : MonoBehaviour
 {
     public static SessionManager instance;
     public int playerId = 0;
+    public string gameVersion = "A";
     public int GameSessionId;
     public int levelSessionID;
     public int levelID;
@@ -107,6 +108,8 @@ public class SessionManager : MonoBehaviour
             placementSheets[buildable].type = buildable.data.name;
             placementSheets[buildable].cost = GameManager.instance.buildingTypes.ElementOf(buildable.data).cost;
             placementSheets[buildable].wavePlaced = waveID;
+            placementSheets[buildable].xPosition = buildable.gameObject.transform.position.x;
+            placementSheets[buildable].zPosition = buildable.gameObject.transform.position.z;
             //placementSheet.data; ???
         }
         else
@@ -302,6 +305,7 @@ public class SessionManager : MonoBehaviour
 
         WWWForm form = new WWWForm();
 
+        form.AddField(PlacementSheet.form_gameVersion, SessionManager.instance.gameVersion);
         form.AddField(PlacementSheet.form_playerID, data.playerID);
         form.AddField(PlacementSheet.form_gameSessionID, data.gameSessionID);
         form.AddField(PlacementSheet.form_levelSessionID, data.levelSessionID);
@@ -314,6 +318,8 @@ public class SessionManager : MonoBehaviour
         form.AddField(PlacementSheet.form_waveDestroyed, data.waveDestroyed);
         form.AddField(PlacementSheet.form_cost, data.cost.ToString());
         form.AddField(PlacementSheet.form_lifeTime, data.lifeTime.ToString());
+        form.AddField(PlacementSheet.form_xPosition, data.xPosition.ToString());
+        form.AddField(PlacementSheet.form_zPosition, data.zPosition.ToString());
 
         using (UnityWebRequest www = UnityWebRequest.Post(urlGoogleFormResponse, form))
         {
@@ -334,7 +340,8 @@ public class SessionManager : MonoBehaviour
         string urlGoogleFormResponse = LevelSheet.url + "formResponse";
 
         WWWForm form = new WWWForm();
-
+        
+        form.AddField(LevelSheet.form_gameVersion, SessionManager.instance.gameVersion);
         form.AddField(LevelSheet.form_playerID, data.playerID.ToString());
         form.AddField(LevelSheet.form_gameSessionID, data.gameSessionID.ToString());
         form.AddField(LevelSheet.form_levelSessionID, data.levelSessionID.ToString());
@@ -363,6 +370,8 @@ public class SessionManager : MonoBehaviour
 
         WWWForm form = new WWWForm();
 
+        
+        form.AddField(SessionSheet.form_gameVersion, SessionManager.instance.gameVersion);
         form.AddField(SessionSheet.form_playerID, data.playerID.ToString());
         form.AddField(SessionSheet.form_gameSessionID, data.gameSessionID.ToString());
         form.AddField(SessionSheet.form_completed, data.completed.ToString());
@@ -393,6 +402,7 @@ public class SessionManager : MonoBehaviour
 
         WWWForm form = new WWWForm();
 
+        form.AddField(PlayerPositionSheet.form_gameVersion, SessionManager.instance.gameVersion);
         form.AddField(PlayerPositionSheet.form_playerID, data.playerID.ToString());
         form.AddField(PlayerPositionSheet.form_gameSessionID, data.gameSessionID.ToString());
         form.AddField(PlayerPositionSheet.form_levelSessionID, data.levelSessionID.ToString());

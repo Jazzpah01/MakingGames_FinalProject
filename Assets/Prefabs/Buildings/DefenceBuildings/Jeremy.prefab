@@ -486,6 +486,7 @@ GameObject:
   - component: {fileID: 641325662967931258}
   - component: {fileID: 641325662967931259}
   - component: {fileID: 641325662967931236}
+  - component: {fileID: -4683206617012882669}
   m_Layer: 9
   m_Name: Jeremy
   m_TagString: Untagged
@@ -529,6 +530,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: fcf147895377e4648a56a62b91a319ca, type: 2}
+  wasPlaced: 0
   healthbar: {fileID: 1948593179552404295}
   spotlight: {fileID: 2546444746254981868}
   crossProjectorPrefab: {fileID: 1797307579947872393, guid: dd48b7e0715f34446aaeac5073e817fb,
@@ -586,6 +588,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-4683206617012882669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 641325662967931237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91817ad609369a948991e2202f6f2d7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  wavePlaced: 0
+  waveDestroyed: 0
+  IsDestroyed: 0
+  cost: 0
 --- !u!1 &712593274797199013
 GameObject:
   m_ObjectHideFlags: 0
