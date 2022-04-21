@@ -33,10 +33,11 @@ public class HealthBar : MonoBehaviour
     public void SetHealthbar(float amount)
     {
         // Sanitise input
+        /*
         if (amount < 0)
             throw new System.Exception("Cannot fill the image less than 0.");
         if (amount > 1)
-            throw new System.Exception("Cannot fill the image more than 1.");
+            throw new System.Exception("Cannot fill the image more than 1.");*/
 
         //The animation is setting the red bar to the actual amount of health
         //with a white bar behind the red bar slowly decreasing towards the red bar
