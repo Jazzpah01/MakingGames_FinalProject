@@ -9,7 +9,7 @@ public class SessionManager : MonoBehaviour
 {
     public static SessionManager instance;
     public int playerId = 0;
-    public string gameVersion = "A";
+    public string gameVersion = "B";
     public int GameSessionId;
     public int levelSessionID;
     public int levelID;
