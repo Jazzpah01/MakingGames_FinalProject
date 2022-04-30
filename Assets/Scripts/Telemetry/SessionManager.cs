@@ -24,6 +24,10 @@ public class SessionManager : MonoBehaviour
 
     public float levelStartTime = 0;
 
+    public float positionInterval = 2f;
+    public float positionTime = 0f;
+    public bool sendingPosition = false;
+
     void Awake()
     {
         instance = this;
@@ -66,6 +70,27 @@ public class SessionManager : MonoBehaviour
         foreach (PlacementSheet sheet in placementSheets.Values)
         {
             sheet.lifeTime += Time.deltaTime;
+        }
+
+        positionTime += Time.deltaTime;
+
+        if (currentLevelSheet != null && positionTime > positionInterval && !sendingPosition && GameController.instance.state == GameController.GameState.Combat)
+        {
+            // Send player data
+            print("Position tel");
+            positionTime = 0;
+            PlayerController player = PlayerManager.instance.playerController;
+            PlayerPositionSheet data = new PlayerPositionSheet();
+            data.xPosition = player.transform.position.x;
+            data.zPosition = player.transform.position.z;
+            data.playerID = playerId;
+            data.levelID = levelID;
+            data.levelSessionID = levelSessionID;
+            data.gameSessionID = GameSessionId;
+
+            sendingPosition = true;
+
+            StartCoroutine(SendData(data));
         }
     }
 
@@ -124,13 +149,13 @@ public class SessionManager : MonoBehaviour
             // If player or base is killed, they failed and we increment losses
             switch (levelID)
             {
-                case 0:
+                case 1:
                     currentSessionSheet.lvl1Loss++;
                     break;
-                case 1:
+                case 2:
                     currentSessionSheet.lvl2Loss++;
                     break;
-                case 2:
+                case 3:
                     currentSessionSheet.lvl3Loss++;
                     break;
             }
@@ -164,6 +189,11 @@ public class SessionManager : MonoBehaviour
         {
             Awake();
             return;
+        }
+
+        foreach (PlacementSheet item in placementSheets.Values)
+        {
+            item.waveDestroyed = waveID;
         }
 
         bool newLevel = (newLevelID > levelID);
@@ -204,6 +234,7 @@ public class SessionManager : MonoBehaviour
 
     public void WaveFinished(int finishedID)
     {
+        print("Wave finished");
         waveID++;
     }
 
@@ -241,6 +272,8 @@ public class SessionManager : MonoBehaviour
             currentLevelSheet = null;
         }
     }
+
+
 
     //Telemetry setup
 
@@ -355,6 +388,35 @@ public class SessionManager : MonoBehaviour
 
             yield return null;
             print("Requeust sent");
+        }
+    }
+
+    IEnumerator SendData(PlayerPositionSheet data)
+    {
+        print("Position Data starting...");
+
+        CultureInfo ci = CultureInfo.GetCultureInfo("en-GB");
+        Thread.CurrentThread.CurrentCulture = ci;
+
+        string urlGoogleFormResponse = PlayerPositionSheet.url + "formResponse";
+
+        WWWForm form = new WWWForm();
+
+        form.AddField(PlayerPositionSheet.form_gameVersion, SessionManager.instance.gameVersion);
+        form.AddField(PlayerPositionSheet.form_playerID, data.playerID.ToString());
+        form.AddField(PlayerPositionSheet.form_gameSessionID, data.gameSessionID.ToString());
+        form.AddField(PlayerPositionSheet.form_levelSessionID, data.levelSessionID.ToString());
+        form.AddField(PlayerPositionSheet.form_levelID, data.levelID.ToString());
+        form.AddField(PlayerPositionSheet.form_xPosition, data.xPosition.ToString());
+        form.AddField(PlayerPositionSheet.form_zPosition, data.zPosition.ToString());
+
+        using (UnityWebRequest www = UnityWebRequest.Post(urlGoogleFormResponse, form))
+        {
+            yield return www.SendWebRequest();
+
+            yield return null;
+            print("Requeust sent");
+            sendingPosition = false;
         }
     }
 }

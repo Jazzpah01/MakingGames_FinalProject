@@ -165,7 +165,7 @@ public class StrategyHUD : MonoBehaviour
         foreach(var GO in gameManager.waveBuildingList)
         {
             print("in data loop");
-            GO.GO.GetComponent<BuildingData>().wavePlaced = LevelManager.instance.getCurrentLevel();
+            //GO.GO.GetComponent<BuildingData>().wavePlaced = LevelManager.instance.getCurrentLevel();
             gameManager.placedBuildings.Add(GO.GO);
         }
         GameController.instance.GoToBattle();
