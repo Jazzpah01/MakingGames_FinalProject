@@ -15,7 +15,7 @@ MonoBehaviour:
   actorPrefab: {fileID: 2782804534701062994, guid: 03892feb8bb90f248bbc0aed8527ac48,
     type: 3}
   name: Coffee Pile
-  maxHealth: 100
+  maxHealth: 75
   speed: 0
   actorType: 12
   containmentLayermask:

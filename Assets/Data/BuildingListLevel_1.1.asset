@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildings:
   - data: {fileID: 11400000, guid: 416a97f82000d34479db223c943bcd75, type: 2}
-    cost: 2
+    cost: 3
   - data: {fileID: 11400000, guid: 297ea980268bbfb4fa31a10bb67d5bf5, type: 2}
-    cost: 2
+    cost: 3
   - data: {fileID: 11400000, guid: f91fd1c2ead33c244be4d591a062a26f, type: 2}
-    cost: 4
+    cost: 6

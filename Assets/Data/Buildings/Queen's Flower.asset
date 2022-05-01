@@ -26,5 +26,5 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 01a5f99f0d896bd458acedac88275085, type: 3}
   descriptionItemImage: {fileID: 21300000, guid: bde07c092c82d144cb031cfffae732d1,
     type: 3}
-  resourceGain: 6
+  resourceGain: 8
   wavesToHarvest: 1
