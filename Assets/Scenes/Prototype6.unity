@@ -356,7 +356,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerId: 0
+  gameVersion: B
   GameSessionId: 0
+  levelSessionID: 0
+  levelID: 0
+  waveID: 0
+  levelStartTime: 0
+  positionInterval: 2
+  positionTime: 0
+  sendingPosition: 0
 --- !u!4 &1017876468
 Transform:
   m_ObjectHideFlags: 0
