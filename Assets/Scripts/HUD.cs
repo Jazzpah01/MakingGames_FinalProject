@@ -14,6 +14,8 @@ public class HUD : MonoBehaviour
     public GameObject settingsPrefab;
     public GameObject creditsPrefab;
     public GameObject gameoverPrefab;
+    public GameObject questionairePrefab;
+    
 
     private PlayerHUD playerHUD;
     private StrategyHUD strategyHUD;
@@ -107,9 +109,19 @@ public class HUD : MonoBehaviour
     }
     public void IngameMenuQuitButton()
     {
-        if (GameEvents.GameClosed != null)
-            GameEvents.GameClosed();
-        LevelManager.instance.RestartAllLevels();
+        if (SessionManager.instance == null)
+        {
+            if (GameEvents.GameClosed != null)
+                GameEvents.GameClosed();
+            LevelManager.instance.RestartAllLevels();
+        } else
+        {
+            if (GameEvents.GameClosed != null)
+                GameEvents.GameClosed();
+            Application.OpenURL(
+                $"https://docs.google.com/forms/d/e/1FAIpQLSfV0Pjggpm2oLKwJRBTGYpNwiC614W3wKjGU-kLUDW_L8TN0g/viewform?usp=pp_url&entry.512054640={SessionManager.instance.playerId}&entry.1864559782={SessionManager.instance.gameVersion}");
+            LevelManager.instance.RestartAllLevels();
+        }
     }
     public void IngameMenuRestartMenuButton()
     {
@@ -160,6 +172,11 @@ public class HUD : MonoBehaviour
     {
         if (GameEvents.GameClosed != null)
             GameEvents.GameClosed();
+        if (SessionManager.instance != null)
+        {
+            Application.OpenURL(
+                    $"https://docs.google.com/forms/d/e/1FAIpQLSfV0Pjggpm2oLKwJRBTGYpNwiC614W3wKjGU-kLUDW_L8TN0g/viewform?usp=pp_url&entry.512054640={SessionManager.instance.playerId}&entry.1864559782={SessionManager.instance.gameVersion}");
+        }
         LevelManager.instance.RestartAllLevels();
     }
 
