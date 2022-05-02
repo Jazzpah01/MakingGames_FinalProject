@@ -144,7 +144,7 @@ public class HUD : MonoBehaviour
             if (GameEvents.GameClosed != null)
                 GameEvents.GameClosed();
             Application.OpenURL(
-                $"https://docs.google.com/forms/d/e/1FAIpQLSfV0Pjggpm2oLKwJRBTGYpNwiC614W3wKjGU-kLUDW_L8TN0g/viewform?usp=pp_url&entry.512054640={SessionManager.instance.playerId}&entry.1864559782={SessionManager.instance.gameVersion}");
+                $"https://docs.google.com/forms/d/e/1FAIpQLSfV0Pjggpm2oLKwJRBTGYpNwiC614W3wKjGU-kLUDW_L8TN0g/viewform?usp=pp_url&entry.512054640={SessionManager.instance.playerId}&entry.1864559782={SessionManager.gameVersion}");
             LevelManager.instance.RestartAllLevels();
         }
     }
@@ -200,7 +200,7 @@ public class HUD : MonoBehaviour
         if (SessionManager.instance != null)
         {
             Application.OpenURL(
-                    $"https://docs.google.com/forms/d/e/1FAIpQLSfV0Pjggpm2oLKwJRBTGYpNwiC614W3wKjGU-kLUDW_L8TN0g/viewform?usp=pp_url&entry.512054640={SessionManager.instance.playerId}&entry.1864559782={SessionManager.instance.gameVersion}");
+                    $"https://docs.google.com/forms/d/e/1FAIpQLSfV0Pjggpm2oLKwJRBTGYpNwiC614W3wKjGU-kLUDW_L8TN0g/viewform?usp=pp_url&entry.512054640={SessionManager.instance.playerId}&entry.1864559782={SessionManager.gameVersion}");
         }
         LevelManager.instance.RestartAllLevels();
     }
