@@ -49,12 +49,19 @@ public class LevelManager : MonoBehaviour
     {
         if (currentLevel >= levels.Count)
         {
+            // Game completed!
             Debug.Log("There are no more levels!");
             if (GameEvents.GameCompleted != null)
                 GameEvents.GameCompleted();
             if (GameEvents.GameClosed != null)
                 GameEvents.GameClosed();
+            if (SessionManager.instance != null)
+            {
+                Application.OpenURL(
+                    $"https://docs.google.com/forms/d/e/1FAIpQLSfV0Pjggpm2oLKwJRBTGYpNwiC614W3wKjGU-kLUDW_L8TN0g/viewform?usp=pp_url&entry.512054640={SessionManager.instance.playerId}&entry.1864559782={SessionManager.instance.gameVersion}");
+            }
             LevelManager.instance.RestartAllLevels();
+
         }
         else
         {
