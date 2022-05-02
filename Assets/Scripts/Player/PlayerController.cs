@@ -60,7 +60,8 @@ public class PlayerController : MonoBehaviour, IActor, IState
 
     private void OnDestroy()
     {
-        GameEvents.ActorDestroyed(this);
+        if (GameEvents.ActorDestroyed != null)
+            GameEvents.ActorDestroyed(this);
     }
 
     private void Start()

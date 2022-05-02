@@ -505,6 +505,7 @@ MonoBehaviour:
   buildingController: {fileID: 7953258502569022335}
   hud: {fileID: 700808372006470443}
   gameCursor: {fileID: 0}
+  placedBuildings: []
 --- !u!1 &3435015025979312389
 GameObject:
   m_ObjectHideFlags: 0
@@ -816,7 +817,10 @@ MonoBehaviour:
     type: 3}
   gameoverPrefab: {fileID: 6240392395814083437, guid: 43876eff591fb284c8356d16e8f7ced7,
     type: 3}
-  isLevelDescriptionActive: 0
+  telemetryPromptPrefab: {fileID: 6240392395814083437, guid: 764a7578be30708409195d45e3cf5fcd,
+    type: 3}
+  startMenuUI: {fileID: 0}
+  levelDescriptionUI: {fileID: 0}
   mouseOver: 0
 --- !u!222 &3868948587044871968
 CanvasRenderer:
@@ -2794,7 +2798,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Camera
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7025214644380035780, guid: dc5c8e213e831e348b875add942c96f9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: dc5c8e213e831e348b875add942c96f9, type: 3}
 --- !u!4 &7442249870901698377 stripped
 Transform:
