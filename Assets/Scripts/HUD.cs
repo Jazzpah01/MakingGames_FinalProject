@@ -14,7 +14,7 @@ public class HUD : MonoBehaviour
     public GameObject settingsPrefab;
     public GameObject creditsPrefab;
     public GameObject gameoverPrefab;
-    public GameObject questionairePrefab;
+    public GameObject telemetryPromptPrefab;
     
 
     private PlayerHUD playerHUD;
@@ -28,6 +28,7 @@ public class HUD : MonoBehaviour
     private GameObject settingsUI;
     private GameObject creditsUI;
     private GameObject gameOverUI;
+    private GameObject telemetryPrompt;
 
     [HideInInspector]
     public bool mouseOver;
@@ -48,6 +49,7 @@ public class HUD : MonoBehaviour
         settingsUI = Instantiate(settingsPrefab, transform);
         creditsUI = Instantiate(creditsPrefab, transform);
         gameOverUI = Instantiate(gameoverPrefab, transform);
+        telemetryPrompt = Instantiate(telemetryPromptPrefab, transform);
 
         playerHUD.gameObject.SetActive(false);
         startMenuUI.SetActive(false);
@@ -56,13 +58,16 @@ public class HUD : MonoBehaviour
         settingsUI.SetActive(false);
         creditsUI.SetActive(false);
         gameOverUI.SetActive(false);
+        telemetryPrompt.SetActive(false);
 
-        if (LevelManager.instance.getCurrentLevel() == 1)
+        if (!TelemetryPrompt.choiseMade)
         {
-            startMenuUI.SetActive(true);
-            levelDescriptionUI.SetActive(false);
-            strategyHUD.gameObject.SetActive(false);
+            StartTelemetryPrompt();
+        } else
+        {
+            StartMenuSetup();
         }
+            
     }
 
     private void Update()
@@ -81,6 +86,26 @@ public class HUD : MonoBehaviour
             IngameMenuButton();
         }
     }
+
+    public void StartMenuSetup()
+    {
+        if (LevelManager.instance.getCurrentLevel() == 1)
+        {
+            startMenuUI.SetActive(true);
+            levelDescriptionUI.SetActive(false);
+            strategyHUD.gameObject.SetActive(false);
+            telemetryPrompt.SetActive(false);
+        }
+    }
+
+    public void StartTelemetryPrompt()
+    {
+        startMenuUI.SetActive(false);
+        levelDescriptionUI.SetActive(false);
+        strategyHUD.gameObject.SetActive(false);
+        telemetryPrompt.SetActive(true);
+    }
+
     public void UpdateHUD()
     {
         strategyHUD.gameObject.SetActive(gameManager.gameController.state == GameController.GameState.Strategy);
